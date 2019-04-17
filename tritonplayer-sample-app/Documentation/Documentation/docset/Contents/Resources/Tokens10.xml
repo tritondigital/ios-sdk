@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/TDSyncBannerView.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/TDSyncBannerView</TokenIdentifier>
+			<Abstract type="html">TDSyncBannerView is a TDBannerView subclass tailored to show a companion banner synchronized with the playing stream.</Abstract>
+			<DeclaredIn>TDSyncBannerView.h</DeclaredIn>
+            
+			
+			<NodeRef refid="10"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDSyncBannerView/loadCuePoint:</TokenIdentifier>
+			<Abstract type="html">Loads an ad cue point into the banner. If the cue point doesn&apos;t represent an ad or if there&apos;s no ad to display, it does nothing.</Abstract>
+			<DeclaredIn>TDSyncBannerView.h</DeclaredIn>
+			
+			<Declaration>- (void)loadCuePoint:(CuePointEvent *)cuePoint</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>cuePoint</Name>
+					<Abstract type="html">The CuePointEvent with the ad to be loaded.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/loadCuePoint:</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+        
+        
+	</File>
+</Tokens>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Constants/TDAssetType.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/c/tdef/TDAssetType</TokenIdentifier>
+			<Abstract type="html">The type of asset for the linear ad (The main media in the interstitial)</Abstract>
+			<DeclaredIn>TDAdRequestURLBuilder.h</DeclaredIn>
+            
+			
+			<NodeRef refid="19"/>
+		</Token>
+		
+		
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/kTDAssetTypeNotDefined</TokenIdentifier>
+            <Abstract type="html">There&apos;s no restriction in the type of asset returned for the ads.</Abstract>
+            <Declaration>kTDAssetTypeNotDefined</Declaration>
+            
+            <DeclaredIn>TDAdRequestURLBuilder.h</DeclaredIn>
+            
+            <NodeRef refid="19"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/kTDAssetTypeAudio</TokenIdentifier>
+            <Abstract type="html">Ads must be of type audio.</Abstract>
+            <Declaration>kTDAssetTypeAudio</Declaration>
+            
+            <DeclaredIn>TDAdRequestURLBuilder.h</DeclaredIn>
+            
+            <NodeRef refid="19"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/kTDAssetTypeVideo</TokenIdentifier>
+            <Abstract type="html">Ads must be of type video.</Abstract>
+            <Declaration>kTDAssetTypeVideo</Declaration>
+            
+            <DeclaredIn>TDAdRequestURLBuilder.h</DeclaredIn>
+            
+            <NodeRef refid="19"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/kTDAssetTypeAudioVideo</TokenIdentifier>
+            <Abstract type="html">Ads must be of type audio or video</Abstract>
+            <Declaration>kTDAssetTypeAudioVideo</Declaration>
+            
+            <DeclaredIn>TDAdRequestURLBuilder.h</DeclaredIn>
+            
+            <NodeRef refid="19"/>
+        </Token>
+        
+        
+	</File>
+</Tokens>

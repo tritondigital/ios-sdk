@@ -1,0 +1,1971 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		6F7FF50D1A092CB10057E4C1 /* Documentation */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 6F7FF5101A092CB10057E4C1 /* Build configuration list for PBXAggregateTarget "Documentation" */;
+			buildPhases = (
+				6F7FF5111A092CBA0057E4C1 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = Documentation;
+			productName = Documentation;
+		};
+		6FFD8FC41A081BF2003345AC /* TritonPlayerSDKStatic-Universal */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 6FFD8FC51A081BF2003345AC /* Build configuration list for PBXAggregateTarget "TritonPlayerSDKStatic-Universal" */;
+			buildPhases = (
+				6FFD8FCA1A081C12003345AC /* ShellScript */,
+			);
+			dependencies = (
+				6FFD8FC91A081C0E003345AC /* PBXTargetDependency */,
+			);
+			name = "TritonPlayerSDKStatic-Universal";
+			productName = "TritonPlayerSDKStatic-Universal";
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		6F23ACA61AB2115F00AD3575 /* TDStationPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F23ACA41AB2115F00AD3575 /* TDStationPlayer.h */; };
+		6F23ACA71AB2115F00AD3575 /* TDStationPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F23ACA41AB2115F00AD3575 /* TDStationPlayer.h */; };
+		6F23ACA81AB2115F00AD3575 /* TDStationPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F23ACA51AB2115F00AD3575 /* TDStationPlayer.m */; };
+		6F23ACA91AB2115F00AD3575 /* TDStationPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F23ACA51AB2115F00AD3575 /* TDStationPlayer.m */; };
+		6F23ACAC1AB211A300AD3575 /* TDStreamPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F23ACAA1AB211A300AD3575 /* TDStreamPlayer.h */; };
+		6F23ACAD1AB211A300AD3575 /* TDStreamPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F23ACAA1AB211A300AD3575 /* TDStreamPlayer.h */; };
+		6F23ACAE1AB211A300AD3575 /* TDStreamPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F23ACAB1AB211A300AD3575 /* TDStreamPlayer.m */; };
+		6F23ACAF1AB211A300AD3575 /* TDStreamPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F23ACAB1AB211A300AD3575 /* TDStreamPlayer.m */; };
+		6F2F038C1AB0AE4F00E50E4D /* TDFLVPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F2F038A1AB0AE4F00E50E4D /* TDFLVPlayer.h */; };
+		6F2F038D1AB0AE4F00E50E4D /* TDFLVPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F2F038A1AB0AE4F00E50E4D /* TDFLVPlayer.h */; };
+		6F2F038E1AB0AE4F00E50E4D /* TDFLVPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F2F038B1AB0AE4F00E50E4D /* TDFLVPlayer.m */; };
+		6F2F038F1AB0AE4F00E50E4D /* TDFLVPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F2F038B1AB0AE4F00E50E4D /* TDFLVPlayer.m */; };
+		6F3113151A1BE17500AC67AE /* CuePointEventControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F3112F71A1BE17500AC67AE /* CuePointEventControllerTest.m */; };
+		6F3113161A1BE17500AC67AE /* CuePointEventTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F3112F91A1BE17500AC67AE /* CuePointEventTest.m */; };
+		6F3113171A1BE17500AC67AE /* flvTag in Resources */ = {isa = PBXBuildFile; fileRef = 6F3112FC1A1BE17500AC67AE /* flvTag */; };
+		6F3113181A1BE17500AC67AE /* flvTagPayload in Resources */ = {isa = PBXBuildFile; fileRef = 6F3112FD1A1BE17500AC67AE /* flvTagPayload */; };
+		6F3113191A1BE17500AC67AE /* cleared_data_good.raw in Resources */ = {isa = PBXBuildFile; fileRef = 6F3113001A1BE17500AC67AE /* cleared_data_good.raw */; };
+		6F31131A1A1BE17500AC67AE /* cleared_payload_good.raw in Resources */ = {isa = PBXBuildFile; fileRef = 6F3113011A1BE17500AC67AE /* cleared_payload_good.raw */; };
+		6F31131B1A1BE17500AC67AE /* badpayload_truncated.raw in Resources */ = {isa = PBXBuildFile; fileRef = 6F3113031A1BE17500AC67AE /* badpayload_truncated.raw */; };
+		6F31131C1A1BE17500AC67AE /* thebravery_data_bad.raw in Resources */ = {isa = PBXBuildFile; fileRef = 6F3113041A1BE17500AC67AE /* thebravery_data_bad.raw */; };
+		6F31131D1A1BE17500AC67AE /* thebravery_data_good.raw in Resources */ = {isa = PBXBuildFile; fileRef = 6F3113061A1BE17500AC67AE /* thebravery_data_good.raw */; };
+		6F31131E1A1BE17500AC67AE /* thebravery_payload_good.raw in Resources */ = {isa = PBXBuildFile; fileRef = 6F3113071A1BE17500AC67AE /* thebravery_payload_good.raw */; };
+		6F31131F1A1BE17500AC67AE /* livestreamKROQFMFLVGood.xml in Resources */ = {isa = PBXBuildFile; fileRef = 6F3113091A1BE17500AC67AE /* livestreamKROQFMFLVGood.xml */; };
+		6F3113211A1BE17500AC67AE /* FLVTagTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F31130F1A1BE17500AC67AE /* FLVTagTest.m */; };
+		6F3113221A1BE17500AC67AE /* ProvisioningTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F3113111A1BE17500AC67AE /* ProvisioningTest.m */; };
+		6F3113261A1BE26E00AC67AE /* libTritonPlayerSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FFD8F3D1A081807003345AC /* libTritonPlayerSDK.a */; };
+		6F3113281A1BF90D00AC67AE /* JOYTURK_ROCKAAC.raw in Resources */ = {isa = PBXBuildFile; fileRef = 6F3113271A1BF90D00AC67AE /* JOYTURK_ROCKAAC.raw */; };
+		6F49658E1CDD20C20038CEEE /* TDAnalyticsTracker.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FDF15421CCFDF6B00275292 /* TDAnalyticsTracker.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6F49658F1CDD21210038CEEE /* TDAnalyticsTracker.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FDF15421CCFDF6B00275292 /* TDAnalyticsTracker.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6F73F4971CD9407000598694 /* TDAnalyticsTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FDF15451CCFDFF100275292 /* TDAnalyticsTracker.m */; };
+		6F868B521AD2BE7800A9922E /* TDEventSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F868B501AD2BE7800A9922E /* TDEventSource.h */; };
+		6F868B531AD2BE7800A9922E /* TDEventSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F868B501AD2BE7800A9922E /* TDEventSource.h */; };
+		6F868B541AD2BE7800A9922E /* TDEventSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F868B511AD2BE7800A9922E /* TDEventSource.m */; };
+		6F868B551AD2BE7800A9922E /* TDEventSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F868B511AD2BE7800A9922E /* TDEventSource.m */; };
+		6F868B591AD2BF3600A9922E /* TDCuePointHistory.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F868B571AD2BF3600A9922E /* TDCuePointHistory.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6F868B5A1AD2BF3600A9922E /* TDCuePointHistory.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F868B571AD2BF3600A9922E /* TDCuePointHistory.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6F868B5B1AD2BF3600A9922E /* TDCuePointHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F868B581AD2BF3600A9922E /* TDCuePointHistory.m */; };
+		6F868B5C1AD2BF3600A9922E /* TDCuePointHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F868B581AD2BF3600A9922E /* TDCuePointHistory.m */; };
+		6F868B741AD2F36400A9922E /* TDCuePointHistoryParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F868B721AD2F36400A9922E /* TDCuePointHistoryParser.h */; };
+		6F868B751AD2F36400A9922E /* TDCuePointHistoryParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F868B721AD2F36400A9922E /* TDCuePointHistoryParser.h */; };
+		6F868B761AD2F36400A9922E /* TDCuePointHistoryParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F868B731AD2F36400A9922E /* TDCuePointHistoryParser.m */; };
+		6F868B771AD2F36400A9922E /* TDCuePointHistoryParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F868B731AD2F36400A9922E /* TDCuePointHistoryParser.m */; };
+		6F868B7A1AD2F72200A9922E /* TritonSDKUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F868B781AD2F72200A9922E /* TritonSDKUtils.h */; };
+		6F868B7B1AD2F72200A9922E /* TritonSDKUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F868B781AD2F72200A9922E /* TritonSDKUtils.h */; };
+		6F868B7C1AD2F72200A9922E /* TritonSDKUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F868B791AD2F72200A9922E /* TritonSDKUtils.m */; };
+		6F868B7D1AD2F72200A9922E /* TritonSDKUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F868B791AD2F72200A9922E /* TritonSDKUtils.m */; };
+		6FD351701A70440000D0AB6C /* TDAdUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FD3516E1A70440000D0AB6C /* TDAdUtils.h */; };
+		6FD351711A70440000D0AB6C /* TDAdUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FD3516E1A70440000D0AB6C /* TDAdUtils.h */; };
+		6FD351721A70440000D0AB6C /* TDAdUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FD3516F1A70440000D0AB6C /* TDAdUtils.m */; };
+		6FD351731A70440000D0AB6C /* TDAdUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FD3516F1A70440000D0AB6C /* TDAdUtils.m */; };
+		6FD4BF1D1AB9B7990058658C /* TritonPlayerUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FD4BF1B1AB9B7990058658C /* TritonPlayerUtils.h */; };
+		6FD4BF1E1AB9B7990058658C /* TritonPlayerUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FD4BF1B1AB9B7990058658C /* TritonPlayerUtils.h */; };
+		6FD4BF1F1AB9B7990058658C /* TritonPlayerUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FD4BF1C1AB9B7990058658C /* TritonPlayerUtils.m */; };
+		6FD4BF201AB9B7990058658C /* TritonPlayerUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FD4BF1C1AB9B7990058658C /* TritonPlayerUtils.m */; };
+		6FD4BF231AB9B7F60058658C /* TDMediaPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FD4BF211AB9B7F60058658C /* TDMediaPlayer.h */; };
+		6FD4BF241AB9B7F60058658C /* TDMediaPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FD4BF211AB9B7F60058658C /* TDMediaPlayer.h */; };
+		6FD4BF251AB9B7F60058658C /* TDMediaPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FD4BF221AB9B7F60058658C /* TDMediaPlayer.m */; };
+		6FD4BF261AB9B7F60058658C /* TDMediaPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FD4BF221AB9B7F60058658C /* TDMediaPlayer.m */; };
+		6FD4BF2B1AB9CEC20058658C /* MetadataConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FD4BF271AB9CEC20058658C /* MetadataConfiguration.h */; };
+		6FD4BF2C1AB9CEC20058658C /* MetadataConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FD4BF271AB9CEC20058658C /* MetadataConfiguration.h */; };
+		6FD4BF2D1AB9CEC20058658C /* MetadataConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FD4BF281AB9CEC20058658C /* MetadataConfiguration.m */; };
+		6FD4BF2E1AB9CEC20058658C /* MetadataConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FD4BF281AB9CEC20058658C /* MetadataConfiguration.m */; };
+		6FD4BF2F1AB9CEC20058658C /* TDSBMPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FD4BF291AB9CEC20058658C /* TDSBMPlayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6FD4BF301AB9CEC20058658C /* TDSBMPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FD4BF291AB9CEC20058658C /* TDSBMPlayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6FD4BF311AB9CEC20058658C /* TDSBMPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FD4BF2A1AB9CEC20058658C /* TDSBMPlayer.m */; };
+		6FD4BF321AB9CEC20058658C /* TDSBMPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FD4BF2A1AB9CEC20058658C /* TDSBMPlayer.m */; };
+		6FD659AC1A71826A0012D570 /* TDCloseButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FD659AA1A71826A0012D570 /* TDCloseButton.h */; };
+		6FD659AD1A71826A0012D570 /* TDCloseButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FD659AA1A71826A0012D570 /* TDCloseButton.h */; };
+		6FD659AE1A71826A0012D570 /* TDCloseButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FD659AB1A71826A0012D570 /* TDCloseButton.m */; };
+		6FD659AF1A71826A0012D570 /* TDCloseButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FD659AB1A71826A0012D570 /* TDCloseButton.m */; };
+		6FD8148C1A6EBAE000F41ADD /* TDInterstitialAdDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FD8148B1A6EBAE000F41ADD /* TDInterstitialAdDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6FD8148D1A6EBAE000F41ADD /* TDInterstitialAdDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FD8148B1A6EBAE000F41ADD /* TDInterstitialAdDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6FD923CD1A36056E009535FA /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FFD8FC21A081ADF003345AC /* AVFoundation.framework */; };
+		6FD923CF1A360575009535FA /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FD923CE1A360575009535FA /* AdSupport.framework */; };
+		6FD923D01A36057B009535FA /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FFD8F231A07E58F003345AC /* CoreMedia.framework */; };
+		6FD923D21A360582009535FA /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FD923D11A360582009535FA /* SystemConfiguration.framework */; };
+		6FD923D31A36059A009535FA /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FFD8F211A07E57E003345AC /* AudioToolbox.framework */; };
+		6FD923D51A3605C3009535FA /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FD923D41A3605C3009535FA /* CoreLocation.framework */; };
+		6FD923D91A36099D009535FA /* thebravery_data_badstring.raw in Resources */ = {isa = PBXBuildFile; fileRef = 6FD923D71A36099D009535FA /* thebravery_data_badstring.raw */; };
+		6FD923DA1A36099D009535FA /* thebravery_payload_good.raw in Resources */ = {isa = PBXBuildFile; fileRef = 6FD923D81A36099D009535FA /* thebravery_payload_good.raw */; };
+		6FD923EC1A362D9B009535FA /* TDAdRequestURLBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FD923E01A362D9B009535FA /* TDAdRequestURLBuilder.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6FD923ED1A362D9B009535FA /* TDAdRequestURLBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FD923E01A362D9B009535FA /* TDAdRequestURLBuilder.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6FD923EE1A362D9B009535FA /* TDAdRequestURLBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FD923E11A362D9B009535FA /* TDAdRequestURLBuilder.m */; };
+		6FD923EF1A362D9B009535FA /* TDAdRequestURLBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FD923E11A362D9B009535FA /* TDAdRequestURLBuilder.m */; };
+		6FD923F01A362D9B009535FA /* TDBannerView.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FD923E21A362D9B009535FA /* TDBannerView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6FD923F11A362D9B009535FA /* TDBannerView.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FD923E21A362D9B009535FA /* TDBannerView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6FD923F21A362D9B009535FA /* TDBannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FD923E31A362D9B009535FA /* TDBannerView.m */; };
+		6FD923F31A362D9B009535FA /* TDBannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FD923E31A362D9B009535FA /* TDBannerView.m */; };
+		6FD923F41A362D9B009535FA /* TDBannerViewDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FD923E41A362D9B009535FA /* TDBannerViewDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6FD923F51A362D9B009535FA /* TDBannerViewDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FD923E41A362D9B009535FA /* TDBannerViewDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6FD923F61A362D9B009535FA /* TDInterstitialAd.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FD923E51A362D9B009535FA /* TDInterstitialAd.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6FD923F71A362D9B009535FA /* TDInterstitialAd.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FD923E51A362D9B009535FA /* TDInterstitialAd.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6FD923F81A362D9B009535FA /* TDInterstitialAd.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FD923E61A362D9B009535FA /* TDInterstitialAd.m */; };
+		6FD923F91A362D9B009535FA /* TDInterstitialAd.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FD923E61A362D9B009535FA /* TDInterstitialAd.m */; };
+		6FD9240B1A362DDA009535FA /* TDLocationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FD924091A362DDA009535FA /* TDLocationManager.h */; };
+		6FD9240C1A362DDA009535FA /* TDLocationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FD924091A362DDA009535FA /* TDLocationManager.h */; };
+		6FD9240D1A362DDA009535FA /* TDLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FD9240A1A362DDA009535FA /* TDLocationManager.m */; };
+		6FD9240E1A362DDA009535FA /* TDLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FD9240A1A362DDA009535FA /* TDLocationManager.m */; };
+		6FD9BA891A94E9D40036D6BC /* TDAd.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FD9BA871A94E9D40036D6BC /* TDAd.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6FD9BA8A1A94E9D40036D6BC /* TDAd.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FD9BA871A94E9D40036D6BC /* TDAd.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6FD9BA8B1A94E9D40036D6BC /* TDAd.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FD9BA881A94E9D40036D6BC /* TDAd.m */; };
+		6FD9BA8C1A94E9D40036D6BC /* TDAd.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FD9BA881A94E9D40036D6BC /* TDAd.m */; };
+		6FD9BA901A94E9F90036D6BC /* TDAdParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FD9BA8E1A94E9F90036D6BC /* TDAdParser.h */; };
+		6FD9BA911A94E9F90036D6BC /* TDAdParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FD9BA8E1A94E9F90036D6BC /* TDAdParser.h */; };
+		6FD9BA921A94E9F90036D6BC /* TDAdParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FD9BA8F1A94E9F90036D6BC /* TDAdParser.m */; };
+		6FD9BA931A94E9F90036D6BC /* TDAdParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FD9BA8F1A94E9F90036D6BC /* TDAdParser.m */; };
+		6FD9BA961A94EA300036D6BC /* TDAdLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FD9BA941A94EA300036D6BC /* TDAdLoader.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6FD9BA971A94EA300036D6BC /* TDAdLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FD9BA941A94EA300036D6BC /* TDAdLoader.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6FD9BA981A94EA300036D6BC /* TDAdLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FD9BA951A94EA300036D6BC /* TDAdLoader.m */; };
+		6FD9BA991A94EA300036D6BC /* TDAdLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FD9BA951A94EA300036D6BC /* TDAdLoader.m */; };
+		6FD9BA9C1A94F9060036D6BC /* TDCompanionBanner.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FD9BA9A1A94F9060036D6BC /* TDCompanionBanner.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6FD9BA9D1A94F9060036D6BC /* TDCompanionBanner.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FD9BA9A1A94F9060036D6BC /* TDCompanionBanner.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6FD9BA9E1A94F9060036D6BC /* TDCompanionBanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FD9BA9B1A94F9060036D6BC /* TDCompanionBanner.m */; };
+		6FD9BA9F1A94F9060036D6BC /* TDCompanionBanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FD9BA9B1A94F9060036D6BC /* TDCompanionBanner.m */; };
+		6FD9BAA21A95245A0036D6BC /* TDAdTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FD9BAA11A95245A0036D6BC /* TDAdTest.m */; };
+		6FD9BAA51A9530AE0036D6BC /* TDSyncBannerView.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FD9BAA31A9530AE0036D6BC /* TDSyncBannerView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6FD9BAA61A9530AE0036D6BC /* TDSyncBannerView.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FD9BAA31A9530AE0036D6BC /* TDSyncBannerView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6FD9BAA71A9530AE0036D6BC /* TDSyncBannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FD9BAA41A9530AE0036D6BC /* TDSyncBannerView.m */; };
+		6FD9BAA81A9530AE0036D6BC /* TDSyncBannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FD9BAA41A9530AE0036D6BC /* TDSyncBannerView.m */; };
+		6FDA60401A72D39900E58A0C /* TDInterstitialAdViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FDA603E1A72D39900E58A0C /* TDInterstitialAdViewController.h */; };
+		6FDA60411A72D39900E58A0C /* TDInterstitialAdViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FDA603E1A72D39900E58A0C /* TDInterstitialAdViewController.h */; };
+		6FDA60421A72D39900E58A0C /* TDInterstitialAdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FDA603F1A72D39900E58A0C /* TDInterstitialAdViewController.m */; };
+		6FDA60431A72D39900E58A0C /* TDInterstitialAdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FDA603F1A72D39900E58A0C /* TDInterstitialAdViewController.m */; };
+		6FDDD4E51A9D2C9B00ED94C8 /* TDAdRequestURLBuilderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FDDD4E31A9D2C9B00ED94C8 /* TDAdRequestURLBuilderTest.m */; };
+		6FDDD4E61A9D2C9B00ED94C8 /* TDBannerViewTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FDDD4E41A9D2C9B00ED94C8 /* TDBannerViewTest.m */; };
+		6FDE5FB21AB0AAC900C64B08 /* TDMediaPlayback.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FDE5FB11AB0AAC900C64B08 /* TDMediaPlayback.h */; };
+		6FDE5FB31AB0AAC900C64B08 /* TDMediaPlayback.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FDE5FB11AB0AAC900C64B08 /* TDMediaPlayback.h */; };
+		6FDF15461CCFDFF100275292 /* TDAnalyticsTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FDF15451CCFDFF100275292 /* TDAnalyticsTracker.m */; };
+		6FDF3A3E1AC45ABB00C72482 /* TritonPlayerConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FDF3A3D1AC45ABB00C72482 /* TritonPlayerConstants.h */; };
+		6FDF3A401AC462EF00C72482 /* TDMediaPlaybackDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FDF3A3F1AC462EF00C72482 /* TDMediaPlaybackDelegate.h */; };
+		6FDF3A411AC462EF00C72482 /* TDMediaPlaybackDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FDF3A3F1AC462EF00C72482 /* TDMediaPlaybackDelegate.h */; };
+		6FE4B19F1AD2BC7100F2A353 /* TritonPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FE4B19A1AD2BC7100F2A353 /* TritonPlayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6FE4B1A01AD2BC7100F2A353 /* TritonPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FE4B19A1AD2BC7100F2A353 /* TritonPlayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6FE4B1A11AD2BC7100F2A353 /* TritonPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FE4B19B1AD2BC7100F2A353 /* TritonPlayer.m */; };
+		6FE4B1A21AD2BC7100F2A353 /* TritonPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FE4B19B1AD2BC7100F2A353 /* TritonPlayer.m */; };
+		6FFC3E681B4D6DF20074EBF4 /* TDAuthUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FFC3E661B4D6DF20074EBF4 /* TDAuthUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6FFC3E691B4D6DF20074EBF4 /* TDAuthUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FFC3E661B4D6DF20074EBF4 /* TDAuthUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6FFC3E6A1B4D6DF20074EBF4 /* TDAuthUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FFC3E671B4D6DF20074EBF4 /* TDAuthUtils.m */; };
+		6FFC3E6B1B4D6DF20074EBF4 /* TDAuthUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FFC3E671B4D6DF20074EBF4 /* TDAuthUtils.m */; };
+		6FFC3E6E1B4DAA620074EBF4 /* TDAuthUtilsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FFC3E6D1B4DAA620074EBF4 /* TDAuthUtilsTest.m */; };
+		6FFD8E2F1A07E24E003345AC /* TritonPlayerSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FFD8E2E1A07E24E003345AC /* TritonPlayerSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6FFD8EC31A07E3A0003345AC /* NSData+FLVUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FFD8E471A07E3A0003345AC /* NSData+FLVUtils.h */; };
+		6FFD8EC41A07E3A0003345AC /* NSData+FLVUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FFD8E481A07E3A0003345AC /* NSData+FLVUtils.m */; };
+		6FFD8EC51A07E3A0003345AC /* NSObject+Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FFD8E491A07E3A0003345AC /* NSObject+Extensions.h */; };
+		6FFD8EC61A07E3A0003345AC /* NSObject+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FFD8E4A1A07E3A0003345AC /* NSObject+Extensions.m */; };
+		6FFD8EC71A07E3A0003345AC /* UIDevice+Hardware.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FFD8E4B1A07E3A0003345AC /* UIDevice+Hardware.h */; };
+		6FFD8EC81A07E3A0003345AC /* UIDevice+Hardware.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FFD8E4C1A07E3A0003345AC /* UIDevice+Hardware.m */; };
+		6FFD8ECB1A07E3A0003345AC /* FLVStreamPlayerLibConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FFD8E501A07E3A0003345AC /* FLVStreamPlayerLibConstants.h */; };
+		6FFD8ECC1A07E3A0003345AC /* Logs.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FFD8E511A07E3A0003345AC /* Logs.h */; };
+		6FFD8ECD1A07E3A0003345AC /* ADTSHeaderSharedData.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FFD8E551A07E3A0003345AC /* ADTSHeaderSharedData.h */; };
+		6FFD8ECE1A07E3A0003345AC /* ADTSHeaderSharedData.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FFD8E561A07E3A0003345AC /* ADTSHeaderSharedData.m */; };
+		6FFD8ECF1A07E3A0003345AC /* AudioPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FFD8E571A07E3A0003345AC /* AudioPlayer.h */; };
+		6FFD8ED01A07E3A0003345AC /* AudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FFD8E581A07E3A0003345AC /* AudioPlayer.m */; };
+		6FFD8ED31A07E3A0003345AC /* FLVDecoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FFD8E5C1A07E3A0003345AC /* FLVDecoder.h */; };
+		6FFD8ED41A07E3A0003345AC /* FLVDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FFD8E5D1A07E3A0003345AC /* FLVDecoder.m */; };
+		6FFD8ED51A07E3A0003345AC /* FLVDispatcher.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FFD8E5F1A07E3A0003345AC /* FLVDispatcher.h */; };
+		6FFD8ED61A07E3A0003345AC /* FLVDispatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FFD8E601A07E3A0003345AC /* FLVDispatcher.m */; };
+		6FFD8ED71A07E3A0003345AC /* FLVStream.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FFD8E621A07E3A0003345AC /* FLVStream.h */; };
+		6FFD8ED81A07E3A0003345AC /* FLVStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FFD8E631A07E3A0003345AC /* FLVStream.m */; };
+		6FFD8EDF1A07E3A0003345AC /* LiveStreamProvisioningParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FFD8E6E1A07E3A0003345AC /* LiveStreamProvisioningParser.h */; };
+		6FFD8EE01A07E3A0003345AC /* LiveStreamProvisioningParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FFD8E6F1A07E3A0003345AC /* LiveStreamProvisioningParser.m */; };
+		6FFD8EE11A07E3A0003345AC /* LiveStreamProvisioningParserDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FFD8E701A07E3A0003345AC /* LiveStreamProvisioningParserDelegate.h */; };
+		6FFD8EE21A07E3A0003345AC /* LiveStreamProvisioningParserDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FFD8E711A07E3A0003345AC /* LiveStreamProvisioningParserDelegate.m */; };
+		6FFD8EE31A07E3A0003345AC /* Provisioning.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FFD8E721A07E3A0003345AC /* Provisioning.h */; };
+		6FFD8EE41A07E3A0003345AC /* Provisioning.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FFD8E731A07E3A0003345AC /* Provisioning.m */; };
+		6FFD8EE51A07E3A0003345AC /* ProvisioningConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FFD8E741A07E3A0003345AC /* ProvisioningConstants.h */; };
+		6FFD8EE61A07E3A0003345AC /* Server.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FFD8E761A07E3A0003345AC /* Server.h */; };
+		6FFD8EE71A07E3A0003345AC /* Server.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FFD8E771A07E3A0003345AC /* Server.m */; };
+		6FFD8EFB1A07E3A0003345AC /* CuePointEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FFD8E901A07E3A0003345AC /* CuePointEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6FFD8EFC1A07E3A0003345AC /* CuePointEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FFD8E911A07E3A0003345AC /* CuePointEvent.m */; };
+		6FFD8EFD1A07E3A0003345AC /* CuePointEventProtected.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FFD8E921A07E3A0003345AC /* CuePointEventProtected.h */; };
+		6FFD8EFE1A07E3A0003345AC /* FLVAudioTag.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FFD8E951A07E3A0003345AC /* FLVAudioTag.h */; };
+		6FFD8EFF1A07E3A0003345AC /* FLVAudioTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FFD8E961A07E3A0003345AC /* FLVAudioTag.m */; };
+		6FFD8F001A07E3A0003345AC /* FLVAudioTagData.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FFD8E971A07E3A0003345AC /* FLVAudioTagData.h */; };
+		6FFD8F011A07E3A0003345AC /* FLVAudioTagData.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FFD8E981A07E3A0003345AC /* FLVAudioTagData.m */; };
+		6FFD8F021A07E3A0003345AC /* FLVAudioTagHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FFD8E991A07E3A0003345AC /* FLVAudioTagHeader.h */; };
+		6FFD8F031A07E3A0003345AC /* FLVAudioTagHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FFD8E9A1A07E3A0003345AC /* FLVAudioTagHeader.m */; };
+		6FFD8F041A07E3A0003345AC /* FLVHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FFD8E9C1A07E3A0003345AC /* FLVHeader.h */; };
+		6FFD8F051A07E3A0003345AC /* FLVHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FFD8E9D1A07E3A0003345AC /* FLVHeader.m */; };
+		6FFD8F061A07E3A0003345AC /* AMF.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FFD8EA01A07E3A0003345AC /* AMF.h */; };
+		6FFD8F071A07E3A0003345AC /* AMF.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FFD8EA11A07E3A0003345AC /* AMF.m */; };
+		6FFD8F081A07E3A0003345AC /* AMFDecoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FFD8EA21A07E3A0003345AC /* AMFDecoder.h */; };
+		6FFD8F091A07E3A0003345AC /* AMFDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FFD8EA31A07E3A0003345AC /* AMFDecoder.m */; };
+		6FFD8F0A1A07E3A0003345AC /* ASObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FFD8EA41A07E3A0003345AC /* ASObject.h */; };
+		6FFD8F0B1A07E3A0003345AC /* ASObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FFD8EA51A07E3A0003345AC /* ASObject.m */; };
+		6FFD8F0C1A07E3A0003345AC /* FLVScriptObjectTag.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FFD8EA61A07E3A0003345AC /* FLVScriptObjectTag.h */; };
+		6FFD8F0D1A07E3A0003345AC /* FLVScriptObjectTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FFD8EA71A07E3A0003345AC /* FLVScriptObjectTag.m */; };
+		6FFD8F0E1A07E3A0003345AC /* FLVTag.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FFD8EA91A07E3A0003345AC /* FLVTag.h */; };
+		6FFD8F0F1A07E3A0003345AC /* FLVTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FFD8EAA1A07E3A0003345AC /* FLVTag.m */; };
+		6FFD8F101A07E3A0003345AC /* FLVVideoTag.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FFD8EAC1A07E3A0003345AC /* FLVVideoTag.h */; };
+		6FFD8F111A07E3A0003345AC /* FLVVideoTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FFD8EAD1A07E3A0003345AC /* FLVVideoTag.m */; };
+		6FFD8F121A07E3A0003345AC /* AudioPlayerController.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FFD8EB01A07E3A0003345AC /* AudioPlayerController.h */; };
+		6FFD8F131A07E3A0003345AC /* AudioPlayerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FFD8EB11A07E3A0003345AC /* AudioPlayerController.m */; };
+		6FFD8F141A07E3A0003345AC /* CuePointEventController.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FFD8EB31A07E3A0003345AC /* CuePointEventController.h */; };
+		6FFD8F151A07E3A0003345AC /* CuePointEventController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FFD8EB41A07E3A0003345AC /* CuePointEventController.m */; };
+		6FFD8F1E1A07E3A0003345AC /* TDReachability.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FFD8EC01A07E3A0003345AC /* TDReachability.h */; };
+		6FFD8F1F1A07E3A0003345AC /* TDReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FFD8EC11A07E3A0003345AC /* TDReachability.m */; };
+		6FFD8F201A07E3A0003345AC /* TritonPlayerProtected.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FFD8EC21A07E3A0003345AC /* TritonPlayerProtected.h */; };
+		6FFD8F221A07E57E003345AC /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FFD8F211A07E57E003345AC /* AudioToolbox.framework */; };
+		6FFD8F241A07E58F003345AC /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FFD8F231A07E58F003345AC /* CoreMedia.framework */; };
+		6FFD8F281A07E626003345AC /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FFD8F271A07E626003345AC /* CoreAudio.framework */; };
+		6FFD8F2D1A07E77B003345AC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FFD8F251A07E5FA003345AC /* UIKit.framework */; };
+		6FFD8F561A0818E2003345AC /* NSData+FLVUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FFD8E481A07E3A0003345AC /* NSData+FLVUtils.m */; };
+		6FFD8F581A0818E2003345AC /* NSObject+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FFD8E4A1A07E3A0003345AC /* NSObject+Extensions.m */; };
+		6FFD8F5A1A0818E2003345AC /* UIDevice+Hardware.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FFD8E4C1A07E3A0003345AC /* UIDevice+Hardware.m */; };
+		6FFD8F601A0818E2003345AC /* ADTSHeaderSharedData.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FFD8E561A07E3A0003345AC /* ADTSHeaderSharedData.m */; };
+		6FFD8F621A0818E2003345AC /* AudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FFD8E581A07E3A0003345AC /* AudioPlayer.m */; };
+		6FFD8F641A0818E2003345AC /* FLVDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FFD8E5D1A07E3A0003345AC /* FLVDecoder.m */; };
+		6FFD8F661A0818E2003345AC /* FLVDispatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FFD8E601A07E3A0003345AC /* FLVDispatcher.m */; };
+		6FFD8F681A0818E2003345AC /* FLVStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FFD8E631A07E3A0003345AC /* FLVStream.m */; };
+		6FFD8F701A0818E2003345AC /* LiveStreamProvisioningParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FFD8E6F1A07E3A0003345AC /* LiveStreamProvisioningParser.m */; };
+		6FFD8F721A0818E2003345AC /* LiveStreamProvisioningParserDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FFD8E711A07E3A0003345AC /* LiveStreamProvisioningParserDelegate.m */; };
+		6FFD8F741A0818E2003345AC /* Provisioning.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FFD8E731A07E3A0003345AC /* Provisioning.m */; };
+		6FFD8F771A0818E2003345AC /* Server.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FFD8E771A07E3A0003345AC /* Server.m */; };
+		6FFD8F791A0818E2003345AC /* CuePointEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FFD8E911A07E3A0003345AC /* CuePointEvent.m */; };
+		6FFD8F7C1A0818E2003345AC /* FLVAudioTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FFD8E961A07E3A0003345AC /* FLVAudioTag.m */; };
+		6FFD8F801A0818E2003345AC /* FLVAudioTagHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FFD8E9A1A07E3A0003345AC /* FLVAudioTagHeader.m */; };
+		6FFD8F821A0818E2003345AC /* FLVHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FFD8E9D1A07E3A0003345AC /* FLVHeader.m */; };
+		6FFD8F841A0818E2003345AC /* AMF.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FFD8EA11A07E3A0003345AC /* AMF.m */; };
+		6FFD8F861A0818E2003345AC /* AMFDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FFD8EA31A07E3A0003345AC /* AMFDecoder.m */; };
+		6FFD8F881A0818E2003345AC /* ASObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FFD8EA51A07E3A0003345AC /* ASObject.m */; };
+		6FFD8F8A1A0818E2003345AC /* FLVScriptObjectTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FFD8EA71A07E3A0003345AC /* FLVScriptObjectTag.m */; };
+		6FFD8F8C1A0818E2003345AC /* FLVTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FFD8EAA1A07E3A0003345AC /* FLVTag.m */; };
+		6FFD8F8E1A0818E2003345AC /* FLVVideoTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FFD8EAD1A07E3A0003345AC /* FLVVideoTag.m */; };
+		6FFD8F901A0818E2003345AC /* AudioPlayerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FFD8EB11A07E3A0003345AC /* AudioPlayerController.m */; };
+		6FFD8F921A0818E2003345AC /* CuePointEventController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FFD8EB41A07E3A0003345AC /* CuePointEventController.m */; };
+		6FFD8F971A0818E2003345AC /* TDReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FFD8EC11A07E3A0003345AC /* TDReachability.m */; };
+		6FFD8F9B1A081985003345AC /* TritonPlayerSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FFD8F541A081897003345AC /* TritonPlayerSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6FFD8F9C1A081992003345AC /* CuePointEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FFD8E901A07E3A0003345AC /* CuePointEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6FFD8F9E1A0819AF003345AC /* NSData+FLVUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FFD8E471A07E3A0003345AC /* NSData+FLVUtils.h */; };
+		6FFD8F9F1A0819B5003345AC /* NSObject+Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FFD8E491A07E3A0003345AC /* NSObject+Extensions.h */; };
+		6FFD8FA01A0819B9003345AC /* UIDevice+Hardware.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FFD8E4B1A07E3A0003345AC /* UIDevice+Hardware.h */; };
+		6FFD8FA21A0819C4003345AC /* FLVStreamPlayerLibConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FFD8E501A07E3A0003345AC /* FLVStreamPlayerLibConstants.h */; };
+		6FFD8FA31A0819C7003345AC /* Logs.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FFD8E511A07E3A0003345AC /* Logs.h */; };
+		6FFD8FA41A0819CE003345AC /* ADTSHeaderSharedData.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FFD8E551A07E3A0003345AC /* ADTSHeaderSharedData.h */; };
+		6FFD8FA51A0819D1003345AC /* AudioPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FFD8E571A07E3A0003345AC /* AudioPlayer.h */; };
+		6FFD8FA61A0819D6003345AC /* FLVDecoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FFD8E5C1A07E3A0003345AC /* FLVDecoder.h */; };
+		6FFD8FA71A0819DD003345AC /* FLVDispatcher.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FFD8E5F1A07E3A0003345AC /* FLVDispatcher.h */; };
+		6FFD8FA81A0819E3003345AC /* FLVStream.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FFD8E621A07E3A0003345AC /* FLVStream.h */; };
+		6FFD8FAC1A0819F5003345AC /* LiveStreamProvisioningParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FFD8E6E1A07E3A0003345AC /* LiveStreamProvisioningParser.h */; };
+		6FFD8FAD1A0819F8003345AC /* LiveStreamProvisioningParserDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FFD8E701A07E3A0003345AC /* LiveStreamProvisioningParserDelegate.h */; };
+		6FFD8FAE1A0819FB003345AC /* Provisioning.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FFD8E721A07E3A0003345AC /* Provisioning.h */; };
+		6FFD8FAF1A0819FF003345AC /* ProvisioningConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FFD8E741A07E3A0003345AC /* ProvisioningConstants.h */; };
+		6FFD8FB01A081A04003345AC /* Server.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FFD8E761A07E3A0003345AC /* Server.h */; };
+		6FFD8FB11A081A11003345AC /* CuePointEventProtected.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FFD8E921A07E3A0003345AC /* CuePointEventProtected.h */; };
+		6FFD8FB21A081A19003345AC /* FLVAudioTag.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FFD8E951A07E3A0003345AC /* FLVAudioTag.h */; };
+		6FFD8FB31A081A20003345AC /* FLVAudioTagData.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FFD8E971A07E3A0003345AC /* FLVAudioTagData.h */; };
+		6FFD8FB41A081A23003345AC /* FLVAudioTagHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FFD8E991A07E3A0003345AC /* FLVAudioTagHeader.h */; };
+		6FFD8FB51A081A2B003345AC /* FLVHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FFD8E9C1A07E3A0003345AC /* FLVHeader.h */; };
+		6FFD8FB61A081A32003345AC /* AMF.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FFD8EA01A07E3A0003345AC /* AMF.h */; };
+		6FFD8FB71A081A35003345AC /* AMFDecoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FFD8EA21A07E3A0003345AC /* AMFDecoder.h */; };
+		6FFD8FB81A081A39003345AC /* ASObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FFD8EA41A07E3A0003345AC /* ASObject.h */; };
+		6FFD8FB91A081A3C003345AC /* FLVScriptObjectTag.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FFD8EA61A07E3A0003345AC /* FLVScriptObjectTag.h */; };
+		6FFD8FBA1A081A42003345AC /* FLVTag.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FFD8EA91A07E3A0003345AC /* FLVTag.h */; };
+		6FFD8FBB1A081A47003345AC /* FLVVideoTag.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FFD8EAC1A07E3A0003345AC /* FLVVideoTag.h */; };
+		6FFD8FBC1A081A4C003345AC /* AudioPlayerController.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FFD8EB01A07E3A0003345AC /* AudioPlayerController.h */; };
+		6FFD8FBD1A081A50003345AC /* CuePointEventController.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FFD8EB31A07E3A0003345AC /* CuePointEventController.h */; };
+		6FFD8FBF1A081A5C003345AC /* TDReachability.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FFD8EC01A07E3A0003345AC /* TDReachability.h */; };
+		6FFD8FC01A081A5F003345AC /* TritonPlayerProtected.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FFD8EC21A07E3A0003345AC /* TritonPlayerProtected.h */; };
+		6FFD8FCB1A081E40003345AC /* FLVAudioTagData.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FFD8E981A07E3A0003345AC /* FLVAudioTagData.m */; };
+		B4AE7A481FBB36C9004A5615 /* FLVDispatcherTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B4AE7A471FBB36C9004A5615 /* FLVDispatcherTest.m */; };
+		B4AE7A4B1FBB87FF004A5615 /* TritonPlayerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B4AE7A4A1FBB87FF004A5615 /* TritonPlayerTest.m */; };
+		B4D4BD131FBE0A8000A39E3A /* onMetaData_StreamTitle_Empty.flv in Resources */ = {isa = PBXBuildFile; fileRef = B4D4BD101FBE0A8000A39E3A /* onMetaData_StreamTitle_Empty.flv */; };
+		B4D4BD141FBE0A8000A39E3A /* stream.flv in Resources */ = {isa = PBXBuildFile; fileRef = B4D4BD111FBE0A8000A39E3A /* stream.flv */; };
+		B4D4BD151FBE0A8000A39E3A /* onMetaData_StreamTitle_NotEmpty.flv in Resources */ = {isa = PBXBuildFile; fileRef = B4D4BD121FBE0A8000A39E3A /* onMetaData_StreamTitle_NotEmpty.flv */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		6F3113241A1BE26900AC67AE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6FFD8E201A07E24E003345AC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6FFD8F3C1A081807003345AC;
+			remoteInfo = TritonPlayerSDKStatic;
+		};
+		6FFD8FC81A081C0E003345AC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6FFD8E201A07E24E003345AC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6FFD8F3C1A081807003345AC;
+			remoteInfo = TritonPlayerSDKStatic;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		6FFD8F3B1A081807003345AC /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		6F23ACA41AB2115F00AD3575 /* TDStationPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDStationPlayer.h; sourceTree = "<group>"; };
+		6F23ACA51AB2115F00AD3575 /* TDStationPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDStationPlayer.m; sourceTree = "<group>"; };
+		6F23ACAA1AB211A300AD3575 /* TDStreamPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDStreamPlayer.h; sourceTree = "<group>"; };
+		6F23ACAB1AB211A300AD3575 /* TDStreamPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDStreamPlayer.m; sourceTree = "<group>"; };
+		6F2F038A1AB0AE4F00E50E4D /* TDFLVPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDFLVPlayer.h; sourceTree = "<group>"; };
+		6F2F038B1AB0AE4F00E50E4D /* TDFLVPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDFLVPlayer.m; sourceTree = "<group>"; };
+		6F3112F71A1BE17500AC67AE /* CuePointEventControllerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CuePointEventControllerTest.m; sourceTree = "<group>"; };
+		6F3112F91A1BE17500AC67AE /* CuePointEventTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CuePointEventTest.m; sourceTree = "<group>"; };
+		6F3112FC1A1BE17500AC67AE /* flvTag */ = {isa = PBXFileReference; lastKnownFileType = file; path = flvTag; sourceTree = "<group>"; };
+		6F3112FD1A1BE17500AC67AE /* flvTagPayload */ = {isa = PBXFileReference; lastKnownFileType = file; path = flvTagPayload; sourceTree = "<group>"; };
+		6F3113001A1BE17500AC67AE /* cleared_data_good.raw */ = {isa = PBXFileReference; lastKnownFileType = file; path = cleared_data_good.raw; sourceTree = "<group>"; };
+		6F3113011A1BE17500AC67AE /* cleared_payload_good.raw */ = {isa = PBXFileReference; lastKnownFileType = file; path = cleared_payload_good.raw; sourceTree = "<group>"; };
+		6F3113031A1BE17500AC67AE /* badpayload_truncated.raw */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = badpayload_truncated.raw; sourceTree = "<group>"; };
+		6F3113041A1BE17500AC67AE /* thebravery_data_bad.raw */ = {isa = PBXFileReference; lastKnownFileType = file; path = thebravery_data_bad.raw; sourceTree = "<group>"; };
+		6F3113061A1BE17500AC67AE /* thebravery_data_good.raw */ = {isa = PBXFileReference; lastKnownFileType = file; path = thebravery_data_good.raw; sourceTree = "<group>"; };
+		6F3113071A1BE17500AC67AE /* thebravery_payload_good.raw */ = {isa = PBXFileReference; lastKnownFileType = file; path = thebravery_payload_good.raw; sourceTree = "<group>"; };
+		6F3113091A1BE17500AC67AE /* livestreamKROQFMFLVGood.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = livestreamKROQFMFLVGood.xml; sourceTree = "<group>"; };
+		6F31130F1A1BE17500AC67AE /* FLVTagTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLVTagTest.m; sourceTree = "<group>"; };
+		6F3113111A1BE17500AC67AE /* ProvisioningTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProvisioningTest.m; sourceTree = "<group>"; };
+		6F3113121A1BE17500AC67AE /* testConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = testConstants.h; sourceTree = "<group>"; };
+		6F3113131A1BE17500AC67AE /* TritonPlayerSDK Tests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "TritonPlayerSDK Tests-Info.plist"; sourceTree = "<group>"; };
+		6F3113141A1BE17500AC67AE /* TritonPlayerSDK Tests-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TritonPlayerSDK Tests-Prefix.pch"; sourceTree = "<group>"; };
+		6F3113271A1BF90D00AC67AE /* JOYTURK_ROCKAAC.raw */ = {isa = PBXFileReference; lastKnownFileType = file; path = JOYTURK_ROCKAAC.raw; sourceTree = "<group>"; };
+		6F7FF5121A092DEC0057E4C1 /* AppledocSettings.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = AppledocSettings.plist; sourceTree = "<group>"; };
+		6F868B501AD2BE7800A9922E /* TDEventSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDEventSource.h; sourceTree = "<group>"; };
+		6F868B511AD2BE7800A9922E /* TDEventSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDEventSource.m; sourceTree = "<group>"; };
+		6F868B571AD2BF3600A9922E /* TDCuePointHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDCuePointHistory.h; sourceTree = "<group>"; };
+		6F868B581AD2BF3600A9922E /* TDCuePointHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDCuePointHistory.m; sourceTree = "<group>"; };
+		6F868B721AD2F36400A9922E /* TDCuePointHistoryParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDCuePointHistoryParser.h; sourceTree = "<group>"; };
+		6F868B731AD2F36400A9922E /* TDCuePointHistoryParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDCuePointHistoryParser.m; sourceTree = "<group>"; };
+		6F868B781AD2F72200A9922E /* TritonSDKUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TritonSDKUtils.h; sourceTree = "<group>"; };
+		6F868B791AD2F72200A9922E /* TritonSDKUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TritonSDKUtils.m; sourceTree = "<group>"; };
+		6FD3516E1A70440000D0AB6C /* TDAdUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDAdUtils.h; sourceTree = "<group>"; };
+		6FD3516F1A70440000D0AB6C /* TDAdUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDAdUtils.m; sourceTree = "<group>"; };
+		6FD4BF1B1AB9B7990058658C /* TritonPlayerUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TritonPlayerUtils.h; sourceTree = "<group>"; };
+		6FD4BF1C1AB9B7990058658C /* TritonPlayerUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TritonPlayerUtils.m; sourceTree = "<group>"; };
+		6FD4BF211AB9B7F60058658C /* TDMediaPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDMediaPlayer.h; sourceTree = "<group>"; };
+		6FD4BF221AB9B7F60058658C /* TDMediaPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDMediaPlayer.m; sourceTree = "<group>"; };
+		6FD4BF271AB9CEC20058658C /* MetadataConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MetadataConfiguration.h; sourceTree = "<group>"; };
+		6FD4BF281AB9CEC20058658C /* MetadataConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MetadataConfiguration.m; sourceTree = "<group>"; };
+		6FD4BF291AB9CEC20058658C /* TDSBMPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDSBMPlayer.h; sourceTree = "<group>"; };
+		6FD4BF2A1AB9CEC20058658C /* TDSBMPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDSBMPlayer.m; sourceTree = "<group>"; };
+		6FD659AA1A71826A0012D570 /* TDCloseButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDCloseButton.h; sourceTree = "<group>"; };
+		6FD659AB1A71826A0012D570 /* TDCloseButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDCloseButton.m; sourceTree = "<group>"; };
+		6FD8148B1A6EBAE000F41ADD /* TDInterstitialAdDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDInterstitialAdDelegate.h; sourceTree = "<group>"; };
+		6FD923CE1A360575009535FA /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		6FD923D11A360582009535FA /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		6FD923D41A3605C3009535FA /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		6FD923D71A36099D009535FA /* thebravery_data_badstring.raw */ = {isa = PBXFileReference; lastKnownFileType = file; path = thebravery_data_badstring.raw; sourceTree = "<group>"; };
+		6FD923D81A36099D009535FA /* thebravery_payload_good.raw */ = {isa = PBXFileReference; lastKnownFileType = file; path = thebravery_payload_good.raw; sourceTree = "<group>"; };
+		6FD923E01A362D9B009535FA /* TDAdRequestURLBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDAdRequestURLBuilder.h; sourceTree = "<group>"; };
+		6FD923E11A362D9B009535FA /* TDAdRequestURLBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDAdRequestURLBuilder.m; sourceTree = "<group>"; };
+		6FD923E21A362D9B009535FA /* TDBannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDBannerView.h; sourceTree = "<group>"; };
+		6FD923E31A362D9B009535FA /* TDBannerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDBannerView.m; sourceTree = "<group>"; };
+		6FD923E41A362D9B009535FA /* TDBannerViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDBannerViewDelegate.h; sourceTree = "<group>"; };
+		6FD923E51A362D9B009535FA /* TDInterstitialAd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDInterstitialAd.h; sourceTree = "<group>"; };
+		6FD923E61A362D9B009535FA /* TDInterstitialAd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDInterstitialAd.m; sourceTree = "<group>"; };
+		6FD924091A362DDA009535FA /* TDLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDLocationManager.h; sourceTree = "<group>"; };
+		6FD9240A1A362DDA009535FA /* TDLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDLocationManager.m; sourceTree = "<group>"; };
+		6FD9BA871A94E9D40036D6BC /* TDAd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDAd.h; sourceTree = "<group>"; };
+		6FD9BA881A94E9D40036D6BC /* TDAd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDAd.m; sourceTree = "<group>"; };
+		6FD9BA8E1A94E9F90036D6BC /* TDAdParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDAdParser.h; sourceTree = "<group>"; };
+		6FD9BA8F1A94E9F90036D6BC /* TDAdParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDAdParser.m; sourceTree = "<group>"; };
+		6FD9BA941A94EA300036D6BC /* TDAdLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDAdLoader.h; sourceTree = "<group>"; };
+		6FD9BA951A94EA300036D6BC /* TDAdLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDAdLoader.m; sourceTree = "<group>"; };
+		6FD9BA9A1A94F9060036D6BC /* TDCompanionBanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDCompanionBanner.h; sourceTree = "<group>"; };
+		6FD9BA9B1A94F9060036D6BC /* TDCompanionBanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDCompanionBanner.m; sourceTree = "<group>"; };
+		6FD9BAA11A95245A0036D6BC /* TDAdTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDAdTest.m; path = TritonPlayerSDKTests/Ads/TDAdTest.m; sourceTree = SOURCE_ROOT; };
+		6FD9BAA31A9530AE0036D6BC /* TDSyncBannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDSyncBannerView.h; sourceTree = "<group>"; };
+		6FD9BAA41A9530AE0036D6BC /* TDSyncBannerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDSyncBannerView.m; sourceTree = "<group>"; };
+		6FDA603E1A72D39900E58A0C /* TDInterstitialAdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDInterstitialAdViewController.h; sourceTree = "<group>"; };
+		6FDA603F1A72D39900E58A0C /* TDInterstitialAdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDInterstitialAdViewController.m; sourceTree = "<group>"; };
+		6FDDD4E31A9D2C9B00ED94C8 /* TDAdRequestURLBuilderTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDAdRequestURLBuilderTest.m; path = Ads/TDAdRequestURLBuilderTest.m; sourceTree = "<group>"; };
+		6FDDD4E41A9D2C9B00ED94C8 /* TDBannerViewTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDBannerViewTest.m; path = Ads/TDBannerViewTest.m; sourceTree = "<group>"; };
+		6FDE5FB11AB0AAC900C64B08 /* TDMediaPlayback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDMediaPlayback.h; sourceTree = "<group>"; };
+		6FDF15421CCFDF6B00275292 /* TDAnalyticsTracker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TDAnalyticsTracker.h; sourceTree = "<group>"; };
+		6FDF15451CCFDFF100275292 /* TDAnalyticsTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDAnalyticsTracker.m; sourceTree = "<group>"; };
+		6FDF3A3D1AC45ABB00C72482 /* TritonPlayerConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TritonPlayerConstants.h; sourceTree = "<group>"; };
+		6FDF3A3F1AC462EF00C72482 /* TDMediaPlaybackDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDMediaPlaybackDelegate.h; sourceTree = "<group>"; };
+		6FE4B19A1AD2BC7100F2A353 /* TritonPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TritonPlayer.h; sourceTree = "<group>"; };
+		6FE4B19B1AD2BC7100F2A353 /* TritonPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TritonPlayer.m; sourceTree = "<group>"; };
+		6FFC3E661B4D6DF20074EBF4 /* TDAuthUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDAuthUtils.h; sourceTree = "<group>"; };
+		6FFC3E671B4D6DF20074EBF4 /* TDAuthUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDAuthUtils.m; sourceTree = "<group>"; };
+		6FFC3E6D1B4DAA620074EBF4 /* TDAuthUtilsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDAuthUtilsTest.m; sourceTree = "<group>"; };
+		6FFD8E291A07E24E003345AC /* TritonPlayerSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TritonPlayerSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6FFD8E2D1A07E24E003345AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6FFD8E2E1A07E24E003345AC /* TritonPlayerSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TritonPlayerSDK.h; sourceTree = "<group>"; };
+		6FFD8E341A07E24E003345AC /* TritonPlayerSDKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TritonPlayerSDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6FFD8E471A07E3A0003345AC /* NSData+FLVUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+FLVUtils.h"; sourceTree = "<group>"; };
+		6FFD8E481A07E3A0003345AC /* NSData+FLVUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+FLVUtils.m"; sourceTree = "<group>"; };
+		6FFD8E491A07E3A0003345AC /* NSObject+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Extensions.h"; sourceTree = "<group>"; };
+		6FFD8E4A1A07E3A0003345AC /* NSObject+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Extensions.m"; sourceTree = "<group>"; };
+		6FFD8E4B1A07E3A0003345AC /* UIDevice+Hardware.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+Hardware.h"; sourceTree = "<group>"; };
+		6FFD8E4C1A07E3A0003345AC /* UIDevice+Hardware.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+Hardware.m"; sourceTree = "<group>"; };
+		6FFD8E501A07E3A0003345AC /* FLVStreamPlayerLibConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLVStreamPlayerLibConstants.h; sourceTree = "<group>"; };
+		6FFD8E511A07E3A0003345AC /* Logs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Logs.h; sourceTree = "<group>"; };
+		6FFD8E551A07E3A0003345AC /* ADTSHeaderSharedData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADTSHeaderSharedData.h; sourceTree = "<group>"; };
+		6FFD8E561A07E3A0003345AC /* ADTSHeaderSharedData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADTSHeaderSharedData.m; sourceTree = "<group>"; };
+		6FFD8E571A07E3A0003345AC /* AudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioPlayer.h; sourceTree = "<group>"; };
+		6FFD8E581A07E3A0003345AC /* AudioPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioPlayer.m; sourceTree = "<group>"; };
+		6FFD8E5C1A07E3A0003345AC /* FLVDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLVDecoder.h; sourceTree = "<group>"; };
+		6FFD8E5D1A07E3A0003345AC /* FLVDecoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLVDecoder.m; sourceTree = "<group>"; };
+		6FFD8E5F1A07E3A0003345AC /* FLVDispatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLVDispatcher.h; sourceTree = "<group>"; };
+		6FFD8E601A07E3A0003345AC /* FLVDispatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLVDispatcher.m; sourceTree = "<group>"; };
+		6FFD8E621A07E3A0003345AC /* FLVStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLVStream.h; sourceTree = "<group>"; };
+		6FFD8E631A07E3A0003345AC /* FLVStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLVStream.m; sourceTree = "<group>"; };
+		6FFD8E6E1A07E3A0003345AC /* LiveStreamProvisioningParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiveStreamProvisioningParser.h; sourceTree = "<group>"; };
+		6FFD8E6F1A07E3A0003345AC /* LiveStreamProvisioningParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LiveStreamProvisioningParser.m; sourceTree = "<group>"; };
+		6FFD8E701A07E3A0003345AC /* LiveStreamProvisioningParserDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiveStreamProvisioningParserDelegate.h; sourceTree = "<group>"; };
+		6FFD8E711A07E3A0003345AC /* LiveStreamProvisioningParserDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LiveStreamProvisioningParserDelegate.m; sourceTree = "<group>"; };
+		6FFD8E721A07E3A0003345AC /* Provisioning.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Provisioning.h; sourceTree = "<group>"; };
+		6FFD8E731A07E3A0003345AC /* Provisioning.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Provisioning.m; sourceTree = "<group>"; };
+		6FFD8E741A07E3A0003345AC /* ProvisioningConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProvisioningConstants.h; sourceTree = "<group>"; };
+		6FFD8E761A07E3A0003345AC /* Server.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Server.h; sourceTree = "<group>"; };
+		6FFD8E771A07E3A0003345AC /* Server.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Server.m; sourceTree = "<group>"; };
+		6FFD8E901A07E3A0003345AC /* CuePointEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CuePointEvent.h; sourceTree = "<group>"; };
+		6FFD8E911A07E3A0003345AC /* CuePointEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CuePointEvent.m; sourceTree = "<group>"; };
+		6FFD8E921A07E3A0003345AC /* CuePointEventProtected.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CuePointEventProtected.h; sourceTree = "<group>"; };
+		6FFD8E951A07E3A0003345AC /* FLVAudioTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLVAudioTag.h; sourceTree = "<group>"; };
+		6FFD8E961A07E3A0003345AC /* FLVAudioTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLVAudioTag.m; sourceTree = "<group>"; };
+		6FFD8E971A07E3A0003345AC /* FLVAudioTagData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLVAudioTagData.h; sourceTree = "<group>"; };
+		6FFD8E981A07E3A0003345AC /* FLVAudioTagData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLVAudioTagData.m; sourceTree = "<group>"; };
+		6FFD8E991A07E3A0003345AC /* FLVAudioTagHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLVAudioTagHeader.h; sourceTree = "<group>"; };
+		6FFD8E9A1A07E3A0003345AC /* FLVAudioTagHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLVAudioTagHeader.m; sourceTree = "<group>"; };
+		6FFD8E9C1A07E3A0003345AC /* FLVHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLVHeader.h; sourceTree = "<group>"; };
+		6FFD8E9D1A07E3A0003345AC /* FLVHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLVHeader.m; sourceTree = "<group>"; };
+		6FFD8EA01A07E3A0003345AC /* AMF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMF.h; sourceTree = "<group>"; };
+		6FFD8EA11A07E3A0003345AC /* AMF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMF.m; sourceTree = "<group>"; };
+		6FFD8EA21A07E3A0003345AC /* AMFDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMFDecoder.h; sourceTree = "<group>"; };
+		6FFD8EA31A07E3A0003345AC /* AMFDecoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMFDecoder.m; sourceTree = "<group>"; };
+		6FFD8EA41A07E3A0003345AC /* ASObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASObject.h; sourceTree = "<group>"; };
+		6FFD8EA51A07E3A0003345AC /* ASObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASObject.m; sourceTree = "<group>"; };
+		6FFD8EA61A07E3A0003345AC /* FLVScriptObjectTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLVScriptObjectTag.h; sourceTree = "<group>"; };
+		6FFD8EA71A07E3A0003345AC /* FLVScriptObjectTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLVScriptObjectTag.m; sourceTree = "<group>"; };
+		6FFD8EA91A07E3A0003345AC /* FLVTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLVTag.h; sourceTree = "<group>"; };
+		6FFD8EAA1A07E3A0003345AC /* FLVTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLVTag.m; sourceTree = "<group>"; };
+		6FFD8EAC1A07E3A0003345AC /* FLVVideoTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLVVideoTag.h; sourceTree = "<group>"; };
+		6FFD8EAD1A07E3A0003345AC /* FLVVideoTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLVVideoTag.m; sourceTree = "<group>"; };
+		6FFD8EB01A07E3A0003345AC /* AudioPlayerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioPlayerController.h; sourceTree = "<group>"; };
+		6FFD8EB11A07E3A0003345AC /* AudioPlayerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioPlayerController.m; sourceTree = "<group>"; };
+		6FFD8EB31A07E3A0003345AC /* CuePointEventController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CuePointEventController.h; sourceTree = "<group>"; };
+		6FFD8EB41A07E3A0003345AC /* CuePointEventController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CuePointEventController.m; sourceTree = "<group>"; };
+		6FFD8EC01A07E3A0003345AC /* TDReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDReachability.h; sourceTree = "<group>"; };
+		6FFD8EC11A07E3A0003345AC /* TDReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDReachability.m; sourceTree = "<group>"; };
+		6FFD8EC21A07E3A0003345AC /* TritonPlayerProtected.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TritonPlayerProtected.h; sourceTree = "<group>"; };
+		6FFD8F211A07E57E003345AC /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		6FFD8F231A07E58F003345AC /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		6FFD8F251A07E5FA003345AC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		6FFD8F271A07E626003345AC /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		6FFD8F291A07E635003345AC /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		6FFD8F2B1A07E6B9003345AC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		6FFD8F3D1A081807003345AC /* libTritonPlayerSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libTritonPlayerSDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		6FFD8F541A081897003345AC /* TritonPlayerSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TritonPlayerSDK.h; sourceTree = "<group>"; };
+		6FFD8FC21A081ADF003345AC /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		B4AE7A471FBB36C9004A5615 /* FLVDispatcherTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLVDispatcherTest.m; sourceTree = "<group>"; };
+		B4AE7A4A1FBB87FF004A5615 /* TritonPlayerTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TritonPlayerTest.m; sourceTree = "<group>"; };
+		B4AE7A571FBBAB1C004A5615 /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libOCMock.a; path = "../../../../../Volumes/OCMock 3.4-1/iOS library/libOCMock.a"; sourceTree = "<group>"; };
+		B4D4BD101FBE0A8000A39E3A /* onMetaData_StreamTitle_Empty.flv */ = {isa = PBXFileReference; lastKnownFileType = file; path = onMetaData_StreamTitle_Empty.flv; sourceTree = "<group>"; };
+		B4D4BD111FBE0A8000A39E3A /* stream.flv */ = {isa = PBXFileReference; lastKnownFileType = file; path = stream.flv; sourceTree = "<group>"; };
+		B4D4BD121FBE0A8000A39E3A /* onMetaData_StreamTitle_NotEmpty.flv */ = {isa = PBXFileReference; lastKnownFileType = file; path = onMetaData_StreamTitle_NotEmpty.flv; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6FFD8E251A07E24E003345AC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6FFD8F2D1A07E77B003345AC /* UIKit.framework in Frameworks */,
+				6FFD8F281A07E626003345AC /* CoreAudio.framework in Frameworks */,
+				6FFD8F241A07E58F003345AC /* CoreMedia.framework in Frameworks */,
+				6FFD8F221A07E57E003345AC /* AudioToolbox.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6FFD8E311A07E24E003345AC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6FD923D51A3605C3009535FA /* CoreLocation.framework in Frameworks */,
+				6FD923D31A36059A009535FA /* AudioToolbox.framework in Frameworks */,
+				6FD923D21A360582009535FA /* SystemConfiguration.framework in Frameworks */,
+				6FD923D01A36057B009535FA /* CoreMedia.framework in Frameworks */,
+				6FD923CF1A360575009535FA /* AdSupport.framework in Frameworks */,
+				6FD923CD1A36056E009535FA /* AVFoundation.framework in Frameworks */,
+				6F3113261A1BE26E00AC67AE /* libTritonPlayerSDK.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6FFD8F3A1A081807003345AC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6F3112F61A1BE17500AC67AE /* CuePointEventController */ = {
+			isa = PBXGroup;
+			children = (
+				6F3112F71A1BE17500AC67AE /* CuePointEventControllerTest.m */,
+			);
+			path = CuePointEventController;
+			sourceTree = "<group>";
+		};
+		6F3112F81A1BE17500AC67AE /* CuePointEventTest */ = {
+			isa = PBXGroup;
+			children = (
+				6F3112F91A1BE17500AC67AE /* CuePointEventTest.m */,
+			);
+			path = CuePointEventTest;
+			sourceTree = "<group>";
+		};
+		6F3112FA1A1BE17500AC67AE /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				6F3112FB1A1BE17500AC67AE /* Ads */,
+				6F3112FE1A1BE17500AC67AE /* NowPlaying */,
+				6F3113081A1BE17500AC67AE /* Provisioning */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		6F3112FB1A1BE17500AC67AE /* Ads */ = {
+			isa = PBXGroup;
+			children = (
+				6F3112FC1A1BE17500AC67AE /* flvTag */,
+				6F3112FD1A1BE17500AC67AE /* flvTagPayload */,
+			);
+			path = Ads;
+			sourceTree = "<group>";
+		};
+		6F3112FE1A1BE17500AC67AE /* NowPlaying */ = {
+			isa = PBXGroup;
+			children = (
+				B4D4BD0F1FBE0A8000A39E3A /* IceCastFLV */,
+				6FD923D61A36099D009535FA /* TheBravery_BADSTRING */,
+				6F3113271A1BF90D00AC67AE /* JOYTURK_ROCKAAC.raw */,
+				6F3112FF1A1BE17500AC67AE /* cleared_GOOD */,
+				6F3113021A1BE17500AC67AE /* TheBravery_BAD */,
+				6F3113051A1BE17500AC67AE /* TheBravery_GOOD */,
+			);
+			path = NowPlaying;
+			sourceTree = "<group>";
+		};
+		6F3112FF1A1BE17500AC67AE /* cleared_GOOD */ = {
+			isa = PBXGroup;
+			children = (
+				6F3113001A1BE17500AC67AE /* cleared_data_good.raw */,
+				6F3113011A1BE17500AC67AE /* cleared_payload_good.raw */,
+			);
+			path = cleared_GOOD;
+			sourceTree = "<group>";
+		};
+		6F3113021A1BE17500AC67AE /* TheBravery_BAD */ = {
+			isa = PBXGroup;
+			children = (
+				6F3113031A1BE17500AC67AE /* badpayload_truncated.raw */,
+				6F3113041A1BE17500AC67AE /* thebravery_data_bad.raw */,
+			);
+			path = TheBravery_BAD;
+			sourceTree = "<group>";
+		};
+		6F3113051A1BE17500AC67AE /* TheBravery_GOOD */ = {
+			isa = PBXGroup;
+			children = (
+				6F3113061A1BE17500AC67AE /* thebravery_data_good.raw */,
+				6F3113071A1BE17500AC67AE /* thebravery_payload_good.raw */,
+			);
+			path = TheBravery_GOOD;
+			sourceTree = "<group>";
+		};
+		6F3113081A1BE17500AC67AE /* Provisioning */ = {
+			isa = PBXGroup;
+			children = (
+				6F3113091A1BE17500AC67AE /* livestreamKROQFMFLVGood.xml */,
+			);
+			path = Provisioning;
+			sourceTree = "<group>";
+		};
+		6F31130A1A1BE17500AC67AE /* en.lproj */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = en.lproj;
+			sourceTree = "<group>";
+		};
+		6F31130D1A1BE17500AC67AE /* FLVDecoderTest */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = FLVDecoderTest;
+			sourceTree = "<group>";
+		};
+		6F31130E1A1BE17500AC67AE /* FLVTagTest */ = {
+			isa = PBXGroup;
+			children = (
+				6F31130F1A1BE17500AC67AE /* FLVTagTest.m */,
+			);
+			path = FLVTagTest;
+			sourceTree = "<group>";
+		};
+		6F3113101A1BE17500AC67AE /* ProvisioningTest */ = {
+			isa = PBXGroup;
+			children = (
+				6F3113111A1BE17500AC67AE /* ProvisioningTest.m */,
+			);
+			path = ProvisioningTest;
+			sourceTree = "<group>";
+		};
+		6F868B4F1AD2BE7800A9922E /* EventSource */ = {
+			isa = PBXGroup;
+			children = (
+				6F868B501AD2BE7800A9922E /* TDEventSource.h */,
+				6F868B511AD2BE7800A9922E /* TDEventSource.m */,
+			);
+			path = EventSource;
+			sourceTree = "<group>";
+		};
+		6F868B561AD2BF1000A9922E /* CuePointHistory */ = {
+			isa = PBXGroup;
+			children = (
+				6F868B571AD2BF3600A9922E /* TDCuePointHistory.h */,
+				6F868B581AD2BF3600A9922E /* TDCuePointHistory.m */,
+				6F868B721AD2F36400A9922E /* TDCuePointHistoryParser.h */,
+				6F868B731AD2F36400A9922E /* TDCuePointHistoryParser.m */,
+			);
+			path = CuePointHistory;
+			sourceTree = "<group>";
+		};
+		6FD4BF331AB9CECB0058658C /* Side-band Metadata */ = {
+			isa = PBXGroup;
+			children = (
+				6F868B4F1AD2BE7800A9922E /* EventSource */,
+				6FD4BF271AB9CEC20058658C /* MetadataConfiguration.h */,
+				6FD4BF281AB9CEC20058658C /* MetadataConfiguration.m */,
+				6FD4BF291AB9CEC20058658C /* TDSBMPlayer.h */,
+				6FD4BF2A1AB9CEC20058658C /* TDSBMPlayer.m */,
+			);
+			name = "Side-band Metadata";
+			sourceTree = "<group>";
+		};
+		6FD923D61A36099D009535FA /* TheBravery_BADSTRING */ = {
+			isa = PBXGroup;
+			children = (
+				6FD923D71A36099D009535FA /* thebravery_data_badstring.raw */,
+				6FD923D81A36099D009535FA /* thebravery_payload_good.raw */,
+			);
+			path = TheBravery_BADSTRING;
+			sourceTree = "<group>";
+		};
+		6FD923DF1A362D9B009535FA /* Ads */ = {
+			isa = PBXGroup;
+			children = (
+				6FD9BA861A94E99F0036D6BC /* Core */,
+				6FD9BA841A94E92C0036D6BC /* Interstitials */,
+				6FD9BA831A94E9150036D6BC /* Banners */,
+				6FD9BA8D1A94E9F90036D6BC /* Parser */,
+				6FD9BA851A94E9570036D6BC /* Utils */,
+			);
+			path = Ads;
+			sourceTree = "<group>";
+		};
+		6FD924081A362DDA009535FA /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				6FD924091A362DDA009535FA /* TDLocationManager.h */,
+				6FD9240A1A362DDA009535FA /* TDLocationManager.m */,
+				6F868B781AD2F72200A9922E /* TritonSDKUtils.h */,
+				6F868B791AD2F72200A9922E /* TritonSDKUtils.m */,
+				6FFC3E661B4D6DF20074EBF4 /* TDAuthUtils.h */,
+				6FFC3E671B4D6DF20074EBF4 /* TDAuthUtils.m */,
+				6FDF15421CCFDF6B00275292 /* TDAnalyticsTracker.h */,
+				6FDF15451CCFDFF100275292 /* TDAnalyticsTracker.m */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		6FD9BA831A94E9150036D6BC /* Banners */ = {
+			isa = PBXGroup;
+			children = (
+				6FD923E21A362D9B009535FA /* TDBannerView.h */,
+				6FD923E31A362D9B009535FA /* TDBannerView.m */,
+				6FD923E41A362D9B009535FA /* TDBannerViewDelegate.h */,
+				6FD9BAA31A9530AE0036D6BC /* TDSyncBannerView.h */,
+				6FD9BAA41A9530AE0036D6BC /* TDSyncBannerView.m */,
+			);
+			name = Banners;
+			sourceTree = "<group>";
+		};
+		6FD9BA841A94E92C0036D6BC /* Interstitials */ = {
+			isa = PBXGroup;
+			children = (
+				6FD923E51A362D9B009535FA /* TDInterstitialAd.h */,
+				6FD923E61A362D9B009535FA /* TDInterstitialAd.m */,
+				6FD8148B1A6EBAE000F41ADD /* TDInterstitialAdDelegate.h */,
+				6FDA603E1A72D39900E58A0C /* TDInterstitialAdViewController.h */,
+				6FDA603F1A72D39900E58A0C /* TDInterstitialAdViewController.m */,
+			);
+			name = Interstitials;
+			sourceTree = "<group>";
+		};
+		6FD9BA851A94E9570036D6BC /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				6FD3516E1A70440000D0AB6C /* TDAdUtils.h */,
+				6FD3516F1A70440000D0AB6C /* TDAdUtils.m */,
+				6FD659AA1A71826A0012D570 /* TDCloseButton.h */,
+				6FD659AB1A71826A0012D570 /* TDCloseButton.m */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
+		6FD9BA861A94E99F0036D6BC /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				6FD9BA871A94E9D40036D6BC /* TDAd.h */,
+				6FD9BA881A94E9D40036D6BC /* TDAd.m */,
+				6FD923E01A362D9B009535FA /* TDAdRequestURLBuilder.h */,
+				6FD923E11A362D9B009535FA /* TDAdRequestURLBuilder.m */,
+				6FD9BA941A94EA300036D6BC /* TDAdLoader.h */,
+				6FD9BA951A94EA300036D6BC /* TDAdLoader.m */,
+				6FD9BA9A1A94F9060036D6BC /* TDCompanionBanner.h */,
+				6FD9BA9B1A94F9060036D6BC /* TDCompanionBanner.m */,
+			);
+			name = Core;
+			sourceTree = "<group>";
+		};
+		6FD9BA8D1A94E9F90036D6BC /* Parser */ = {
+			isa = PBXGroup;
+			children = (
+				6FD9BA8E1A94E9F90036D6BC /* TDAdParser.h */,
+				6FD9BA8F1A94E9F90036D6BC /* TDAdParser.m */,
+			);
+			path = Parser;
+			sourceTree = "<group>";
+		};
+		6FDDD4E21A9D2C0C00ED94C8 /* Ads */ = {
+			isa = PBXGroup;
+			children = (
+				6FDDD4E31A9D2C9B00ED94C8 /* TDAdRequestURLBuilderTest.m */,
+				6FDDD4E41A9D2C9B00ED94C8 /* TDBannerViewTest.m */,
+				6FD9BAA11A95245A0036D6BC /* TDAdTest.m */,
+			);
+			name = Ads;
+			sourceTree = "<group>";
+		};
+		6FDE5FB01AB080B200C64B08 /* Player */ = {
+			isa = PBXGroup;
+			children = (
+				6FE4B19A1AD2BC7100F2A353 /* TritonPlayer.h */,
+				6FE4B19B1AD2BC7100F2A353 /* TritonPlayer.m */,
+				6FD4BF331AB9CECB0058658C /* Side-band Metadata */,
+				6FD4BF211AB9B7F60058658C /* TDMediaPlayer.h */,
+				6FD4BF221AB9B7F60058658C /* TDMediaPlayer.m */,
+				6FD4BF1B1AB9B7990058658C /* TritonPlayerUtils.h */,
+				6FD4BF1C1AB9B7990058658C /* TritonPlayerUtils.m */,
+				6FDE5FB11AB0AAC900C64B08 /* TDMediaPlayback.h */,
+				6F2F038A1AB0AE4F00E50E4D /* TDFLVPlayer.h */,
+				6F2F038B1AB0AE4F00E50E4D /* TDFLVPlayer.m */,
+				6F23ACA41AB2115F00AD3575 /* TDStationPlayer.h */,
+				6F23ACA51AB2115F00AD3575 /* TDStationPlayer.m */,
+				6F23ACAA1AB211A300AD3575 /* TDStreamPlayer.h */,
+				6F23ACAB1AB211A300AD3575 /* TDStreamPlayer.m */,
+				6FDF3A3D1AC45ABB00C72482 /* TritonPlayerConstants.h */,
+				6FDF3A3F1AC462EF00C72482 /* TDMediaPlaybackDelegate.h */,
+			);
+			path = Player;
+			sourceTree = "<group>";
+		};
+		6FFC3E6C1B4DAA350074EBF4 /* TokenAuthorization */ = {
+			isa = PBXGroup;
+			children = (
+				6FFC3E6D1B4DAA620074EBF4 /* TDAuthUtilsTest.m */,
+			);
+			path = TokenAuthorization;
+			sourceTree = "<group>";
+		};
+		6FFD8E1F1A07E24E003345AC = {
+			isa = PBXGroup;
+			children = (
+				6FD923D41A3605C3009535FA /* CoreLocation.framework */,
+				6FD923D11A360582009535FA /* SystemConfiguration.framework */,
+				6FD923CE1A360575009535FA /* AdSupport.framework */,
+				6F7FF5121A092DEC0057E4C1 /* AppledocSettings.plist */,
+				6FFD8FC21A081ADF003345AC /* AVFoundation.framework */,
+				6FFD8F2B1A07E6B9003345AC /* Foundation.framework */,
+				6FFD8F291A07E635003345AC /* CoreFoundation.framework */,
+				6FFD8F271A07E626003345AC /* CoreAudio.framework */,
+				6FFD8F251A07E5FA003345AC /* UIKit.framework */,
+				6FFD8F231A07E58F003345AC /* CoreMedia.framework */,
+				6FFD8F211A07E57E003345AC /* AudioToolbox.framework */,
+				6FFD8E2B1A07E24E003345AC /* TritonPlayerSDK */,
+				6FFD8E381A07E24E003345AC /* TritonPlayerSDKTests */,
+				6FFD8F3E1A081807003345AC /* TritonPlayerSDKStatic */,
+				6FFD8E2A1A07E24E003345AC /* Products */,
+				B4AE7A561FBBAB1C004A5615 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		6FFD8E2A1A07E24E003345AC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6FFD8E291A07E24E003345AC /* TritonPlayerSDK.framework */,
+				6FFD8E341A07E24E003345AC /* TritonPlayerSDKTests.xctest */,
+				6FFD8F3D1A081807003345AC /* libTritonPlayerSDK.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6FFD8E2B1A07E24E003345AC /* TritonPlayerSDK */ = {
+			isa = PBXGroup;
+			children = (
+				6FFD8E451A07E3A0003345AC /* Classes */,
+				6FFD8E2E1A07E24E003345AC /* TritonPlayerSDK.h */,
+				6FFD8E2C1A07E24E003345AC /* Supporting Files */,
+			);
+			path = TritonPlayerSDK;
+			sourceTree = "<group>";
+		};
+		6FFD8E2C1A07E24E003345AC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6FFD8E2D1A07E24E003345AC /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6FFD8E381A07E24E003345AC /* TritonPlayerSDKTests */ = {
+			isa = PBXGroup;
+			children = (
+				B4AE7A491FBB8798004A5615 /* Player */,
+				B4AE7A451FBB36C9004A5615 /* Components */,
+				6FFC3E6C1B4DAA350074EBF4 /* TokenAuthorization */,
+				6FDDD4E21A9D2C0C00ED94C8 /* Ads */,
+				6F3112F61A1BE17500AC67AE /* CuePointEventController */,
+				6F3112F81A1BE17500AC67AE /* CuePointEventTest */,
+				6F3112FA1A1BE17500AC67AE /* Data */,
+				6F31130A1A1BE17500AC67AE /* en.lproj */,
+				6F31130D1A1BE17500AC67AE /* FLVDecoderTest */,
+				6F31130E1A1BE17500AC67AE /* FLVTagTest */,
+				6F3113101A1BE17500AC67AE /* ProvisioningTest */,
+				6F3113121A1BE17500AC67AE /* testConstants.h */,
+				6F3113131A1BE17500AC67AE /* TritonPlayerSDK Tests-Info.plist */,
+				6F3113141A1BE17500AC67AE /* TritonPlayerSDK Tests-Prefix.pch */,
+			);
+			path = TritonPlayerSDKTests;
+			sourceTree = "<group>";
+		};
+		6FFD8E451A07E3A0003345AC /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				6FDE5FB01AB080B200C64B08 /* Player */,
+				6FD924081A362DDA009535FA /* Common */,
+				6FD923DF1A362D9B009535FA /* Ads */,
+				6F868B561AD2BF1000A9922E /* CuePointHistory */,
+				6FFD8E461A07E3A0003345AC /* Categories */,
+				6FFD8E501A07E3A0003345AC /* FLVStreamPlayerLibConstants.h */,
+				6FFD8E511A07E3A0003345AC /* Logs.h */,
+				6FFD8E521A07E3A0003345AC /* Models */,
+				6FFD8EBF1A07E3A0003345AC /* Reachability */,
+				6FFD8EC21A07E3A0003345AC /* TritonPlayerProtected.h */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		6FFD8E461A07E3A0003345AC /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				6FFD8E471A07E3A0003345AC /* NSData+FLVUtils.h */,
+				6FFD8E481A07E3A0003345AC /* NSData+FLVUtils.m */,
+				6FFD8E491A07E3A0003345AC /* NSObject+Extensions.h */,
+				6FFD8E4A1A07E3A0003345AC /* NSObject+Extensions.m */,
+				6FFD8E4B1A07E3A0003345AC /* UIDevice+Hardware.h */,
+				6FFD8E4C1A07E3A0003345AC /* UIDevice+Hardware.m */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		6FFD8E521A07E3A0003345AC /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				6FFD8E531A07E3A0003345AC /* Components */,
+				6FFD8E8F1A07E3A0003345AC /* CuePointEvent */,
+				6FFD8E931A07E3A0003345AC /* FLV */,
+				6FFD8EAE1A07E3A0003345AC /* ModelsController */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		6FFD8E531A07E3A0003345AC /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				6FFD8E541A07E3A0003345AC /* AudioPlayer */,
+				6FFD8E5B1A07E3A0003345AC /* FLVDecoder */,
+				6FFD8E5E1A07E3A0003345AC /* FLVDispatcher */,
+				6FFD8E611A07E3A0003345AC /* FLVStream */,
+				6FFD8E6C1A07E3A0003345AC /* Provisioning */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		6FFD8E541A07E3A0003345AC /* AudioPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				6FFD8E551A07E3A0003345AC /* ADTSHeaderSharedData.h */,
+				6FFD8E561A07E3A0003345AC /* ADTSHeaderSharedData.m */,
+				6FFD8E571A07E3A0003345AC /* AudioPlayer.h */,
+				6FFD8E581A07E3A0003345AC /* AudioPlayer.m */,
+			);
+			path = AudioPlayer;
+			sourceTree = "<group>";
+		};
+		6FFD8E5B1A07E3A0003345AC /* FLVDecoder */ = {
+			isa = PBXGroup;
+			children = (
+				6FFD8E5C1A07E3A0003345AC /* FLVDecoder.h */,
+				6FFD8E5D1A07E3A0003345AC /* FLVDecoder.m */,
+			);
+			path = FLVDecoder;
+			sourceTree = "<group>";
+		};
+		6FFD8E5E1A07E3A0003345AC /* FLVDispatcher */ = {
+			isa = PBXGroup;
+			children = (
+				6FFD8E5F1A07E3A0003345AC /* FLVDispatcher.h */,
+				6FFD8E601A07E3A0003345AC /* FLVDispatcher.m */,
+			);
+			path = FLVDispatcher;
+			sourceTree = "<group>";
+		};
+		6FFD8E611A07E3A0003345AC /* FLVStream */ = {
+			isa = PBXGroup;
+			children = (
+				6FFD8E621A07E3A0003345AC /* FLVStream.h */,
+				6FFD8E631A07E3A0003345AC /* FLVStream.m */,
+			);
+			path = FLVStream;
+			sourceTree = "<group>";
+		};
+		6FFD8E6C1A07E3A0003345AC /* Provisioning */ = {
+			isa = PBXGroup;
+			children = (
+				6FFD8E6D1A07E3A0003345AC /* LiveStreamProvisioningParser */,
+				6FFD8E721A07E3A0003345AC /* Provisioning.h */,
+				6FFD8E731A07E3A0003345AC /* Provisioning.m */,
+				6FFD8E741A07E3A0003345AC /* ProvisioningConstants.h */,
+				6FFD8E751A07E3A0003345AC /* Server */,
+			);
+			path = Provisioning;
+			sourceTree = "<group>";
+		};
+		6FFD8E6D1A07E3A0003345AC /* LiveStreamProvisioningParser */ = {
+			isa = PBXGroup;
+			children = (
+				6FFD8E6E1A07E3A0003345AC /* LiveStreamProvisioningParser.h */,
+				6FFD8E6F1A07E3A0003345AC /* LiveStreamProvisioningParser.m */,
+				6FFD8E701A07E3A0003345AC /* LiveStreamProvisioningParserDelegate.h */,
+				6FFD8E711A07E3A0003345AC /* LiveStreamProvisioningParserDelegate.m */,
+			);
+			path = LiveStreamProvisioningParser;
+			sourceTree = "<group>";
+		};
+		6FFD8E751A07E3A0003345AC /* Server */ = {
+			isa = PBXGroup;
+			children = (
+				6FFD8E761A07E3A0003345AC /* Server.h */,
+				6FFD8E771A07E3A0003345AC /* Server.m */,
+			);
+			path = Server;
+			sourceTree = "<group>";
+		};
+		6FFD8E8F1A07E3A0003345AC /* CuePointEvent */ = {
+			isa = PBXGroup;
+			children = (
+				6FFD8E901A07E3A0003345AC /* CuePointEvent.h */,
+				6FFD8E911A07E3A0003345AC /* CuePointEvent.m */,
+				6FFD8E921A07E3A0003345AC /* CuePointEventProtected.h */,
+			);
+			path = CuePointEvent;
+			sourceTree = "<group>";
+		};
+		6FFD8E931A07E3A0003345AC /* FLV */ = {
+			isa = PBXGroup;
+			children = (
+				6FFD8E941A07E3A0003345AC /* FLVAudioTag */,
+				6FFD8E9B1A07E3A0003345AC /* FLVHeader */,
+				6FFD8E9E1A07E3A0003345AC /* FLVScriptObjectTag */,
+				6FFD8EA81A07E3A0003345AC /* FLVTag */,
+				6FFD8EAB1A07E3A0003345AC /* FLVVideoTag */,
+			);
+			path = FLV;
+			sourceTree = "<group>";
+		};
+		6FFD8E941A07E3A0003345AC /* FLVAudioTag */ = {
+			isa = PBXGroup;
+			children = (
+				6FFD8E951A07E3A0003345AC /* FLVAudioTag.h */,
+				6FFD8E961A07E3A0003345AC /* FLVAudioTag.m */,
+				6FFD8E971A07E3A0003345AC /* FLVAudioTagData.h */,
+				6FFD8E981A07E3A0003345AC /* FLVAudioTagData.m */,
+				6FFD8E991A07E3A0003345AC /* FLVAudioTagHeader.h */,
+				6FFD8E9A1A07E3A0003345AC /* FLVAudioTagHeader.m */,
+			);
+			path = FLVAudioTag;
+			sourceTree = "<group>";
+		};
+		6FFD8E9B1A07E3A0003345AC /* FLVHeader */ = {
+			isa = PBXGroup;
+			children = (
+				6FFD8E9C1A07E3A0003345AC /* FLVHeader.h */,
+				6FFD8E9D1A07E3A0003345AC /* FLVHeader.m */,
+			);
+			path = FLVHeader;
+			sourceTree = "<group>";
+		};
+		6FFD8E9E1A07E3A0003345AC /* FLVScriptObjectTag */ = {
+			isa = PBXGroup;
+			children = (
+				6FFD8E9F1A07E3A0003345AC /* AMFDecoder */,
+				6FFD8EA61A07E3A0003345AC /* FLVScriptObjectTag.h */,
+				6FFD8EA71A07E3A0003345AC /* FLVScriptObjectTag.m */,
+			);
+			path = FLVScriptObjectTag;
+			sourceTree = "<group>";
+		};
+		6FFD8E9F1A07E3A0003345AC /* AMFDecoder */ = {
+			isa = PBXGroup;
+			children = (
+				6FFD8EA01A07E3A0003345AC /* AMF.h */,
+				6FFD8EA11A07E3A0003345AC /* AMF.m */,
+				6FFD8EA21A07E3A0003345AC /* AMFDecoder.h */,
+				6FFD8EA31A07E3A0003345AC /* AMFDecoder.m */,
+				6FFD8EA41A07E3A0003345AC /* ASObject.h */,
+				6FFD8EA51A07E3A0003345AC /* ASObject.m */,
+			);
+			path = AMFDecoder;
+			sourceTree = "<group>";
+		};
+		6FFD8EA81A07E3A0003345AC /* FLVTag */ = {
+			isa = PBXGroup;
+			children = (
+				6FFD8EA91A07E3A0003345AC /* FLVTag.h */,
+				6FFD8EAA1A07E3A0003345AC /* FLVTag.m */,
+			);
+			path = FLVTag;
+			sourceTree = "<group>";
+		};
+		6FFD8EAB1A07E3A0003345AC /* FLVVideoTag */ = {
+			isa = PBXGroup;
+			children = (
+				6FFD8EAC1A07E3A0003345AC /* FLVVideoTag.h */,
+				6FFD8EAD1A07E3A0003345AC /* FLVVideoTag.m */,
+			);
+			path = FLVVideoTag;
+			sourceTree = "<group>";
+		};
+		6FFD8EAE1A07E3A0003345AC /* ModelsController */ = {
+			isa = PBXGroup;
+			children = (
+				6FFD8EAF1A07E3A0003345AC /* AudioPlayerController */,
+				6FFD8EB21A07E3A0003345AC /* CuePointEventController */,
+			);
+			path = ModelsController;
+			sourceTree = "<group>";
+		};
+		6FFD8EAF1A07E3A0003345AC /* AudioPlayerController */ = {
+			isa = PBXGroup;
+			children = (
+				6FFD8EB01A07E3A0003345AC /* AudioPlayerController.h */,
+				6FFD8EB11A07E3A0003345AC /* AudioPlayerController.m */,
+			);
+			path = AudioPlayerController;
+			sourceTree = "<group>";
+		};
+		6FFD8EB21A07E3A0003345AC /* CuePointEventController */ = {
+			isa = PBXGroup;
+			children = (
+				6FFD8EB31A07E3A0003345AC /* CuePointEventController.h */,
+				6FFD8EB41A07E3A0003345AC /* CuePointEventController.m */,
+			);
+			path = CuePointEventController;
+			sourceTree = "<group>";
+		};
+		6FFD8EBF1A07E3A0003345AC /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				6FFD8EC01A07E3A0003345AC /* TDReachability.h */,
+				6FFD8EC11A07E3A0003345AC /* TDReachability.m */,
+			);
+			path = Reachability;
+			sourceTree = "<group>";
+		};
+		6FFD8F3E1A081807003345AC /* TritonPlayerSDKStatic */ = {
+			isa = PBXGroup;
+			children = (
+				6FFD8F541A081897003345AC /* TritonPlayerSDK.h */,
+			);
+			path = TritonPlayerSDKStatic;
+			sourceTree = "<group>";
+		};
+		B4AE7A451FBB36C9004A5615 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				B4AE7A461FBB36C9004A5615 /* FLVDispatcher */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		B4AE7A461FBB36C9004A5615 /* FLVDispatcher */ = {
+			isa = PBXGroup;
+			children = (
+				B4AE7A471FBB36C9004A5615 /* FLVDispatcherTest.m */,
+			);
+			path = FLVDispatcher;
+			sourceTree = "<group>";
+		};
+		B4AE7A491FBB8798004A5615 /* Player */ = {
+			isa = PBXGroup;
+			children = (
+				B4AE7A4A1FBB87FF004A5615 /* TritonPlayerTest.m */,
+			);
+			path = Player;
+			sourceTree = "<group>";
+		};
+		B4AE7A561FBBAB1C004A5615 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B4AE7A571FBBAB1C004A5615 /* libOCMock.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B4D4BD0F1FBE0A8000A39E3A /* IceCastFLV */ = {
+			isa = PBXGroup;
+			children = (
+				B4D4BD101FBE0A8000A39E3A /* onMetaData_StreamTitle_Empty.flv */,
+				B4D4BD111FBE0A8000A39E3A /* stream.flv */,
+				B4D4BD121FBE0A8000A39E3A /* onMetaData_StreamTitle_NotEmpty.flv */,
+			);
+			path = IceCastFLV;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		6FFD8E261A07E24E003345AC /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6FFD8ECB1A07E3A0003345AC /* FLVStreamPlayerLibConstants.h in Headers */,
+				6FD4BF231AB9B7F60058658C /* TDMediaPlayer.h in Headers */,
+				6FFC3E681B4D6DF20074EBF4 /* TDAuthUtils.h in Headers */,
+				6FFD8ED71A07E3A0003345AC /* FLVStream.h in Headers */,
+				6FDF3A3E1AC45ABB00C72482 /* TritonPlayerConstants.h in Headers */,
+				6FD923F41A362D9B009535FA /* TDBannerViewDelegate.h in Headers */,
+				6FFD8F0E1A07E3A0003345AC /* FLVTag.h in Headers */,
+				6FD8148C1A6EBAE000F41ADD /* TDInterstitialAdDelegate.h in Headers */,
+				6FFD8EE11A07E3A0003345AC /* LiveStreamProvisioningParserDelegate.h in Headers */,
+				6FD923EC1A362D9B009535FA /* TDAdRequestURLBuilder.h in Headers */,
+				6FD4BF2B1AB9CEC20058658C /* MetadataConfiguration.h in Headers */,
+				6FFD8EDF1A07E3A0003345AC /* LiveStreamProvisioningParser.h in Headers */,
+				6FD351701A70440000D0AB6C /* TDAdUtils.h in Headers */,
+				6FFD8F001A07E3A0003345AC /* FLVAudioTagData.h in Headers */,
+				6F49658E1CDD20C20038CEEE /* TDAnalyticsTracker.h in Headers */,
+				6FD4BF2F1AB9CEC20058658C /* TDSBMPlayer.h in Headers */,
+				6FD9BA891A94E9D40036D6BC /* TDAd.h in Headers */,
+				6FFD8EC71A07E3A0003345AC /* UIDevice+Hardware.h in Headers */,
+				6FFD8F201A07E3A0003345AC /* TritonPlayerProtected.h in Headers */,
+				6FFD8F061A07E3A0003345AC /* AMF.h in Headers */,
+				6F868B521AD2BE7800A9922E /* TDEventSource.h in Headers */,
+				6FFD8EE31A07E3A0003345AC /* Provisioning.h in Headers */,
+				6FFD8EE61A07E3A0003345AC /* Server.h in Headers */,
+				6FFD8EFB1A07E3A0003345AC /* CuePointEvent.h in Headers */,
+				6FFD8F021A07E3A0003345AC /* FLVAudioTagHeader.h in Headers */,
+				6FFD8F141A07E3A0003345AC /* CuePointEventController.h in Headers */,
+				6FD9BA9C1A94F9060036D6BC /* TDCompanionBanner.h in Headers */,
+				6F23ACA61AB2115F00AD3575 /* TDStationPlayer.h in Headers */,
+				6FD659AC1A71826A0012D570 /* TDCloseButton.h in Headers */,
+				6FFD8F0A1A07E3A0003345AC /* ASObject.h in Headers */,
+				6FFD8F041A07E3A0003345AC /* FLVHeader.h in Headers */,
+				6FFD8F0C1A07E3A0003345AC /* FLVScriptObjectTag.h in Headers */,
+				6F868B7A1AD2F72200A9922E /* TritonSDKUtils.h in Headers */,
+				6F868B591AD2BF3600A9922E /* TDCuePointHistory.h in Headers */,
+				6FFD8ECD1A07E3A0003345AC /* ADTSHeaderSharedData.h in Headers */,
+				6FFD8ECC1A07E3A0003345AC /* Logs.h in Headers */,
+				6FFD8EFD1A07E3A0003345AC /* CuePointEventProtected.h in Headers */,
+				6FFD8ED51A07E3A0003345AC /* FLVDispatcher.h in Headers */,
+				6FFD8F121A07E3A0003345AC /* AudioPlayerController.h in Headers */,
+				6FFD8ED31A07E3A0003345AC /* FLVDecoder.h in Headers */,
+				6FDE5FB21AB0AAC900C64B08 /* TDMediaPlayback.h in Headers */,
+				6FFD8ECF1A07E3A0003345AC /* AudioPlayer.h in Headers */,
+				6F23ACAC1AB211A300AD3575 /* TDStreamPlayer.h in Headers */,
+				6FD4BF1D1AB9B7990058658C /* TritonPlayerUtils.h in Headers */,
+				6FD923F01A362D9B009535FA /* TDBannerView.h in Headers */,
+				6F2F038C1AB0AE4F00E50E4D /* TDFLVPlayer.h in Headers */,
+				6FDA60401A72D39900E58A0C /* TDInterstitialAdViewController.h in Headers */,
+				6FD923F61A362D9B009535FA /* TDInterstitialAd.h in Headers */,
+				6FFD8F081A07E3A0003345AC /* AMFDecoder.h in Headers */,
+				6FD9BAA51A9530AE0036D6BC /* TDSyncBannerView.h in Headers */,
+				6FFD8EC51A07E3A0003345AC /* NSObject+Extensions.h in Headers */,
+				6FE4B19F1AD2BC7100F2A353 /* TritonPlayer.h in Headers */,
+				6FDF3A401AC462EF00C72482 /* TDMediaPlaybackDelegate.h in Headers */,
+				6FFD8EE51A07E3A0003345AC /* ProvisioningConstants.h in Headers */,
+				6FFD8EC31A07E3A0003345AC /* NSData+FLVUtils.h in Headers */,
+				6FFD8F101A07E3A0003345AC /* FLVVideoTag.h in Headers */,
+				6FD9240B1A362DDA009535FA /* TDLocationManager.h in Headers */,
+				6FFD8EFE1A07E3A0003345AC /* FLVAudioTag.h in Headers */,
+				6FD9BA901A94E9F90036D6BC /* TDAdParser.h in Headers */,
+				6FD9BA961A94EA300036D6BC /* TDAdLoader.h in Headers */,
+				6F868B741AD2F36400A9922E /* TDCuePointHistoryParser.h in Headers */,
+				6FFD8F1E1A07E3A0003345AC /* TDReachability.h in Headers */,
+				6FFD8E2F1A07E24E003345AC /* TritonPlayerSDK.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6FFD8F9A1A08197C003345AC /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6FE4B1A01AD2BC7100F2A353 /* TritonPlayer.h in Headers */,
+				6FFD8FA71A0819DD003345AC /* FLVDispatcher.h in Headers */,
+				6FD4BF241AB9B7F60058658C /* TDMediaPlayer.h in Headers */,
+				6FFD8FB21A081A19003345AC /* FLVAudioTag.h in Headers */,
+				6FD923F51A362D9B009535FA /* TDBannerViewDelegate.h in Headers */,
+				6FFD8FBA1A081A42003345AC /* FLVTag.h in Headers */,
+				6FD8148D1A6EBAE000F41ADD /* TDInterstitialAdDelegate.h in Headers */,
+				6FFD8FA81A0819E3003345AC /* FLVStream.h in Headers */,
+				6FFD8FAC1A0819F5003345AC /* LiveStreamProvisioningParser.h in Headers */,
+				6FD4BF2C1AB9CEC20058658C /* MetadataConfiguration.h in Headers */,
+				6FD923ED1A362D9B009535FA /* TDAdRequestURLBuilder.h in Headers */,
+				6FFD8FBD1A081A50003345AC /* CuePointEventController.h in Headers */,
+				6FD351711A70440000D0AB6C /* TDAdUtils.h in Headers */,
+				6FD4BF301AB9CEC20058658C /* TDSBMPlayer.h in Headers */,
+				6F49658F1CDD21210038CEEE /* TDAnalyticsTracker.h in Headers */,
+				6FFD8FAD1A0819F8003345AC /* LiveStreamProvisioningParserDelegate.h in Headers */,
+				6F868B751AD2F36400A9922E /* TDCuePointHistoryParser.h in Headers */,
+				6FD9BA8A1A94E9D40036D6BC /* TDAd.h in Headers */,
+				6FFD8FA21A0819C4003345AC /* FLVStreamPlayerLibConstants.h in Headers */,
+				6FFD8FB51A081A2B003345AC /* FLVHeader.h in Headers */,
+				6FFD8FA01A0819B9003345AC /* UIDevice+Hardware.h in Headers */,
+				6FFD8F9B1A081985003345AC /* TritonPlayerSDK.h in Headers */,
+				6FFD8FB31A081A20003345AC /* FLVAudioTagData.h in Headers */,
+				6FFD8FB11A081A11003345AC /* CuePointEventProtected.h in Headers */,
+				6FFD8FA51A0819D1003345AC /* AudioPlayer.h in Headers */,
+				6FFC3E691B4D6DF20074EBF4 /* TDAuthUtils.h in Headers */,
+				6FFD8FAF1A0819FF003345AC /* ProvisioningConstants.h in Headers */,
+				6FFD8FBC1A081A4C003345AC /* AudioPlayerController.h in Headers */,
+				6FFD8FB41A081A23003345AC /* FLVAudioTagHeader.h in Headers */,
+				6FD9BA9D1A94F9060036D6BC /* TDCompanionBanner.h in Headers */,
+				6F23ACA71AB2115F00AD3575 /* TDStationPlayer.h in Headers */,
+				6FDF3A411AC462EF00C72482 /* TDMediaPlaybackDelegate.h in Headers */,
+				6FD659AD1A71826A0012D570 /* TDCloseButton.h in Headers */,
+				6FFD8FA61A0819D6003345AC /* FLVDecoder.h in Headers */,
+				6FFD8FB91A081A3C003345AC /* FLVScriptObjectTag.h in Headers */,
+				6F868B531AD2BE7800A9922E /* TDEventSource.h in Headers */,
+				6FFD8FB01A081A04003345AC /* Server.h in Headers */,
+				6FFD8F9C1A081992003345AC /* CuePointEvent.h in Headers */,
+				6FFD8FC01A081A5F003345AC /* TritonPlayerProtected.h in Headers */,
+				6FFD8FA41A0819CE003345AC /* ADTSHeaderSharedData.h in Headers */,
+				6FFD8FB61A081A32003345AC /* AMF.h in Headers */,
+				6FDE5FB31AB0AAC900C64B08 /* TDMediaPlayback.h in Headers */,
+				6FFD8FB71A081A35003345AC /* AMFDecoder.h in Headers */,
+				6F23ACAD1AB211A300AD3575 /* TDStreamPlayer.h in Headers */,
+				6FD4BF1E1AB9B7990058658C /* TritonPlayerUtils.h in Headers */,
+				6FFD8F9E1A0819AF003345AC /* NSData+FLVUtils.h in Headers */,
+				6FD923F11A362D9B009535FA /* TDBannerView.h in Headers */,
+				6F868B7B1AD2F72200A9922E /* TritonSDKUtils.h in Headers */,
+				6F2F038D1AB0AE4F00E50E4D /* TDFLVPlayer.h in Headers */,
+				6FDA60411A72D39900E58A0C /* TDInterstitialAdViewController.h in Headers */,
+				6FD923F71A362D9B009535FA /* TDInterstitialAd.h in Headers */,
+				6FFD8FAE1A0819FB003345AC /* Provisioning.h in Headers */,
+				6FD9BAA61A9530AE0036D6BC /* TDSyncBannerView.h in Headers */,
+				6FFD8FA31A0819C7003345AC /* Logs.h in Headers */,
+				6FFD8F9F1A0819B5003345AC /* NSObject+Extensions.h in Headers */,
+				6FFD8FB81A081A39003345AC /* ASObject.h in Headers */,
+				6F868B5A1AD2BF3600A9922E /* TDCuePointHistory.h in Headers */,
+				6FD9240C1A362DDA009535FA /* TDLocationManager.h in Headers */,
+				6FFD8FBB1A081A47003345AC /* FLVVideoTag.h in Headers */,
+				6FD9BA911A94E9F90036D6BC /* TDAdParser.h in Headers */,
+				6FD9BA971A94EA300036D6BC /* TDAdLoader.h in Headers */,
+				6FFD8FBF1A081A5C003345AC /* TDReachability.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		6FFD8E281A07E24E003345AC /* TritonPlayerSDK */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6FFD8E3F1A07E24E003345AC /* Build configuration list for PBXNativeTarget "TritonPlayerSDK" */;
+			buildPhases = (
+				6FFD8E241A07E24E003345AC /* Sources */,
+				6FFD8E251A07E24E003345AC /* Frameworks */,
+				6FFD8E261A07E24E003345AC /* Headers */,
+				6FFD8E271A07E24E003345AC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TritonPlayerSDK;
+			productName = TritonPlayerSDK;
+			productReference = 6FFD8E291A07E24E003345AC /* TritonPlayerSDK.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		6FFD8E331A07E24E003345AC /* TritonPlayerSDKTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6FFD8E421A07E24E003345AC /* Build configuration list for PBXNativeTarget "TritonPlayerSDKTests" */;
+			buildPhases = (
+				6FFD8E301A07E24E003345AC /* Sources */,
+				6FFD8E311A07E24E003345AC /* Frameworks */,
+				6FFD8E321A07E24E003345AC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6F3113251A1BE26900AC67AE /* PBXTargetDependency */,
+			);
+			name = TritonPlayerSDKTests;
+			productName = TritonPlayerSDKTests;
+			productReference = 6FFD8E341A07E24E003345AC /* TritonPlayerSDKTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		6FFD8F3C1A081807003345AC /* TritonPlayerSDKStatic */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6FFD8F4E1A081808003345AC /* Build configuration list for PBXNativeTarget "TritonPlayerSDKStatic" */;
+			buildPhases = (
+				6FFD8F391A081807003345AC /* Sources */,
+				6FFD8F3A1A081807003345AC /* Frameworks */,
+				6FFD8F3B1A081807003345AC /* CopyFiles */,
+				6FFD8F9A1A08197C003345AC /* Headers */,
+				6FFD8FC11A081AA2003345AC /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TritonPlayerSDKStatic;
+			productName = TritonPlayerSDKStatic;
+			productReference = 6FFD8F3D1A081807003345AC /* libTritonPlayerSDK.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6FFD8E201A07E24E003345AC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0810;
+				ORGANIZATIONNAME = "Triton Digital";
+				TargetAttributes = {
+					6F7FF50D1A092CB10057E4C1 = {
+						CreatedOnToolsVersion = 6.1;
+					};
+					6FFD8E281A07E24E003345AC = {
+						CreatedOnToolsVersion = 6.1;
+					};
+					6FFD8E331A07E24E003345AC = {
+						CreatedOnToolsVersion = 6.1;
+						DevelopmentTeam = 4ZM36VH4SJ;
+					};
+					6FFD8F3C1A081807003345AC = {
+						CreatedOnToolsVersion = 6.1;
+					};
+					6FFD8FC41A081BF2003345AC = {
+						CreatedOnToolsVersion = 6.1;
+					};
+				};
+			};
+			buildConfigurationList = 6FFD8E231A07E24E003345AC /* Build configuration list for PBXProject "TritonPlayerSDK" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 6FFD8E1F1A07E24E003345AC;
+			productRefGroup = 6FFD8E2A1A07E24E003345AC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6FFD8E281A07E24E003345AC /* TritonPlayerSDK */,
+				6FFD8E331A07E24E003345AC /* TritonPlayerSDKTests */,
+				6FFD8F3C1A081807003345AC /* TritonPlayerSDKStatic */,
+				6FFD8FC41A081BF2003345AC /* TritonPlayerSDKStatic-Universal */,
+				6F7FF50D1A092CB10057E4C1 /* Documentation */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6FFD8E271A07E24E003345AC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6FFD8E321A07E24E003345AC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B4D4BD141FBE0A8000A39E3A /* stream.flv in Resources */,
+				6F31131E1A1BE17500AC67AE /* thebravery_payload_good.raw in Resources */,
+				6F31131C1A1BE17500AC67AE /* thebravery_data_bad.raw in Resources */,
+				6F3113281A1BF90D00AC67AE /* JOYTURK_ROCKAAC.raw in Resources */,
+				6FD923D91A36099D009535FA /* thebravery_data_badstring.raw in Resources */,
+				6F3113171A1BE17500AC67AE /* flvTag in Resources */,
+				6FD923DA1A36099D009535FA /* thebravery_payload_good.raw in Resources */,
+				B4D4BD131FBE0A8000A39E3A /* onMetaData_StreamTitle_Empty.flv in Resources */,
+				6F31131B1A1BE17500AC67AE /* badpayload_truncated.raw in Resources */,
+				B4D4BD151FBE0A8000A39E3A /* onMetaData_StreamTitle_NotEmpty.flv in Resources */,
+				6F31131D1A1BE17500AC67AE /* thebravery_data_good.raw in Resources */,
+				6F31131A1A1BE17500AC67AE /* cleared_payload_good.raw in Resources */,
+				6F3113191A1BE17500AC67AE /* cleared_data_good.raw in Resources */,
+				6F3113181A1BE17500AC67AE /* flvTagPayload in Resources */,
+				6F31131F1A1BE17500AC67AE /* livestreamKROQFMFLVGood.xml in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6F7FF5111A092CBA0057E4C1 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#appledoc Xcode script\n# Start constants\noutputPath=\"${BUILD_DIR}/Documentation\";\n# End constants\n/usr/local/bin/appledoc \\\n--output \"${outputPath}\" \\\n--logformat xcode \\\n\"${PROJECT_DIR}\"";
+		};
+		6FFD8FC11A081AA2003345AC /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\n\nmkdir -p \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Versions/A/Headers\"\n\n# Link the \"Current\" version to \"A\"\n/bin/ln -sfh A \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Versions/Current\"\n/bin/ln -sfh Versions/Current/Headers \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Headers\"\n/bin/ln -sfh \"Versions/Current/${PRODUCT_NAME}\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/${PRODUCT_NAME}\"\n\n# The -a ensures that the headers maintain the source modification date so that we don't constantly\n# cause propagating rebuilds of files that import these headers.\n/bin/cp -a \"${TARGET_BUILD_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}/\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Versions/A/Headers\"";
+		};
+		6FFD8FCA1A081C12003345AC /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\nset +u\n# Avoid recursively calling this script.\nif [[ $SF_MASTER_SCRIPT_RUNNING ]]\nthen\nexit 0\nfi\nset -u\nexport SF_MASTER_SCRIPT_RUNNING=1\n\nSF_TARGET_NAME=TritonPlayerSDK\nSF_EXECUTABLE_PATH=\"lib${SF_TARGET_NAME}.a\"\nSF_WRAPPER_NAME=\"${SF_TARGET_NAME}.framework\"\n\n# The following conditionals come from\n# https://github.com/kstenerud/iOS-Universal-Framework\n\nif [[ \"$SDK_NAME\" =~ ([A-Za-z]+) ]]\nthen\nSF_SDK_PLATFORM=${BASH_REMATCH[1]}\nelse\necho \"Could not find platform name from SDK_NAME: $SDK_NAME\"\nexit 1\nfi\n\nif [[ \"$SDK_NAME\" =~ ([0-9]+.*$) ]]\nthen\nSF_SDK_VERSION=${BASH_REMATCH[1]}\nelse\necho \"Could not find sdk version from SDK_NAME: $SDK_NAME\"\nexit 1\nfi\n\nif [[ \"$SF_SDK_PLATFORM\" = \"iphoneos\" ]]\nthen\nSF_OTHER_PLATFORM=iphonesimulator\nelse\nSF_OTHER_PLATFORM=iphoneos\nfi\n\nif [[ \"$BUILT_PRODUCTS_DIR\" =~ (.*)$SF_SDK_PLATFORM$ ]]\nthen\nSF_OTHER_BUILT_PRODUCTS_DIR=\"${BASH_REMATCH[1]}${SF_OTHER_PLATFORM}\"\nelse\necho \"Could not find platform name from build products directory: $BUILT_PRODUCTS_DIR\"\nexit 1\nfi\n\n# Build the other platform.\nxcrun xcodebuild -project \"${PROJECT_FILE_PATH}\" -target \"${TARGET_NAME}\" -configuration \"${CONFIGURATION}\" -sdk ${SF_OTHER_PLATFORM}${SF_SDK_VERSION} BUILD_DIR=\"${BUILD_DIR}\" OBJROOT=\"${OBJROOT}\" BUILD_ROOT=\"${BUILD_ROOT}\" SYMROOT=\"${SYMROOT}\" $ACTION\n\n# Smash the two static libraries into one fat binary and store it in the .framework\nxcrun lipo -create \"${BUILT_PRODUCTS_DIR}/${SF_EXECUTABLE_PATH}\" \"${SF_OTHER_BUILT_PRODUCTS_DIR}/${SF_EXECUTABLE_PATH}\" -output \"${BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/Versions/A/${SF_TARGET_NAME}\"\n\n# Copy the binary to the other architecture folder to have a complete framework in both.\ncp -a \"${BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/Versions/A/${SF_TARGET_NAME}\" \"${SF_OTHER_BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/Versions/A/${SF_TARGET_NAME}\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6FFD8E241A07E24E003345AC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6F868B7C1AD2F72200A9922E /* TritonSDKUtils.m in Sources */,
+				6FFD8EE41A07E3A0003345AC /* Provisioning.m in Sources */,
+				6FFD8EC81A07E3A0003345AC /* UIDevice+Hardware.m in Sources */,
+				6FD351721A70440000D0AB6C /* TDAdUtils.m in Sources */,
+				6FFC3E6A1B4D6DF20074EBF4 /* TDAuthUtils.m in Sources */,
+				6FDA60421A72D39900E58A0C /* TDInterstitialAdViewController.m in Sources */,
+				6FD9BA921A94E9F90036D6BC /* TDAdParser.m in Sources */,
+				6F868B5B1AD2BF3600A9922E /* TDCuePointHistory.m in Sources */,
+				6FFD8ED01A07E3A0003345AC /* AudioPlayer.m in Sources */,
+				6FFD8F0B1A07E3A0003345AC /* ASObject.m in Sources */,
+				6FFD8EC41A07E3A0003345AC /* NSData+FLVUtils.m in Sources */,
+				6FFD8EFC1A07E3A0003345AC /* CuePointEvent.m in Sources */,
+				6FD659AE1A71826A0012D570 /* TDCloseButton.m in Sources */,
+				6F868B541AD2BE7800A9922E /* TDEventSource.m in Sources */,
+				6F23ACA81AB2115F00AD3575 /* TDStationPlayer.m in Sources */,
+				6FFD8EE21A07E3A0003345AC /* LiveStreamProvisioningParserDelegate.m in Sources */,
+				6FFD8F0F1A07E3A0003345AC /* FLVTag.m in Sources */,
+				6FFD8EE71A07E3A0003345AC /* Server.m in Sources */,
+				6FD923F21A362D9B009535FA /* TDBannerView.m in Sources */,
+				6FFD8EC61A07E3A0003345AC /* NSObject+Extensions.m in Sources */,
+				6FD9BA9E1A94F9060036D6BC /* TDCompanionBanner.m in Sources */,
+				6FFD8ED61A07E3A0003345AC /* FLVDispatcher.m in Sources */,
+				6FD923F81A362D9B009535FA /* TDInterstitialAd.m in Sources */,
+				6FFD8F011A07E3A0003345AC /* FLVAudioTagData.m in Sources */,
+				6F2F038E1AB0AE4F00E50E4D /* TDFLVPlayer.m in Sources */,
+				6FD9BAA71A9530AE0036D6BC /* TDSyncBannerView.m in Sources */,
+				6FD4BF251AB9B7F60058658C /* TDMediaPlayer.m in Sources */,
+				6FD9BA981A94EA300036D6BC /* TDAdLoader.m in Sources */,
+				6FFD8ED41A07E3A0003345AC /* FLVDecoder.m in Sources */,
+				6FD4BF2D1AB9CEC20058658C /* MetadataConfiguration.m in Sources */,
+				6FFD8F071A07E3A0003345AC /* AMF.m in Sources */,
+				6FDF15461CCFDFF100275292 /* TDAnalyticsTracker.m in Sources */,
+				6FD9BA8B1A94E9D40036D6BC /* TDAd.m in Sources */,
+				6FFD8F051A07E3A0003345AC /* FLVHeader.m in Sources */,
+				6FFD8EE01A07E3A0003345AC /* LiveStreamProvisioningParser.m in Sources */,
+				6FD9240D1A362DDA009535FA /* TDLocationManager.m in Sources */,
+				6FFD8F1F1A07E3A0003345AC /* TDReachability.m in Sources */,
+				6FE4B1A11AD2BC7100F2A353 /* TritonPlayer.m in Sources */,
+				6FD923EE1A362D9B009535FA /* TDAdRequestURLBuilder.m in Sources */,
+				6FFD8F0D1A07E3A0003345AC /* FLVScriptObjectTag.m in Sources */,
+				6FFD8EFF1A07E3A0003345AC /* FLVAudioTag.m in Sources */,
+				6FFD8F031A07E3A0003345AC /* FLVAudioTagHeader.m in Sources */,
+				6FFD8ED81A07E3A0003345AC /* FLVStream.m in Sources */,
+				6F868B761AD2F36400A9922E /* TDCuePointHistoryParser.m in Sources */,
+				6FFD8F111A07E3A0003345AC /* FLVVideoTag.m in Sources */,
+				6FD4BF311AB9CEC20058658C /* TDSBMPlayer.m in Sources */,
+				6FFD8ECE1A07E3A0003345AC /* ADTSHeaderSharedData.m in Sources */,
+				6FFD8F091A07E3A0003345AC /* AMFDecoder.m in Sources */,
+				6F23ACAE1AB211A300AD3575 /* TDStreamPlayer.m in Sources */,
+				6FD4BF1F1AB9B7990058658C /* TritonPlayerUtils.m in Sources */,
+				6FFD8F131A07E3A0003345AC /* AudioPlayerController.m in Sources */,
+				6FFD8F151A07E3A0003345AC /* CuePointEventController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6FFD8E301A07E24E003345AC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B4AE7A4B1FBB87FF004A5615 /* TritonPlayerTest.m in Sources */,
+				6F3113221A1BE17500AC67AE /* ProvisioningTest.m in Sources */,
+				6FD9BAA21A95245A0036D6BC /* TDAdTest.m in Sources */,
+				6FDDD4E61A9D2C9B00ED94C8 /* TDBannerViewTest.m in Sources */,
+				6F3113151A1BE17500AC67AE /* CuePointEventControllerTest.m in Sources */,
+				6F3113161A1BE17500AC67AE /* CuePointEventTest.m in Sources */,
+				6FDDD4E51A9D2C9B00ED94C8 /* TDAdRequestURLBuilderTest.m in Sources */,
+				6F3113211A1BE17500AC67AE /* FLVTagTest.m in Sources */,
+				B4AE7A481FBB36C9004A5615 /* FLVDispatcherTest.m in Sources */,
+				6FFC3E6E1B4DAA620074EBF4 /* TDAuthUtilsTest.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6FFD8F391A081807003345AC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6F73F4971CD9407000598694 /* TDAnalyticsTracker.m in Sources */,
+				6F868B7D1AD2F72200A9922E /* TritonSDKUtils.m in Sources */,
+				6FFD8F561A0818E2003345AC /* NSData+FLVUtils.m in Sources */,
+				6FFD8F581A0818E2003345AC /* NSObject+Extensions.m in Sources */,
+				6FD351731A70440000D0AB6C /* TDAdUtils.m in Sources */,
+				6FFC3E6B1B4D6DF20074EBF4 /* TDAuthUtils.m in Sources */,
+				6FDA60431A72D39900E58A0C /* TDInterstitialAdViewController.m in Sources */,
+				6FD9BA931A94E9F90036D6BC /* TDAdParser.m in Sources */,
+				6F868B5C1AD2BF3600A9922E /* TDCuePointHistory.m in Sources */,
+				6FFD8F5A1A0818E2003345AC /* UIDevice+Hardware.m in Sources */,
+				6FFD8F601A0818E2003345AC /* ADTSHeaderSharedData.m in Sources */,
+				6FFD8F621A0818E2003345AC /* AudioPlayer.m in Sources */,
+				6FD659AF1A71826A0012D570 /* TDCloseButton.m in Sources */,
+				6F23ACA91AB2115F00AD3575 /* TDStationPlayer.m in Sources */,
+				6F868B551AD2BE7800A9922E /* TDEventSource.m in Sources */,
+				6FFD8F641A0818E2003345AC /* FLVDecoder.m in Sources */,
+				6FFD8F661A0818E2003345AC /* FLVDispatcher.m in Sources */,
+				6FFD8F681A0818E2003345AC /* FLVStream.m in Sources */,
+				6FD923F31A362D9B009535FA /* TDBannerView.m in Sources */,
+				6FFD8F701A0818E2003345AC /* LiveStreamProvisioningParser.m in Sources */,
+				6FD9BA9F1A94F9060036D6BC /* TDCompanionBanner.m in Sources */,
+				6FFD8F721A0818E2003345AC /* LiveStreamProvisioningParserDelegate.m in Sources */,
+				6FFD8FCB1A081E40003345AC /* FLVAudioTagData.m in Sources */,
+				6FD923F91A362D9B009535FA /* TDInterstitialAd.m in Sources */,
+				6FFD8F741A0818E2003345AC /* Provisioning.m in Sources */,
+				6F2F038F1AB0AE4F00E50E4D /* TDFLVPlayer.m in Sources */,
+				6FD9BAA81A9530AE0036D6BC /* TDSyncBannerView.m in Sources */,
+				6FD4BF261AB9B7F60058658C /* TDMediaPlayer.m in Sources */,
+				6FD9BA991A94EA300036D6BC /* TDAdLoader.m in Sources */,
+				6FFD8F771A0818E2003345AC /* Server.m in Sources */,
+				6FFD8F791A0818E2003345AC /* CuePointEvent.m in Sources */,
+				6FD4BF2E1AB9CEC20058658C /* MetadataConfiguration.m in Sources */,
+				6FD9BA8C1A94E9D40036D6BC /* TDAd.m in Sources */,
+				6FFD8F7C1A0818E2003345AC /* FLVAudioTag.m in Sources */,
+				6FFD8F801A0818E2003345AC /* FLVAudioTagHeader.m in Sources */,
+				6FD9240E1A362DDA009535FA /* TDLocationManager.m in Sources */,
+				6FFD8F821A0818E2003345AC /* FLVHeader.m in Sources */,
+				6FE4B1A21AD2BC7100F2A353 /* TritonPlayer.m in Sources */,
+				6FD923EF1A362D9B009535FA /* TDAdRequestURLBuilder.m in Sources */,
+				6FFD8F841A0818E2003345AC /* AMF.m in Sources */,
+				6FFD8F861A0818E2003345AC /* AMFDecoder.m in Sources */,
+				6FFD8F881A0818E2003345AC /* ASObject.m in Sources */,
+				6FFD8F8A1A0818E2003345AC /* FLVScriptObjectTag.m in Sources */,
+				6F868B771AD2F36400A9922E /* TDCuePointHistoryParser.m in Sources */,
+				6FFD8F8C1A0818E2003345AC /* FLVTag.m in Sources */,
+				6FFD8F8E1A0818E2003345AC /* FLVVideoTag.m in Sources */,
+				6FD4BF321AB9CEC20058658C /* TDSBMPlayer.m in Sources */,
+				6FFD8F901A0818E2003345AC /* AudioPlayerController.m in Sources */,
+				6F23ACAF1AB211A300AD3575 /* TDStreamPlayer.m in Sources */,
+				6FD4BF201AB9B7990058658C /* TritonPlayerUtils.m in Sources */,
+				6FFD8F921A0818E2003345AC /* CuePointEventController.m in Sources */,
+				6FFD8F971A0818E2003345AC /* TDReachability.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6F3113251A1BE26900AC67AE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6FFD8F3C1A081807003345AC /* TritonPlayerSDKStatic */;
+			targetProxy = 6F3113241A1BE26900AC67AE /* PBXContainerItemProxy */;
+		};
+		6FFD8FC91A081C0E003345AC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6FFD8F3C1A081807003345AC /* TritonPlayerSDKStatic */;
+			targetProxy = 6FFD8FC81A081C0E003345AC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		6F7FF50E1A092CB10057E4C1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		6F7FF50F1A092CB10057E4C1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		6FFD8E3D1A07E24E003345AC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		6FFD8E3E1A07E24E003345AC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		6FFD8E401A07E24E003345AC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer: richard hill (SMXN7ZHEV9)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = TritonPlayerSDK/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.tritondigital.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "fd931c42-dab1-4f56-8fbd-d9d6a223f8b1";
+				SKIP_INSTALL = YES;
+				VALID_ARCHS = "arm64 armv7 armv7s i386 x86_64";
+			};
+			name = Debug;
+		};
+		6FFD8E411A07E24E003345AC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Triton Digital Canada Inc. (4ZM36VH4SJ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = TritonPlayerSDK/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.tritondigital.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "dc25e1ee-c395-4a93-9ae4-3aa75b5bbc44";
+				SKIP_INSTALL = YES;
+				VALID_ARCHS = "arm64 armv7 armv7s i386 x86_64";
+			};
+			name = Release;
+		};
+		6FFD8E431A07E24E003345AC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				HEADER_SEARCH_PATHS = "";
+				INFOPLIST_FILE = TritonPlayerSDKTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.tritondigital.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+			};
+			name = Debug;
+		};
+		6FFD8E441A07E24E003345AC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				HEADER_SEARCH_PATHS = "";
+				INFOPLIST_FILE = TritonPlayerSDKTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.tritondigital.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+			};
+			name = Release;
+		};
+		6FFD8F4F1A081808003345AC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEAD_CODE_STRIPPING = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = TritonPlayerSDK;
+				PUBLIC_HEADERS_FOLDER_PATH = TritonPlayerSDK;
+				SKIP_INSTALL = YES;
+				STRIP_STYLE = "non-global";
+				VALID_ARCHS = "arm64 armv7 armv7s i386 x86_64";
+			};
+			name = Debug;
+		};
+		6FFD8F501A081808003345AC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = TritonPlayerSDK;
+				PUBLIC_HEADERS_FOLDER_PATH = TritonPlayerSDK;
+				SKIP_INSTALL = YES;
+				STRIP_STYLE = "non-global";
+				VALID_ARCHS = "arm64 armv7 armv7s i386 x86_64";
+			};
+			name = Release;
+		};
+		6FFD8FC61A081BF2003345AC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		6FFD8FC71A081BF2003345AC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6F7FF5101A092CB10057E4C1 /* Build configuration list for PBXAggregateTarget "Documentation" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6F7FF50E1A092CB10057E4C1 /* Debug */,
+				6F7FF50F1A092CB10057E4C1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6FFD8E231A07E24E003345AC /* Build configuration list for PBXProject "TritonPlayerSDK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6FFD8E3D1A07E24E003345AC /* Debug */,
+				6FFD8E3E1A07E24E003345AC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6FFD8E3F1A07E24E003345AC /* Build configuration list for PBXNativeTarget "TritonPlayerSDK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6FFD8E401A07E24E003345AC /* Debug */,
+				6FFD8E411A07E24E003345AC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6FFD8E421A07E24E003345AC /* Build configuration list for PBXNativeTarget "TritonPlayerSDKTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6FFD8E431A07E24E003345AC /* Debug */,
+				6FFD8E441A07E24E003345AC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6FFD8F4E1A081808003345AC /* Build configuration list for PBXNativeTarget "TritonPlayerSDKStatic" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6FFD8F4F1A081808003345AC /* Debug */,
+				6FFD8F501A081808003345AC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6FFD8FC51A081BF2003345AC /* Build configuration list for PBXAggregateTarget "TritonPlayerSDKStatic-Universal" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6FFD8FC61A081BF2003345AC /* Debug */,
+				6FFD8FC71A081BF2003345AC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6FFD8E201A07E24E003345AC /* Project object */;
+}

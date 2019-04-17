@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Constants/TDAdType.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/c/tdef/TDAdType</TokenIdentifier>
+			<Abstract type="html">The type of on-demand ad</Abstract>
+			<DeclaredIn>TDAdRequestURLBuilder.h</DeclaredIn>
+            
+			
+			<NodeRef refid="18"/>
+		</Token>
+		
+		
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/kTDAdTypePreroll</TokenIdentifier>
+            <Abstract type="html">Pre-roll ads. These are intended to be played before playback starts.</Abstract>
+            <Declaration>kTDAdTypePreroll</Declaration>
+            
+            <DeclaredIn>TDAdRequestURLBuilder.h</DeclaredIn>
+            
+            <NodeRef refid="18"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/kTDAdTypeMidroll</TokenIdentifier>
+            <Abstract type="html">Mid-roll ads. These are intended to be played during the session, between content elements such as songs.</Abstract>
+            <Declaration>kTDAdTypeMidroll</Declaration>
+            
+            <DeclaredIn>TDAdRequestURLBuilder.h</DeclaredIn>
+            
+            <NodeRef refid="18"/>
+        </Token>
+        
+        
+	</File>
+</Tokens>

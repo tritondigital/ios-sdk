@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Constants/TDPlayerInfo.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/c/tdef/TDPlayerInfo</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>TritonPlayer.h</DeclaredIn>
+            
+			
+			<NodeRef refid="24"/>
+		</Token>
+		
+		
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/kTDPlayerInfoConnectedToStream</TokenIdentifier>
+            <Abstract type="html">The player established connection with the stream. It will soon start playing.</Abstract>
+            <Declaration>kTDPlayerInfoConnectedToStream</Declaration>
+            
+            <DeclaredIn>TritonPlayer.h</DeclaredIn>
+            
+            <NodeRef refid="24"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/kTDPlayerInfoBuffering</TokenIdentifier>
+            <Abstract type="html">The stream is buffering. The buffer percentage can be queried by the key InfoBufferingPercentageKey in the extra dictionary for player:didReceiveInfo:andExtra:</Abstract>
+            <Declaration>kTDPlayerInfoBuffering</Declaration>
+            
+            <DeclaredIn>TritonPlayer.h</DeclaredIn>
+            
+            <NodeRef refid="24"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/kTDPlayerInfoForwardedToAlternateMount</TokenIdentifier>
+            <Abstract type="html">The provided mount is geoblocked. The player was redirected to an alternate mount. It&apos;s mount name can be obtained by the key InfoAlternateMountNameKey in the extra dictionary.</Abstract>
+            <Declaration>kTDPlayerInfoForwardedToAlternateMount</Declaration>
+            
+            <DeclaredIn>TritonPlayer.h</DeclaredIn>
+            
+            <NodeRef refid="24"/>
+        </Token>
+        
+        
+	</File>
+</Tokens>

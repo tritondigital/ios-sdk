@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Constants/TDStreamProfile.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/c/tdef/TDStreamProfile</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>TDStreamPlayer.h</DeclaredIn>
+            
+			
+			<NodeRef refid="26"/>
+		</Token>
+		
+		
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/kTDStreamProfileFLV</TokenIdentifier>
+            <Abstract type="html"></Abstract>
+            <Declaration>kTDStreamProfileFLV</Declaration>
+            
+            <DeclaredIn>TDStreamPlayer.h</DeclaredIn>
+            
+            <NodeRef refid="26"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KTDStreamProfileHLS</TokenIdentifier>
+            <Abstract type="html"></Abstract>
+            <Declaration>KTDStreamProfileHLS</Declaration>
+            
+            <DeclaredIn>TDStreamPlayer.h</DeclaredIn>
+            
+            <NodeRef refid="26"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KTDStreamProfileOther</TokenIdentifier>
+            <Abstract type="html"></Abstract>
+            <Declaration>KTDStreamProfileOther</Declaration>
+            
+            <DeclaredIn>TDStreamPlayer.h</DeclaredIn>
+            
+            <NodeRef refid="26"/>
+        </Token>
+        
+        
+	</File>
+</Tokens>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>--no-repeat-first-par</key>
+	<true/>
+	<key>--docset-platform-family</key>
+	<string>iphoneos</string>
+	<key>--company-id</key>
+	<string>com.tritondigital</string>
+	<key>--ignore</key>
+	<array>
+		<string>*.m</string>
+		<string>BUILD</string>
+		<string>Documentation</string>
+		<string>Libs</string>
+		<string>tritonplayer-sample-app</string>
+	</array>
+	<key>--print-settings</key>
+	<true/>
+	<key>--project-company</key>
+	<string>Triton Digital</string>
+	<key>--project-name</key>
+	<string>Triton Mobile SDK</string>
+	<key>--repeat-first-par</key>
+	<false/>
+	<key>--templates</key>
+	<string>~/Library/Application Support/appledoc</string>
+	<key>--verbose</key>
+	<string>2</string>
+	<key>--exit-threshold</key>
+	<integer>2</integer>
+	<key>--finalize-docset</key>
+	<true/>
+	<key>--keep-intermediate-files</key>
+	<true/>
+</dict>
+</plist>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Constants/TDPlayerAction.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/c/tdef/TDPlayerAction</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>TritonPlayerConstants.h</DeclaredIn>
+            
+			
+			<NodeRef refid="22"/>
+		</Token>
+		
+		
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/kTDPlayerActionJumpToNextState</TokenIdentifier>
+            <Abstract type="html"></Abstract>
+            <Declaration>kTDPlayerActionJumpToNextState</Declaration>
+            
+            <DeclaredIn>TritonPlayerConstants.h</DeclaredIn>
+            
+            <NodeRef refid="22"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/kTDPlayerActionPlay</TokenIdentifier>
+            <Abstract type="html"></Abstract>
+            <Declaration>kTDPlayerActionPlay</Declaration>
+            
+            <DeclaredIn>TritonPlayerConstants.h</DeclaredIn>
+            
+            <NodeRef refid="22"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/kTDPlayerActionStop</TokenIdentifier>
+            <Abstract type="html"></Abstract>
+            <Declaration>kTDPlayerActionStop</Declaration>
+            
+            <DeclaredIn>TritonPlayerConstants.h</DeclaredIn>
+            
+            <NodeRef refid="22"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/kTDPlayerActionPause</TokenIdentifier>
+            <Abstract type="html"></Abstract>
+            <Declaration>kTDPlayerActionPause</Declaration>
+            
+            <DeclaredIn>TritonPlayerConstants.h</DeclaredIn>
+            
+            <NodeRef refid="22"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/kTDPlayerActionError</TokenIdentifier>
+            <Abstract type="html"></Abstract>
+            <Declaration>kTDPlayerActionError</Declaration>
+            
+            <DeclaredIn>TritonPlayerConstants.h</DeclaredIn>
+            
+            <NodeRef refid="22"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/kTDPlayerActionReconnect</TokenIdentifier>
+            <Abstract type="html"></Abstract>
+            <Declaration>kTDPlayerActionReconnect</Declaration>
+            
+            <DeclaredIn>TritonPlayerConstants.h</DeclaredIn>
+            
+            <NodeRef refid="22"/>
+        </Token>
+        
+        
+	</File>
+</Tokens>

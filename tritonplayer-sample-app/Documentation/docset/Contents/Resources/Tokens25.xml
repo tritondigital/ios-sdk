@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Constants/TDPlayerState.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/c/tdef/TDPlayerState</TokenIdentifier>
+			<Abstract type="html">States representing Triton Player playback life-cycle</Abstract>
+			<DeclaredIn>TritonPlayer.h</DeclaredIn>
+            
+			
+			<NodeRef refid="25"/>
+		</Token>
+		
+		
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/kTDPlayerStateStopped</TokenIdentifier>
+            <Abstract type="html">Player is stopped. The playhead position returns to the beginning.</Abstract>
+            <Declaration>kTDPlayerStateStopped</Declaration>
+            
+            <DeclaredIn>TritonPlayer.h</DeclaredIn>
+            
+            <NodeRef refid="25"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/kTDPlayerStatePlaying</TokenIdentifier>
+            <Abstract type="html">Player is currently playing</Abstract>
+            <Declaration>kTDPlayerStatePlaying</Declaration>
+            
+            <DeclaredIn>TritonPlayer.h</DeclaredIn>
+            
+            <NodeRef refid="25"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/kTDPlayerStateConnecting</TokenIdentifier>
+            <Abstract type="html">Player is connecting to the stream</Abstract>
+            <Declaration>kTDPlayerStateConnecting</Declaration>
+            
+            <DeclaredIn>TritonPlayer.h</DeclaredIn>
+            
+            <NodeRef refid="25"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/kTDPlayerStatePaused</TokenIdentifier>
+            <Abstract type="html">Player is paused. The playhead position is kept at the last position. Not available for live streams.</Abstract>
+            <Declaration>kTDPlayerStatePaused</Declaration>
+            
+            <DeclaredIn>TritonPlayer.h</DeclaredIn>
+            
+            <NodeRef refid="25"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/kTDPlayerStateError</TokenIdentifier>
+            <Abstract type="html">Player is on error state</Abstract>
+            <Declaration>kTDPlayerStateError</Declaration>
+            
+            <DeclaredIn>TritonPlayer.h</DeclaredIn>
+            
+            <NodeRef refid="25"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/kTDPlayerStateCompleted</TokenIdentifier>
+            <Abstract type="html">The end of the media has been reached. Not available for live streams.</Abstract>
+            <Declaration>kTDPlayerStateCompleted</Declaration>
+            
+            <DeclaredIn>TritonPlayer.h</DeclaredIn>
+            
+            <NodeRef refid="25"/>
+        </Token>
+        
+        
+	</File>
+</Tokens>

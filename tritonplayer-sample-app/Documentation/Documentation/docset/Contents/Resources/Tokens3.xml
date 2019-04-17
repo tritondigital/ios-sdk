@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/TDAdLoader.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/TDAdLoader</TokenIdentifier>
+			<Abstract type="html">TDAdLoader loads a Triton ad from an ad request.</Abstract>
+			<DeclaredIn>TDAdLoader.h</DeclaredIn>
+            
+			
+			<NodeRef refid="3"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDAdLoader/loadAdWithStringRequest:completionHandler:</TokenIdentifier>
+			<Abstract type="html">Loads an ad asynchronously from a request string. The string can be built manually by following Triton Digital On-Demand advertising guide or
+by the help of TDAdRequestURLBuilder class (recommended).</Abstract>
+			<DeclaredIn>TDAdLoader.h</DeclaredIn>
+			
+			<Declaration>- (void)loadAdWithStringRequest:(NSString *)request completionHandler:(void ( ^ ) ( TDAd *loadedAd , NSError *error ))completionHandler</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>request</Name>
+					<Abstract type="html">A NSString containing the request with the targeting parameters.</Abstract>
+				</Parameter><Parameter>
+					<Name>completionHandler</Name>
+					<Abstract type="html">a block that will execute when the request is finished, with the ad loaded or an error object.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/loadAdWithStringRequest:completionHandler:</Anchor>
+            <NodeRef refid="3"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDAdLoader/loadAdWithBuilder:completionHandler:</TokenIdentifier>
+			<Abstract type="html">Loads an ad asynchronously directly from a TDAdRequestURLBuilder.</Abstract>
+			<DeclaredIn>TDAdLoader.h</DeclaredIn>
+			
+			<Declaration>- (void)loadAdWithBuilder:(TDAdRequestURLBuilder *)builder completionHandler:(void ( ^ ) ( TDAd *loadedAd , NSError *error ))completionHandler</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>builder</Name>
+					<Abstract type="html">A TDAdRequestURLBuilder containing the request with the targeting parameters.</Abstract>
+				</Parameter><Parameter>
+					<Name>completionHandler</Name>
+					<Abstract type="html">a block that will execute when the request is finished, with the ad loaded or an error object.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/loadAdWithBuilder:completionHandler:</Anchor>
+            <NodeRef refid="3"/>
+		</Token>
+		
+        
+        
+	</File>
+</Tokens>

@@ -1,0 +1,503 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/TritonPlayer.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/TritonPlayer</TokenIdentifier>
+			<Abstract type="html">TritonPlayer handles the playback of stations provided by Triton Digital. It also supports receiving CuePoint events with metadata for track information, ads etc.</Abstract>
+			<DeclaredIn>TritonPlayer.h</DeclaredIn>
+            
+			
+			<NodeRef refid="11"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TritonPlayer/setState:</TokenIdentifier>
+			<Abstract type="html">The current state of the player</Abstract>
+			<DeclaredIn>TritonPlayer.h</DeclaredIn>
+			
+			<Declaration>@property (readonly) TDPlayerState state</Declaration>
+			
+			
+			<Anchor>//api/name/state</Anchor>
+            <NodeRef refid="11"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TritonPlayer/state</TokenIdentifier>
+			<Abstract type="html">The current state of the player</Abstract>
+			<DeclaredIn>TritonPlayer.h</DeclaredIn>
+			
+			<Declaration>@property (readonly) TDPlayerState state</Declaration>
+			
+			
+			<Anchor>//api/name/state</Anchor>
+            <NodeRef refid="11"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/TritonPlayer/state</TokenIdentifier>
+			<Abstract type="html">The current state of the player</Abstract>
+			<DeclaredIn>TritonPlayer.h</DeclaredIn>
+			
+			<Declaration>@property (readonly) TDPlayerState state</Declaration>
+			
+			
+			<Anchor>//api/name/state</Anchor>
+            <NodeRef refid="11"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TritonPlayer/setPlaybackDuration:</TokenIdentifier>
+			<Abstract type="html">Returns the current playback duration in seconds. Not available for live streams.</Abstract>
+			<DeclaredIn>TritonPlayer.h</DeclaredIn>
+			
+			<Declaration>@property (readonly) NSTimeInterval playbackDuration</Declaration>
+			
+			
+			<Anchor>//api/name/playbackDuration</Anchor>
+            <NodeRef refid="11"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TritonPlayer/playbackDuration</TokenIdentifier>
+			<Abstract type="html">Returns the current playback duration in seconds. Not available for live streams.</Abstract>
+			<DeclaredIn>TritonPlayer.h</DeclaredIn>
+			
+			<Declaration>@property (readonly) NSTimeInterval playbackDuration</Declaration>
+			
+			
+			<Anchor>//api/name/playbackDuration</Anchor>
+            <NodeRef refid="11"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/TritonPlayer/playbackDuration</TokenIdentifier>
+			<Abstract type="html">Returns the current playback duration in seconds. Not available for live streams.</Abstract>
+			<DeclaredIn>TritonPlayer.h</DeclaredIn>
+			
+			<Declaration>@property (readonly) NSTimeInterval playbackDuration</Declaration>
+			
+			
+			<Anchor>//api/name/playbackDuration</Anchor>
+            <NodeRef refid="11"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TritonPlayer/setCurrentPlaybackTime:</TokenIdentifier>
+			<Abstract type="html">Returns the current playback position in seconds.</Abstract>
+			<DeclaredIn>TritonPlayer.h</DeclaredIn>
+			
+			<Declaration>@property (readonly) NSTimeInterval currentPlaybackTime</Declaration>
+			
+			
+			<Anchor>//api/name/currentPlaybackTime</Anchor>
+            <NodeRef refid="11"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TritonPlayer/currentPlaybackTime</TokenIdentifier>
+			<Abstract type="html">Returns the current playback position in seconds.</Abstract>
+			<DeclaredIn>TritonPlayer.h</DeclaredIn>
+			
+			<Declaration>@property (readonly) NSTimeInterval currentPlaybackTime</Declaration>
+			
+			
+			<Anchor>//api/name/currentPlaybackTime</Anchor>
+            <NodeRef refid="11"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/TritonPlayer/currentPlaybackTime</TokenIdentifier>
+			<Abstract type="html">Returns the current playback position in seconds.</Abstract>
+			<DeclaredIn>TritonPlayer.h</DeclaredIn>
+			
+			<Declaration>@property (readonly) NSTimeInterval currentPlaybackTime</Declaration>
+			
+			
+			<Anchor>//api/name/currentPlaybackTime</Anchor>
+            <NodeRef refid="11"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TritonPlayer/setIsExecuting:</TokenIdentifier>
+			<Abstract type="html">Tells whether the player is streaming audio.</Abstract>
+			<DeclaredIn>TritonPlayer.h</DeclaredIn>
+			
+			<Declaration>@property (readonly) BOOL isExecuting</Declaration>
+			
+			
+			<Anchor>//api/name/isExecuting</Anchor>
+            <NodeRef refid="11"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TritonPlayer/isExecuting</TokenIdentifier>
+			<Abstract type="html">Tells whether the player is streaming audio.</Abstract>
+			<DeclaredIn>TritonPlayer.h</DeclaredIn>
+			
+			<Declaration>@property (readonly) BOOL isExecuting</Declaration>
+			
+			
+			<Anchor>//api/name/isExecuting</Anchor>
+            <NodeRef refid="11"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/TritonPlayer/isExecuting</TokenIdentifier>
+			<Abstract type="html">Tells whether the player is streaming audio.</Abstract>
+			<DeclaredIn>TritonPlayer.h</DeclaredIn>
+			
+			<Declaration>@property (readonly) BOOL isExecuting</Declaration>
+			
+			
+			<Anchor>//api/name/isExecuting</Anchor>
+            <NodeRef refid="11"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TritonPlayer/setError:</TokenIdentifier>
+			<Abstract type="html">When the player&apos;s state is kTDPlayerStateError, this property contains the associated error. It&apos;s nil for all other states.</Abstract>
+			<DeclaredIn>TritonPlayer.h</DeclaredIn>
+			
+			<Declaration>@property (readonly) NSError *error</Declaration>
+			
+			
+			<Anchor>//api/name/error</Anchor>
+            <NodeRef refid="11"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TritonPlayer/error</TokenIdentifier>
+			<Abstract type="html">When the player&apos;s state is kTDPlayerStateError, this property contains the associated error. It&apos;s nil for all other states.</Abstract>
+			<DeclaredIn>TritonPlayer.h</DeclaredIn>
+			
+			<Declaration>@property (readonly) NSError *error</Declaration>
+			
+			
+			<Anchor>//api/name/error</Anchor>
+            <NodeRef refid="11"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/TritonPlayer/error</TokenIdentifier>
+			<Abstract type="html">When the player&apos;s state is kTDPlayerStateError, this property contains the associated error. It&apos;s nil for all other states.</Abstract>
+			<DeclaredIn>TritonPlayer.h</DeclaredIn>
+			
+			<Declaration>@property (readonly) NSError *error</Declaration>
+			
+			
+			<Anchor>//api/name/error</Anchor>
+            <NodeRef refid="11"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TritonPlayer/getAudioQueue</TokenIdentifier>
+			<Abstract type="html">The underlying audio queue which playbacks the audio. Use this when you need to process or analyze the audio data. Ex. When building a spectrum analyzer.</Abstract>
+			<DeclaredIn>TritonPlayer.h</DeclaredIn>
+			
+			<Declaration>- (AudioQueueRef)getAudioQueue</Declaration>
+			
+			<ReturnValue><Abstract type="html">The underlying AudioQueue</Abstract></ReturnValue>
+			<Anchor>//api/name/getAudioQueue</Anchor>
+            <NodeRef refid="11"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TritonPlayer/getLibVersion</TokenIdentifier>
+			<Abstract type="html">Returns the current library version</Abstract>
+			<DeclaredIn>TritonPlayer.h</DeclaredIn>
+			
+			<Declaration>- (NSString *)getLibVersion</Declaration>
+			
+			<ReturnValue><Abstract type="html">A string containing the current library version.</Abstract></ReturnValue>
+			<Anchor>//api/name/getLibVersion</Anchor>
+            <NodeRef refid="11"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TritonPlayer/isNetworkReachable</TokenIdentifier>
+			<Abstract type="html">Informs if the network is available.</Abstract>
+			<DeclaredIn>TritonPlayer.h</DeclaredIn>
+			
+			<Declaration>- (BOOL)isNetworkReachable</Declaration>
+			
+			<ReturnValue><Abstract type="html">Whether the network is available.</Abstract></ReturnValue>
+			<Anchor>//api/name/isNetworkReachable</Anchor>
+            <NodeRef refid="11"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TritonPlayer/setTargetingLocation:</TokenIdentifier>
+			<Abstract type="html">The most recent user location available for audience targeting.</Abstract>
+			<DeclaredIn>TritonPlayer.h</DeclaredIn>
+			
+			<Declaration>@property (readonly) CLLocation *targetingLocation</Declaration>
+			
+			
+			<Anchor>//api/name/targetingLocation</Anchor>
+            <NodeRef refid="11"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TritonPlayer/targetingLocation</TokenIdentifier>
+			<Abstract type="html">The most recent user location available for audience targeting.</Abstract>
+			<DeclaredIn>TritonPlayer.h</DeclaredIn>
+			
+			<Declaration>@property (readonly) CLLocation *targetingLocation</Declaration>
+			
+			
+			<Anchor>//api/name/targetingLocation</Anchor>
+            <NodeRef refid="11"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/TritonPlayer/targetingLocation</TokenIdentifier>
+			<Abstract type="html">The most recent user location available for audience targeting.</Abstract>
+			<DeclaredIn>TritonPlayer.h</DeclaredIn>
+			
+			<Declaration>@property (readonly) CLLocation *targetingLocation</Declaration>
+			
+			
+			<Anchor>//api/name/targetingLocation</Anchor>
+            <NodeRef refid="11"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TritonPlayer/setShouldResumePlaybackAfterInterruption:</TokenIdentifier>
+			<Abstract type="html">When an interruption ends (phone call, alarm, siri etc.) this flags will be true when it is appropriate to resume playback without waiting for user input.</Abstract>
+			<DeclaredIn>TritonPlayer.h</DeclaredIn>
+			
+			<Declaration>@property (readonly) BOOL shouldResumePlaybackAfterInterruption</Declaration>
+			
+			
+			<Anchor>//api/name/shouldResumePlaybackAfterInterruption</Anchor>
+            <NodeRef refid="11"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TritonPlayer/shouldResumePlaybackAfterInterruption</TokenIdentifier>
+			<Abstract type="html">When an interruption ends (phone call, alarm, siri etc.) this flags will be true when it is appropriate to resume playback without waiting for user input.</Abstract>
+			<DeclaredIn>TritonPlayer.h</DeclaredIn>
+			
+			<Declaration>@property (readonly) BOOL shouldResumePlaybackAfterInterruption</Declaration>
+			
+			
+			<Anchor>//api/name/shouldResumePlaybackAfterInterruption</Anchor>
+            <NodeRef refid="11"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/TritonPlayer/shouldResumePlaybackAfterInterruption</TokenIdentifier>
+			<Abstract type="html">When an interruption ends (phone call, alarm, siri etc.) this flags will be true when it is appropriate to resume playback without waiting for user input.</Abstract>
+			<DeclaredIn>TritonPlayer.h</DeclaredIn>
+			
+			<Declaration>@property (readonly) BOOL shouldResumePlaybackAfterInterruption</Declaration>
+			
+			
+			<Anchor>//api/name/shouldResumePlaybackAfterInterruption</Anchor>
+            <NodeRef refid="11"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TritonPlayer/initWithDelegate:andSettings:</TokenIdentifier>
+			<Abstract type="html">Instantiate a new player using the specified settings</Abstract>
+			<DeclaredIn>TritonPlayer.h</DeclaredIn>
+			
+			<Declaration>- (id)initWithDelegate:(id&lt;TritonPlayerDelegate&gt;)inDelegate andSettings:(NSDictionary *)settings</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>inDelegate</Name>
+					<Abstract type="html">The delegate for handling stream callbacks and CuePoint events</Abstract>
+				</Parameter><Parameter>
+					<Name>settings</Name>
+					<Abstract type="html">A NSDictionary containing station parameters.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/initWithDelegate:andSettings:</Anchor>
+            <NodeRef refid="11"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TritonPlayer/updateSettings:</TokenIdentifier>
+			<Abstract type="html">Update player settings. All the information passed overrides the current settings and will take effect the next time the play method is called.</Abstract>
+			<DeclaredIn>TritonPlayer.h</DeclaredIn>
+			
+			<Declaration>- (void)updateSettings:(NSDictionary *)settings</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>settings</Name>
+					<Abstract type="html">A NSDictionary containing station parameters.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/updateSettings:</Anchor>
+            <NodeRef refid="11"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TritonPlayer/play</TokenIdentifier>
+			<Abstract type="html">Plays the current stream with the configuration from the settings dictionary.</Abstract>
+			<DeclaredIn>TritonPlayer.h</DeclaredIn>
+			
+	<RelatedTokens>
+		<TokenIdentifier>//apple_ref/occ/instm/TritonPlayer/updateSettings:</TokenIdentifier>
+		
+	</RelatedTokens>
+	
+			<Declaration>- (void)play</Declaration>
+			
+			
+			<Anchor>//api/name/play</Anchor>
+            <NodeRef refid="11"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TritonPlayer/stop</TokenIdentifier>
+			<Abstract type="html">Stops the current stream</Abstract>
+			<DeclaredIn>TritonPlayer.h</DeclaredIn>
+			
+			<Declaration>- (void)stop</Declaration>
+			
+			
+			<Anchor>//api/name/stop</Anchor>
+            <NodeRef refid="11"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TritonPlayer/pause</TokenIdentifier>
+			<Abstract type="html">Pauses the current stream. In case of a live stream, it&apos;s the same as calling stop.</Abstract>
+			<DeclaredIn>TritonPlayer.h</DeclaredIn>
+			
+			<Declaration>- (void)pause</Declaration>
+			
+			
+			<Anchor>//api/name/pause</Anchor>
+            <NodeRef refid="11"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TritonPlayer/seekToTimeInterval:</TokenIdentifier>
+			<Abstract type="html">Moves the cursor to the specified time interval. Only works if the media is seekable.</Abstract>
+			<DeclaredIn>TritonPlayer.h</DeclaredIn>
+			
+			<Declaration>- (void)seekToTimeInterval:(NSTimeInterval)interval</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>interval</Name>
+					<Abstract type="html">A time interval representing the time elapsed since the start of the audio</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/seekToTimeInterval:</Anchor>
+            <NodeRef refid="11"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TritonPlayer/seekToTime:completionHandler:</TokenIdentifier>
+			<Abstract type="html">Moves the cursor to the specified time and invokes the block specified when the seek operation has either been completed or been interrupted. Only works if the media is seekable.</Abstract>
+			<DeclaredIn>TritonPlayer.h</DeclaredIn>
+			
+			<Declaration>- (void)seekToTime:(CMTime)time completionHandler:(void ( ^ ) ( BOOL finished ))completionHandler</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>time</Name>
+					<Abstract type="html">A CMTime representing the time elapsed since the start of the audio</Abstract>
+				</Parameter><Parameter>
+					<Name>completionHandler</Name>
+					<Abstract type="html">The block to be executed when the seek operation has been completed or interrupted.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/seekToTime:completionHandler:</Anchor>
+            <NodeRef refid="11"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TritonPlayer/mute</TokenIdentifier>
+			<Abstract type="html">Mute current playing audio</Abstract>
+			<DeclaredIn>TritonPlayer.h</DeclaredIn>
+			
+			<Declaration>- (void)mute</Declaration>
+			
+			
+			<Anchor>//api/name/mute</Anchor>
+            <NodeRef refid="11"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TritonPlayer/unmute</TokenIdentifier>
+			<Abstract type="html">Unumte current playing audio</Abstract>
+			<DeclaredIn>TritonPlayer.h</DeclaredIn>
+			
+			<Declaration>- (void)unmute</Declaration>
+			
+			
+			<Anchor>//api/name/unmute</Anchor>
+            <NodeRef refid="11"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TritonPlayer/setVolume:</TokenIdentifier>
+			<Abstract type="html">Set volume of current playing audio</Abstract>
+			<DeclaredIn>TritonPlayer.h</DeclaredIn>
+			
+			<Declaration>- (void)setVolume:(float)volume</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>volume</Name>
+					<Abstract type="html">a float between 0-1.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/setVolume:</Anchor>
+            <NodeRef refid="11"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TritonPlayer/getCastStreamingUrl</TokenIdentifier>
+			<Abstract type="html">Return the stream URL for Cast Devices</Abstract>
+			<DeclaredIn>TritonPlayer.h</DeclaredIn>
+			
+			<Declaration>- (NSString *)getCastStreamingUrl</Declaration>
+			
+			
+			<Anchor>//api/name/getCastStreamingUrl</Anchor>
+            <NodeRef refid="11"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TritonPlayer/getSideBandMetadataUrl</TokenIdentifier>
+			<Abstract type="html">Return  the Side Band Metadata URL</Abstract>
+			<DeclaredIn>TritonPlayer.h</DeclaredIn>
+			
+			<Declaration>- (NSString *)getSideBandMetadataUrl</Declaration>
+			
+			
+			<Anchor>//api/name/getSideBandMetadataUrl</Anchor>
+            <NodeRef refid="11"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/TritonPlayer/toStringState:</TokenIdentifier>
+			<Abstract type="html">Format Player state into String</Abstract>
+			<DeclaredIn>TritonPlayer.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)toStringState:(TDPlayerState)state</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>player</Name>
+					<Abstract type="html">state.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/toStringState:</Anchor>
+            <NodeRef refid="11"/>
+		</Token>
+		
+        
+        
+	</File>
+</Tokens>

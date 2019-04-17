@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Protocols/TDSBMPlayerPlayerDelegate.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intf/TDSBMPlayerPlayerDelegate</TokenIdentifier>
+			<Abstract type="html">TDSBMPlayerPlayerDelegate defines methods you can implement to handle connection notifications and to receive cue point events from the TDSBMPlayer.</Abstract>
+			<DeclaredIn>TDSBMPlayer.h</DeclaredIn>
+            
+			
+			<NodeRef refid="14"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/TDSBMPlayerPlayerDelegate/sbmPlayer:didReceiveCuePointEvent:</TokenIdentifier>
+			<Abstract type="html">Called when there&apos;s a Cue Point available to be processed. A NSDictionary is passed containing the Cue Point metadata. All the available keys are defined in CuePointEvent.h.
+See STWCueMetadataDictionary.pdf for more details on the available cue point information.</Abstract>
+			<DeclaredIn>TDSBMPlayer.h</DeclaredIn>
+			
+			<Declaration>- (void)sbmPlayer:(TDSBMPlayer *)player didReceiveCuePointEvent:(CuePointEvent *)cuePointEvent</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>player</Name>
+					<Abstract type="html">The SBM player which is receiving cue point events</Abstract>
+				</Parameter><Parameter>
+					<Name>cuePointEvent</Name>
+					<Abstract type="html">A CuePointEvent object containing all cue point information.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/sbmPlayer:didReceiveCuePointEvent:</Anchor>
+            <NodeRef refid="14"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/TDSBMPlayerPlayerDelegate/sbmPlayer:didFailConnectingWithError:</TokenIdentifier>
+			<Abstract type="html">Tells the delegate that the SBM player was unable to connect to the server.</Abstract>
+			<DeclaredIn>TDSBMPlayer.h</DeclaredIn>
+			
+			<Declaration>- (void)sbmPlayer:(TDSBMPlayer *)player didFailConnectingWithError:(NSError *)error</Declaration>
+			
+			
+			<Anchor>//api/name/sbmPlayer:didFailConnectingWithError:</Anchor>
+            <NodeRef refid="14"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/TDSBMPlayerPlayerDelegate/sbmPlayerDidOpenConnection:</TokenIdentifier>
+			<Abstract type="html">Called when the SBM player established a connection with the server and is ready to receive cue points.</Abstract>
+			<DeclaredIn>TDSBMPlayer.h</DeclaredIn>
+			
+			<Declaration>- (void)sbmPlayerDidOpenConnection:(TDSBMPlayer *)player</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>player</Name>
+					<Abstract type="html">The SBM player whose connection was opened.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/sbmPlayerDidOpenConnection:</Anchor>
+            <NodeRef refid="14"/>
+		</Token>
+		
+        
+        
+	</File>
+</Tokens>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Constants/TDGender.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/c/tdef/TDGender</TokenIdentifier>
+			<Abstract type="html">The different gender parameters that can be used for targeting</Abstract>
+			<DeclaredIn>TDAdRequestURLBuilder.h</DeclaredIn>
+            
+			
+			<NodeRef refid="21"/>
+		</Token>
+		
+		
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/kTDGenderNotDefined</TokenIdentifier>
+            <Abstract type="html">The gender was not specified</Abstract>
+            <Declaration>kTDGenderNotDefined</Declaration>
+            
+            <DeclaredIn>TDAdRequestURLBuilder.h</DeclaredIn>
+            
+            <NodeRef refid="21"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/kTDGenderFemale</TokenIdentifier>
+            <Abstract type="html">Gender is female</Abstract>
+            <Declaration>kTDGenderFemale</Declaration>
+            
+            <DeclaredIn>TDAdRequestURLBuilder.h</DeclaredIn>
+            
+            <NodeRef refid="21"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/kTDGenderMale</TokenIdentifier>
+            <Abstract type="html">Gender is male</Abstract>
+            <Declaration>kTDGenderMale</Declaration>
+            
+            <DeclaredIn>TDAdRequestURLBuilder.h</DeclaredIn>
+            
+            <NodeRef refid="21"/>
+        </Token>
+        
+        
+	</File>
+</Tokens>

@@ -1,0 +1,1322 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>TDAdRequestURLBuilder Class Reference</title>
+
+	<link rel="stylesheet" href="../css/style.css">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
+	<meta name="generator" content="appledoc 2.2.1 (build 1334)">
+</head>
+<body class="appledoc">
+	<header>
+		<div class="container" class="hide-in-xcode">
+			
+			<h1 id="library-title">
+				<a href="../index.html">Triton Mobile SDK </a>
+			</h1>
+
+			<p id="developer-home">
+				<a href="../index.html">Triton Digital</a>
+			</p>
+			
+		</div>
+	</header>
+
+	<aside>
+		<div class="container">
+			<nav>
+				<ul id="header-buttons" role="toolbar">
+					<li><a href="../index.html">Index</a></li>
+<li><a href="../hierarchy.html">Hierarchy</a></li>
+
+					<li id="on-this-page" role="navigation">
+						<label>
+							On This Page
+
+							<div class="chevron">
+								<div class="chevy chevron-left"></div>
+								<div class="chevy chevron-right"></div>
+							</div>
+
+							<select id="jump-to">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+
+	
+	
+	<optgroup label="Properties">
+		
+		<option value="//api/name/TTags">TTags</option>
+		
+		<option value="//api/name/adType">adType</option>
+		
+		<option value="//api/name/age">age</option>
+		
+		<option value="//api/name/assetType">assetType</option>
+		
+		<option value="//api/name/autoLocationTrackingEnabled">autoLocationTrackingEnabled</option>
+		
+		<option value="//api/name/banners">banners</option>
+		
+		<option value="//api/name/country">country</option>
+		
+		<option value="//api/name/customSegmentId">customSegmentId</option>
+		
+		<option value="//api/name/dateOfBirth">dateOfBirth</option>
+		
+		<option value="//api/name/extraParameters">extraParameters</option>
+		
+		<option value="//api/name/gender">gender</option>
+		
+		<option value="//api/name/latitude">latitude</option>
+		
+		<option value="//api/name/longitude">longitude</option>
+		
+		<option value="//api/name/postalCode">postalCode</option>
+		
+		<option value="//api/name/stationId">stationId</option>
+		
+		<option value="//api/name/stationName">stationName</option>
+		
+		<option value="//api/name/yearOfBirth">yearOfBirth</option>
+		
+	</optgroup>
+	
+
+	
+	<optgroup label="Class Methods">
+		
+		<option value="//api/name/builderWithHostURL:">+ builderWithHostURL:</option>
+		
+	</optgroup>
+	
+
+	
+	<optgroup label="Instance Methods">
+		
+		<option value="//api/name/generateAdRequestURL">- generateAdRequestURL</option>
+		
+		<option value="//api/name/initWithHostURL:">- initWithHostURL:</option>
+		
+		<option value="//api/name/reset">- reset</option>
+		
+		<option value="//api/name/setDateOfBirthFromString:">- setDateOfBirthFromString:</option>
+		
+		<option value="//api/name/setLocationWithLatitude:andLongitude:">- setLocationWithLatitude:andLongitude:</option>
+		
+	</optgroup>
+	
+	
+</select>
+						</label>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</aside>
+
+	<article>
+		<div id="overview_contents" class="container">
+			<div id="content">
+				<main role="main">
+					<h1 class="title">TDAdRequestURLBuilder Class Reference</h1>
+
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<th>Inherits from</th>
+	<td>NSObject</td>
+</tr><tr>
+	<th>Declared in</th>
+	<td>TDAdRequestURLBuilder.h</td>
+</tr>
+						</tbody></table></div>
+					
+
+                    
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>TDAdRequestURLBuilder helps to build ad requests for Triton&rsquo;s on-demand <a href="#//api/name/banners">banners</a> and interstitials (pre-roll, mid-roll), including targeting parameters and device capabilities specified in Triton&rsquo;s On-Demand Advertising Guide.</p>
+
+<p>It also includes the user&rsquo;s IDFA (Id for Advertisers), when available, and can also incluse the user&rsquo;s GPS location to better target the ads. The url&rsquo;s generated or TDAdRequestURLBuilder itself can be passed directly to <a href="../Classes/TDAdLoader.html">TDAdLoader</a>.</p>
+					</div>
+					
+					
+
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						
+
+						<a title="Creating a TDAdRequestURLBuilder" name="task_Creating a TDAdRequestURLBuilder"></a>
+						<h2 class="task-title">Creating a TDAdRequestURLBuilder</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/builderWithHostURL:" title="builderWithHostURL:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/builderWithHostURL:">+&nbsp;builderWithHostURL:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Creates and initializes a request url builder.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (instancetype)builderWithHostURL:(NSString *)<em>url</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>url</code></th>
+						<td><p>the base url for the request url builder (the ad server url)</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>an instance of the request url builder</p>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">TDAdRequestURLBuilder.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/initWithHostURL:" title="initWithHostURL:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/initWithHostURL:">&ndash;&nbsp;initWithHostURL:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Initializes a newly allocated a request url builder</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (instancetype)initWithHostURL:(NSString *)<em>url</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>url</code></th>
+						<td><p>the base url for the request url builder (the ad server url)</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>an instance of the request url builder</p>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">TDAdRequestURLBuilder.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+
+						<a title="Defining the ad type" name="task_Defining the ad type"></a>
+						<h2 class="task-title">Defining the ad type</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/adType" title="adType"></a>
+	<h3 class="method-title"><code><a href="#//api/name/adType">&nbsp;&nbsp;adType</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Defines the type of ad requested (preroll, midroll). The default value is preroll. There&rsquo;s no need to be defined for banner ads, just for interstitials.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) TDAdType adType</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">TDAdRequestURLBuilder.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+
+						<a title="Required parameters" name="task_Required parameters"></a>
+						<h2 class="task-title">Required parameters</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/stationId" title="stationId"></a>
+	<h3 class="method-title"><code><a href="#//api/name/stationId">&nbsp;&nbsp;stationId</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Either the Station ID or station name must be specified when calling the On-Demand Ad Request Service. While both IDs and names are supported, it is strongly recommended that clients use station names.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) NSInteger stationId</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>If both ID and name are provided, the name is used (there is no validation check that the ID matches the name). Triton Digital assigns station IDs and names when setting up a station.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">TDAdRequestURLBuilder.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/stationName" title="stationName"></a>
+	<h3 class="method-title"><code><a href="#//api/name/stationName">&nbsp;&nbsp;stationName</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Station names are case-sensitive. See <a href="#//api/name/stationId">stationId</a>.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) NSString *stationName</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">TDAdRequestURLBuilder.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+
+						<a title="Location targeting" name="task_Location targeting"></a>
+						<h2 class="task-title">Location targeting</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/postalCode" title="postalCode"></a>
+	<h3 class="method-title"><code><a href="#//api/name/postalCode">&nbsp;&nbsp;postalCode</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The postal/zip code of the listener. Must be a valid postal or zip code, without spaces. E.g., 89040 or H3G1R8.
+When using this property, it&rsquo;s recommended to also use <a href="#//api/name/country">country</a>.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) NSString *postalCode</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">TDAdRequestURLBuilder.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/country" title="country"></a>
+	<h3 class="method-title"><code><a href="#//api/name/country">&nbsp;&nbsp;country</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The ISO 3166-1 alpha-2 two-letter country code (e.g., US). If using this property, it&rsquo;s recommended to also use <a href="#//api/name/postalCode">postalCode</a>.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) NSString *country</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">TDAdRequestURLBuilder.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setLocationWithLatitude:andLongitude:" title="setLocationWithLatitude:andLongitude:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setLocationWithLatitude:andLongitude:">&ndash;&nbsp;setLocationWithLatitude:andLongitude:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The <a href="#//api/name/latitude">latitude</a> and <a href="#//api/name/longitude">longitude</a> of the listener obtained from CoreLocation or other source.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)setLocationWithLatitude:(float)<em>latitude</em> andLongitude:(float)<em>longitude</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>latitude</code></th>
+						<td><p>float value between -90.0 and 90.0.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>longitude</code></th>
+						<td><p>float value between -180.0 and 180.0</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">TDAdRequestURLBuilder.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/latitude" title="latitude"></a>
+	<h3 class="method-title"><code><a href="#//api/name/latitude">&nbsp;&nbsp;latitude</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The latitude of the listener obtained from CoreLocation or other source.
+Floating-point value: -90.0 to 90.0. Not required individually. If using, you must also specify <a href="#//api/name/longitude">longitude</a>.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) float latitude</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">TDAdRequestURLBuilder.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/longitude" title="longitude"></a>
+	<h3 class="method-title"><code><a href="#//api/name/longitude">&nbsp;&nbsp;longitude</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The longitude of the listener obtained from CoreLocation or other source.
+Floating-point value: -180.0 to 180.0. Not required individually. If using, you must also specify <a href="#//api/name/latitude">latitude</a>.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) float longitude</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">TDAdRequestURLBuilder.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/autoLocationTrackingEnabled" title="autoLocationTrackingEnabled"></a>
+	<h3 class="method-title"><code><a href="#//api/name/autoLocationTrackingEnabled">&nbsp;&nbsp;autoLocationTrackingEnabled</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Whether to use built-in Core Location manager to handle location. Default value is NO.
+When enabled it will override values obtained from setLocationWithLatitude:andLongitude</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, getter=isAutoLocationTrackingEnabled) BOOL autoLocationTrackingEnabled</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">TDAdRequestURLBuilder.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+
+						<a title="Demographic targeting" name="task_Demographic targeting"></a>
+						<h2 class="task-title">Demographic targeting</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/age" title="age"></a>
+	<h3 class="method-title"><code><a href="#//api/name/age">&nbsp;&nbsp;age</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Integer value: 1 to 125</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) NSInteger age</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">TDAdRequestURLBuilder.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/dateOfBirth" title="dateOfBirth"></a>
+	<h3 class="method-title"><code><a href="#//api/name/dateOfBirth">&nbsp;&nbsp;dateOfBirth</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The date of birth as an NSDate</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) NSDate *dateOfBirth</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">TDAdRequestURLBuilder.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setDateOfBirthFromString:" title="setDateOfBirthFromString:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setDateOfBirthFromString:">&ndash;&nbsp;setDateOfBirthFromString:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Set the date of birth as a string formatted as YYYY-MM-DD</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)setDateOfBirthFromString:(NSString *)<em>dateOfBirth</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>dateOfBirth</code></th>
+						<td><p>the formatted string</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">TDAdRequestURLBuilder.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/yearOfBirth" title="yearOfBirth"></a>
+	<h3 class="method-title"><code><a href="#//api/name/yearOfBirth">&nbsp;&nbsp;yearOfBirth</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Integer value: 1900 to 2005</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) NSInteger yearOfBirth</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">TDAdRequestURLBuilder.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/gender" title="gender"></a>
+	<h3 class="method-title"><code><a href="#//api/name/gender">&nbsp;&nbsp;gender</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Possible values are kTDGenderFemale and kTDGenderMale</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) TDGender gender</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">TDAdRequestURLBuilder.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+
+						<a title="Banner capabilities" name="task_Banner capabilities"></a>
+						<h2 class="task-title">Banner capabilities</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/banners" title="banners"></a>
+	<h3 class="method-title"><code><a href="#//api/name/banners">&nbsp;&nbsp;banners</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>A string with a list of comma-separated banner sizes</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) NSString *banners</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Players can provide details on their level of support for banners, such
+as banner sizes and formats.</p>
+
+<p>The ordering of the capability formats is not important.</p><div class="note"><p><strong>Note:</strong> Before attempting to use player capability targeting, please contact
+the Triton Digital Support Team to enable Player Capability Targeting for
+your broadcaster. Currently, Player Capability Targeting only works with
+Tap advertising.</p>
+
+<p>Supported Formats</p>
+
+<p><table>
+<tr><th>Capability</th><th>Description</th></tr>
+<tr><td>970x250</td>   <td>IAB Billboard (970x250)</td></tr>
+<tr><td>120x60</td>    <td>IAB Button 2 (120x60)</td></tr>
+<tr><td>300x600</td>   <td>IAB Half Page/Filmstrip (300x600)</td></tr>
+<tr><td>728x90</td>    <td>IAB Leaderboard (728x90)</td></tr>
+<tr><td>970x100</td>   <td>IAB Leaderboard (970x100)</td></tr>
+<tr><td>300x250</td>   <td>IAB Medium Rectangle (300x250)</td></tr>
+<tr><td>88x31</td>     <td>IAB Microbar (88x31)</td></tr>
+<tr><td>300x1050</td>  <td>IAB Portrait (300x1050)</td></tr>
+<tr><td>970x90</td>    <td>IAB Pushdown (970x90)</td></tr>
+<tr><td>180x150</td>   <td>IAB Rectangle (180x150)</td></tr>
+<tr><td>320x480</td>   <td>IAB Smartphone Portrait (320x480)</td></tr>
+<tr><td>300x50</td>    <td>IAB Smartphone Static Banner (300x50)</td></tr>
+<tr><td>320x50</td>    <td>IAB Smartphone Static Wide Banner (320x50)</td></tr>
+<tr><td>300x300</td>   <td>IAB Square (300x300)</td></tr>
+<tr><td>970x66</td>    <td>IAB Super Leaderboard (970x66)</td></tr>
+<tr><td>160x600</td>   <td>IAB Wide Skyscraper (160x600)</td></tr>
+<tr><td>Client-defined (w x h)</td><td>Custom banner size</td></tr>
+</table></p></div>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">TDAdRequestURLBuilder.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/customSegmentId" title="customSegmentId"></a>
+	<h3 class="method-title"><code><a href="#//api/name/customSegmentId">&nbsp;&nbsp;customSegmentId</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Integer value: 1 to 1000000</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) NSInteger customSegmentId</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Broadcasters that want to differentiate their listeners into custom
+broadcaster-specific segments may use the Custom Segment Targeting
+capability of Tap.</p><div class="note"><p><strong>Note:</strong> Before use by players, please contact the Triton Digital Support
+Team to enable Custom Segment ID Targeting for your broadcaster.
+Currently, Custom Segment ID Targeting only works with Tap advertising.</p></div>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">TDAdRequestURLBuilder.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+
+						<a title="Asset constraints" name="task_Asset constraints"></a>
+						<h2 class="task-title">Asset constraints</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/assetType" title="assetType"></a>
+	<h3 class="method-title"><code><a href="#//api/name/assetType">&nbsp;&nbsp;assetType</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Change this if you would like to impose constraints on the type of asset returned. Possible values are:
+kTDAssetTypeNotDefined, kTDAssetTypeAudio, kTDAssetTypeVideo and kTDAssetTypeAudioVideo.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) TDAssetType assetType</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">TDAdRequestURLBuilder.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/extraParameters" title="extraParameters"></a>
+	<h3 class="method-title"><code><a href="#//api/name/extraParameters">&nbsp;&nbsp;extraParameters</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>All the parameters non supported by properties can be passed by key/value pair.
+Situations in which you would use this property:
+- When defining Asset Constraints (Section 3.3.5 of Triton&rsquo;s On-Demand Advertising guide);
+- Custom parameters
+- New supported targeting parameters without a corresponding propery.
+- Standard parameters can also be passed using this dictionary and they will override the values set by each property or setter method.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) NSDictionary *extraParameters</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">TDAdRequestURLBuilder.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/TTags" title="TTags"></a>
+	<h3 class="method-title"><code><a href="#//api/name/TTags">&nbsp;&nbsp;TTags</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>An Array of NSString
+- When defining Custom TTag Targeting</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) NSArray *TTags</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">TDAdRequestURLBuilder.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+
+						<a title="Generating the Ad request URL" name="task_Generating the Ad request URL"></a>
+						<h2 class="task-title">Generating the Ad request URL</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/generateAdRequestURL" title="generateAdRequestURL"></a>
+	<h3 class="method-title"><code><a href="#//api/name/generateAdRequestURL">&ndash;&nbsp;generateAdRequestURL</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Build and return a string containing the ad request URL for on-demand ads.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (NSString *)generateAdRequestURL</code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>NSString containing the ad request. It will return nil if host is not specified and if both station name and station id are not specified.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">TDAdRequestURLBuilder.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/reset" title="reset"></a>
+	<h3 class="method-title"><code><a href="#//api/name/reset">&ndash;&nbsp;reset</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Resets the TDAdRequestURLBuiler to its default values and keeps the host url. You can use this to reuse the same object for different requests to the same host.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)reset</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">TDAdRequestURLBuilder.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+					</div>
+					
+					
+
+                    
+                    
+          
+				</main>
+
+				<footer>
+					<div class="footer-copyright">
+						
+						<p class="copyright">Copyright &copy; 2019 Triton Digital. All rights reserved. Updated: 2019-04-01</p>
+						
+						
+						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
+						
+					</div>
+				</footer>
+			</div>
+		</div>
+	</article>
+
+	<script src="../js/script.js"></script>
+</body>
+</html>

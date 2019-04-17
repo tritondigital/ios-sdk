@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>TDAd Class Reference</title>
+
+	<link rel="stylesheet" href="../css/style.css">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
+	<meta name="generator" content="appledoc 2.2.1 (build 1334)">
+</head>
+<body class="appledoc">
+	<header>
+		<div class="container" class="hide-in-xcode">
+			
+			<h1 id="library-title">
+				<a href="../index.html">Triton Mobile SDK </a>
+			</h1>
+
+			<p id="developer-home">
+				<a href="../index.html">Triton Digital</a>
+			</p>
+			
+		</div>
+	</header>
+
+	<aside>
+		<div class="container">
+			<nav>
+				<ul id="header-buttons" role="toolbar">
+					<li><a href="../index.html">Index</a></li>
+<li><a href="../hierarchy.html">Hierarchy</a></li>
+
+					<li id="on-this-page" role="navigation">
+						<label>
+							On This Page
+
+							<div class="chevron">
+								<div class="chevy chevron-left"></div>
+								<div class="chevy chevron-right"></div>
+							</div>
+
+							<select id="jump-to">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+
+	
+	
+	<optgroup label="Properties">
+		
+		<option value="//api/name/clickTrackingURLs">clickTrackingURLs</option>
+		
+		<option value="//api/name/companionBanners">companionBanners</option>
+		
+		<option value="//api/name/format">format</option>
+		
+		<option value="//api/name/mediaImpressionURLs">mediaImpressionURLs</option>
+		
+		<option value="//api/name/mediaMIMEType">mediaMIMEType</option>
+		
+		<option value="//api/name/mediaURL">mediaURL</option>
+		
+		<option value="//api/name/videoClickThroughURL">videoClickThroughURL</option>
+		
+		<option value="//api/name/videoHeight">videoHeight</option>
+		
+		<option value="//api/name/videoWidth">videoWidth</option>
+		
+	</optgroup>
+	
+
+	
+
+	
+	<optgroup label="Instance Methods">
+		
+		<option value="//api/name/bestCompanionBannerForWidth:andHeight:">- bestCompanionBannerForWidth:andHeight:</option>
+		
+		<option value="//api/name/trackMediaImpressions">- trackMediaImpressions</option>
+		
+		<option value="//api/name/trackVideoClick">- trackVideoClick</option>
+		
+	</optgroup>
+	
+	
+</select>
+						</label>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</aside>
+
+	<article>
+		<div id="overview_contents" class="container">
+			<div id="content">
+				<main role="main">
+					<h1 class="title">TDAd Class Reference</h1>
+
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<th>Inherits from</th>
+	<td>NSObject</td>
+</tr><tr>
+	<th>Declared in</th>
+	<td>TDAd.h</td>
+</tr>
+						</tbody></table></div>
+					
+
+                    
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>TDAd represents a Triton ad in the SDK. It contains information about all supported ads (in-stream/on-demand, audio/banner/video).</p>
+
+<p>Usually TDAd is used as an output of <a href="../Classes/TDAdLoader.html">TDAdLoader</a> and as input of <a href="../Classes/TDBannerView.html">TDBannerView</a> and <a href="../Classes/TDInterstitialAd.html">TDInterstitialAd</a> and its details don&rsquo;t need to be known. However,
+when the application is rendering the ads by itself, it must inspect its attributes and methods.</p>
+					</div>
+					
+					
+
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						
+
+						<a title="General properties" name="task_General properties"></a>
+						<h2 class="task-title">General properties</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/mediaImpressionURLs" title="mediaImpressionURLs"></a>
+	<h3 class="method-title"><code><a href="#//api/name/mediaImpressionURLs">&nbsp;&nbsp;mediaImpressionURLs</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The urls that need to be called for generating an ad impression</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSArray *mediaImpressionURLs</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">TDAd.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/mediaMIMEType" title="mediaMIMEType"></a>
+	<h3 class="method-title"><code><a href="#//api/name/mediaMIMEType">&nbsp;&nbsp;mediaMIMEType</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The type of the linear media as a MIME-type (usually audio or video)</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *mediaMIMEType</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">TDAd.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/format" title="format"></a>
+	<h3 class="method-title"><code><a href="#//api/name/format">&nbsp;&nbsp;format</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The format of the ad. VAST or DAAST</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *format</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">TDAd.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/mediaURL" title="mediaURL"></a>
+	<h3 class="method-title"><code><a href="#//api/name/mediaURL">&nbsp;&nbsp;mediaURL</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The url of the linear media</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSURL *mediaURL</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">TDAd.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+
+						<a title="Banner ads" name="task_Banner ads"></a>
+						<h2 class="task-title">Banner ads</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/companionBanners" title="companionBanners"></a>
+	<h3 class="method-title"><code><a href="#//api/name/companionBanners">&nbsp;&nbsp;companionBanners</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>An array of <a href="../Classes/TDCompanionBanner.html">TDCompanionBanner</a> objects for each banner available in the ad</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSArray *companionBanners</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">TDAd.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+
+						<a title="Video interstitials" name="task_Video interstitials"></a>
+						<h2 class="task-title">Video interstitials</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/videoWidth" title="videoWidth"></a>
+	<h3 class="method-title"><code><a href="#//api/name/videoWidth">&nbsp;&nbsp;videoWidth</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The width of the video</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) NSInteger videoWidth</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">TDAd.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/videoHeight" title="videoHeight"></a>
+	<h3 class="method-title"><code><a href="#//api/name/videoHeight">&nbsp;&nbsp;videoHeight</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The height of the video</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) NSInteger videoHeight</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">TDAd.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/videoClickThroughURL" title="videoClickThroughURL"></a>
+	<h3 class="method-title"><code><a href="#//api/name/videoClickThroughURL">&nbsp;&nbsp;videoClickThroughURL</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The url that the app must be redirected when the user clicks in a video ad</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSURL *videoClickThroughURL</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">TDAd.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/clickTrackingURLs" title="clickTrackingURLs"></a>
+	<h3 class="method-title"><code><a href="#//api/name/clickTrackingURLs">&nbsp;&nbsp;clickTrackingURLs</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The list of urls that must be called to track the user clicking in a video ad</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSArray *clickTrackingURLs</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">TDAd.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+
+						<a title="Helper methods" name="task_Helper methods"></a>
+						<h2 class="task-title">Helper methods</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/bestCompanionBannerForWidth:andHeight:" title="bestCompanionBannerForWidth:andHeight:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/bestCompanionBannerForWidth:andHeight:">&ndash;&nbsp;bestCompanionBannerForWidth:andHeight:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Returns the companion banner in the receiver&rsquo;s companion banners list that approximates most the desired width and height.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (TDCompanionBanner *)bestCompanionBannerForWidth:(NSInteger)<em>width</em> andHeight:(NSInteger)<em>height</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>width</code></th>
+						<td><p>the desired width of the banner</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>height</code></th>
+						<td><p>the desired height of the banner</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>A <a href="../Classes/TDCompanionBanner.html">TDCompanionBanner</a> that is the best match for the desired width and height.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">TDAd.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/trackMediaImpressions" title="trackMediaImpressions"></a>
+	<h3 class="method-title"><code><a href="#//api/name/trackMediaImpressions">&ndash;&nbsp;trackMediaImpressions</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Tracks asynchronously all the media impressions URL for the ad. Useful when you are rendering your ads with custom UI.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)trackMediaImpressions</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">TDAd.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/trackVideoClick" title="trackVideoClick"></a>
+	<h3 class="method-title"><code><a href="#//api/name/trackVideoClick">&ndash;&nbsp;trackVideoClick</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Tracks asynchronously all the video click URLs for the ad. Useful when you are rendering your ads with custom UI.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)trackVideoClick</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">TDAd.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+					</div>
+					
+					
+
+                    
+                    
+          
+				</main>
+
+				<footer>
+					<div class="footer-copyright">
+						
+						<p class="copyright">Copyright &copy; 2019 Triton Digital. All rights reserved. Updated: 2019-04-09</p>
+						
+						
+						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
+						
+					</div>
+				</footer>
+			</div>
+		</div>
+	</article>
+
+	<script src="../js/script.js"></script>
+</body>
+</html>

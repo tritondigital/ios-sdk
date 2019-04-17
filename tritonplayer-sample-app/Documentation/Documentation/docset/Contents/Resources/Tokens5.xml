@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/TDBannerView.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/TDBannerView</TokenIdentifier>
+			<Abstract type="html">The TDBannerView class represents a view that displays Triton Banners (in-stream ads) ads.</Abstract>
+			<DeclaredIn>TDBannerView.h</DeclaredIn>
+            
+			
+			<NodeRef refid="5"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDBannerView/setDelegate:</TokenIdentifier>
+			<Abstract type="html">The delegate that will receive state changes from TDBannerView.</Abstract>
+			<DeclaredIn>TDBannerView.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, weak) id&lt;TDBannerViewDelegate&gt; delegate</Declaration>
+			
+			
+			<Anchor>//api/name/delegate</Anchor>
+            <NodeRef refid="5"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDBannerView/delegate</TokenIdentifier>
+			<Abstract type="html">The delegate that will receive state changes from TDBannerView.</Abstract>
+			<DeclaredIn>TDBannerView.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, weak) id&lt;TDBannerViewDelegate&gt; delegate</Declaration>
+			
+			
+			<Anchor>//api/name/delegate</Anchor>
+            <NodeRef refid="5"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/TDBannerView/delegate</TokenIdentifier>
+			<Abstract type="html">The delegate that will receive state changes from TDBannerView.</Abstract>
+			<DeclaredIn>TDBannerView.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, weak) id&lt;TDBannerViewDelegate&gt; delegate</Declaration>
+			
+			
+			<Anchor>//api/name/delegate</Anchor>
+            <NodeRef refid="5"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDBannerView/initWithWidth:andHeight:</TokenIdentifier>
+			<Abstract type="html">Initializes a TDBannerView with specified widht and height positioned at the top left corner of its superview (0,0).</Abstract>
+			<DeclaredIn>TDBannerView.h</DeclaredIn>
+			
+			<Declaration>- (instancetype)initWithWidth:(NSInteger)width andHeight:(NSInteger)height</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>width</Name>
+					<Abstract type="html">The width of the banner</Abstract>
+				</Parameter><Parameter>
+					<Name>height</Name>
+					<Abstract type="html">The height of the banner</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/initWithWidth:andHeight:</Anchor>
+            <NodeRef refid="5"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDBannerView/initWithWidth:andHeight:andFallbackWidth:andFallbackHeight:</TokenIdentifier>
+			<Abstract type="html">Initializes a TDBannerView with origin (0,0) with specified widht and height in addition to fallback width and height.</Abstract>
+			<DeclaredIn>TDBannerView.h</DeclaredIn>
+			
+			<Declaration>- (instancetype)initWithWidth:(NSInteger)width andHeight:(NSInteger)height andFallbackWidth:(NSInteger)fallbackWidth andFallbackHeight:(NSInteger)fallbackHeight</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>width</Name>
+					<Abstract type="html">The width of the banner</Abstract>
+				</Parameter><Parameter>
+					<Name>height</Name>
+					<Abstract type="html">The height of the banner</Abstract>
+				</Parameter><Parameter>
+					<Name>fallbackWidth</Name>
+					<Abstract type="html">The fallback width of the banner</Abstract>
+				</Parameter><Parameter>
+					<Name>fallbackHeight</Name>
+					<Abstract type="html">The fallback height of the banner</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/initWithWidth:andHeight:andFallbackWidth:andFallbackHeight:</Anchor>
+            <NodeRef refid="5"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDBannerView/initWithWidth:andHeight:andFallbackWidth:andFallbackHeight:andOrigin:</TokenIdentifier>
+			<Abstract type="html">Initializes a TDBannerView at the specified origin with specified widht and height in addition to fallback width and height. This is the designated initializer.</Abstract>
+			<DeclaredIn>TDBannerView.h</DeclaredIn>
+			
+			<Declaration>- (instancetype)initWithWidth:(NSInteger)width andHeight:(NSInteger)height andFallbackWidth:(NSInteger)fallbackWidth andFallbackHeight:(NSInteger)fallbackHeight andOrigin:(CGPoint)origin</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>width</Name>
+					<Abstract type="html">The width of the banner</Abstract>
+				</Parameter><Parameter>
+					<Name>height</Name>
+					<Abstract type="html">The height of the banner</Abstract>
+				</Parameter><Parameter>
+					<Name>fallbackWidth</Name>
+					<Abstract type="html">The fallback width of the banner</Abstract>
+				</Parameter><Parameter>
+					<Name>fallbackHeight</Name>
+					<Abstract type="html">The fallback height of the banner</Abstract>
+				</Parameter><Parameter>
+					<Name>origin</Name>
+					<Abstract type="html">a CGPoint with the top left position in points related to its superview</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/initWithWidth:andHeight:andFallbackWidth:andFallbackHeight:andOrigin:</Anchor>
+            <NodeRef refid="5"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDBannerView/setWidth:</TokenIdentifier>
+			<Abstract type="html">The width supported by the banner.</Abstract>
+			<DeclaredIn>TDBannerView.h</DeclaredIn>
+			
+			<Declaration>@property (assign, readonly) NSInteger width</Declaration>
+			
+			
+			<Anchor>//api/name/width</Anchor>
+            <NodeRef refid="5"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDBannerView/width</TokenIdentifier>
+			<Abstract type="html">The width supported by the banner.</Abstract>
+			<DeclaredIn>TDBannerView.h</DeclaredIn>
+			
+			<Declaration>@property (assign, readonly) NSInteger width</Declaration>
+			
+			
+			<Anchor>//api/name/width</Anchor>
+            <NodeRef refid="5"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/TDBannerView/width</TokenIdentifier>
+			<Abstract type="html">The width supported by the banner.</Abstract>
+			<DeclaredIn>TDBannerView.h</DeclaredIn>
+			
+			<Declaration>@property (assign, readonly) NSInteger width</Declaration>
+			
+			
+			<Anchor>//api/name/width</Anchor>
+            <NodeRef refid="5"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDBannerView/setHeight:</TokenIdentifier>
+			<Abstract type="html">The height supported by the banner.</Abstract>
+			<DeclaredIn>TDBannerView.h</DeclaredIn>
+			
+			<Declaration>@property (assign, readonly) NSInteger height</Declaration>
+			
+			
+			<Anchor>//api/name/height</Anchor>
+            <NodeRef refid="5"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDBannerView/height</TokenIdentifier>
+			<Abstract type="html">The height supported by the banner.</Abstract>
+			<DeclaredIn>TDBannerView.h</DeclaredIn>
+			
+			<Declaration>@property (assign, readonly) NSInteger height</Declaration>
+			
+			
+			<Anchor>//api/name/height</Anchor>
+            <NodeRef refid="5"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/TDBannerView/height</TokenIdentifier>
+			<Abstract type="html">The height supported by the banner.</Abstract>
+			<DeclaredIn>TDBannerView.h</DeclaredIn>
+			
+			<Declaration>@property (assign, readonly) NSInteger height</Declaration>
+			
+			
+			<Anchor>//api/name/height</Anchor>
+            <NodeRef refid="5"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDBannerView/setFallbackWidth:</TokenIdentifier>
+			<Abstract type="html">The fallback width supported by the banner.</Abstract>
+			<DeclaredIn>TDBannerView.h</DeclaredIn>
+			
+			<Declaration>@property (assign, readonly) NSInteger fallbackWidth</Declaration>
+			
+			
+			<Anchor>//api/name/fallbackWidth</Anchor>
+            <NodeRef refid="5"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDBannerView/fallbackWidth</TokenIdentifier>
+			<Abstract type="html">The fallback width supported by the banner.</Abstract>
+			<DeclaredIn>TDBannerView.h</DeclaredIn>
+			
+			<Declaration>@property (assign, readonly) NSInteger fallbackWidth</Declaration>
+			
+			
+			<Anchor>//api/name/fallbackWidth</Anchor>
+            <NodeRef refid="5"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/TDBannerView/fallbackWidth</TokenIdentifier>
+			<Abstract type="html">The fallback width supported by the banner.</Abstract>
+			<DeclaredIn>TDBannerView.h</DeclaredIn>
+			
+			<Declaration>@property (assign, readonly) NSInteger fallbackWidth</Declaration>
+			
+			
+			<Anchor>//api/name/fallbackWidth</Anchor>
+            <NodeRef refid="5"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDBannerView/setFallbackHeight:</TokenIdentifier>
+			<Abstract type="html">The fallback height supported by the banner.</Abstract>
+			<DeclaredIn>TDBannerView.h</DeclaredIn>
+			
+			<Declaration>@property (assign, readonly) NSInteger fallbackHeight</Declaration>
+			
+			
+			<Anchor>//api/name/fallbackHeight</Anchor>
+            <NodeRef refid="5"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDBannerView/fallbackHeight</TokenIdentifier>
+			<Abstract type="html">The fallback height supported by the banner.</Abstract>
+			<DeclaredIn>TDBannerView.h</DeclaredIn>
+			
+			<Declaration>@property (assign, readonly) NSInteger fallbackHeight</Declaration>
+			
+			
+			<Anchor>//api/name/fallbackHeight</Anchor>
+            <NodeRef refid="5"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/TDBannerView/fallbackHeight</TokenIdentifier>
+			<Abstract type="html">The fallback height supported by the banner.</Abstract>
+			<DeclaredIn>TDBannerView.h</DeclaredIn>
+			
+			<Declaration>@property (assign, readonly) NSInteger fallbackHeight</Declaration>
+			
+			
+			<Anchor>//api/name/fallbackHeight</Anchor>
+            <NodeRef refid="5"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDBannerView/setWidth:andHeight:</TokenIdentifier>
+			<Abstract type="html">Sets the width and height supported by the banner. These dimensions are indepentent of the banner frame size.</Abstract>
+			<DeclaredIn>TDBannerView.h</DeclaredIn>
+			
+			<Declaration>- (void)setWidth:(NSInteger)width andHeight:(NSInteger)height</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>width</Name>
+					<Abstract type="html">The width of the banner</Abstract>
+				</Parameter><Parameter>
+					<Name>height</Name>
+					<Abstract type="html">The height of the banner</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/setWidth:andHeight:</Anchor>
+            <NodeRef refid="5"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDBannerView/setFallbackWidth:andHeight:</TokenIdentifier>
+			<Abstract type="html">Sets the fallback width and height supported by the banner. The fallback size, when set, will be used in case the main size is not available.
+It will be centralized inside the banner.</Abstract>
+			<DeclaredIn>TDBannerView.h</DeclaredIn>
+			
+			<Declaration>- (void)setFallbackWidth:(NSInteger)fallbackWidth andHeight:(NSInteger)fallbackHeight</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>fallbackWidth</Name>
+					<Abstract type="html">The fallback width of the banner</Abstract>
+				</Parameter><Parameter>
+					<Name>fallbackHeight</Name>
+					<Abstract type="html">The fallback height of the banner</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/setFallbackWidth:andHeight:</Anchor>
+            <NodeRef refid="5"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDBannerView/setOrigin:</TokenIdentifier>
+			<Abstract type="html">Changes the top left position of the banner view related to its superview</Abstract>
+			<DeclaredIn>TDBannerView.h</DeclaredIn>
+			
+			<Declaration>- (void)setOrigin:(CGPoint)origin</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>origin</Name>
+					<Abstract type="html">a CGPoint with the new top left position in points related to its superview</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/setOrigin:</Anchor>
+            <NodeRef refid="5"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDBannerView/presentAd:</TokenIdentifier>
+			<Abstract type="html">Request an ad to be displayed in the view.</Abstract>
+			<DeclaredIn>TDBannerView.h</DeclaredIn>
+			
+			<Declaration>- (void)presentAd:(TDAd *)ad</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>ad</Name>
+					<Abstract type="html">the TDAd object with the ad information to be loaded. Loading with a nil object will clear the banner&apos;s content.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/presentAd:</Anchor>
+            <NodeRef refid="5"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDBannerView/clear</TokenIdentifier>
+			<Abstract type="html">Clears the banner contents</Abstract>
+			<DeclaredIn>TDBannerView.h</DeclaredIn>
+			
+			<Declaration>- (void)clear</Declaration>
+			
+			
+			<Anchor>//api/name/clear</Anchor>
+            <NodeRef refid="5"/>
+		</Token>
+		
+        
+        
+	</File>
+</Tokens>

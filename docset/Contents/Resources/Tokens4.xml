@@ -1,0 +1,758 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/TDAdRequestURLBuilder.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/TDAdRequestURLBuilder</TokenIdentifier>
+			<Abstract type="html">TDAdRequestURLBuilder helps to build ad requests for Triton&apos;s on-demand banners and interstitials (pre-roll, mid-roll), including targeting parameters and device capabilities specified in Triton&apos;s On-Demand Advertising Guide.</Abstract>
+			<DeclaredIn>TDAdRequestURLBuilder.h</DeclaredIn>
+            
+			
+			<NodeRef refid="4"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/TDAdRequestURLBuilder/builderWithHostURL:</TokenIdentifier>
+			<Abstract type="html">Creates and initializes a request url builder.</Abstract>
+			<DeclaredIn>TDAdRequestURLBuilder.h</DeclaredIn>
+			
+			<Declaration>+ (instancetype)builderWithHostURL:(NSString *)url</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>url</Name>
+					<Abstract type="html">the base url for the request url builder (the ad server url)</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">an instance of the request url builder</Abstract></ReturnValue>
+			<Anchor>//api/name/builderWithHostURL:</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDAdRequestURLBuilder/initWithHostURL:</TokenIdentifier>
+			<Abstract type="html">Initializes a newly allocated a request url builder</Abstract>
+			<DeclaredIn>TDAdRequestURLBuilder.h</DeclaredIn>
+			
+			<Declaration>- (instancetype)initWithHostURL:(NSString *)url</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>url</Name>
+					<Abstract type="html">the base url for the request url builder (the ad server url)</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">an instance of the request url builder</Abstract></ReturnValue>
+			<Anchor>//api/name/initWithHostURL:</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDAdRequestURLBuilder/setAdType:</TokenIdentifier>
+			<Abstract type="html">Defines the type of ad requested (preroll, midroll). The default value is preroll. There&apos;s no need to be defined for banner ads, just for interstitials.</Abstract>
+			<DeclaredIn>TDAdRequestURLBuilder.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) TDAdType adType</Declaration>
+			
+			
+			<Anchor>//api/name/adType</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDAdRequestURLBuilder/adType</TokenIdentifier>
+			<Abstract type="html">Defines the type of ad requested (preroll, midroll). The default value is preroll. There&apos;s no need to be defined for banner ads, just for interstitials.</Abstract>
+			<DeclaredIn>TDAdRequestURLBuilder.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) TDAdType adType</Declaration>
+			
+			
+			<Anchor>//api/name/adType</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/TDAdRequestURLBuilder/adType</TokenIdentifier>
+			<Abstract type="html">Defines the type of ad requested (preroll, midroll). The default value is preroll. There&apos;s no need to be defined for banner ads, just for interstitials.</Abstract>
+			<DeclaredIn>TDAdRequestURLBuilder.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) TDAdType adType</Declaration>
+			
+			
+			<Anchor>//api/name/adType</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDAdRequestURLBuilder/setStationId:</TokenIdentifier>
+			<Abstract type="html">Either the Station ID or station name must be specified when calling the On-Demand Ad Request Service. While both IDs and names are supported, it is strongly recommended that clients use station names.</Abstract>
+			<DeclaredIn>TDAdRequestURLBuilder.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) NSInteger stationId</Declaration>
+			
+			
+			<Anchor>//api/name/stationId</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDAdRequestURLBuilder/stationId</TokenIdentifier>
+			<Abstract type="html">Either the Station ID or station name must be specified when calling the On-Demand Ad Request Service. While both IDs and names are supported, it is strongly recommended that clients use station names.</Abstract>
+			<DeclaredIn>TDAdRequestURLBuilder.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) NSInteger stationId</Declaration>
+			
+			
+			<Anchor>//api/name/stationId</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/TDAdRequestURLBuilder/stationId</TokenIdentifier>
+			<Abstract type="html">Either the Station ID or station name must be specified when calling the On-Demand Ad Request Service. While both IDs and names are supported, it is strongly recommended that clients use station names.</Abstract>
+			<DeclaredIn>TDAdRequestURLBuilder.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) NSInteger stationId</Declaration>
+			
+			
+			<Anchor>//api/name/stationId</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDAdRequestURLBuilder/setStationName:</TokenIdentifier>
+			<Abstract type="html">Station names are case-sensitive. See stationId.</Abstract>
+			<DeclaredIn>TDAdRequestURLBuilder.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) NSString *stationName</Declaration>
+			
+			
+			<Anchor>//api/name/stationName</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDAdRequestURLBuilder/stationName</TokenIdentifier>
+			<Abstract type="html">Station names are case-sensitive. See stationId.</Abstract>
+			<DeclaredIn>TDAdRequestURLBuilder.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) NSString *stationName</Declaration>
+			
+			
+			<Anchor>//api/name/stationName</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/TDAdRequestURLBuilder/stationName</TokenIdentifier>
+			<Abstract type="html">Station names are case-sensitive. See stationId.</Abstract>
+			<DeclaredIn>TDAdRequestURLBuilder.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) NSString *stationName</Declaration>
+			
+			
+			<Anchor>//api/name/stationName</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDAdRequestURLBuilder/setPostalCode:</TokenIdentifier>
+			<Abstract type="html">The postal/zip code of the listener. Must be a valid postal or zip code, without spaces. E.g., 89040 or H3G1R8.
+When using this property, it&apos;s recommended to also use country.</Abstract>
+			<DeclaredIn>TDAdRequestURLBuilder.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) NSString *postalCode</Declaration>
+			
+			
+			<Anchor>//api/name/postalCode</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDAdRequestURLBuilder/postalCode</TokenIdentifier>
+			<Abstract type="html">The postal/zip code of the listener. Must be a valid postal or zip code, without spaces. E.g., 89040 or H3G1R8.
+When using this property, it&apos;s recommended to also use country.</Abstract>
+			<DeclaredIn>TDAdRequestURLBuilder.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) NSString *postalCode</Declaration>
+			
+			
+			<Anchor>//api/name/postalCode</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/TDAdRequestURLBuilder/postalCode</TokenIdentifier>
+			<Abstract type="html">The postal/zip code of the listener. Must be a valid postal or zip code, without spaces. E.g., 89040 or H3G1R8.
+When using this property, it&apos;s recommended to also use country.</Abstract>
+			<DeclaredIn>TDAdRequestURLBuilder.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) NSString *postalCode</Declaration>
+			
+			
+			<Anchor>//api/name/postalCode</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDAdRequestURLBuilder/setCountry:</TokenIdentifier>
+			<Abstract type="html">The ISO 3166-1 alpha-2 two-letter country code (e.g., US). If using this property, it&apos;s recommended to also use postalCode.</Abstract>
+			<DeclaredIn>TDAdRequestURLBuilder.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) NSString *country</Declaration>
+			
+			
+			<Anchor>//api/name/country</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDAdRequestURLBuilder/country</TokenIdentifier>
+			<Abstract type="html">The ISO 3166-1 alpha-2 two-letter country code (e.g., US). If using this property, it&apos;s recommended to also use postalCode.</Abstract>
+			<DeclaredIn>TDAdRequestURLBuilder.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) NSString *country</Declaration>
+			
+			
+			<Anchor>//api/name/country</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/TDAdRequestURLBuilder/country</TokenIdentifier>
+			<Abstract type="html">The ISO 3166-1 alpha-2 two-letter country code (e.g., US). If using this property, it&apos;s recommended to also use postalCode.</Abstract>
+			<DeclaredIn>TDAdRequestURLBuilder.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) NSString *country</Declaration>
+			
+			
+			<Anchor>//api/name/country</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDAdRequestURLBuilder/setLocationWithLatitude:andLongitude:</TokenIdentifier>
+			<Abstract type="html">The latitude and longitude of the listener obtained from CoreLocation or other source.</Abstract>
+			<DeclaredIn>TDAdRequestURLBuilder.h</DeclaredIn>
+			
+			<Declaration>- (void)setLocationWithLatitude:(float)latitude andLongitude:(float)longitude</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>latitude</Name>
+					<Abstract type="html">float value between -90.0 and 90.0.</Abstract>
+				</Parameter><Parameter>
+					<Name>longitude</Name>
+					<Abstract type="html">float value between -180.0 and 180.0</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/setLocationWithLatitude:andLongitude:</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDAdRequestURLBuilder/setLatitude:</TokenIdentifier>
+			<Abstract type="html">The latitude of the listener obtained from CoreLocation or other source.
+Floating-point value: -90.0 to 90.0. Not required individually. If using, you must also specify longitude.</Abstract>
+			<DeclaredIn>TDAdRequestURLBuilder.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) float latitude</Declaration>
+			
+			
+			<Anchor>//api/name/latitude</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDAdRequestURLBuilder/latitude</TokenIdentifier>
+			<Abstract type="html">The latitude of the listener obtained from CoreLocation or other source.
+Floating-point value: -90.0 to 90.0. Not required individually. If using, you must also specify longitude.</Abstract>
+			<DeclaredIn>TDAdRequestURLBuilder.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) float latitude</Declaration>
+			
+			
+			<Anchor>//api/name/latitude</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/TDAdRequestURLBuilder/latitude</TokenIdentifier>
+			<Abstract type="html">The latitude of the listener obtained from CoreLocation or other source.
+Floating-point value: -90.0 to 90.0. Not required individually. If using, you must also specify longitude.</Abstract>
+			<DeclaredIn>TDAdRequestURLBuilder.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) float latitude</Declaration>
+			
+			
+			<Anchor>//api/name/latitude</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDAdRequestURLBuilder/setLongitude:</TokenIdentifier>
+			<Abstract type="html">The longitude of the listener obtained from CoreLocation or other source.
+Floating-point value: -180.0 to 180.0. Not required individually. If using, you must also specify latitude.</Abstract>
+			<DeclaredIn>TDAdRequestURLBuilder.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) float longitude</Declaration>
+			
+			
+			<Anchor>//api/name/longitude</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDAdRequestURLBuilder/longitude</TokenIdentifier>
+			<Abstract type="html">The longitude of the listener obtained from CoreLocation or other source.
+Floating-point value: -180.0 to 180.0. Not required individually. If using, you must also specify latitude.</Abstract>
+			<DeclaredIn>TDAdRequestURLBuilder.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) float longitude</Declaration>
+			
+			
+			<Anchor>//api/name/longitude</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/TDAdRequestURLBuilder/longitude</TokenIdentifier>
+			<Abstract type="html">The longitude of the listener obtained from CoreLocation or other source.
+Floating-point value: -180.0 to 180.0. Not required individually. If using, you must also specify latitude.</Abstract>
+			<DeclaredIn>TDAdRequestURLBuilder.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) float longitude</Declaration>
+			
+			
+			<Anchor>//api/name/longitude</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDAdRequestURLBuilder/setAutoLocationTrackingEnabled:</TokenIdentifier>
+			<Abstract type="html">Whether to use built-in Core Location manager to handle location. Default value is NO.
+When enabled it will override values obtained from setLocationWithLatitude:andLongitude</Abstract>
+			<DeclaredIn>TDAdRequestURLBuilder.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, getter=isAutoLocationTrackingEnabled) BOOL autoLocationTrackingEnabled</Declaration>
+			
+			
+			<Anchor>//api/name/autoLocationTrackingEnabled</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDAdRequestURLBuilder/isAutoLocationTrackingEnabled</TokenIdentifier>
+			<Abstract type="html">Whether to use built-in Core Location manager to handle location. Default value is NO.
+When enabled it will override values obtained from setLocationWithLatitude:andLongitude</Abstract>
+			<DeclaredIn>TDAdRequestURLBuilder.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, getter=isAutoLocationTrackingEnabled) BOOL autoLocationTrackingEnabled</Declaration>
+			
+			
+			<Anchor>//api/name/autoLocationTrackingEnabled</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/TDAdRequestURLBuilder/autoLocationTrackingEnabled</TokenIdentifier>
+			<Abstract type="html">Whether to use built-in Core Location manager to handle location. Default value is NO.
+When enabled it will override values obtained from setLocationWithLatitude:andLongitude</Abstract>
+			<DeclaredIn>TDAdRequestURLBuilder.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, getter=isAutoLocationTrackingEnabled) BOOL autoLocationTrackingEnabled</Declaration>
+			
+			
+			<Anchor>//api/name/autoLocationTrackingEnabled</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDAdRequestURLBuilder/setAge:</TokenIdentifier>
+			<Abstract type="html">Integer value: 1 to 125</Abstract>
+			<DeclaredIn>TDAdRequestURLBuilder.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) NSInteger age</Declaration>
+			
+			
+			<Anchor>//api/name/age</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDAdRequestURLBuilder/age</TokenIdentifier>
+			<Abstract type="html">Integer value: 1 to 125</Abstract>
+			<DeclaredIn>TDAdRequestURLBuilder.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) NSInteger age</Declaration>
+			
+			
+			<Anchor>//api/name/age</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/TDAdRequestURLBuilder/age</TokenIdentifier>
+			<Abstract type="html">Integer value: 1 to 125</Abstract>
+			<DeclaredIn>TDAdRequestURLBuilder.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) NSInteger age</Declaration>
+			
+			
+			<Anchor>//api/name/age</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDAdRequestURLBuilder/setDateOfBirth:</TokenIdentifier>
+			<Abstract type="html">The date of birth as an NSDate</Abstract>
+			<DeclaredIn>TDAdRequestURLBuilder.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) NSDate *dateOfBirth</Declaration>
+			
+			
+			<Anchor>//api/name/dateOfBirth</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDAdRequestURLBuilder/dateOfBirth</TokenIdentifier>
+			<Abstract type="html">The date of birth as an NSDate</Abstract>
+			<DeclaredIn>TDAdRequestURLBuilder.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) NSDate *dateOfBirth</Declaration>
+			
+			
+			<Anchor>//api/name/dateOfBirth</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/TDAdRequestURLBuilder/dateOfBirth</TokenIdentifier>
+			<Abstract type="html">The date of birth as an NSDate</Abstract>
+			<DeclaredIn>TDAdRequestURLBuilder.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) NSDate *dateOfBirth</Declaration>
+			
+			
+			<Anchor>//api/name/dateOfBirth</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDAdRequestURLBuilder/setDateOfBirthFromString:</TokenIdentifier>
+			<Abstract type="html">Set the date of birth as a string formatted as YYYY-MM-DD</Abstract>
+			<DeclaredIn>TDAdRequestURLBuilder.h</DeclaredIn>
+			
+			<Declaration>- (void)setDateOfBirthFromString:(NSString *)dateOfBirth</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>dateOfBirth</Name>
+					<Abstract type="html">the formatted string</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/setDateOfBirthFromString:</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDAdRequestURLBuilder/setYearOfBirth:</TokenIdentifier>
+			<Abstract type="html">Integer value: 1900 to 2005</Abstract>
+			<DeclaredIn>TDAdRequestURLBuilder.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) NSInteger yearOfBirth</Declaration>
+			
+			
+			<Anchor>//api/name/yearOfBirth</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDAdRequestURLBuilder/yearOfBirth</TokenIdentifier>
+			<Abstract type="html">Integer value: 1900 to 2005</Abstract>
+			<DeclaredIn>TDAdRequestURLBuilder.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) NSInteger yearOfBirth</Declaration>
+			
+			
+			<Anchor>//api/name/yearOfBirth</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/TDAdRequestURLBuilder/yearOfBirth</TokenIdentifier>
+			<Abstract type="html">Integer value: 1900 to 2005</Abstract>
+			<DeclaredIn>TDAdRequestURLBuilder.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) NSInteger yearOfBirth</Declaration>
+			
+			
+			<Anchor>//api/name/yearOfBirth</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDAdRequestURLBuilder/setGender:</TokenIdentifier>
+			<Abstract type="html">Possible values are kTDGenderFemale and kTDGenderMale</Abstract>
+			<DeclaredIn>TDAdRequestURLBuilder.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) TDGender gender</Declaration>
+			
+			
+			<Anchor>//api/name/gender</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDAdRequestURLBuilder/gender</TokenIdentifier>
+			<Abstract type="html">Possible values are kTDGenderFemale and kTDGenderMale</Abstract>
+			<DeclaredIn>TDAdRequestURLBuilder.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) TDGender gender</Declaration>
+			
+			
+			<Anchor>//api/name/gender</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/TDAdRequestURLBuilder/gender</TokenIdentifier>
+			<Abstract type="html">Possible values are kTDGenderFemale and kTDGenderMale</Abstract>
+			<DeclaredIn>TDAdRequestURLBuilder.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) TDGender gender</Declaration>
+			
+			
+			<Anchor>//api/name/gender</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDAdRequestURLBuilder/setBanners:</TokenIdentifier>
+			<Abstract type="html">A string with a list of comma-separated banner sizes</Abstract>
+			<DeclaredIn>TDAdRequestURLBuilder.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) NSString *banners</Declaration>
+			
+			
+			<Anchor>//api/name/banners</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDAdRequestURLBuilder/banners</TokenIdentifier>
+			<Abstract type="html">A string with a list of comma-separated banner sizes</Abstract>
+			<DeclaredIn>TDAdRequestURLBuilder.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) NSString *banners</Declaration>
+			
+			
+			<Anchor>//api/name/banners</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/TDAdRequestURLBuilder/banners</TokenIdentifier>
+			<Abstract type="html">A string with a list of comma-separated banner sizes</Abstract>
+			<DeclaredIn>TDAdRequestURLBuilder.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) NSString *banners</Declaration>
+			
+			
+			<Anchor>//api/name/banners</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDAdRequestURLBuilder/setCustomSegmentId:</TokenIdentifier>
+			<Abstract type="html">Integer value: 1 to 1000000</Abstract>
+			<DeclaredIn>TDAdRequestURLBuilder.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) NSInteger customSegmentId</Declaration>
+			
+			
+			<Anchor>//api/name/customSegmentId</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDAdRequestURLBuilder/customSegmentId</TokenIdentifier>
+			<Abstract type="html">Integer value: 1 to 1000000</Abstract>
+			<DeclaredIn>TDAdRequestURLBuilder.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) NSInteger customSegmentId</Declaration>
+			
+			
+			<Anchor>//api/name/customSegmentId</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/TDAdRequestURLBuilder/customSegmentId</TokenIdentifier>
+			<Abstract type="html">Integer value: 1 to 1000000</Abstract>
+			<DeclaredIn>TDAdRequestURLBuilder.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) NSInteger customSegmentId</Declaration>
+			
+			
+			<Anchor>//api/name/customSegmentId</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDAdRequestURLBuilder/setAssetType:</TokenIdentifier>
+			<Abstract type="html">Change this if you would like to impose constraints on the type of asset returned. Possible values are:
+kTDAssetTypeNotDefined, kTDAssetTypeAudio, kTDAssetTypeVideo and kTDAssetTypeAudioVideo.</Abstract>
+			<DeclaredIn>TDAdRequestURLBuilder.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) TDAssetType assetType</Declaration>
+			
+			
+			<Anchor>//api/name/assetType</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDAdRequestURLBuilder/assetType</TokenIdentifier>
+			<Abstract type="html">Change this if you would like to impose constraints on the type of asset returned. Possible values are:
+kTDAssetTypeNotDefined, kTDAssetTypeAudio, kTDAssetTypeVideo and kTDAssetTypeAudioVideo.</Abstract>
+			<DeclaredIn>TDAdRequestURLBuilder.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) TDAssetType assetType</Declaration>
+			
+			
+			<Anchor>//api/name/assetType</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/TDAdRequestURLBuilder/assetType</TokenIdentifier>
+			<Abstract type="html">Change this if you would like to impose constraints on the type of asset returned. Possible values are:
+kTDAssetTypeNotDefined, kTDAssetTypeAudio, kTDAssetTypeVideo and kTDAssetTypeAudioVideo.</Abstract>
+			<DeclaredIn>TDAdRequestURLBuilder.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) TDAssetType assetType</Declaration>
+			
+			
+			<Anchor>//api/name/assetType</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDAdRequestURLBuilder/setExtraParameters:</TokenIdentifier>
+			<Abstract type="html">All the parameters non supported by properties can be passed by key/value pair.
+Situations in which you would use this property:
+- When defining Asset Constraints (Section 3.3.5 of Triton&apos;s On-Demand Advertising guide);
+- Custom parameters
+- New supported targeting parameters without a corresponding propery.
+- Standard parameters can also be passed using this dictionary and they will override the values set by each property or setter method.</Abstract>
+			<DeclaredIn>TDAdRequestURLBuilder.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) NSDictionary *extraParameters</Declaration>
+			
+			
+			<Anchor>//api/name/extraParameters</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDAdRequestURLBuilder/extraParameters</TokenIdentifier>
+			<Abstract type="html">All the parameters non supported by properties can be passed by key/value pair.
+Situations in which you would use this property:
+- When defining Asset Constraints (Section 3.3.5 of Triton&apos;s On-Demand Advertising guide);
+- Custom parameters
+- New supported targeting parameters without a corresponding propery.
+- Standard parameters can also be passed using this dictionary and they will override the values set by each property or setter method.</Abstract>
+			<DeclaredIn>TDAdRequestURLBuilder.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) NSDictionary *extraParameters</Declaration>
+			
+			
+			<Anchor>//api/name/extraParameters</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/TDAdRequestURLBuilder/extraParameters</TokenIdentifier>
+			<Abstract type="html">All the parameters non supported by properties can be passed by key/value pair.
+Situations in which you would use this property:
+- When defining Asset Constraints (Section 3.3.5 of Triton&apos;s On-Demand Advertising guide);
+- Custom parameters
+- New supported targeting parameters without a corresponding propery.
+- Standard parameters can also be passed using this dictionary and they will override the values set by each property or setter method.</Abstract>
+			<DeclaredIn>TDAdRequestURLBuilder.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) NSDictionary *extraParameters</Declaration>
+			
+			
+			<Anchor>//api/name/extraParameters</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDAdRequestURLBuilder/setTTags:</TokenIdentifier>
+			<Abstract type="html">An Array of NSString
+- When defining Custom TTag Targeting</Abstract>
+			<DeclaredIn>TDAdRequestURLBuilder.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) NSArray *TTags</Declaration>
+			
+			
+			<Anchor>//api/name/TTags</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDAdRequestURLBuilder/TTags</TokenIdentifier>
+			<Abstract type="html">An Array of NSString
+- When defining Custom TTag Targeting</Abstract>
+			<DeclaredIn>TDAdRequestURLBuilder.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) NSArray *TTags</Declaration>
+			
+			
+			<Anchor>//api/name/TTags</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/TDAdRequestURLBuilder/TTags</TokenIdentifier>
+			<Abstract type="html">An Array of NSString
+- When defining Custom TTag Targeting</Abstract>
+			<DeclaredIn>TDAdRequestURLBuilder.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) NSArray *TTags</Declaration>
+			
+			
+			<Anchor>//api/name/TTags</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDAdRequestURLBuilder/generateAdRequestURL</TokenIdentifier>
+			<Abstract type="html">Build and return a string containing the ad request URL for on-demand ads.</Abstract>
+			<DeclaredIn>TDAdRequestURLBuilder.h</DeclaredIn>
+			
+			<Declaration>- (NSString *)generateAdRequestURL</Declaration>
+			
+			<ReturnValue><Abstract type="html">NSString containing the ad request. It will return nil if host is not specified and if both station name and station id are not specified.</Abstract></ReturnValue>
+			<Anchor>//api/name/generateAdRequestURL</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDAdRequestURLBuilder/reset</TokenIdentifier>
+			<Abstract type="html">Resets the TDAdRequestURLBuiler to its default values and keeps the host url. You can use this to reuse the same object for different requests to the same host.</Abstract>
+			<DeclaredIn>TDAdRequestURLBuilder.h</DeclaredIn>
+			
+			<Declaration>- (void)reset</Declaration>
+			
+			
+			<Anchor>//api/name/reset</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+        
+        
+	</File>
+</Tokens>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Constants/TDAdErrorCode.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/c/tdef/TDAdErrorCode</TokenIdentifier>
+			<Abstract type="html">The error codes that can be returned when using ad functionality.</Abstract>
+			<DeclaredIn>TDAdLoader.h</DeclaredIn>
+            
+			
+			<NodeRef refid="17"/>
+		</Token>
+		
+		
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/TDErrorCodeInvalidRequest</TokenIdentifier>
+            <Abstract type="html">A network error occurred while requesting the ad</Abstract>
+            <Declaration>TDErrorCodeInvalidRequest</Declaration>
+            
+            <DeclaredIn>TDAdLoader.h</DeclaredIn>
+            
+            <NodeRef refid="17"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/TDErrorCodeUndefinedSize</TokenIdentifier>
+            <Abstract type="html">The width and height of the ad was not specified</Abstract>
+            <Declaration>TDErrorCodeUndefinedSize</Declaration>
+            
+            <DeclaredIn>TDAdLoader.h</DeclaredIn>
+            
+            <NodeRef refid="17"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/TDErrorCodeNoInventory</TokenIdentifier>
+            <Abstract type="html">There&apos;s no ad to be displayed for the request</Abstract>
+            <Declaration>TDErrorCodeNoInventory</Declaration>
+            
+            <DeclaredIn>TDAdLoader.h</DeclaredIn>
+            
+            <NodeRef refid="17"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/TDErrorCodeInvalidAdURL</TokenIdentifier>
+            <Abstract type="html">The ad request or media url is malformed</Abstract>
+            <Declaration>TDErrorCodeInvalidAdURL</Declaration>
+            
+            <DeclaredIn>TDAdLoader.h</DeclaredIn>
+            
+            <NodeRef refid="17"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/TDErrorCodeResponseParsingFailed</TokenIdentifier>
+            <Abstract type="html">Unable to parse the response</Abstract>
+            <Declaration>TDErrorCodeResponseParsingFailed</Declaration>
+            
+            <DeclaredIn>TDAdLoader.h</DeclaredIn>
+            
+            <NodeRef refid="17"/>
+        </Token>
+        
+        
+	</File>
+</Tokens>

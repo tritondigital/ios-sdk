@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/TDInterstitialAd.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/TDInterstitialAd</TokenIdentifier>
+			<Abstract type="html">The TDInterstitialAd class is used to request and display Triton interstitial ads.</Abstract>
+			<DeclaredIn>TDInterstitialAd.h</DeclaredIn>
+            
+			
+			<NodeRef refid="8"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDInterstitialAd/setDelegate:</TokenIdentifier>
+			<Abstract type="html">The delegate that will receive state changes from TDInterstitialAd.</Abstract>
+			<DeclaredIn>TDInterstitialAd.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, weak) id&lt;TDInterstitialDelegate&gt; delegate</Declaration>
+			
+			
+			<Anchor>//api/name/delegate</Anchor>
+            <NodeRef refid="8"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDInterstitialAd/delegate</TokenIdentifier>
+			<Abstract type="html">The delegate that will receive state changes from TDInterstitialAd.</Abstract>
+			<DeclaredIn>TDInterstitialAd.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, weak) id&lt;TDInterstitialDelegate&gt; delegate</Declaration>
+			
+			
+			<Anchor>//api/name/delegate</Anchor>
+            <NodeRef refid="8"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/TDInterstitialAd/delegate</TokenIdentifier>
+			<Abstract type="html">The delegate that will receive state changes from TDInterstitialAd.</Abstract>
+			<DeclaredIn>TDInterstitialAd.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, weak) id&lt;TDInterstitialDelegate&gt; delegate</Declaration>
+			
+			
+			<Anchor>//api/name/delegate</Anchor>
+            <NodeRef refid="8"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDInterstitialAd/setLoaded:</TokenIdentifier>
+			<Abstract type="html">Informs if the ad was loaded from Triton&apos;s server. This property should be checked before presenting the interstitial ad.</Abstract>
+			<DeclaredIn>TDInterstitialAd.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) BOOL loaded</Declaration>
+			
+			
+			<Anchor>//api/name/loaded</Anchor>
+            <NodeRef refid="8"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDInterstitialAd/loaded</TokenIdentifier>
+			<Abstract type="html">Informs if the ad was loaded from Triton&apos;s server. This property should be checked before presenting the interstitial ad.</Abstract>
+			<DeclaredIn>TDInterstitialAd.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) BOOL loaded</Declaration>
+			
+			
+			<Anchor>//api/name/loaded</Anchor>
+            <NodeRef refid="8"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/TDInterstitialAd/loaded</TokenIdentifier>
+			<Abstract type="html">Informs if the ad was loaded from Triton&apos;s server. This property should be checked before presenting the interstitial ad.</Abstract>
+			<DeclaredIn>TDInterstitialAd.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) BOOL loaded</Declaration>
+			
+			
+			<Anchor>//api/name/loaded</Anchor>
+            <NodeRef refid="8"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDInterstitialAd/loadAd:</TokenIdentifier>
+			<Abstract type="html">Prepare an interstitial ad for playing. It will be prefetched if needed.</Abstract>
+			<DeclaredIn>TDInterstitialAd.h</DeclaredIn>
+			
+			<Declaration>- (void)loadAd:(TDAd *)ad</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>ad</Name>
+					<Abstract type="html">The TDAd to be loaded.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/loadAd:</Anchor>
+            <NodeRef refid="8"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDInterstitialAd/loadRequestBuilder:</TokenIdentifier>
+			<Abstract type="html">Request and prepare an interstitial ad for playing. It will be prefetched if needed.</Abstract>
+			<DeclaredIn>TDInterstitialAd.h</DeclaredIn>
+			
+			<Declaration>- (void)loadRequestBuilder:(TDAdRequestURLBuilder *)requestBuilder</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>requestBuilder</Name>
+					<Abstract type="html">A TDAdRequestURLBuilder object representing the interstitial request.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/loadRequestBuilder:</Anchor>
+            <NodeRef refid="8"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDInterstitialAd/loadStringRequest:</TokenIdentifier>
+			<Abstract type="html">Request and prepare an interstitial ad for playing. It will be prefetched if needed.</Abstract>
+			<DeclaredIn>TDInterstitialAd.h</DeclaredIn>
+			
+			<Declaration>- (void)loadStringRequest:(NSString *)stringRequest</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>stringRequest</Name>
+					<Abstract type="html">A NSString representing the interstitial request. It can be build manually or by TDAdRequestURLBuilder.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/loadStringRequest:</Anchor>
+            <NodeRef refid="8"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDInterstitialAd/presentFromViewController:</TokenIdentifier>
+			<Abstract type="html">Presents the interstitial ad which takes over the entire screen until it finishes or the user dismisses it. This method only has effect if loaded returns YES and/or if the delegate’s interstitialDidReceiveAd: has been called.</Abstract>
+			<DeclaredIn>TDInterstitialAd.h</DeclaredIn>
+			
+			<Declaration>- (void)presentFromViewController:(UIViewController *)rootViewController</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>rootViewController</Name>
+					<Abstract type="html">The current view controller which will be used to present the full screen ad.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/presentFromViewController:</Anchor>
+            <NodeRef refid="8"/>
+		</Token>
+		
+        
+        
+	</File>
+</Tokens>

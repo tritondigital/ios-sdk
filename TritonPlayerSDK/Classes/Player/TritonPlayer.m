@@ -1,0 +1,875 @@
+//
+//  TritonPlayer.m
+//  iPhoneV2
+//
+//  Created by Thierry Bucco on 09-03-23.
+//  Copyright 2009 StreamTheWorld. All rights reserved.
+//
+
+#import <AVFoundation/AVFoundation.h>
+#import <UIKit/UIKit.h>
+
+#import "TritonPlayer.h"
+#import "CuePointEvent.h"
+#import "CuePointEventProtected.h"
+#import "CuePointEventController.h"
+#import "FLVStreamPlayerLibConstants.h"
+#import "TritonPlayerConstants.h"
+#import "TDReachability.h"
+#import "UIDevice+Hardware.h"
+#import "Logs.h"
+#import "TDLocationManager.h"
+#import "TDStreamPlayer.h"
+#import "TDStationPlayer.h"
+#import "TDMediaPlayer.h"
+
+
+
+NSString *const TritonSDKVersion                        = @"2.5.1"; //TritonSDKVersion
+
+CGFloat   const  kDefaultPlayerDebouncing               = 0.2f; //Default debouncing for the Play action, in seconds
+
+NSString *const TritonPlayerThreadName                  = @"TritonPlayer";
+
+NSString *const SettingsEnableLocationTrackingKey       = @"EnableLocationTracking";
+NSString *const SettingsStationNameKey                  = @"StationId";
+NSString *const SettingsMountKey                        = @"Mount";
+NSString *const SettingsContentURLKey                   = @"ContentURL";
+NSString *const SettingsContentTypeKey                  = @"ContentType";
+NSString *const SettingsAppNameKey                      = @"AppId"; // Defaults to CustomPlayer1
+NSString *const SettingsBroadcasterKey                  = @"BroadcasterId";
+NSString *const SettingsStreamParamsExtraKey            = @"StreamParamsExtra";
+NSString *const SettingsTtagKey                         = @"TTags";
+NSString *const SettingsPlayerServicesRegion            = @"PlayerServicesRegion"; 
+NSString *const SettingsLowDelayKey                     = @"LowDelay";
+NSString *const SettingsReferrerURLKey                  = @"ReferrerURL";
+NSString *const SettingsSecIdKey                        = @"SecId";
+NSString *const SettingsDebouncingKey                   = @"DebouncingKey";
+NSString *const SettingsExtraForceDisableHLSKey         = @"ExtraForceDisableHLS";
+NSString *const SettingsBitrateKey                      = @"MountBitrate";
+NSString *const SettingsDistributionParameterKey        = @"DistributionParameter";
+
+/// Extra parameters for location targeting
+
+NSString *const StreamParamExtraLatitudeKey             = @"lat";
+NSString *const StreamParamExtraLongitudeKey            = @"long";
+NSString *const StreamParamExtraPostalCodeKey           = @"postalcode";
+NSString *const StreamParamExtraCountryKey              = @"country";
+
+NSString *const StreamParamExtraAgeKey                  = @"age";
+NSString *const StreamParamExtraDateOfBirthKey          = @"dob";
+NSString *const StreamParamExtraYearOfBirthKey          = @"yob";
+NSString *const StreamParamExtraGenderKey               = @"gender";
+
+NSString *const StreamParamExtraCustomSegmentIdKey      = @"csegid";
+NSString *const StreamParamExtraBannersKey              = @"banners";
+
+NSString *const StreamParamExtraAuthorizationTokenKey   = @"tdtok";
+
+NSString *const TritonPlayerDomain                      = @"com.tritondigital.error";
+
+NSString *const InfoBufferingPercentageKey              = @"percentage";
+NSString *const InfoAlternateMountNameKey               = @"alternateMount";
+
+
+
+
+@interface TritonPlayer() <CLLocationManagerDelegate, TDMediaPlaybackDelegate>
+
+@property (nonatomic, weak) id<TritonPlayerDelegate> delegate;
+
+// Stream configuration
+@property (nonatomic, copy) NSString *mount;
+@property (nonatomic, copy) NSString *stationName;
+@property (nonatomic, copy) NSString *broadcaster;
+@property (nonatomic, copy) NSString *appName;
+@property (nonatomic, assign) PlayerContentType contentType;
+
+@property (nonatomic, copy) NSString *playerServicesRegion;
+
+// Url for on-demand or non provisioned triton stream content
+@property (nonatomic, copy) NSString *contentUrl;
+
+// Targeting
+@property (nonatomic, assign) BOOL enableLocationTacking;
+@property (nonatomic, copy) NSDictionary* extraQueryParameters;
+@property (nonatomic, copy) NSArray* tTags;
+@property (nonatomic, strong) NSString *token;
+
+// These parameters are used for content protection but it's been a while since they are not used. Eventually they may be removed.
+@property (nonatomic, strong) NSString *referrerURL;
+@property (nonatomic, strong) NSString *secId;
+
+@property (nonatomic, assign) SInt32 lowDelay;
+@property (nonatomic, assign) SInt32 bitrate;
+
+@property (nonatomic, assign) BOOL forceDisableHLS;
+
+@property (nonatomic, assign) NSTimeInterval debouncing;
+
+@property (nonatomic, assign) TDPlayerState state;
+
+@property BOOL isExecuting;
+@property BOOL stopStreamThread;
+@property BOOL streamFinishedNotificationAlreadySent; // indicate that a notification when a stream has been closed (failed or not)
+
+// stopStreamThread: Used to determine if we should kill the thread AFTER notifications are sent. Setting active to false manually would cause notifications to not be sent.
+@property BOOL active;
+
+@property (assign) BOOL shouldResumePlaybackAfterInterruption;
+
+// Can be a TDStationPlayer or a TDStreamPlayer depending on the kind of media being played
+@property (nonatomic, strong) id<TDMediaPlayback> mediaPlayer;
+
+@property (nonatomic, assign) UIBackgroundTaskIdentifier backgroundTaskIdentifier;
+@property (nonatomic, assign) BOOL playerWasInterrupted;
+
+@property (nonatomic, strong) NSError *error;
+
+
+@property (nonatomic, strong) NSTimer *playDebouncingTimer;
+@property (nonatomic, strong) NSOperationQueue *playerOperationQueue;
+
+@end
+
+@implementation TritonPlayer
+
+//=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+// dealloc
+//=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+//=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+// getAudioQueue
+//=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+- (AudioQueueRef)getAudioQueue
+{
+    if ([self.mediaPlayer respondsToSelector:@selector(getAudioQueue)]) {
+        return [self.mediaPlayer getAudioQueue];
+        
+    } else {
+        return nil;
+    }
+}
+
+//=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+// initWithDelegateAndSettings
+//=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+- (id)initWithDelegate:(id)inDelegate andSettings:(NSDictionary *)settings
+{
+	self = [super init];
+	if (self)
+	{
+        UIDeviceHardwareEmptyFunction();
+        
+        _contentType = PlayerContentTypeOther;
+        _state = kTDPlayerStateStopped;
+        
+        [self configureAudioSession];
+        
+		_delegate = inDelegate;
+        [self updateSettings:settings];
+        
+        // For debugging during development
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onCreateSimulatedCuePoint) name:@"CreateSimulatedCuePoint" object:nil];
+			self.playerOperationQueue = [[NSOperationQueue alloc] init];
+			[self.playerOperationQueue setMaxConcurrentOperationCount:1];
+    }
+	return self;
+}
+
+-(void) updateSettings:(NSDictionary *) settings {
+    if (settings) {
+        
+        self.stationName = settings[SettingsStationNameKey];
+        self.mount = settings[SettingsMountKey];
+        self.contentUrl = settings[SettingsContentURLKey];
+        
+        NSNumber *contentType = settings[SettingsContentTypeKey];
+        if (contentType) {
+            self.contentType = [contentType intValue];
+        }
+        
+        NSString *appName = settings[SettingsAppNameKey];
+        self.appName = appName ? appName : kDefaultAppName;
+        
+        self.broadcaster = settings[SettingsBroadcasterKey];
+        self.referrerURL = settings[SettingsReferrerURLKey];
+        self.secId = settings[SettingsSecIdKey];
+        self.enableLocationTacking = [settings[SettingsEnableLocationTrackingKey] boolValue];
+        self.forceDisableHLS = [settings[SettingsExtraForceDisableHLSKey] boolValue];
+        
+        self.lowDelay = [settings[SettingsLowDelayKey] intValue];
+        
+        if (self.enableLocationTacking) {
+            [[TDLocationManager sharedManager] startLocation];
+        
+        } else {
+            [[TDLocationManager sharedManager] stopLocation];
+        }
+        
+        self.extraQueryParameters = settings[SettingsStreamParamsExtraKey];
+        
+        self.tTags = settings[SettingsTtagKey];
+        
+        self.playerServicesRegion = settings[SettingsPlayerServicesRegion];
+        if(self.playerServicesRegion == nil)
+            self.playerServicesRegion= @"";
+        
+        self.token = settings[StreamParamExtraAuthorizationTokenKey];
+        if(self.token == nil)
+            self.token= @"";
+        
+        CGFloat deb = [settings[SettingsDebouncingKey] floatValue];
+        if(deb <= 0)  deb = kDefaultPlayerDebouncing;
+        self.debouncing = (NSTimeInterval) deb;
+
+        if ([self.mount isEqualToString:@""]) {
+            self.mount = nil;
+        }
+    }
+}
+
+//=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+// getLibVersion
+//=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+- (NSString *)getLibVersion
+{
+	return kLibVersion;
+}
+
+//=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+// isNetworkReachable
+//=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+- (BOOL)isNetworkReachable
+{
+	TDReachability *lReachability = [TDReachability reachabilityWithHostName:@"www.apple.com"];
+	NetworkStatus lNetStatus = [lReachability currentReachabilityStatus];
+	return (lNetStatus != NotReachable);
+}
+
+-(CLLocation *)targetingLocation {
+    return [TDLocationManager sharedManager].targetingLocation;
+}
+
+-(NSDictionary *)extraQueryParameters {
+    return _extraQueryParameters ? _extraQueryParameters : @{};
+}
+
+-(NSArray *)tTags {
+    return _tTags ? _tTags : @[];
+}
+
+#pragma  mark - Stream playback and Provisioning
+
+//=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+// start
+//=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+- (void)startInThread {
+    NSThread* mostRecent = [NSThread currentThread];
+    if(mostRecent != nil && [[mostRecent name] isEqualToString:TritonPlayerThreadName])
+    {
+      [mostRecent cancel];
+    }
+   
+    [NSThread currentThread].name = TritonPlayerThreadName;
+    
+    @autoreleasepool {
+        
+        if (self.mount) {
+            
+            if (![self.mediaPlayer isKindOfClass:[TDStationPlayer class]]) {
+                self.mediaPlayer = [[TDStationPlayer alloc] init];
+                self.mediaPlayer.delegate = self;
+            }
+            
+            [self.mediaPlayer updateSettings:@{SettingsStationPlayerUserAgentKey : [self createUserAgentString],
+                                               SettingsStationPlayerMountKey : self.mount,
+                                               SettingsStationPlayerBroadcasterKey : self.broadcaster,
+                                               SettingsStreamParamsExtraKey : self.extraQueryParameters,
+                                               SettingsStationPlayerForceDisableHLSkey : @(self.forceDisableHLS),
+                                               SettingsTtagKey : self.tTags,
+                                               SettingsPlayerServicesRegion: self.playerServicesRegion,
+                                               StreamParamExtraAuthorizationTokenKey: self.token,
+                                               SettingsLowDelayKey : [NSNumber numberWithInt:self.lowDelay]
+                                               }];
+        
+        } else {
+            if (![self.mediaPlayer isKindOfClass:[TDStreamPlayer class]]) {
+                self.mediaPlayer = [[TDStreamPlayer alloc] init];
+                self.mediaPlayer.delegate = self;
+            }
+            
+            TDStreamProfile profile;
+            
+            // Map between PlayerContent and TDStreamProfile
+            switch (self.contentType) {
+                case PlayerContentTypeFLV:
+                    profile = kTDStreamProfileFLV;
+                    break;
+                    
+                case PlayerContentTypeHLS:
+                    profile = KTDStreamProfileHLS;
+                    break;
+                    
+                default:
+                    profile = KTDStreamProfileOther;
+                    break;
+            }
+            
+            [self.mediaPlayer updateSettings:@{SettingsStreamPlayerProfileKey : @(profile),
+                                               SettingsStreamPlayerUserAgentKey : [self createUserAgentString],
+                                               SettingsStreamParamsExtraKey : self.extraQueryParameters,
+                                               SettingsStreamPlayerStreamURLKey : self.contentUrl,
+                                               SettingsTtagKey : self.tTags,
+                                               StreamParamExtraAuthorizationTokenKey: self.token,
+                                               SettingsLowDelayKey : [NSNumber numberWithInt:self.lowDelay]
+                                               }];
+        }
+
+        [self.mediaPlayer play];
+        
+        [[NSRunLoop currentRunLoop] addPort:[NSMachPort port] forMode:NSDefaultRunLoopMode];
+        while (_active) {
+            CFRunLoopRunInMode(kCFRunLoopDefaultMode, 0.090, FALSE);//0.090 instead of 0.30
+        }
+    }
+}
+
+//=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+// internal Play
+//=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+- (void) internalPlay
+{
+    @synchronized(self)
+	{
+        if ([self canChangeStateWithAction:kTDPlayerActionPlay])
+		{
+            _active = TRUE;
+            _stopStreamThread = NO;
+            
+            TDPlayerState lastState = self.state;
+            [self updateStateMachineForAction:kTDPlayerActionPlay];
+            
+            if (lastState == kTDPlayerStatePaused)
+			{
+                // Resume paused content
+                [self.mediaPlayer play];
+			}
+			else
+			{
+                [NSThread detachNewThreadSelector:@selector(startInThread) toTarget:self withObject:nil];
+            }
+        }
+		else
+		{
+            FLOG(@"Pressing play when state is %zd", self.state);
+        }
+    }
+}
+
+
+//=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+// play
+//=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+- (void)play
+{
+	if(self.mount != nil)
+    {
+        [self stop];
+    }
+    
+	[self.playerOperationQueue addOperationWithBlock: ^{
+    
+		if(self.playDebouncingTimer != nil)
+		{
+			[self.playDebouncingTimer invalidate];
+		}
+    
+		if( [NSThread isMainThread])
+		{
+			self.playDebouncingTimer = [NSTimer scheduledTimerWithTimeInterval: self.debouncing  target: self  selector: @selector(internalPlay) userInfo: nil repeats: NO];
+		}
+		else
+		{
+			self.playDebouncingTimer = [NSTimer timerWithTimeInterval:self.debouncing target:self selector:@selector(internalPlay) userInfo:nil repeats:NO];
+			
+			[[NSRunLoop currentRunLoop] addTimer:self.playDebouncingTimer forMode:NSDefaultRunLoopMode];
+			[[NSRunLoop currentRunLoop] run];
+		}
+	}];
+}
+
+
+//=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+// stop
+//=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+- (void)stop
+{
+	[self.playerOperationQueue cancelAllOperations];
+	[self.playerOperationQueue addOperationWithBlock: ^{
+		@synchronized(self)
+		{
+			// We kill the thread after notifications are sent since we manually pressed Stop so we don't need to try other available servers
+			_stopStreamThread = TRUE;
+		
+			[self updateStateMachineForAction:kTDPlayerActionStop];
+			usleep(self.debouncing * 1000000);
+			[self.mediaPlayer stop];
+
+			if (_stopStreamThread)
+			{
+				_active = FALSE;
+				_stopStreamThread = TRUE;
+			}
+		}
+	}];
+}
+
+
+
+-(void)pause {
+    [self.playerOperationQueue cancelAllOperations];
+    [self.playerOperationQueue addOperationWithBlock: ^{
+        @synchronized(self)
+        {
+            usleep(self.debouncing * 1000000);
+            [self.mediaPlayer pause];
+            
+            [self updateStateMachineForAction:kTDPlayerActionPause];
+        }
+    }];
+    
+}
+
+-(void)seekToTimeInterval:(NSTimeInterval)interval {
+    if ([self.mediaPlayer respondsToSelector:@selector(seekToTimeInterval:)]) {
+        [self.mediaPlayer seekToTimeInterval:interval];
+    }
+}
+
+-(void)seekToTime:(CMTime)time completionHandler:(void (^)(BOOL))completionHandler {
+    if ([self.mediaPlayer respondsToSelector:@selector(seekToTime:completionHandler:)]) {
+        [self.mediaPlayer seekToTime:time completionHandler:completionHandler];
+    }
+}
+
+#pragma mark - State machine
+
+-(BOOL)canChangeStateWithAction:(TDPlayerAction) action {
+    return [self nextStateForAction:action] != self.state;
+}
+
+// Returns the next state for an action. This doesn't change the state.
+-(TDPlayerState)nextStateForAction:(TDPlayerAction)action {
+    TDPlayerState nextState = self.state;
+    
+    switch (action) {
+						
+        case kTDPlayerActionPlay:
+            if (self.state == kTDPlayerStateStopped || self.state == kTDPlayerStateError || self.state == kTDPlayerStateCompleted || self.state == kTDPlayerStatePaused) {
+                nextState = kTDPlayerStateConnecting;
+                
+            }
+            break;
+				
+				case kTDPlayerActionReconnect:
+						if( self.state == kTDPlayerStatePlaying || self.state == kTDPlayerStateStopped || self.state == kTDPlayerStateError ){
+								nextState = kTDPlayerStateConnecting;
+						}
+						
+						break;
+						
+        case kTDPlayerActionStop:
+            if (self.state != kTDPlayerStateStopped) {
+                nextState = kTDPlayerStateStopped;
+                
+            }
+            break;
+            
+        case kTDPlayerActionJumpToNextState:
+            if (self.state == kTDPlayerStateConnecting) {
+                nextState = kTDPlayerStatePlaying;
+                
+            } else if (self.state == kTDPlayerStatePlaying) {
+                nextState = kTDPlayerStateCompleted;
+            }
+            break;
+            
+        case kTDPlayerActionError:
+            if (self.state != kTDPlayerStateError) {
+                nextState = kTDPlayerStateError;
+                
+            }
+            break;
+            
+        case kTDPlayerActionPause:
+            if (self.state == kTDPlayerStatePlaying || self.state == kTDPlayerStateConnecting) {
+                nextState = kTDPlayerStatePaused;
+                
+            }
+            break;
+    }
+    
+    return nextState;
+}
+
+-(void)updateStateMachineForAction:(TDPlayerAction)action {
+    
+    TDPlayerState nextState = [self nextStateForAction:action];
+    
+    // If state changed, send the delegate a callback message
+        self.state = nextState;
+        
+    PLAYER_LOG(@"Changed state to: %@", [TritonPlayer toStringState:self.state]);
+        
+        // Clear error
+        if (self.state != kTDPlayerStateError) {
+            self.error = nil;
+        }
+        
+        if ([self.delegate respondsToSelector:@selector(player:didChangeState:)]) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.delegate player:self didChangeState:self.state];
+            });
+        }
+}
+
++(NSString*) toStringState:(TDPlayerState)state
+{
+    switch (state) {
+        case kTDPlayerStateCompleted: return @"Completed";
+        case kTDPlayerStateConnecting: return @"Connecting";
+        case kTDPlayerStateStopped: return @"Stopped";
+        case kTDPlayerStatePlaying: return @"Playing";
+        case kTDPlayerStatePaused: return @"Paused";
+        case kTDPlayerStateError: return @"Error";
+            
+        default:
+            break;
+    }
+}
+
+#pragma mark - TDMediaPlaybackDelegate methods
+
+-(void)mediaPlayer:(id<TDMediaPlayback>)player didReceiveCuepointEvent:(CuePointEvent *)cuePointEvent {
+    if ([self.delegate respondsToSelector:@selector(player:didReceiveCuePointEvent:)]) {
+        [self.delegate performSelector:@selector(player:didReceiveCuePointEvent:) withObject:self withObject:cuePointEvent];
+    }
+    [cuePointEvent hasBeenExecuted];
+}
+
+-(void)mediaPlayer:(id<TDMediaPlayback>)player didReceiveMetaData:(NSDictionary *)metaData {
+		if ([self.delegate respondsToSelector:@selector(player:didReceiveMetaData:)]) {
+				dispatch_async(dispatch_get_main_queue(), ^{
+						[self.delegate performSelector:@selector(player:didReceiveMetaData:) withObject:self withObject:metaData];
+				});
+		}
+}
+
+-(void)mediaPlayer:(id<TDMediaPlayback>)player didChangeState:(TDPlayerState)newState {
+    switch (newState) {
+        case kTDPlayerStateCompleted:
+            [self updateStateMachineForAction:kTDPlayerActionJumpToNextState];
+            break;
+
+        	case kTDPlayerStateConnecting:
+						[self updateStateMachineForAction:kTDPlayerActionReconnect];
+            break;
+            
+        case kTDPlayerStateError: {
+            // KVO will not be called, since FLVStream is not started, so change state manually
+            self.isExecuting = FALSE;
+            
+            // We kill the thread since we tried connection to all available the servers
+            _active = FALSE;
+            _stopStreamThread = TRUE;
+            
+            self.error = player.error;
+            [self updateStateMachineForAction:kTDPlayerActionError];
+        }
+            break;
+            
+        case kTDPlayerStatePaused:
+            
+            break;
+            
+        case kTDPlayerStatePlaying:
+            self.isExecuting = YES;
+            
+            if (self.state == kTDPlayerStateConnecting) {
+                [self updateStateMachineForAction:kTDPlayerActionJumpToNextState];
+            }
+            break;
+            
+        case kTDPlayerStateStopped:
+            self.isExecuting = NO;
+            break;
+        
+        default:
+            break;
+    }
+}
+
+-(void)mediaPlayer:(id<TDMediaPlayback>)player didReceiveInfo:(TDPlayerInfo)info andExtra:(NSDictionary *)extra {
+    if ([self.delegate respondsToSelector:@selector(player:didReceiveInfo:andExtra:)]) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.delegate player:self didReceiveInfo:info andExtra:extra];
+        });
+    }
+}
+
+#pragma mark - User Agent
+
+- (NSString*)createUserAgentString
+{
+    //Get platform
+    NSString *platformString = [[UIDevice currentDevice] platform];
+    platformString = [platformString stringByReplacingOccurrencesOfString:@"iPhone" withString:@"iPhone/"];
+    platformString = [platformString stringByReplacingOccurrencesOfString:@"iPod" withString:@"iPod/"];
+    platformString = [platformString stringByReplacingOccurrencesOfString:@"iPad" withString:@"iPad/"];
+    
+    if ([platformString isEqualToString:@"i386"]) platformString = @"Simulator/i386";
+    if ([platformString isEqualToString:@"x86_64"]) platformString = @"Simulator/x86_64";
+    
+    // We send the callsign if the station name was not set
+    NSString *stationName = self.stationName ? self.stationName : self.mount;
+    
+    NSString *userAgentString = [NSString stringWithFormat:@"%@/%@ iOS/%@ %@ %@/%@ TdSdk/iOS-%@",
+                                 self.appName,
+                                 [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"],
+                                 [[UIDevice currentDevice] systemVersion],
+                                 platformString,
+                                 self.broadcaster,
+                                 stationName,
+                                 TritonSDKVersion];
+    
+    return userAgentString;
+}
+
+#pragma mark - AudioPlayer
+
+//=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+// mute
+//=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+- (void)mute
+{
+    [self.mediaPlayer mute];
+}
+
+//=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+// unmute
+//=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+- (void)unmute
+{
+    [self.mediaPlayer unmute];
+}
+
+//=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+// setVolume
+//=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+- (void)setVolume:(float)volume
+{
+    [self.mediaPlayer setVolume:volume];
+}
+
+-(NSTimeInterval)playbackDuration {
+    return [self.mediaPlayer playbackDuration];
+}
+
+-(NSTimeInterval)currentPlaybackTime {
+    return [self.mediaPlayer currentPlaybackTime];
+}
+
+#pragma mark - Debugging
+
+- (void)onCreateSimulatedCuePoint {
+
+}
+
+#pragma mark - Audio Session
+
+-(void) configureAudioSession {
+    // Ensure AVAudioSession is initialized
+    AVAudioSession *audioSession = [AVAudioSession sharedInstance];
+    
+    NSError *setCategoryError = nil;
+    BOOL success = [audioSession setCategory:AVAudioSessionCategoryPlayback error:&setCategoryError];
+    
+    if (!success) {
+        PLAYER_LOG(@"Error setting audio session category");
+    }
+    
+    NSError *activationError = nil;
+    success = [audioSession setActive:YES error:&activationError];
+    
+    if (!success) {
+        PLAYER_LOG(@"Error activating session");
+    }
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(audioSessionRouteChangedNotification:) name:AVAudioSessionRouteChangeNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(audioSessionInterruptionNotification:) name:AVAudioSessionInterruptionNotification object:nil];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(audioSessionMediaServicesLostNotification:) name:AVAudioSessionMediaServicesWereLostNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(audioSessionMediaServicesResetNotification:) name:AVAudioSessionMediaServicesWereResetNotification object:nil];
+    
+    [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
+}
+
+- (void)audioSessionRouteChangedNotification:(NSNotification *)notification {
+    
+    NSDictionary *routeChangedDict = notification.userInfo;
+    NSInteger routeChangeReason = [routeChangedDict[AVAudioSessionRouteChangeReasonKey] integerValue];
+    
+    switch (routeChangeReason) {
+        case AVAudioSessionRouteChangeReasonCategoryChange:
+            break;
+            
+        case AVAudioSessionRouteChangeReasonOldDeviceUnavailable:
+            // Stop if player is playing and user removed headphones
+            if (self.isExecuting) {
+                [self stop];
+            }
+            break;
+    }
+}
+
+- (void) audioSessionInterruptionNotification:(NSNotification *)notification {
+    
+    NSDictionary *interruptionDict = notification.userInfo;
+    NSInteger interruptionType = [interruptionDict[AVAudioSessionInterruptionTypeKey] integerValue];
+    
+    switch (interruptionType) {
+        case AVAudioSessionInterruptionTypeBegan:
+            [self handleBeginInterruption];
+            break;
+            
+        case AVAudioSessionInterruptionTypeEnded: {
+            NSInteger option = [interruptionDict[AVAudioSessionInterruptionOptionKey] integerValue];
+            [self handleEndInterruptionWithOption:option];
+        }
+            break;
+            
+        default:
+            PLAYER_LOG(@"Triton Player - Audio Session Interruption Notification default case");
+            break;
+    }
+}
+
+- (void) audioSessionMediaServicesLostNotification:(NSNotification *) notification {
+    NSLog(@"Media service lost");
+}
+
+- (void) audioSessionMediaServicesResetNotification:(NSNotification *) notification {
+    NSLog(@"Media service reset");
+}
+
+#pragma mark - Interruption handling
+
+-(void)handleBeginInterruption {
+    PLAYER_LOG(@"TritonPlayer received a begin interruption.");
+    self.backgroundTaskIdentifier = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^{
+        [[UIApplication sharedApplication] endBackgroundTask:self.backgroundTaskIdentifier];
+    }];
+
+    self.playerWasInterrupted = YES;
+    
+    if ([self.delegate respondsToSelector:@selector(playerBeginInterruption:)]) {
+        [self.delegate performSelector:@selector(playerBeginInterruption:) withObject:self];
+    }
+}
+
+-(void)handleEndInterruptionWithOption:(NSInteger) option {
+    PLAYER_LOG(@"TritonPlayer received an end interruption.");
+    
+    // Audio session was deactivated due to the interruption so activate it again
+    NSError *activationError = nil;
+    BOOL success = [[AVAudioSession sharedInstance] setActive:YES error:&activationError];
+    
+    if (!success) {
+        PLAYER_LOG(@"Error activating session: %@", activationError.localizedDescription);
+    }
+    
+    self.playerWasInterrupted = NO;
+
+    self.shouldResumePlaybackAfterInterruption = option == AVAudioSessionInterruptionOptionShouldResume;
+    
+    if ([self.delegate respondsToSelector:@selector(playerEndInterruption:)]) {
+        [self.delegate performSelector:@selector(playerEndInterruption:) withObject:self];
+    }
+
+    if (self.backgroundTaskIdentifier != UIBackgroundTaskInvalid) {
+        [[UIApplication sharedApplication] endBackgroundTask:self.backgroundTaskIdentifier];
+        self.backgroundTaskIdentifier = UIBackgroundTaskInvalid;
+    }
+}
+
+#pragma mark - Error handling
+
+- (void)failWithError:(TDPlayerError) errorCode andDescription:(NSString*) description {
+    self.isExecuting = FALSE;
+    
+    NSDictionary *userInfo = @{NSLocalizedDescriptionKey : description};
+    
+    NSError *error = [NSError errorWithDomain:TritonPlayerDomain code:errorCode userInfo:userInfo];
+    
+    self.error = error;
+    [self updateStateMachineForAction:kTDPlayerActionError];
+}
+
+#pragma mark - Private API for the StdApp
+
+- (id)_addPeriodicTimeObserverForInterval:(CMTime)interval queue:(dispatch_queue_t)queue usingBlock:(void (^)(CMTime time))block {
+    return [self.mediaPlayer addPeriodicTimeObserverForInterval:interval queue:queue usingBlock:block];
+}
+
+-(void)_removeTimeObserver:(id)observer {
+    return [self.mediaPlayer removeTimeObserver:observer];
+}
+
+
+-(NSString*) getCastStreamingUrl
+{
+    if(self.mediaPlayer != nil)
+    {
+        if ([self.mediaPlayer isKindOfClass:[TDStationPlayer class]])
+        {
+           return [((TDStationPlayer*)self.mediaPlayer) getCastStreamingUrl];
+        }
+        else if ([self.mediaPlayer isKindOfClass:[TDStreamPlayer class]])
+        {
+           return [((TDStreamPlayer*)self.mediaPlayer) getStreamingUrl];
+        }
+    }
+    
+    return nil;
+}
+
+-(NSString*) getSideBandMetadataUrl
+{
+    if(self.mediaPlayer != nil)
+    {
+        if ([self.mediaPlayer isKindOfClass:[TDStationPlayer class]])
+        {
+            return [((TDStationPlayer*)self.mediaPlayer) getSideBandMetadataUrl];
+        }
+    }
+    
+    return nil;
+}
+
+@end

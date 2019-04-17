@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Protocols/TritonPlayerDelegate.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intf/TritonPlayerDelegate</TokenIdentifier>
+			<Abstract type="html">TritonPlayerDelegate defines methods you can implement to handle streaming state notifications and to receive cue point events.</Abstract>
+			<DeclaredIn>TritonPlayer.h</DeclaredIn>
+            
+			
+			<NodeRef refid="15"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/TritonPlayerDelegate/player:didChangeState:</TokenIdentifier>
+			<Abstract type="html">Called when the player&apos;s state changed.</Abstract>
+			<DeclaredIn>TritonPlayer.h</DeclaredIn>
+			
+			<Declaration>- (void)player:(TritonPlayer *)player didChangeState:(TDPlayerState)state</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>player</Name>
+					<Abstract type="html">The player whose state changed</Abstract>
+				</Parameter><Parameter>
+					<Name>state</Name>
+					<Abstract type="html">The new state of the player</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/player:didChangeState:</Anchor>
+            <NodeRef refid="15"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/TritonPlayerDelegate/player:didReceiveInfo:andExtra:</TokenIdentifier>
+			<Abstract type="html">Called when the player&apos;s state changed.</Abstract>
+			<DeclaredIn>TritonPlayer.h</DeclaredIn>
+			
+			<Declaration>- (void)player:(TritonPlayer *)player didReceiveInfo:(TDPlayerInfo)info andExtra:(NSDictionary *)extra</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>player</Name>
+					<Abstract type="html">The player whose state changed</Abstract>
+				</Parameter><Parameter>
+					<Name>state</Name>
+					<Abstract type="html">The new state of the player</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/player:didReceiveInfo:andExtra:</Anchor>
+            <NodeRef refid="15"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/TritonPlayerDelegate/player:didReceiveCuePointEvent:</TokenIdentifier>
+			<Abstract type="html">Called when there&apos;s a Cue Point available to be processed. A NSDictionary is passed containing the Cue Point metadata. All the available keys are defined in CuePointEvent.h.
+See STWCueMetadataDictionary.pdf for more details on the available cue point information.</Abstract>
+			<DeclaredIn>TritonPlayer.h</DeclaredIn>
+			
+			<Declaration>- (void)player:(TritonPlayer *)player didReceiveCuePointEvent:(CuePointEvent *)cuePointEvent</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>player</Name>
+					<Abstract type="html">The player which is receiving cue point events</Abstract>
+				</Parameter><Parameter>
+					<Name>cuePointEvent</Name>
+					<Abstract type="html">A CuePointEvent object containing all cue point information.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/player:didReceiveCuePointEvent:</Anchor>
+            <NodeRef refid="15"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/TritonPlayerDelegate/playerBeginInterruption:</TokenIdentifier>
+			<Abstract type="html">Notifies that an audio interruption is about to start (alarm, phone call, etc.). The application has the opportunity to take the proper actions: stop the player, lower the volume, etc.</Abstract>
+			<DeclaredIn>TritonPlayer.h</DeclaredIn>
+			
+			<Declaration>- (void)playerBeginInterruption:(TritonPlayer *)player</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>player</Name>
+					<Abstract type="html">The TritonPlayer object which is being interrupted.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/playerBeginInterruption:</Anchor>
+            <NodeRef refid="15"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/TritonPlayerDelegate/playerEndInterruption:</TokenIdentifier>
+			<Abstract type="html">Notifies about a finished interruption. It&apos;s the proper moment to resume the player, raise the volume, etc.</Abstract>
+			<DeclaredIn>TritonPlayer.h</DeclaredIn>
+			
+			<Declaration>- (void)playerEndInterruption:(TritonPlayer *)player</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>player</Name>
+					<Abstract type="html">The TritonPlayer object whose interruption is ending.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/playerEndInterruption:</Anchor>
+            <NodeRef refid="15"/>
+		</Token>
+		
+        
+        
+	</File>
+</Tokens>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Constants/PlayerContentType.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/c/tdef/PlayerContentType</TokenIdentifier>
+			<Abstract type="html">Represents the types of on-demand content supported by the player</Abstract>
+			<DeclaredIn>TritonPlayer.h</DeclaredIn>
+            
+			
+			<NodeRef refid="16"/>
+		</Token>
+		
+		
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/PlayerContentTypeFLV</TokenIdentifier>
+            <Abstract type="html">The player will use the FLV decoder to play and receive cue points.</Abstract>
+            <Declaration>PlayerContentTypeFLV</Declaration>
+            
+            <DeclaredIn>TritonPlayer.h</DeclaredIn>
+            
+            <NodeRef refid="16"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/PlayerContentTypeHLS</TokenIdentifier>
+            <Abstract type="html">The player will use HLS with side-band metadata.</Abstract>
+            <Declaration>PlayerContentTypeHLS</Declaration>
+            
+            <DeclaredIn>TritonPlayer.h</DeclaredIn>
+            
+            <NodeRef refid="16"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/PlayerContentTypeOther</TokenIdentifier>
+            <Abstract type="html">The player will use the default profile.</Abstract>
+            <Declaration>PlayerContentTypeOther</Declaration>
+            
+            <DeclaredIn>TritonPlayer.h</DeclaredIn>
+            
+            <NodeRef refid="16"/>
+        </Token>
+        
+        
+	</File>
+</Tokens>

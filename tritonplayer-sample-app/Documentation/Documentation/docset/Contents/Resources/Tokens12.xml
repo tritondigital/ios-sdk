@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Protocols/TDBannerViewDelegate.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intf/TDBannerViewDelegate</TokenIdentifier>
+			<Abstract type="html">TDBannerViewDelegate defines methods you can implement to receive life-cycle information about a TDBannerView.</Abstract>
+			<DeclaredIn>TDBannerViewDelegate.h</DeclaredIn>
+            
+			
+			<NodeRef refid="12"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/TDBannerViewDelegate/bannerViewDidPresentAd:</TokenIdentifier>
+			<Abstract type="html">Sent when TDBannerView presents an ad. This is a good opportunity to show, add to hierarchy or animate the banner if it has not being displayed yet.</Abstract>
+			<DeclaredIn>TDBannerViewDelegate.h</DeclaredIn>
+			
+			<Declaration>- (void)bannerViewDidPresentAd:(TDBannerView *)bannerView</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>bannerView</Name>
+					<Abstract type="html">The banner that presented an ad.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/bannerViewDidPresentAd:</Anchor>
+            <NodeRef refid="12"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/TDBannerViewDelegate/bannerView:didFailToPresentAdWithError:</TokenIdentifier>
+			<Abstract type="html">Sent if a TDBannerView failed to present an ad. Normally it happens if there&apos;s no ad available (no inventory) to be displayed.</Abstract>
+			<DeclaredIn>TDBannerViewDelegate.h</DeclaredIn>
+			
+			<Declaration>- (void)bannerView:(TDBannerView *)bannerView didFailToPresentAdWithError:(NSError *)error</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>bannerView</Name>
+					<Abstract type="html">The TDBannerView that failed to present an ad.</Abstract>
+				</Parameter><Parameter>
+					<Name>error</Name>
+					<Abstract type="html">The error that occurred during loading. The error codes are available in TDAdLoader.h.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/bannerView:didFailToPresentAdWithError:</Anchor>
+            <NodeRef refid="12"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/TDBannerViewDelegate/bannerViewWillLeaveApplication:</TokenIdentifier>
+			<Abstract type="html">Sent when the app will be deactivated or sent to background because the user clicked on an ad and it will be loaded externally in a browser.</Abstract>
+			<DeclaredIn>TDBannerViewDelegate.h</DeclaredIn>
+			
+			<Declaration>- (void)bannerViewWillLeaveApplication:(TDBannerView *)bannerView</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>bannerView</Name>
+					<Abstract type="html">The banner that will leave the application</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/bannerViewWillLeaveApplication:</Anchor>
+            <NodeRef refid="12"/>
+		</Token>
+		
+        
+        
+	</File>
+</Tokens>

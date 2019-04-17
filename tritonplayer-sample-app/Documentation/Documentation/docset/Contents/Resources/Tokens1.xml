@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/CuePointEvent.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/CuePointEvent</TokenIdentifier>
+			<Abstract type="html">CuePointEvent stores all the information about cue points received from the server (ads, track information etc.).
+For more details, see STWCueMetadataDictionary.pdf</Abstract>
+			<DeclaredIn>CuePointEvent.h</DeclaredIn>
+            
+			
+			<NodeRef refid="1"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/CuePointEvent/setTimestamp:</TokenIdentifier>
+			<Abstract type="html">Timestamp The timestamp in which the cuepoint event should be executed.</Abstract>
+			<DeclaredIn>CuePointEvent.h</DeclaredIn>
+			
+			<Declaration>@property (readonly, nonatomic) NSTimeInterval timestamp</Declaration>
+			
+			
+			<Anchor>//api/name/timestamp</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/CuePointEvent/timestamp</TokenIdentifier>
+			<Abstract type="html">Timestamp The timestamp in which the cuepoint event should be executed.</Abstract>
+			<DeclaredIn>CuePointEvent.h</DeclaredIn>
+			
+			<Declaration>@property (readonly, nonatomic) NSTimeInterval timestamp</Declaration>
+			
+			
+			<Anchor>//api/name/timestamp</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/CuePointEvent/timestamp</TokenIdentifier>
+			<Abstract type="html">Timestamp The timestamp in which the cuepoint event should be executed.</Abstract>
+			<DeclaredIn>CuePointEvent.h</DeclaredIn>
+			
+			<Declaration>@property (readonly, nonatomic) NSTimeInterval timestamp</Declaration>
+			
+			
+			<Anchor>//api/name/timestamp</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/CuePointEvent/setData:</TokenIdentifier>
+			<Abstract type="html">Contains all cue point data, which can be accessed by the constants declare in CuePointEvent.h.</Abstract>
+			<DeclaredIn>CuePointEvent.h</DeclaredIn>
+			
+			<Declaration>@property (readonly, strong) NSDictionary *data</Declaration>
+			
+			
+			<Anchor>//api/name/data</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/CuePointEvent/data</TokenIdentifier>
+			<Abstract type="html">Contains all cue point data, which can be accessed by the constants declare in CuePointEvent.h.</Abstract>
+			<DeclaredIn>CuePointEvent.h</DeclaredIn>
+			
+			<Declaration>@property (readonly, strong) NSDictionary *data</Declaration>
+			
+			
+			<Anchor>//api/name/data</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/CuePointEvent/data</TokenIdentifier>
+			<Abstract type="html">Contains all cue point data, which can be accessed by the constants declare in CuePointEvent.h.</Abstract>
+			<DeclaredIn>CuePointEvent.h</DeclaredIn>
+			
+			<Declaration>@property (readonly, strong) NSDictionary *data</Declaration>
+			
+			
+			<Anchor>//api/name/data</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/CuePointEvent/setType:</TokenIdentifier>
+			<Abstract type="html">The type of the cue point. Refer to STWCueMetadataDictionary.pdf for available types. The constants for each available type is defined in CuePointEvent.h.</Abstract>
+			<DeclaredIn>CuePointEvent.h</DeclaredIn>
+			
+			<Declaration>@property (readonly, strong) NSString *type</Declaration>
+			
+			
+			<Anchor>//api/name/type</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/CuePointEvent/type</TokenIdentifier>
+			<Abstract type="html">The type of the cue point. Refer to STWCueMetadataDictionary.pdf for available types. The constants for each available type is defined in CuePointEvent.h.</Abstract>
+			<DeclaredIn>CuePointEvent.h</DeclaredIn>
+			
+			<Declaration>@property (readonly, strong) NSString *type</Declaration>
+			
+			
+			<Anchor>//api/name/type</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/CuePointEvent/type</TokenIdentifier>
+			<Abstract type="html">The type of the cue point. Refer to STWCueMetadataDictionary.pdf for available types. The constants for each available type is defined in CuePointEvent.h.</Abstract>
+			<DeclaredIn>CuePointEvent.h</DeclaredIn>
+			
+			<Declaration>@property (readonly, strong) NSString *type</Declaration>
+			
+			
+			<Anchor>//api/name/type</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/CuePointEvent/setExecutionCanceled:</TokenIdentifier>
+			<Abstract type="html">Tells whether the execution of the cue point was canceled.</Abstract>
+			<DeclaredIn>CuePointEvent.h</DeclaredIn>
+			
+			<Declaration>@property (readonly, assign) BOOL executionCanceled</Declaration>
+			
+			
+			<Anchor>//api/name/executionCanceled</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/CuePointEvent/executionCanceled</TokenIdentifier>
+			<Abstract type="html">Tells whether the execution of the cue point was canceled.</Abstract>
+			<DeclaredIn>CuePointEvent.h</DeclaredIn>
+			
+			<Declaration>@property (readonly, assign) BOOL executionCanceled</Declaration>
+			
+			
+			<Anchor>//api/name/executionCanceled</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/CuePointEvent/executionCanceled</TokenIdentifier>
+			<Abstract type="html">Tells whether the execution of the cue point was canceled.</Abstract>
+			<DeclaredIn>CuePointEvent.h</DeclaredIn>
+			
+			<Declaration>@property (readonly, assign) BOOL executionCanceled</Declaration>
+			
+			
+			<Anchor>//api/name/executionCanceled</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/CuePointEvent/initEventWithAMFObjectData:andTimestamp:</TokenIdentifier>
+			<Abstract type="html">Initializes a CuePoitEvent object. This is the designated initializer.</Abstract>
+			<DeclaredIn>CuePointEvent.h</DeclaredIn>
+			
+			<Declaration>- (instancetype)initEventWithAMFObjectData:(NSDictionary *)inAMFData andTimestamp:(NSTimeInterval)inTimestamp</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>inAMFData</Name>
+					<Abstract type="html">Dictionary containing data in AMF format.</Abstract>
+				</Parameter><Parameter>
+					<Name>inTimestamp</Name>
+					<Abstract type="html">The timestamp in which the cuepoint event should be executed.</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">The newly-initialized CuePointEvent object</Abstract></ReturnValue>
+			<Anchor>//api/name/initEventWithAMFObjectData:andTimestamp:</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/CuePointEvent/initWithData:andTimestamp:</TokenIdentifier>
+			<Abstract type="html">Initializes a CuePoitEvent object.</Abstract>
+			<DeclaredIn>CuePointEvent.h</DeclaredIn>
+			
+			<Declaration>- (instancetype)initWithData:(NSDictionary *)data andTimestamp:(NSTimeInterval)timestamp</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>data</Name>
+					<Abstract type="html">Dictionary containing data in AMF format.</Abstract>
+				</Parameter><Parameter>
+					<Name>timestamp</Name>
+					<Abstract type="html">The timestamp in which the cuepoint event should be executed.</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">The newly-initialized CuePointEvent object</Abstract></ReturnValue>
+			<Anchor>//api/name/initWithData:andTimestamp:</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+        
+        
+	</File>
+</Tokens>

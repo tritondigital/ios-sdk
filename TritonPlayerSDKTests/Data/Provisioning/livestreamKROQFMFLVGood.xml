@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<live_stream_config version="1" xmlns="http://provisioning.streamtheworld.com/player/livestream-1.0">
+  <mountpoints>
+    <mountpoint>
+      <servers>
+        <server sid="4573">
+          <ip>64.86.101.196</ip>
+          <ports>
+            <port>80</port>
+            <port>443</port>
+            <port>3690</port>
+          </ports>
+        </server>
+        <server sid="1061">
+          <ip>208.80.54.26</ip>
+          <ports>
+            <port>80</port>
+            <port>3690</port>
+            <port>443</port>
+          </ports>
+        </server>
+      </servers>
+      <mount>KROQFM</mount>
+      <format>FLV</format>
+      <bitrate>96000</bitrate>
+      <authentication>0</authentication>
+      <timeout>0</timeout>
+    </mountpoint>
+  </mountpoints>
+  <localization>
+    <string id="CONNECTING">CONNECTION IN PROGRESS...</string>
+    <string id="CONNECTING_BACKUP">BACKUP CONNECTION IN PROGRESS...</string>
+    <string id="TIMEOUT">To continue the streaming, please click the button Continue below or the stream will stop. &#13;
+Thank you.</string>
+    <string id="CONNECTED">ON AIR</string>
+    <string id="DISCONNECTED">DISCONNECTED</string>
+    <string id="CONNECT_IMPOSSIBLE">CANNOT CONNECT</string>
+    <string id="BUFFERING">BUFFERING...</string>
+    <string id="CONFIG_LOADING">DOWNLOADING CONFIG FILE...</string>
+  </localization>
+</live_stream_config>

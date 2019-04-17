@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>TDSBMPlayer Class Reference</title>
+
+	<link rel="stylesheet" href="../css/style.css">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
+	<meta name="generator" content="appledoc 2.2.1 (build 1334)">
+</head>
+<body class="appledoc">
+	<header>
+		<div class="container" class="hide-in-xcode">
+			
+			<h1 id="library-title">
+				<a href="../index.html">Triton Mobile SDK </a>
+			</h1>
+
+			<p id="developer-home">
+				<a href="../index.html">Triton Digital</a>
+			</p>
+			
+		</div>
+	</header>
+
+	<aside>
+		<div class="container">
+			<nav>
+				<ul id="header-buttons" role="toolbar">
+					<li><a href="../index.html">Index</a></li>
+<li><a href="../hierarchy.html">Hierarchy</a></li>
+
+					<li id="on-this-page" role="navigation">
+						<label>
+							On This Page
+
+							<div class="chevron">
+								<div class="chevy chevron-left"></div>
+								<div class="chevy chevron-right"></div>
+							</div>
+
+							<select id="jump-to">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+
+	
+	
+	<optgroup label="Properties">
+		
+		<option value="//api/name/autoSynchronizeCuePoints">autoSynchronizeCuePoints</option>
+		
+		<option value="//api/name/currentPlaybackTime">currentPlaybackTime</option>
+		
+		<option value="//api/name/delegate">delegate</option>
+		
+		<option value="//api/name/synchronizationOffset">synchronizationOffset</option>
+		
+	</optgroup>
+	
+
+	
+	<optgroup label="Class Methods">
+		
+		<option value="//api/name/generateSBMSessionId">+ generateSBMSessionId</option>
+		
+	</optgroup>
+	
+
+	
+	<optgroup label="Instance Methods">
+		
+		<option value="//api/name/close">- close</option>
+		
+		<option value="//api/name/initWithSettings:">- initWithSettings:</option>
+		
+		<option value="//api/name/play">- play</option>
+		
+		<option value="//api/name/stop">- stop</option>
+		
+		<option value="//api/name/updateSettings:">- updateSettings:</option>
+		
+	</optgroup>
+	
+	
+</select>
+						</label>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</aside>
+
+	<article>
+		<div id="overview_contents" class="container">
+			<div id="content">
+				<main role="main">
+					<h1 class="title">TDSBMPlayer Class Reference</h1>
+
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<th>Inherits from</th>
+	<td>NSObject</td>
+</tr><tr>
+	<th>Declared in</th>
+	<td>TDSBMPlayer.h</td>
+</tr>
+						</tbody></table></div>
+					
+
+                    
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>Sideband Metadata (SBM) is a metadata transport mechanism offered to players that are unable to use metadata multiplexed into the stream itself (as with FLV, SHOUTcast V1/V2, etc.), either because it is impossible, difficult, or resource-intensive.</p>
+
+<p>TDSBMPlayer handles the connection/play/<a href="#//api/name/stop">stop</a> flow and the reception of cue points using Triton&rsquo;s Side-Band Metadata technology. If also provides synchronization facilities with the user&rsquo;s audio player.</p>
+
+<p>When using TDSBMPlayer, the developer is responsible of connecting and playing the main audio stream, this includes adding audience targeting parameters when connecting to the stream and also the responsibility of closing the SBM player when the main audio connection drops.
+To a more high-level approach, use <a href="../Classes/TritonPlayer.html">TritonPlayer</a>, which handles automatically audience targetting and the metadata connection.</p>
+					</div>
+					
+					
+
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						
+
+						<a title="Managing the delegate" name="task_Managing the delegate"></a>
+						<h2 class="task-title">Managing the delegate</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/delegate" title="delegate"></a>
+	<h3 class="method-title"><code><a href="#//api/name/delegate">&nbsp;&nbsp;delegate</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The delegate responsible for handling callbacks</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (weak, nonatomic) id&lt;TDSBMPlayerPlayerDelegate&gt; delegate</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">TDSBMPlayer.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+
+						<a title="Playback information" name="task_Playback information"></a>
+						<h2 class="task-title">Playback information</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/currentPlaybackTime" title="currentPlaybackTime"></a>
+	<h3 class="method-title"><code><a href="#//api/name/currentPlaybackTime">&nbsp;&nbsp;currentPlaybackTime</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The time in seconds from the beginning of playback</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (assign, readonly) NSTimeInterval currentPlaybackTime</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">TDSBMPlayer.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+
+						<a title="Stream synchronization" name="task_Stream synchronization"></a>
+						<h2 class="task-title">Stream synchronization</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/synchronizationOffset" title="synchronizationOffset"></a>
+	<h3 class="method-title"><code><a href="#//api/name/synchronizationOffset">&nbsp;&nbsp;synchronizationOffset</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Defines a difference in seconds between this SBMPlayer&rsquo;s <a href="#//api/name/currentPlaybackTime">currentPlaybackTime</a> and the media player&rsquo;s current playback time (playhead position).</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (assign, nonatomic) NSTimeInterval synchronizationOffset</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Cue points delivered by the TDSBMPlayer are synchronized with the side-band metadata current playback time by default.
+Depending on the time it takes to instantiate the application&rsquo;s media player and the companion TDSBMPlayer, there can be a time offset between both.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">TDSBMPlayer.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/autoSynchronizeCuePoints" title="autoSynchronizeCuePoints"></a>
+	<h3 class="method-title"><code><a href="#//api/name/autoSynchronizeCuePoints">&nbsp;&nbsp;autoSynchronizeCuePoints</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Whether or not to let TDSBMPlayer synchronize the cue points automatically with it&rsquo;s <a href="#//api/name/currentPlaybackTime">currentPlaybackTime</a> and <a href="#//api/name/synchronizationOffset">synchronizationOffset</a>.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (assign, nonatomic) BOOL autoSynchronizeCuePoints</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>If you need to have more fine-grained control over the synchronization, you can set it to NO and the cue points will arrive some seconds in advance and you will be able
+to enqueue and dequeue them based on their <a href="../Classes/CuePointEvent.html#//api/name/timestamp">[CuePointEvent timestamp]</a> property. This is usually done with help of a timed event from the media player.</p>
+
+<p>Default value is YES.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">TDSBMPlayer.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+
+						<a title="Utility methods" name="task_Utility methods"></a>
+						<h2 class="task-title">Utility methods</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/generateSBMSessionId" title="generateSBMSessionId"></a>
+	<h3 class="method-title"><code><a href="#//api/name/generateSBMSessionId">+&nbsp;generateSBMSessionId</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Utility method for creating a new sbmid session id to be shared between the audio player and the TDSBMPlayer</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (NSString *)generateSBMSessionId</code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>a NSString representing a Type 4 (i.e. random) UUID, formatted as a lowercase hex string, such as: fde807eb-6931-47db-a758-9c3b0c7e84d5</p>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">TDSBMPlayer.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+
+						<a title="Instantiating and configuring a player" name="task_Instantiating and configuring a player"></a>
+						<h2 class="task-title">Instantiating and configuring a player</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/initWithSettings:" title="initWithSettings:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/initWithSettings:">&ndash;&nbsp;initWithSettings:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Initializes a TDSBMPlayer with settings.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (instancetype)initWithSettings:(NSDictionary *)<em>settings</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>settings</code></th>
+						<td><p>A NSDictionary containing the SBM settings. See constants in TDSBMPlayer.h for possible keys.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">TDSBMPlayer.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/updateSettings:" title="updateSettings:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/updateSettings:">&ndash;&nbsp;updateSettings:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Update the SBM player settings. All the information passed overrides the current settings and will take effect the next time the <a href="#//api/name/play">play</a> method is called.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)updateSettings:(NSDictionary *)<em>settings</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>settings</code></th>
+						<td><p>A NSDictionary containing the SBM settings. See constants in TDSBMPlayer.h for possible keys.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">TDSBMPlayer.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+
+						<a title="Controlling the player" name="task_Controlling the player"></a>
+						<h2 class="task-title">Controlling the player</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/play" title="play"></a>
+	<h3 class="method-title"><code><a href="#//api/name/play">&ndash;&nbsp;play</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Start playing the Side-band metadata player</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)play</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">TDSBMPlayer.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/stop" title="stop"></a>
+	<h3 class="method-title"><code><a href="#//api/name/stop">&ndash;&nbsp;stop</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Stop playing the Side-band metadata player</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)stop</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">TDSBMPlayer.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/close" title="close"></a>
+	<h3 class="method-title"><code><a href="#//api/name/close">&ndash;&nbsp;close</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Close the metadata connection.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)close</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">TDSBMPlayer.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+					</div>
+					
+					
+
+                    
+                    
+          
+				</main>
+
+				<footer>
+					<div class="footer-copyright">
+						
+						<p class="copyright">Copyright &copy; 2019 Triton Digital. All rights reserved. Updated: 2019-04-01</p>
+						
+						
+						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
+						
+					</div>
+				</footer>
+			</div>
+		</div>
+	</article>
+
+	<script src="../js/script.js"></script>
+</body>
+</html>

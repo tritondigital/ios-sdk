@@ -1,0 +1,460 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6F558B6E1EA7F28D00D1D5A0 /* MultiStationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F558B6D1EA7F28D00D1D5A0 /* MultiStationViewController.m */; };
+		6F778F051A782B1B00D80F8E /* InterstitialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F778F021A782B1B00D80F8E /* InterstitialViewController.m */; };
+		6F778F061A782B1B00D80F8E /* MainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F778F041A782B1B00D80F8E /* MainMenuViewController.m */; };
+		6F8A709118CE51C80061CFF5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F8A709018CE51C80061CFF5 /* Foundation.framework */; };
+		6F8A709318CE51C80061CFF5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F8A709218CE51C80061CFF5 /* CoreGraphics.framework */; };
+		6F8A709518CE51C80061CFF5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F8A709418CE51C80061CFF5 /* UIKit.framework */; };
+		6F8A709B18CE51C80061CFF5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6F8A709918CE51C80061CFF5 /* InfoPlist.strings */; };
+		6F8A709D18CE51C80061CFF5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F8A709C18CE51C80061CFF5 /* main.m */; };
+		6F8A70A118CE51C80061CFF5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F8A70A018CE51C80061CFF5 /* AppDelegate.m */; };
+		6F8A70A418CE51C80061CFF5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F8A70A218CE51C80061CFF5 /* Main.storyboard */; };
+		6F8A70A718CE51C80061CFF5 /* BasicPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F8A70A618CE51C80061CFF5 /* BasicPlayerViewController.m */; };
+		6F8A70A918CE51C80061CFF5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F8A70A818CE51C80061CFF5 /* Images.xcassets */; };
+		6FD853121A168769004EA208 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FD853111A168769004EA208 /* AVFoundation.framework */; };
+		6FD853141A16877B004EA208 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FD853131A16877B004EA208 /* CoreMedia.framework */; };
+		6FD853161A168794004EA208 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FD853151A168794004EA208 /* SystemConfiguration.framework */; };
+		6FD853181A1687A4004EA208 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FD853171A1687A4004EA208 /* AdSupport.framework */; };
+		6FD8CD8D1A3F8E9C00C5ECD3 /* TritonPlayerSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FD8CD8C1A3F8E9C00C5ECD3 /* TritonPlayerSDK.framework */; };
+		6FD9C3CD1A9B80D500B516F4 /* CustomAdsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FD9C3CC1A9B80D500B516F4 /* CustomAdsViewController.m */; };
+		6FF1CA981AF3D7DE0090879A /* ArrayDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FF1CA8C1AF3D7DE0090879A /* ArrayDataSource.m */; };
+		6FF1CA991AF3D7DE0090879A /* CuePointHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FF1CA8E1AF3D7DE0090879A /* CuePointHistoryViewController.m */; };
+		6FF1CA9A1AF3D7DE0090879A /* EmbeddedPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FF1CA901AF3D7DE0090879A /* EmbeddedPlayerViewController.m */; };
+		6FF1CA9B1AF3D7DE0090879A /* ListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FF1CA921AF3D7DE0090879A /* ListTableViewController.m */; };
+		6FF1CA9C1AF3D7DE0090879A /* OnDemandPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FF1CA941AF3D7DE0090879A /* OnDemandPlayerViewController.m */; };
+		6FF1CA9D1AF3D7DE0090879A /* SBMPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FF1CA961AF3D7DE0090879A /* SBMPlayerViewController.m */; };
+		6FF1CA9E1AF3D7DE0090879A /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6FF1CA971AF3D7DE0090879A /* Settings.bundle */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		6F7FF50B1A0928140057E4C1 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		6F558B6C1EA7F28D00D1D5A0 /* MultiStationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultiStationViewController.h; sourceTree = "<group>"; };
+		6F558B6D1EA7F28D00D1D5A0 /* MultiStationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultiStationViewController.m; sourceTree = "<group>"; };
+		6F778F011A782B1B00D80F8E /* InterstitialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InterstitialViewController.h; sourceTree = "<group>"; };
+		6F778F021A782B1B00D80F8E /* InterstitialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InterstitialViewController.m; sourceTree = "<group>"; };
+		6F778F031A782B1B00D80F8E /* MainMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuViewController.h; sourceTree = "<group>"; };
+		6F778F041A782B1B00D80F8E /* MainMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuViewController.m; sourceTree = "<group>"; };
+		6F8A708D18CE51C80061CFF5 /* tritonplayer-sample-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tritonplayer-sample-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6F8A709018CE51C80061CFF5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		6F8A709218CE51C80061CFF5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		6F8A709418CE51C80061CFF5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		6F8A709818CE51C80061CFF5 /* tritonplayer-sample-app-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "tritonplayer-sample-app-Info.plist"; sourceTree = "<group>"; };
+		6F8A709A18CE51C80061CFF5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		6F8A709C18CE51C80061CFF5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		6F8A709E18CE51C80061CFF5 /* tritonplayer-sample-app-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "tritonplayer-sample-app-Prefix.pch"; sourceTree = "<group>"; };
+		6F8A709F18CE51C80061CFF5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		6F8A70A018CE51C80061CFF5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		6F8A70A318CE51C80061CFF5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		6F8A70A518CE51C80061CFF5 /* BasicPlayerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BasicPlayerViewController.h; sourceTree = "<group>"; };
+		6F8A70A618CE51C80061CFF5 /* BasicPlayerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BasicPlayerViewController.m; sourceTree = "<group>"; };
+		6F8A70A818CE51C80061CFF5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		6F8A70AF18CE51C80061CFF5 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		6FD853111A168769004EA208 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		6FD853131A16877B004EA208 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		6FD853151A168794004EA208 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		6FD853171A1687A4004EA208 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		6FD8CD8C1A3F8E9C00C5ECD3 /* TritonPlayerSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TritonPlayerSDK.framework; sourceTree = "<group>"; };
+		6FD9C3CB1A9B80D500B516F4 /* CustomAdsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomAdsViewController.h; sourceTree = "<group>"; };
+		6FD9C3CC1A9B80D500B516F4 /* CustomAdsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomAdsViewController.m; sourceTree = "<group>"; };
+		6FF1CA8B1AF3D7DE0090879A /* ArrayDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArrayDataSource.h; sourceTree = "<group>"; };
+		6FF1CA8C1AF3D7DE0090879A /* ArrayDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArrayDataSource.m; sourceTree = "<group>"; };
+		6FF1CA8D1AF3D7DE0090879A /* CuePointHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CuePointHistoryViewController.h; sourceTree = "<group>"; };
+		6FF1CA8E1AF3D7DE0090879A /* CuePointHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CuePointHistoryViewController.m; sourceTree = "<group>"; };
+		6FF1CA8F1AF3D7DE0090879A /* EmbeddedPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmbeddedPlayerViewController.h; sourceTree = "<group>"; };
+		6FF1CA901AF3D7DE0090879A /* EmbeddedPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmbeddedPlayerViewController.m; sourceTree = "<group>"; };
+		6FF1CA911AF3D7DE0090879A /* ListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListTableViewController.h; sourceTree = "<group>"; };
+		6FF1CA921AF3D7DE0090879A /* ListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListTableViewController.m; sourceTree = "<group>"; };
+		6FF1CA931AF3D7DE0090879A /* OnDemandPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnDemandPlayerViewController.h; sourceTree = "<group>"; };
+		6FF1CA941AF3D7DE0090879A /* OnDemandPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnDemandPlayerViewController.m; sourceTree = "<group>"; };
+		6FF1CA951AF3D7DE0090879A /* SBMPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBMPlayerViewController.h; sourceTree = "<group>"; };
+		6FF1CA961AF3D7DE0090879A /* SBMPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBMPlayerViewController.m; sourceTree = "<group>"; };
+		6FF1CA971AF3D7DE0090879A /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6F8A708A18CE51C80061CFF5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6FD853181A1687A4004EA208 /* AdSupport.framework in Frameworks */,
+				6FD853161A168794004EA208 /* SystemConfiguration.framework in Frameworks */,
+				6FD853141A16877B004EA208 /* CoreMedia.framework in Frameworks */,
+				6FD853121A168769004EA208 /* AVFoundation.framework in Frameworks */,
+				6FD8CD8D1A3F8E9C00C5ECD3 /* TritonPlayerSDK.framework in Frameworks */,
+				6F8A709318CE51C80061CFF5 /* CoreGraphics.framework in Frameworks */,
+				6F8A709518CE51C80061CFF5 /* UIKit.framework in Frameworks */,
+				6F8A709118CE51C80061CFF5 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6F8A708418CE51C80061CFF5 = {
+			isa = PBXGroup;
+			children = (
+				6F8A709618CE51C80061CFF5 /* tritonplayer-sample-app */,
+				6F8A708F18CE51C80061CFF5 /* Frameworks */,
+				6F8A708E18CE51C80061CFF5 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		6F8A708E18CE51C80061CFF5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6F8A708D18CE51C80061CFF5 /* tritonplayer-sample-app.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6F8A708F18CE51C80061CFF5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6FD8CD8C1A3F8E9C00C5ECD3 /* TritonPlayerSDK.framework */,
+				6FD853171A1687A4004EA208 /* AdSupport.framework */,
+				6FD853151A168794004EA208 /* SystemConfiguration.framework */,
+				6FD853131A16877B004EA208 /* CoreMedia.framework */,
+				6FD853111A168769004EA208 /* AVFoundation.framework */,
+				6F8A709018CE51C80061CFF5 /* Foundation.framework */,
+				6F8A709218CE51C80061CFF5 /* CoreGraphics.framework */,
+				6F8A709418CE51C80061CFF5 /* UIKit.framework */,
+				6F8A70AF18CE51C80061CFF5 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6F8A709618CE51C80061CFF5 /* tritonplayer-sample-app */ = {
+			isa = PBXGroup;
+			children = (
+				6F558B6C1EA7F28D00D1D5A0 /* MultiStationViewController.h */,
+				6F558B6D1EA7F28D00D1D5A0 /* MultiStationViewController.m */,
+				6FF1CA8B1AF3D7DE0090879A /* ArrayDataSource.h */,
+				6FF1CA8C1AF3D7DE0090879A /* ArrayDataSource.m */,
+				6FF1CA8D1AF3D7DE0090879A /* CuePointHistoryViewController.h */,
+				6FF1CA8E1AF3D7DE0090879A /* CuePointHistoryViewController.m */,
+				6FF1CA8F1AF3D7DE0090879A /* EmbeddedPlayerViewController.h */,
+				6FF1CA901AF3D7DE0090879A /* EmbeddedPlayerViewController.m */,
+				6FF1CA911AF3D7DE0090879A /* ListTableViewController.h */,
+				6FF1CA921AF3D7DE0090879A /* ListTableViewController.m */,
+				6FF1CA931AF3D7DE0090879A /* OnDemandPlayerViewController.h */,
+				6FF1CA941AF3D7DE0090879A /* OnDemandPlayerViewController.m */,
+				6FF1CA951AF3D7DE0090879A /* SBMPlayerViewController.h */,
+				6FF1CA961AF3D7DE0090879A /* SBMPlayerViewController.m */,
+				6FF1CA971AF3D7DE0090879A /* Settings.bundle */,
+				6FD9C3CB1A9B80D500B516F4 /* CustomAdsViewController.h */,
+				6FD9C3CC1A9B80D500B516F4 /* CustomAdsViewController.m */,
+				6F778F011A782B1B00D80F8E /* InterstitialViewController.h */,
+				6F778F021A782B1B00D80F8E /* InterstitialViewController.m */,
+				6F778F031A782B1B00D80F8E /* MainMenuViewController.h */,
+				6F778F041A782B1B00D80F8E /* MainMenuViewController.m */,
+				6F8A709F18CE51C80061CFF5 /* AppDelegate.h */,
+				6F8A70A018CE51C80061CFF5 /* AppDelegate.m */,
+				6F8A70A218CE51C80061CFF5 /* Main.storyboard */,
+				6F8A70A518CE51C80061CFF5 /* BasicPlayerViewController.h */,
+				6F8A70A618CE51C80061CFF5 /* BasicPlayerViewController.m */,
+				6F8A70A818CE51C80061CFF5 /* Images.xcassets */,
+				6F8A709718CE51C80061CFF5 /* Supporting Files */,
+			);
+			path = "tritonplayer-sample-app";
+			sourceTree = "<group>";
+		};
+		6F8A709718CE51C80061CFF5 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6F8A709818CE51C80061CFF5 /* tritonplayer-sample-app-Info.plist */,
+				6F8A709918CE51C80061CFF5 /* InfoPlist.strings */,
+				6F8A709C18CE51C80061CFF5 /* main.m */,
+				6F8A709E18CE51C80061CFF5 /* tritonplayer-sample-app-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6F8A708C18CE51C80061CFF5 /* tritonplayer-sample-app */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6F8A70BF18CE51C80061CFF5 /* Build configuration list for PBXNativeTarget "tritonplayer-sample-app" */;
+			buildPhases = (
+				6F8A708918CE51C80061CFF5 /* Sources */,
+				6F8A708A18CE51C80061CFF5 /* Frameworks */,
+				6F8A708B18CE51C80061CFF5 /* Resources */,
+				6F7FF50B1A0928140057E4C1 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "tritonplayer-sample-app";
+			productName = "tritonplayer-sample-app";
+			productReference = 6F8A708D18CE51C80061CFF5 /* tritonplayer-sample-app.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6F8A708518CE51C80061CFF5 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "Triton Digital";
+				TargetAttributes = {
+					6F8A708C18CE51C80061CFF5 = {
+						DevelopmentTeam = 4ZM36VH4SJ;
+						SystemCapabilities = {
+							com.apple.GameCenter = {
+								enabled = 0;
+							};
+							com.apple.InAppPurchase = {
+								enabled = 0;
+							};
+						};
+					};
+				};
+			};
+			buildConfigurationList = 6F8A708818CE51C80061CFF5 /* Build configuration list for PBXProject "tritonplayer-sample-app" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 6F8A708418CE51C80061CFF5;
+			productRefGroup = 6F8A708E18CE51C80061CFF5 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6F8A708C18CE51C80061CFF5 /* tritonplayer-sample-app */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6F8A708B18CE51C80061CFF5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6FF1CA9E1AF3D7DE0090879A /* Settings.bundle in Resources */,
+				6F8A70A918CE51C80061CFF5 /* Images.xcassets in Resources */,
+				6F8A709B18CE51C80061CFF5 /* InfoPlist.strings in Resources */,
+				6F8A70A418CE51C80061CFF5 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6F8A708918CE51C80061CFF5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6F8A70A718CE51C80061CFF5 /* BasicPlayerViewController.m in Sources */,
+				6FF1CA9A1AF3D7DE0090879A /* EmbeddedPlayerViewController.m in Sources */,
+				6F558B6E1EA7F28D00D1D5A0 /* MultiStationViewController.m in Sources */,
+				6FF1CA9D1AF3D7DE0090879A /* SBMPlayerViewController.m in Sources */,
+				6F8A70A118CE51C80061CFF5 /* AppDelegate.m in Sources */,
+				6FF1CA991AF3D7DE0090879A /* CuePointHistoryViewController.m in Sources */,
+				6FF1CA981AF3D7DE0090879A /* ArrayDataSource.m in Sources */,
+				6FD9C3CD1A9B80D500B516F4 /* CustomAdsViewController.m in Sources */,
+				6F778F051A782B1B00D80F8E /* InterstitialViewController.m in Sources */,
+				6FF1CA9C1AF3D7DE0090879A /* OnDemandPlayerViewController.m in Sources */,
+				6F8A709D18CE51C80061CFF5 /* main.m in Sources */,
+				6F778F061A782B1B00D80F8E /* MainMenuViewController.m in Sources */,
+				6FF1CA9B1AF3D7DE0090879A /* ListTableViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		6F8A709918CE51C80061CFF5 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6F8A709A18CE51C80061CFF5 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		6F8A70A218CE51C80061CFF5 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6F8A70A318CE51C80061CFF5 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		6F8A70BD18CE51C80061CFF5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		6F8A70BE18CE51C80061CFF5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		6F8A70C018CE51C80061CFF5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "tritonplayer-sample-app/tritonplayer-sample-app-Prefix.pch";
+				INFOPLIST_FILE = "tritonplayer-sample-app/tritonplayer-sample-app-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				OTHER_LDFLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.tritondigital.tritonplayer-sample-app";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		6F8A70C118CE51C80061CFF5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "tritonplayer-sample-app/tritonplayer-sample-app-Prefix.pch";
+				INFOPLIST_FILE = "tritonplayer-sample-app/tritonplayer-sample-app-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				OTHER_LDFLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.tritondigital.tritonplayer-sample-app";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6F8A708818CE51C80061CFF5 /* Build configuration list for PBXProject "tritonplayer-sample-app" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6F8A70BD18CE51C80061CFF5 /* Debug */,
+				6F8A70BE18CE51C80061CFF5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6F8A70BF18CE51C80061CFF5 /* Build configuration list for PBXNativeTarget "tritonplayer-sample-app" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6F8A70C018CE51C80061CFF5 /* Debug */,
+				6F8A70C118CE51C80061CFF5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6F8A708518CE51C80061CFF5 /* Project object */;
+}

@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>TDBannerView Class Reference</title>
+
+	<link rel="stylesheet" href="../css/style.css">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
+	<meta name="generator" content="appledoc 2.2.1 (build 1334)">
+</head>
+<body class="appledoc">
+	<header>
+		<div class="container" class="hide-in-xcode">
+			
+			<h1 id="library-title">
+				<a href="../index.html">Triton Mobile SDK </a>
+			</h1>
+
+			<p id="developer-home">
+				<a href="../index.html">Triton Digital</a>
+			</p>
+			
+		</div>
+	</header>
+
+	<aside>
+		<div class="container">
+			<nav>
+				<ul id="header-buttons" role="toolbar">
+					<li><a href="../index.html">Index</a></li>
+<li><a href="../hierarchy.html">Hierarchy</a></li>
+
+					<li id="on-this-page" role="navigation">
+						<label>
+							On This Page
+
+							<div class="chevron">
+								<div class="chevy chevron-left"></div>
+								<div class="chevy chevron-right"></div>
+							</div>
+
+							<select id="jump-to">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+
+	
+	
+	<optgroup label="Properties">
+		
+		<option value="//api/name/delegate">delegate</option>
+		
+		<option value="//api/name/fallbackHeight">fallbackHeight</option>
+		
+		<option value="//api/name/fallbackWidth">fallbackWidth</option>
+		
+		<option value="//api/name/height">height</option>
+		
+		<option value="//api/name/width">width</option>
+		
+	</optgroup>
+	
+
+	
+
+	
+	<optgroup label="Instance Methods">
+		
+		<option value="//api/name/clear">- clear</option>
+		
+		<option value="//api/name/initWithWidth:andHeight:">- initWithWidth:andHeight:</option>
+		
+		<option value="//api/name/initWithWidth:andHeight:andFallbackWidth:andFallbackHeight:">- initWithWidth:andHeight:andFallbackWidth:andFallbackHeight:</option>
+		
+		<option value="//api/name/initWithWidth:andHeight:andFallbackWidth:andFallbackHeight:andOrigin:">- initWithWidth:andHeight:andFallbackWidth:andFallbackHeight:andOrigin:</option>
+		
+		<option value="//api/name/presentAd:">- presentAd:</option>
+		
+		<option value="//api/name/setFallbackWidth:andHeight:">- setFallbackWidth:andHeight:</option>
+		
+		<option value="//api/name/setOrigin:">- setOrigin:</option>
+		
+		<option value="//api/name/setWidth:andHeight:">- setWidth:andHeight:</option>
+		
+	</optgroup>
+	
+	
+</select>
+						</label>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</aside>
+
+	<article>
+		<div id="overview_contents" class="container">
+			<div id="content">
+				<main role="main">
+					<h1 class="title">TDBannerView Class Reference</h1>
+
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<th>Inherits from</th>
+	<td>UIView</td>
+</tr><tr>
+	<th>Declared in</th>
+	<td>TDBannerView.h</td>
+</tr>
+						</tbody></table></div>
+					
+
+                    
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>The TDBannerView class represents a view that displays Triton Banners (in-stream ads) ads.</p>
+
+<p>The ads are represented by a <a href="../Classes/TDAd.html">TDAd</a> object obtained from <a href="../Classes/TDAdLoader.html">TDAdLoader</a>. The banner size is independent of its frame size, but when initializing the TDBannerView with one of its initializers, it will make the underlying views size match the banner&rsquo;s size.</p>
+					</div>
+					
+					
+
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						
+
+						<a title="Managing the delegate" name="task_Managing the delegate"></a>
+						<h2 class="task-title">Managing the delegate</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/delegate" title="delegate"></a>
+	<h3 class="method-title"><code><a href="#//api/name/delegate">&nbsp;&nbsp;delegate</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The delegate that will receive state changes from TDBannerView.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, weak) id&lt;TDBannerViewDelegate&gt; delegate</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">TDBannerView.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+
+						<a title="Creating a TDBannerView" name="task_Creating a TDBannerView"></a>
+						<h2 class="task-title">Creating a TDBannerView</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/initWithWidth:andHeight:" title="initWithWidth:andHeight:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/initWithWidth:andHeight:">&ndash;&nbsp;initWithWidth:andHeight:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Initializes a TDBannerView with specified widht and <a href="#//api/name/height">height</a> positioned at the top left corner of its superview (0,0).</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (instancetype)initWithWidth:(NSInteger)<em>width</em> andHeight:(NSInteger)<em>height</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>width</code></th>
+						<td><p>The <a href="#//api/name/width">width</a> of the banner</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>height</code></th>
+						<td><p>The <a href="#//api/name/height">height</a> of the banner</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">TDBannerView.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/initWithWidth:andHeight:andFallbackWidth:andFallbackHeight:" title="initWithWidth:andHeight:andFallbackWidth:andFallbackHeight:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/initWithWidth:andHeight:andFallbackWidth:andFallbackHeight:">&ndash;&nbsp;initWithWidth:andHeight:andFallbackWidth:andFallbackHeight:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Initializes a TDBannerView with origin (0,0) with specified widht and <a href="#//api/name/height">height</a> in addition to fallback <a href="#//api/name/width">width</a> and <a href="#//api/name/height">height</a>.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (instancetype)initWithWidth:(NSInteger)<em>width</em> andHeight:(NSInteger)<em>height</em> andFallbackWidth:(NSInteger)<em>fallbackWidth</em> andFallbackHeight:(NSInteger)<em>fallbackHeight</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>width</code></th>
+						<td><p>The <a href="#//api/name/width">width</a> of the banner</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>height</code></th>
+						<td><p>The <a href="#//api/name/height">height</a> of the banner</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>fallbackWidth</code></th>
+						<td><p>The fallback <a href="#//api/name/width">width</a> of the banner</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>fallbackHeight</code></th>
+						<td><p>The fallback <a href="#//api/name/height">height</a> of the banner</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The fallback size must be smaller than the main size otherwise it won&rsquo;t fit inside the view.
+This feature was added in order to easily support 320x50 and 300x50 in the same view. The view won&rsquo;t change it&rsquo;s size, the fallback view will be centralized inside it.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">TDBannerView.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/initWithWidth:andHeight:andFallbackWidth:andFallbackHeight:andOrigin:" title="initWithWidth:andHeight:andFallbackWidth:andFallbackHeight:andOrigin:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/initWithWidth:andHeight:andFallbackWidth:andFallbackHeight:andOrigin:">&ndash;&nbsp;initWithWidth:andHeight:andFallbackWidth:andFallbackHeight:andOrigin:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Initializes a TDBannerView at the specified origin with specified widht and <a href="#//api/name/height">height</a> in addition to fallback <a href="#//api/name/width">width</a> and <a href="#//api/name/height">height</a>. This is the designated initializer.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (instancetype)initWithWidth:(NSInteger)<em>width</em> andHeight:(NSInteger)<em>height</em> andFallbackWidth:(NSInteger)<em>fallbackWidth</em> andFallbackHeight:(NSInteger)<em>fallbackHeight</em> andOrigin:(CGPoint)<em>origin</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>width</code></th>
+						<td><p>The <a href="#//api/name/width">width</a> of the banner</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>height</code></th>
+						<td><p>The <a href="#//api/name/height">height</a> of the banner</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>fallbackWidth</code></th>
+						<td><p>The fallback <a href="#//api/name/width">width</a> of the banner</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>fallbackHeight</code></th>
+						<td><p>The fallback <a href="#//api/name/height">height</a> of the banner</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>origin</code></th>
+						<td><p>a CGPoint with the top left position in points related to its superview</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The fallback size must be smaller than the main size otherwise it won&rsquo;t fit inside the view.
+This feature was added in order to easily support 320x50 and 300x50 in the same view. The view won&rsquo;t change it&rsquo;s size, the fallback view will be centralized inside it.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">TDBannerView.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+
+						<a title="Configuring size and position" name="task_Configuring size and position"></a>
+						<h2 class="task-title">Configuring size and position</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/width" title="width"></a>
+	<h3 class="method-title"><code><a href="#//api/name/width">&nbsp;&nbsp;width</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The width supported by the banner.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (assign, readonly) NSInteger width</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">TDBannerView.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/height" title="height"></a>
+	<h3 class="method-title"><code><a href="#//api/name/height">&nbsp;&nbsp;height</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The height supported by the banner.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (assign, readonly) NSInteger height</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">TDBannerView.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/fallbackWidth" title="fallbackWidth"></a>
+	<h3 class="method-title"><code><a href="#//api/name/fallbackWidth">&nbsp;&nbsp;fallbackWidth</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The fallback <a href="#//api/name/width">width</a> supported by the banner.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (assign, readonly) NSInteger fallbackWidth</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">TDBannerView.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/fallbackHeight" title="fallbackHeight"></a>
+	<h3 class="method-title"><code><a href="#//api/name/fallbackHeight">&nbsp;&nbsp;fallbackHeight</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The fallback <a href="#//api/name/height">height</a> supported by the banner.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (assign, readonly) NSInteger fallbackHeight</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">TDBannerView.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setWidth:andHeight:" title="setWidth:andHeight:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setWidth:andHeight:">&ndash;&nbsp;setWidth:andHeight:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Sets the <a href="#//api/name/width">width</a> and <a href="#//api/name/height">height</a> supported by the banner. These dimensions are indepentent of the banner frame size.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)setWidth:(NSInteger)<em>width</em> andHeight:(NSInteger)<em>height</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>width</code></th>
+						<td><p>The <a href="#//api/name/width">width</a> of the banner</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>height</code></th>
+						<td><p>The <a href="#//api/name/height">height</a> of the banner</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">TDBannerView.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setFallbackWidth:andHeight:" title="setFallbackWidth:andHeight:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setFallbackWidth:andHeight:">&ndash;&nbsp;setFallbackWidth:andHeight:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Sets the fallback <a href="#//api/name/width">width</a> and <a href="#//api/name/height">height</a> supported by the banner. The fallback size, when set, will be used in case the main size is not available.
+It will be centralized inside the banner.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)setFallbackWidth:(NSInteger)<em>fallbackWidth</em> andHeight:(NSInteger)<em>fallbackHeight</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>fallbackWidth</code></th>
+						<td><p>The fallback <a href="#//api/name/width">width</a> of the banner</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>fallbackHeight</code></th>
+						<td><p>The fallback <a href="#//api/name/height">height</a> of the banner</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">TDBannerView.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setOrigin:" title="setOrigin:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setOrigin:">&ndash;&nbsp;setOrigin:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Changes the top left position of the banner view related to its superview</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)setOrigin:(CGPoint)<em>origin</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>origin</code></th>
+						<td><p>a CGPoint with the new top left position in points related to its superview</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">TDBannerView.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+
+						<a title="Presenting and removing an ad" name="task_Presenting and removing an ad"></a>
+						<h2 class="task-title">Presenting and removing an ad</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/presentAd:" title="presentAd:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/presentAd:">&ndash;&nbsp;presentAd:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Request an ad to be displayed in the view.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)presentAd:(TDAd *)<em>ad</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>ad</code></th>
+						<td><p>the <a href="../Classes/TDAd.html">TDAd</a> object with the ad information to be loaded. Loading with a nil object will <a href="#//api/name/clear">clear</a> the banner&rsquo;s content.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">TDBannerView.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/clear" title="clear"></a>
+	<h3 class="method-title"><code><a href="#//api/name/clear">&ndash;&nbsp;clear</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Clears the banner contents</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)clear</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">TDBannerView.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+					</div>
+					
+					
+
+                    
+                    
+          
+				</main>
+
+				<footer>
+					<div class="footer-copyright">
+						
+						<p class="copyright">Copyright &copy; 2019 Triton Digital. All rights reserved. Updated: 2019-04-09</p>
+						
+						
+						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
+						
+					</div>
+				</footer>
+			</div>
+		</div>
+	</article>
+
+	<script src="../js/script.js"></script>
+</body>
+</html>

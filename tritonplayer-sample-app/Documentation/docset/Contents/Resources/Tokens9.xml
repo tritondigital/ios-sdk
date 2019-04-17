@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/TDSBMPlayer.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/TDSBMPlayer</TokenIdentifier>
+			<Abstract type="html">Sideband Metadata (SBM) is a metadata transport mechanism offered to players that are unable to use metadata multiplexed into the stream itself (as with FLV, SHOUTcast V1/V2, etc.), either because it is impossible, difficult, or resource-intensive.</Abstract>
+			<DeclaredIn>TDSBMPlayer.h</DeclaredIn>
+            
+			
+			<NodeRef refid="9"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDSBMPlayer/setDelegate:</TokenIdentifier>
+			<Abstract type="html">The delegate responsible for handling callbacks</Abstract>
+			<DeclaredIn>TDSBMPlayer.h</DeclaredIn>
+			
+			<Declaration>@property (weak, nonatomic) id&lt;TDSBMPlayerPlayerDelegate&gt; delegate</Declaration>
+			
+			
+			<Anchor>//api/name/delegate</Anchor>
+            <NodeRef refid="9"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDSBMPlayer/delegate</TokenIdentifier>
+			<Abstract type="html">The delegate responsible for handling callbacks</Abstract>
+			<DeclaredIn>TDSBMPlayer.h</DeclaredIn>
+			
+			<Declaration>@property (weak, nonatomic) id&lt;TDSBMPlayerPlayerDelegate&gt; delegate</Declaration>
+			
+			
+			<Anchor>//api/name/delegate</Anchor>
+            <NodeRef refid="9"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/TDSBMPlayer/delegate</TokenIdentifier>
+			<Abstract type="html">The delegate responsible for handling callbacks</Abstract>
+			<DeclaredIn>TDSBMPlayer.h</DeclaredIn>
+			
+			<Declaration>@property (weak, nonatomic) id&lt;TDSBMPlayerPlayerDelegate&gt; delegate</Declaration>
+			
+			
+			<Anchor>//api/name/delegate</Anchor>
+            <NodeRef refid="9"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDSBMPlayer/setCurrentPlaybackTime:</TokenIdentifier>
+			<Abstract type="html">The time in seconds from the beginning of playback</Abstract>
+			<DeclaredIn>TDSBMPlayer.h</DeclaredIn>
+			
+			<Declaration>@property (assign, readonly) NSTimeInterval currentPlaybackTime</Declaration>
+			
+			
+			<Anchor>//api/name/currentPlaybackTime</Anchor>
+            <NodeRef refid="9"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDSBMPlayer/currentPlaybackTime</TokenIdentifier>
+			<Abstract type="html">The time in seconds from the beginning of playback</Abstract>
+			<DeclaredIn>TDSBMPlayer.h</DeclaredIn>
+			
+			<Declaration>@property (assign, readonly) NSTimeInterval currentPlaybackTime</Declaration>
+			
+			
+			<Anchor>//api/name/currentPlaybackTime</Anchor>
+            <NodeRef refid="9"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/TDSBMPlayer/currentPlaybackTime</TokenIdentifier>
+			<Abstract type="html">The time in seconds from the beginning of playback</Abstract>
+			<DeclaredIn>TDSBMPlayer.h</DeclaredIn>
+			
+			<Declaration>@property (assign, readonly) NSTimeInterval currentPlaybackTime</Declaration>
+			
+			
+			<Anchor>//api/name/currentPlaybackTime</Anchor>
+            <NodeRef refid="9"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDSBMPlayer/setSynchronizationOffset:</TokenIdentifier>
+			<Abstract type="html">Defines a difference in seconds between this SBMPlayer&apos;s currentPlaybackTime and the media player&apos;s current playback time (playhead position).</Abstract>
+			<DeclaredIn>TDSBMPlayer.h</DeclaredIn>
+			
+			<Declaration>@property (assign, nonatomic) NSTimeInterval synchronizationOffset</Declaration>
+			
+			
+			<Anchor>//api/name/synchronizationOffset</Anchor>
+            <NodeRef refid="9"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDSBMPlayer/synchronizationOffset</TokenIdentifier>
+			<Abstract type="html">Defines a difference in seconds between this SBMPlayer&apos;s currentPlaybackTime and the media player&apos;s current playback time (playhead position).</Abstract>
+			<DeclaredIn>TDSBMPlayer.h</DeclaredIn>
+			
+			<Declaration>@property (assign, nonatomic) NSTimeInterval synchronizationOffset</Declaration>
+			
+			
+			<Anchor>//api/name/synchronizationOffset</Anchor>
+            <NodeRef refid="9"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/TDSBMPlayer/synchronizationOffset</TokenIdentifier>
+			<Abstract type="html">Defines a difference in seconds between this SBMPlayer&apos;s currentPlaybackTime and the media player&apos;s current playback time (playhead position).</Abstract>
+			<DeclaredIn>TDSBMPlayer.h</DeclaredIn>
+			
+			<Declaration>@property (assign, nonatomic) NSTimeInterval synchronizationOffset</Declaration>
+			
+			
+			<Anchor>//api/name/synchronizationOffset</Anchor>
+            <NodeRef refid="9"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDSBMPlayer/setAutoSynchronizeCuePoints:</TokenIdentifier>
+			<Abstract type="html">Whether or not to let TDSBMPlayer synchronize the cue points automatically with it&apos;s currentPlaybackTime and synchronizationOffset.</Abstract>
+			<DeclaredIn>TDSBMPlayer.h</DeclaredIn>
+			
+			<Declaration>@property (assign, nonatomic) BOOL autoSynchronizeCuePoints</Declaration>
+			
+			
+			<Anchor>//api/name/autoSynchronizeCuePoints</Anchor>
+            <NodeRef refid="9"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDSBMPlayer/autoSynchronizeCuePoints</TokenIdentifier>
+			<Abstract type="html">Whether or not to let TDSBMPlayer synchronize the cue points automatically with it&apos;s currentPlaybackTime and synchronizationOffset.</Abstract>
+			<DeclaredIn>TDSBMPlayer.h</DeclaredIn>
+			
+			<Declaration>@property (assign, nonatomic) BOOL autoSynchronizeCuePoints</Declaration>
+			
+			
+			<Anchor>//api/name/autoSynchronizeCuePoints</Anchor>
+            <NodeRef refid="9"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/TDSBMPlayer/autoSynchronizeCuePoints</TokenIdentifier>
+			<Abstract type="html">Whether or not to let TDSBMPlayer synchronize the cue points automatically with it&apos;s currentPlaybackTime and synchronizationOffset.</Abstract>
+			<DeclaredIn>TDSBMPlayer.h</DeclaredIn>
+			
+			<Declaration>@property (assign, nonatomic) BOOL autoSynchronizeCuePoints</Declaration>
+			
+			
+			<Anchor>//api/name/autoSynchronizeCuePoints</Anchor>
+            <NodeRef refid="9"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/TDSBMPlayer/generateSBMSessionId</TokenIdentifier>
+			<Abstract type="html">Utility method for creating a new sbmid session id to be shared between the audio player and the TDSBMPlayer</Abstract>
+			<DeclaredIn>TDSBMPlayer.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)generateSBMSessionId</Declaration>
+			
+			<ReturnValue><Abstract type="html">a NSString representing a Type 4 (i.e. random) UUID, formatted as a lowercase hex string, such as: fde807eb-6931-47db-a758-9c3b0c7e84d5</Abstract></ReturnValue>
+			<Anchor>//api/name/generateSBMSessionId</Anchor>
+            <NodeRef refid="9"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDSBMPlayer/initWithSettings:</TokenIdentifier>
+			<Abstract type="html">Initializes a TDSBMPlayer with settings.</Abstract>
+			<DeclaredIn>TDSBMPlayer.h</DeclaredIn>
+			
+			<Declaration>- (instancetype)initWithSettings:(NSDictionary *)settings</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>settings</Name>
+					<Abstract type="html">A NSDictionary containing the SBM settings. See constants in TDSBMPlayer.h for possible keys.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/initWithSettings:</Anchor>
+            <NodeRef refid="9"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDSBMPlayer/updateSettings:</TokenIdentifier>
+			<Abstract type="html">Update the SBM player settings. All the information passed overrides the current settings and will take effect the next time the play method is called.</Abstract>
+			<DeclaredIn>TDSBMPlayer.h</DeclaredIn>
+			
+			<Declaration>- (void)updateSettings:(NSDictionary *)settings</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>settings</Name>
+					<Abstract type="html">A NSDictionary containing the SBM settings. See constants in TDSBMPlayer.h for possible keys.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/updateSettings:</Anchor>
+            <NodeRef refid="9"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDSBMPlayer/play</TokenIdentifier>
+			<Abstract type="html">Start playing the Side-band metadata player</Abstract>
+			<DeclaredIn>TDSBMPlayer.h</DeclaredIn>
+			
+			<Declaration>- (void)play</Declaration>
+			
+			
+			<Anchor>//api/name/play</Anchor>
+            <NodeRef refid="9"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDSBMPlayer/stop</TokenIdentifier>
+			<Abstract type="html">Stop playing the Side-band metadata player</Abstract>
+			<DeclaredIn>TDSBMPlayer.h</DeclaredIn>
+			
+			<Declaration>- (void)stop</Declaration>
+			
+			
+			<Anchor>//api/name/stop</Anchor>
+            <NodeRef refid="9"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDSBMPlayer/close</TokenIdentifier>
+			<Abstract type="html">Close the metadata connection.</Abstract>
+			<DeclaredIn>TDSBMPlayer.h</DeclaredIn>
+			
+			<Declaration>- (void)close</Declaration>
+			
+			
+			<Anchor>//api/name/close</Anchor>
+            <NodeRef refid="9"/>
+		</Token>
+		
+        
+        
+	</File>
+</Tokens>

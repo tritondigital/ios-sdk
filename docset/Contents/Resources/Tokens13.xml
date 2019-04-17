@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Protocols/TDInterstitialDelegate.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intf/TDInterstitialDelegate</TokenIdentifier>
+			<Abstract type="html">TDInterstitialDelegate defines methods you can implement to handle interstitial life-cycle updates.</Abstract>
+			<DeclaredIn>TDInterstitialAdDelegate.h</DeclaredIn>
+            
+			
+			<NodeRef refid="13"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/TDInterstitialDelegate/interstitialDidLoadAd:</TokenIdentifier>
+			<Abstract type="html">Called when the interstital ad was loaded suceesfully. From this point, it is able to be presented.</Abstract>
+			<DeclaredIn>TDInterstitialAdDelegate.h</DeclaredIn>
+			
+			<Declaration>- (void)interstitialDidLoadAd:(TDInterstitialAd *)ad</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>ad</Name>
+					<Abstract type="html">The TDInterstitialAf object that loaded an ad.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/interstitialDidLoadAd:</Anchor>
+            <NodeRef refid="13"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/TDInterstitialDelegate/interstitial:didFailToLoadAdWithError:</TokenIdentifier>
+			<Abstract type="html">Called when an interstitial ad loading failed.</Abstract>
+			<DeclaredIn>TDInterstitialAdDelegate.h</DeclaredIn>
+			
+			<Declaration>- (void)interstitial:(TDInterstitialAd *)ad didFailToLoadAdWithError:(NSError *)error</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>ad</Name>
+					<Abstract type="html">The TDInterstitialAd object that failed to load ad</Abstract>
+				</Parameter><Parameter>
+					<Name>error</Name>
+					<Abstract type="html">The error that occurred when loading the ad</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/interstitial:didFailToLoadAdWithError:</Anchor>
+            <NodeRef refid="13"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/TDInterstitialDelegate/interstitialWillPresent:</TokenIdentifier>
+			<Abstract type="html">Called just before presenting an interstitial.</Abstract>
+			<DeclaredIn>TDInterstitialAdDelegate.h</DeclaredIn>
+			
+			<Declaration>- (void)interstitialWillPresent:(TDInterstitialAd *)ad</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>ad</Name>
+					<Abstract type="html">The TDInterstitialAd object that will be presented</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/interstitialWillPresent:</Anchor>
+            <NodeRef refid="13"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/TDInterstitialDelegate/interstitialWillDismiss:</TokenIdentifier>
+			<Abstract type="html">Called before the interstitial is to be animated off the screen.</Abstract>
+			<DeclaredIn>TDInterstitialAdDelegate.h</DeclaredIn>
+			
+			<Declaration>- (void)interstitialWillDismiss:(TDInterstitialAd *)ad</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>ad</Name>
+					<Abstract type="html">The TDInterstitialAd object that will be dismissed</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/interstitialWillDismiss:</Anchor>
+            <NodeRef refid="13"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/TDInterstitialDelegate/interstitialDidDismiss:</TokenIdentifier>
+			<Abstract type="html">Called just after the interstitial is animated off the screen.</Abstract>
+			<DeclaredIn>TDInterstitialAdDelegate.h</DeclaredIn>
+			
+			<Declaration>- (void)interstitialDidDismiss:(TDInterstitialAd *)ad</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>ad</Name>
+					<Abstract type="html">The TDInterstitialAd object that did dismiss</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/interstitialDidDismiss:</Anchor>
+            <NodeRef refid="13"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/TDInterstitialDelegate/interstitialWillLeaveApplication:</TokenIdentifier>
+			<Abstract type="html">Called just before the application will go to the background or terminate because the user clicked on an ad that will launch another application (such as the App Store).</Abstract>
+			<DeclaredIn>TDInterstitialAdDelegate.h</DeclaredIn>
+			
+			<Declaration>- (void)interstitialWillLeaveApplication:(TDInterstitialAd *)ad</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>ad</Name>
+					<Abstract type="html">The TDInterstitialAd object that will leave the application</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/interstitialWillLeaveApplication:</Anchor>
+            <NodeRef refid="13"/>
+		</Token>
+		
+        
+        
+	</File>
+</Tokens>

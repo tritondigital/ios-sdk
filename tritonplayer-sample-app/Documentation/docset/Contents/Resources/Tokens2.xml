@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/TDAd.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/TDAd</TokenIdentifier>
+			<Abstract type="html">TDAd represents a Triton ad in the SDK. It contains information about all supported ads (in-stream/on-demand, audio/banner/video).</Abstract>
+			<DeclaredIn>TDAd.h</DeclaredIn>
+            
+			
+			<NodeRef refid="2"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDAd/setMediaImpressionURLs:</TokenIdentifier>
+			<Abstract type="html">The urls that need to be called for generating an ad impression</Abstract>
+			<DeclaredIn>TDAd.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSArray *mediaImpressionURLs</Declaration>
+			
+			
+			<Anchor>//api/name/mediaImpressionURLs</Anchor>
+            <NodeRef refid="2"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDAd/mediaImpressionURLs</TokenIdentifier>
+			<Abstract type="html">The urls that need to be called for generating an ad impression</Abstract>
+			<DeclaredIn>TDAd.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSArray *mediaImpressionURLs</Declaration>
+			
+			
+			<Anchor>//api/name/mediaImpressionURLs</Anchor>
+            <NodeRef refid="2"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/TDAd/mediaImpressionURLs</TokenIdentifier>
+			<Abstract type="html">The urls that need to be called for generating an ad impression</Abstract>
+			<DeclaredIn>TDAd.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSArray *mediaImpressionURLs</Declaration>
+			
+			
+			<Anchor>//api/name/mediaImpressionURLs</Anchor>
+            <NodeRef refid="2"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDAd/setMediaMIMEType:</TokenIdentifier>
+			<Abstract type="html">The type of the linear media as a MIME-type (usually audio or video)</Abstract>
+			<DeclaredIn>TDAd.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *mediaMIMEType</Declaration>
+			
+			
+			<Anchor>//api/name/mediaMIMEType</Anchor>
+            <NodeRef refid="2"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDAd/mediaMIMEType</TokenIdentifier>
+			<Abstract type="html">The type of the linear media as a MIME-type (usually audio or video)</Abstract>
+			<DeclaredIn>TDAd.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *mediaMIMEType</Declaration>
+			
+			
+			<Anchor>//api/name/mediaMIMEType</Anchor>
+            <NodeRef refid="2"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/TDAd/mediaMIMEType</TokenIdentifier>
+			<Abstract type="html">The type of the linear media as a MIME-type (usually audio or video)</Abstract>
+			<DeclaredIn>TDAd.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *mediaMIMEType</Declaration>
+			
+			
+			<Anchor>//api/name/mediaMIMEType</Anchor>
+            <NodeRef refid="2"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDAd/setFormat:</TokenIdentifier>
+			<Abstract type="html">The format of the ad. VAST or DAAST</Abstract>
+			<DeclaredIn>TDAd.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *format</Declaration>
+			
+			
+			<Anchor>//api/name/format</Anchor>
+            <NodeRef refid="2"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDAd/format</TokenIdentifier>
+			<Abstract type="html">The format of the ad. VAST or DAAST</Abstract>
+			<DeclaredIn>TDAd.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *format</Declaration>
+			
+			
+			<Anchor>//api/name/format</Anchor>
+            <NodeRef refid="2"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/TDAd/format</TokenIdentifier>
+			<Abstract type="html">The format of the ad. VAST or DAAST</Abstract>
+			<DeclaredIn>TDAd.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *format</Declaration>
+			
+			
+			<Anchor>//api/name/format</Anchor>
+            <NodeRef refid="2"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDAd/setMediaURL:</TokenIdentifier>
+			<Abstract type="html">The url of the linear media</Abstract>
+			<DeclaredIn>TDAd.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSURL *mediaURL</Declaration>
+			
+			
+			<Anchor>//api/name/mediaURL</Anchor>
+            <NodeRef refid="2"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDAd/mediaURL</TokenIdentifier>
+			<Abstract type="html">The url of the linear media</Abstract>
+			<DeclaredIn>TDAd.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSURL *mediaURL</Declaration>
+			
+			
+			<Anchor>//api/name/mediaURL</Anchor>
+            <NodeRef refid="2"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/TDAd/mediaURL</TokenIdentifier>
+			<Abstract type="html">The url of the linear media</Abstract>
+			<DeclaredIn>TDAd.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSURL *mediaURL</Declaration>
+			
+			
+			<Anchor>//api/name/mediaURL</Anchor>
+            <NodeRef refid="2"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDAd/setCompanionBanners:</TokenIdentifier>
+			<Abstract type="html">An array of TDCompanionBanner objects for each banner available in the ad</Abstract>
+			<DeclaredIn>TDAd.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSArray *companionBanners</Declaration>
+			
+			
+			<Anchor>//api/name/companionBanners</Anchor>
+            <NodeRef refid="2"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDAd/companionBanners</TokenIdentifier>
+			<Abstract type="html">An array of TDCompanionBanner objects for each banner available in the ad</Abstract>
+			<DeclaredIn>TDAd.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSArray *companionBanners</Declaration>
+			
+			
+			<Anchor>//api/name/companionBanners</Anchor>
+            <NodeRef refid="2"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/TDAd/companionBanners</TokenIdentifier>
+			<Abstract type="html">An array of TDCompanionBanner objects for each banner available in the ad</Abstract>
+			<DeclaredIn>TDAd.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSArray *companionBanners</Declaration>
+			
+			
+			<Anchor>//api/name/companionBanners</Anchor>
+            <NodeRef refid="2"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDAd/setVideoWidth:</TokenIdentifier>
+			<Abstract type="html">The width of the video</Abstract>
+			<DeclaredIn>TDAd.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) NSInteger videoWidth</Declaration>
+			
+			
+			<Anchor>//api/name/videoWidth</Anchor>
+            <NodeRef refid="2"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDAd/videoWidth</TokenIdentifier>
+			<Abstract type="html">The width of the video</Abstract>
+			<DeclaredIn>TDAd.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) NSInteger videoWidth</Declaration>
+			
+			
+			<Anchor>//api/name/videoWidth</Anchor>
+            <NodeRef refid="2"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/TDAd/videoWidth</TokenIdentifier>
+			<Abstract type="html">The width of the video</Abstract>
+			<DeclaredIn>TDAd.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) NSInteger videoWidth</Declaration>
+			
+			
+			<Anchor>//api/name/videoWidth</Anchor>
+            <NodeRef refid="2"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDAd/setVideoHeight:</TokenIdentifier>
+			<Abstract type="html">The height of the video</Abstract>
+			<DeclaredIn>TDAd.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) NSInteger videoHeight</Declaration>
+			
+			
+			<Anchor>//api/name/videoHeight</Anchor>
+            <NodeRef refid="2"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDAd/videoHeight</TokenIdentifier>
+			<Abstract type="html">The height of the video</Abstract>
+			<DeclaredIn>TDAd.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) NSInteger videoHeight</Declaration>
+			
+			
+			<Anchor>//api/name/videoHeight</Anchor>
+            <NodeRef refid="2"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/TDAd/videoHeight</TokenIdentifier>
+			<Abstract type="html">The height of the video</Abstract>
+			<DeclaredIn>TDAd.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) NSInteger videoHeight</Declaration>
+			
+			
+			<Anchor>//api/name/videoHeight</Anchor>
+            <NodeRef refid="2"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDAd/setVideoClickThroughURL:</TokenIdentifier>
+			<Abstract type="html">The url that the app must be redirected when the user clicks in a video ad</Abstract>
+			<DeclaredIn>TDAd.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSURL *videoClickThroughURL</Declaration>
+			
+			
+			<Anchor>//api/name/videoClickThroughURL</Anchor>
+            <NodeRef refid="2"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDAd/videoClickThroughURL</TokenIdentifier>
+			<Abstract type="html">The url that the app must be redirected when the user clicks in a video ad</Abstract>
+			<DeclaredIn>TDAd.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSURL *videoClickThroughURL</Declaration>
+			
+			
+			<Anchor>//api/name/videoClickThroughURL</Anchor>
+            <NodeRef refid="2"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/TDAd/videoClickThroughURL</TokenIdentifier>
+			<Abstract type="html">The url that the app must be redirected when the user clicks in a video ad</Abstract>
+			<DeclaredIn>TDAd.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSURL *videoClickThroughURL</Declaration>
+			
+			
+			<Anchor>//api/name/videoClickThroughURL</Anchor>
+            <NodeRef refid="2"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDAd/setClickTrackingURLs:</TokenIdentifier>
+			<Abstract type="html">The list of urls that must be called to track the user clicking in a video ad</Abstract>
+			<DeclaredIn>TDAd.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSArray *clickTrackingURLs</Declaration>
+			
+			
+			<Anchor>//api/name/clickTrackingURLs</Anchor>
+            <NodeRef refid="2"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDAd/clickTrackingURLs</TokenIdentifier>
+			<Abstract type="html">The list of urls that must be called to track the user clicking in a video ad</Abstract>
+			<DeclaredIn>TDAd.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSArray *clickTrackingURLs</Declaration>
+			
+			
+			<Anchor>//api/name/clickTrackingURLs</Anchor>
+            <NodeRef refid="2"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/TDAd/clickTrackingURLs</TokenIdentifier>
+			<Abstract type="html">The list of urls that must be called to track the user clicking in a video ad</Abstract>
+			<DeclaredIn>TDAd.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSArray *clickTrackingURLs</Declaration>
+			
+			
+			<Anchor>//api/name/clickTrackingURLs</Anchor>
+            <NodeRef refid="2"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDAd/bestCompanionBannerForWidth:andHeight:</TokenIdentifier>
+			<Abstract type="html">Returns the companion banner in the receiver&apos;s companion banners list that approximates most the desired width and height.</Abstract>
+			<DeclaredIn>TDAd.h</DeclaredIn>
+			
+			<Declaration>- (TDCompanionBanner *)bestCompanionBannerForWidth:(NSInteger)width andHeight:(NSInteger)height</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>width</Name>
+					<Abstract type="html">the desired width of the banner</Abstract>
+				</Parameter><Parameter>
+					<Name>height</Name>
+					<Abstract type="html">the desired height of the banner</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">A TDCompanionBanner that is the best match for the desired width and height.</Abstract></ReturnValue>
+			<Anchor>//api/name/bestCompanionBannerForWidth:andHeight:</Anchor>
+            <NodeRef refid="2"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDAd/trackMediaImpressions</TokenIdentifier>
+			<Abstract type="html">Tracks asynchronously all the media impressions URL for the ad. Useful when you are rendering your ads with custom UI.</Abstract>
+			<DeclaredIn>TDAd.h</DeclaredIn>
+			
+			<Declaration>- (void)trackMediaImpressions</Declaration>
+			
+			
+			<Anchor>//api/name/trackMediaImpressions</Anchor>
+            <NodeRef refid="2"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/TDAd/trackVideoClick</TokenIdentifier>
+			<Abstract type="html">Tracks asynchronously all the video click URLs for the ad. Useful when you are rendering your ads with custom UI.</Abstract>
+			<DeclaredIn>TDAd.h</DeclaredIn>
+			
+			<Declaration>- (void)trackVideoClick</Declaration>
+			
+			
+			<Anchor>//api/name/trackVideoClick</Anchor>
+            <NodeRef refid="2"/>
+		</Token>
+		
+        
+        
+	</File>
+</Tokens>
