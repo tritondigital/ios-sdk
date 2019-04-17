@@ -1,11 +1,3 @@
-//
-//  TritonPlayer.m
-//  iPhoneV2
-//
-//  Created by Thierry Bucco on 09-03-23.
-//  Copyright 2009 StreamTheWorld. All rights reserved.
-//
-
 #import <AVFoundation/AVFoundation.h>
 #import <UIKit/UIKit.h>
 
@@ -25,7 +17,7 @@
 
 
 
-NSString *const TritonSDKVersion                        = @"2.5.1"; //TritonSDKVersion
+NSString *const TritonSDKVersion                        = @"2.6.0"; //TritonSDKVersion
 
 CGFloat   const  kDefaultPlayerDebouncing               = 0.2f; //Default debouncing for the Play action, in seconds
 
