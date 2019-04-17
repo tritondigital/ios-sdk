@@ -1,5 +1,10 @@
 # Changelog
 
+#### TritonPlayerSDK-iOS-2.6.0 - 2019-04-17
+- First release of the open source Triton Mobile SDK for iOS
+- Add the ability to set the distribution parameter
+- Fix Low Delay feature when it is set to a value between 2 and 60
+
 #### TritonPlayerSDK-iOS-2.5.1 - 2018-11-08
 - Fix SettingsPlayerServicesRegion duplicate variable issue
 
