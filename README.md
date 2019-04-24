@@ -33,17 +33,24 @@ In order to link the Triton Digital® Mobile SDK for iOS, the frameworks SystemC
 
 In order to install and use the Triton Digital® Mobile SDK for iOS you may be required to download proprietary third party libraries. You are responsible to ensure that you have all the necessary right and authorizations to download and install such libraries and that you comply with the applicable license.
 
-### Installing
+### Install
 
-Install Xcode from the App Store
-Fork and clone the ios-sdk project on git
+- Install Xcode from the App Store <br>
+- Fork and clone the ios-sdk project from GitHub
 
-In your terminal run this command from the folder where you forked the SDK:
+### Build
+
+In your terminal run this command from the folder where you cloned the SDK:
 ```bash
 sh xcode_build.sh <version number>
 ```
 
-This will create a folder (e.g. triton-ios-sdk-2.7) containing the sample application which you can open and run in XCode.
+This will create a folder (e.g. triton-ios-sdk-2.7) containing the SDK framework, documentation, and sample application.
+
+### Sample Application
+- Open the tritonplayer-sample-app project in XCode<br>
+- Select a Simulator device or connected phone<br>
+- Run<br>
 
 ## Running the tests
 
