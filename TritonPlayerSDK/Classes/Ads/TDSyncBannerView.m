@@ -50,7 +50,7 @@
         [self.adLoader loadAdWithStringRequest:adRequestUrl completionHandler:^(TDAd *loadedAd, NSError *error) {
             
             if (error) {
-                dispatch_async(dispatch_get_global_queue(0, 0), ^{
+                dispatch_async(dispatch_get_main_queue(), ^{
                     if ([self.delegate respondsToSelector:@selector(bannerView:didFailToPresentAdWithError:)]) {
                         [self.delegate bannerView:self didFailToPresentAdWithError:error];
                     }
