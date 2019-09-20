@@ -234,8 +234,7 @@
 
 - (void)connection:(NSURLConnection*)connection didReceiveData:(NSData*)inData
 {
-	@synchronized(self)
-	{
+	
 		if (self.backgroundTaskIdentifier != UIBackgroundTaskInvalid)
 		{
 			[[UIApplication sharedApplication] endBackgroundTask:self.backgroundTaskIdentifier];
@@ -244,11 +243,12 @@
 
 		if (flvDecoder && inData)
 		{
+
 			// we pass received data to the decoder
 			[flvDecoder decodeStreamData:inData];
             inData= nil;
 		}
-	}
+	
 }
 
 //=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
