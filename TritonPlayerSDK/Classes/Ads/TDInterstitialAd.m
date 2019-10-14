@@ -15,9 +15,6 @@
 #import "TDInterstitialAdViewController.h"
 #import "TDAdLoader.h"
 
-#import "TDAnalyticsTracker.h"
-
-
 #define kCloseButtonWidth 30
 #define kCloseButtonHeight 30
 #define kCloseButtonXPosition 10
@@ -56,16 +53,10 @@
 
 -(void)loadStringRequest:(NSString *)stringRequest {
     
-    //Init Google Analytics Tracker
-    TDAnalyticsTracker* tracker =[TDAnalyticsTracker sharedTracker];
-    [tracker initialize];
-    
     if (!stringRequest || [stringRequest isEqualToString:@""]) {
         [self failWithError:[TDAdUtils errorWithCode:TDErrorCodeInvalidAdURL andDescription:@"The request for the interstitial ad is invalid"]];
         return;
     }
-    
-    [tracker startTimer];
     
     self.adLoader = [[TDAdLoader alloc] init];
     [self.adLoader loadAdWithStringRequest:stringRequest completionHandler:^(TDAd *loadedAd, NSError *error) {
@@ -85,18 +76,6 @@
 -(void) trackAdPreroll:(TDAd*) loadedAd withSuccess:(BOOL) isSuccess
 {
     if(loadedAd == nil) return ;
-    
-    TDAnalyticsTracker* tracker =[TDAnalyticsTracker sharedTracker];
-    
-    NSString* mimeType = loadedAd.mediaMIMEType;
-    BOOL isVideo = (mimeType != nil &&  [mimeType rangeOfString:@"video"].location == NSNotFound)? FALSE: TRUE;
-    NSString* adFormat  = loadedAd.format;
-    NSTimeInterval loadTime = [tracker stopTimer];
-    
-    if(isSuccess)
-        [tracker trackAdPrerollSuccessWithFormat:adFormat isVideo:isVideo withLoadTime:loadTime];
-    else
-      [tracker trackAdPrerollErrorWithFormat:adFormat isVideo:isVideo withLoadTime:loadTime];
 }
 
 -(BOOL)loaded {

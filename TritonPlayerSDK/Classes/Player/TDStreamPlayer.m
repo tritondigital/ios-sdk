@@ -17,9 +17,6 @@
 #import "TritonPlayerConstants.h"
 #import "Logs.h"
 
-#import "TDAnalyticsTracker.h"
-
-
 NSString *const SettingsStreamPlayerProfileKey = @"StreamPlayerProfile";
 NSString *const SettingsStreamPlayerUserAgentKey = @"StreamPlayerUserAgent";
 NSString *const SettingsStreamPlayerStreamURLKey = @"StreamPlayerStreamURL";
@@ -79,7 +76,6 @@ NSString *const SettingsStreamPlayerSBMURLKey = @"StreamPlayerSBMURL";
         [self updateSettings:settings];
     }
     
-    [[TDAnalyticsTracker sharedTracker] initialize];
     self.oldPlayers = [[NSMutableArray alloc] init];
     return self;
 }
@@ -332,20 +328,7 @@ NSString *const SettingsStreamPlayerSBMURLKey = @"StreamPlayerSBMURL";
             
         default:
             break;
-    }
-    
-    
-    if(self.profile == KTDStreamProfileOther)
-    {
-      if(newState == kTDPlayerStatePlaying)
-      {
-          [[TDAnalyticsTracker sharedTracker] trackOnDemandSuccess];
-      }
-      else if(newState == kTDPlayerStateError)
-      {
-          [[TDAnalyticsTracker sharedTracker] trackOnDemandError];
-      }
-    }
+    }    
 }
 
 -(void)mediaPlayer:(id<TDMediaPlayback>)player didReceiveInfo:(TDPlayerInfo)info andExtra:(NSDictionary *)extra {

@@ -24,8 +24,6 @@
 #import <TritonPlayerSDK/TDCuePointHistory.h>
 #import <TritonPlayerSDK/TDAuthUtils.h>
 
-#import <TritonPlayerSDK/TDAnalyticsTracker.h>
-
 #endif
 
 /** This is the library header. Import this file to import all of the public types in Triton Player Framework.

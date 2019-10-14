@@ -60,9 +60,6 @@
 		6F3113221A1BE17500AC67AE /* ProvisioningTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F3113111A1BE17500AC67AE /* ProvisioningTest.m */; };
 		6F3113261A1BE26E00AC67AE /* libTritonPlayerSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FFD8F3D1A081807003345AC /* libTritonPlayerSDK.a */; };
 		6F3113281A1BF90D00AC67AE /* JOYTURK_ROCKAAC.raw in Resources */ = {isa = PBXBuildFile; fileRef = 6F3113271A1BF90D00AC67AE /* JOYTURK_ROCKAAC.raw */; };
-		6F49658E1CDD20C20038CEEE /* TDAnalyticsTracker.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FDF15421CCFDF6B00275292 /* TDAnalyticsTracker.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6F49658F1CDD21210038CEEE /* TDAnalyticsTracker.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FDF15421CCFDF6B00275292 /* TDAnalyticsTracker.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6F73F4971CD9407000598694 /* TDAnalyticsTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FDF15451CCFDFF100275292 /* TDAnalyticsTracker.m */; };
 		6F868B521AD2BE7800A9922E /* TDEventSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F868B501AD2BE7800A9922E /* TDEventSource.h */; };
 		6F868B531AD2BE7800A9922E /* TDEventSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F868B501AD2BE7800A9922E /* TDEventSource.h */; };
 		6F868B541AD2BE7800A9922E /* TDEventSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F868B511AD2BE7800A9922E /* TDEventSource.m */; };
@@ -160,7 +157,6 @@
 		6FDDD4E61A9D2C9B00ED94C8 /* TDBannerViewTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FDDD4E41A9D2C9B00ED94C8 /* TDBannerViewTest.m */; };
 		6FDE5FB21AB0AAC900C64B08 /* TDMediaPlayback.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FDE5FB11AB0AAC900C64B08 /* TDMediaPlayback.h */; };
 		6FDE5FB31AB0AAC900C64B08 /* TDMediaPlayback.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FDE5FB11AB0AAC900C64B08 /* TDMediaPlayback.h */; };
-		6FDF15461CCFDFF100275292 /* TDAnalyticsTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FDF15451CCFDFF100275292 /* TDAnalyticsTracker.m */; };
 		6FDF3A3E1AC45ABB00C72482 /* TritonPlayerConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FDF3A3D1AC45ABB00C72482 /* TritonPlayerConstants.h */; };
 		6FDF3A401AC462EF00C72482 /* TDMediaPlaybackDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FDF3A3F1AC462EF00C72482 /* TDMediaPlaybackDelegate.h */; };
 		6FDF3A411AC462EF00C72482 /* TDMediaPlaybackDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FDF3A3F1AC462EF00C72482 /* TDMediaPlaybackDelegate.h */; };
@@ -405,8 +401,6 @@
 		6FDDD4E31A9D2C9B00ED94C8 /* TDAdRequestURLBuilderTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDAdRequestURLBuilderTest.m; path = Ads/TDAdRequestURLBuilderTest.m; sourceTree = "<group>"; };
 		6FDDD4E41A9D2C9B00ED94C8 /* TDBannerViewTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDBannerViewTest.m; path = Ads/TDBannerViewTest.m; sourceTree = "<group>"; };
 		6FDE5FB11AB0AAC900C64B08 /* TDMediaPlayback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDMediaPlayback.h; sourceTree = "<group>"; };
-		6FDF15421CCFDF6B00275292 /* TDAnalyticsTracker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TDAnalyticsTracker.h; sourceTree = "<group>"; };
-		6FDF15451CCFDFF100275292 /* TDAnalyticsTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDAnalyticsTracker.m; sourceTree = "<group>"; };
 		6FDF3A3D1AC45ABB00C72482 /* TritonPlayerConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TritonPlayerConstants.h; sourceTree = "<group>"; };
 		6FDF3A3F1AC462EF00C72482 /* TDMediaPlaybackDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDMediaPlaybackDelegate.h; sourceTree = "<group>"; };
 		6FE4B19A1AD2BC7100F2A353 /* TritonPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TritonPlayer.h; sourceTree = "<group>"; };
@@ -703,8 +697,6 @@
 				6F868B791AD2F72200A9922E /* TritonSDKUtils.m */,
 				6FFC3E661B4D6DF20074EBF4 /* TDAuthUtils.h */,
 				6FFC3E671B4D6DF20074EBF4 /* TDAuthUtils.m */,
-				6FDF15421CCFDF6B00275292 /* TDAnalyticsTracker.h */,
-				6FDF15451CCFDFF100275292 /* TDAnalyticsTracker.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1195,7 +1187,6 @@
 				6FFD8EDF1A07E3A0003345AC /* LiveStreamProvisioningParser.h in Headers */,
 				6FD351701A70440000D0AB6C /* TDAdUtils.h in Headers */,
 				6FFD8F001A07E3A0003345AC /* FLVAudioTagData.h in Headers */,
-				6F49658E1CDD20C20038CEEE /* TDAnalyticsTracker.h in Headers */,
 				6FD4BF2F1AB9CEC20058658C /* TDSBMPlayer.h in Headers */,
 				6FD9BA891A94E9D40036D6BC /* TDAd.h in Headers */,
 				6FFD8EC71A07E3A0003345AC /* UIDevice+Hardware.h in Headers */,
@@ -1265,7 +1256,6 @@
 				6FFD8FBD1A081A50003345AC /* CuePointEventController.h in Headers */,
 				6FD351711A70440000D0AB6C /* TDAdUtils.h in Headers */,
 				6FD4BF301AB9CEC20058658C /* TDSBMPlayer.h in Headers */,
-				6F49658F1CDD21210038CEEE /* TDAnalyticsTracker.h in Headers */,
 				6FFD8FAD1A0819F8003345AC /* LiveStreamProvisioningParserDelegate.h in Headers */,
 				6F868B751AD2F36400A9922E /* TDCuePointHistoryParser.h in Headers */,
 				6FD9BA8A1A94E9D40036D6BC /* TDAd.h in Headers */,
@@ -1406,6 +1396,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = 6FFD8E1F1A07E24E003345AC;
@@ -1532,7 +1523,6 @@
 				6FFD8ED41A07E3A0003345AC /* FLVDecoder.m in Sources */,
 				6FD4BF2D1AB9CEC20058658C /* MetadataConfiguration.m in Sources */,
 				6FFD8F071A07E3A0003345AC /* AMF.m in Sources */,
-				6FDF15461CCFDFF100275292 /* TDAnalyticsTracker.m in Sources */,
 				6FD9BA8B1A94E9D40036D6BC /* TDAd.m in Sources */,
 				6FFD8F051A07E3A0003345AC /* FLVHeader.m in Sources */,
 				6FFD8EE01A07E3A0003345AC /* LiveStreamProvisioningParser.m in Sources */,
@@ -1577,7 +1567,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6F73F4971CD9407000598694 /* TDAnalyticsTracker.m in Sources */,
 				6F868B7D1AD2F72200A9922E /* TritonSDKUtils.m in Sources */,
 				6FFD8F561A0818E2003345AC /* NSData+FLVUtils.m in Sources */,
 				6FFD8F581A0818E2003345AC /* NSObject+Extensions.m in Sources */,
