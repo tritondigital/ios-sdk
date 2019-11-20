@@ -15,6 +15,7 @@
 #import "TDCompanionBanner.h"
 
 #import <AVFoundation/AVFoundation.h>
+#import  "AVKit/AVkit.h"
 
 #define kCloseButtonWidth 30
 #define kCloseButtonHeight 30
@@ -34,9 +35,10 @@ typedef NS_ENUM(NSInteger, TDMediaType) {
 
 @property (nonatomic, strong) TDCloseButton *closeButton;
 @property (nonatomic, strong) UIActivityIndicatorView *activityIndicator;
+@property (strong) id playerObserver;
 
 // For video ads
-@property (nonatomic, strong) MPMoviePlayerViewController *moviePlayerViewController;
+@property (nonatomic, strong) AVPlayerViewController *moviePlayerViewController;
 
 // For audio ads
 @property (nonatomic, strong) AVPlayer *audioPlayer;
@@ -134,7 +136,7 @@ typedef NS_ENUM(NSInteger, TDMediaType) {
 - (void)closeButtonPressed:(id) sender {
     if (self.mediaType == kTDMediaTypeVideo) {
 
-        if (self.moviePlayerViewController.moviePlayer.playbackState == MPMoviePlaybackStateStopped) {
+        if (self.moviePlayerViewController.player.rate == 0.0 && self.moviePlayerViewController.player.error == nil) {
             if (self.presentingViewController) {
                 if ([self.delegate respondsToSelector:@selector(interstitialWillDismiss:)]) {
                     [self.delegate interstitialWillDismiss:(TDInterstitialAd *)self.presentingViewController];
@@ -148,7 +150,7 @@ typedef NS_ENUM(NSInteger, TDMediaType) {
             }
             
         } else {
-            [self.moviePlayerViewController.moviePlayer stop];
+            [self.moviePlayerViewController.player pause];
         
         }
     } else {
@@ -167,18 +169,23 @@ typedef NS_ENUM(NSInteger, TDMediaType) {
 }
 
 - (void)playVideoAd:(TDAd *) ad {
-    [self registerMoviePlayerNotifications];
     
     // Create and load MPMoviePlayer
-    self.moviePlayerViewController = [[MPMoviePlayerViewController alloc] initWithContentURL:self.ad.mediaURL];
+    AVPlayer *player = [AVPlayer playerWithURL:self.ad.mediaURL];
+    self.moviePlayerViewController = [AVPlayerViewController new];
+    self.moviePlayerViewController.player = player;
     [self.moviePlayerViewController.view setTranslatesAutoresizingMaskIntoConstraints:YES];
+     [self registerMoviePlayerNotifications];
+    [self presentViewController:self.moviePlayerViewController animated:YES completion:^{
+      [self.moviePlayerViewController.player play];
+    }];
     
-    self.moviePlayerViewController.moviePlayer.controlStyle = MPMovieControlStyleNone;
-    [self.moviePlayerViewController.moviePlayer prepareToPlay];
+    self.moviePlayerViewController.showsPlaybackControls = FALSE;
+    //[self.moviePlayerViewController.moviePlayer prepareToPlay];
 
     UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(screenTapped)];
     recognizer.delegate = self;
-    [self.moviePlayerViewController.moviePlayer.view addGestureRecognizer:recognizer];
+    [self.moviePlayerViewController.view addGestureRecognizer:recognizer];
 }
 
 - (void)playAudioAd:(TDAd *) ad {
@@ -229,31 +236,8 @@ typedef NS_ENUM(NSInteger, TDMediaType) {
 
 #pragma mark - MPMoviePlayerController notifications
 
-- (void)loadStateDidChangeNotification:(NSNotification *) notification {
-    
-    if (self.moviePlayerViewController.moviePlayer.loadState & MPMovieLoadStatePlayable) {
-        // Do nothing for the moment
-    }
-    
-    if (self.moviePlayerViewController.moviePlayer.loadState & MPMovieLoadStatePlaythroughOK) {
-        
-        if (self.moviePlayerViewController.presentingViewController == nil) {
-            [self presentViewController:self.moviePlayerViewController animated:NO completion:^{
-                [self.closeButton removeFromSuperview];
-                [self.moviePlayerViewController.moviePlayer.view addSubview:self.closeButton];
-                [self.moviePlayerViewController.moviePlayer play];
-            }];
-        }
-    }
-}
-
 - (void)playBackDidFinishNotification:(NSNotification *) notification {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:MPMoviePlayerPlaybackDidFinishNotification object:nil];
-    
-    int reason = [notification.userInfo[MPMoviePlayerPlaybackDidFinishReasonUserInfoKey] intValue];
-    
-    switch (reason) {
-        case MPMovieFinishReasonPlaybackEnded: {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:AVPlayerItemDidPlayToEndTimeNotification object:nil];
             if ([self.delegate respondsToSelector:@selector(interstitialWillDismiss:)]) {
                 [self.delegate interstitialWillDismiss:(TDInterstitialAd *)self.presentingViewController];
             }
@@ -262,65 +246,37 @@ typedef NS_ENUM(NSInteger, TDMediaType) {
                     [self.delegate interstitialDidDismiss:(TDInterstitialAd *)self.presentingViewController];
                 }
             }];
-            break;
-        }
-        case MPMovieFinishReasonUserExited:
-            if (self.moviePlayerViewController) {
-                [self.moviePlayerViewController.moviePlayer stop];
-            }
-            break;
-            
-        case MPMovieFinishReasonPlaybackError:
-            break;
-            
-        default:
-            break;
+         
     }
-}
-
-- (void)playbackStateDidChangeNotification:(NSNotification *) notification {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:MPMoviePlayerPlaybackStateDidChangeNotification object:nil];
-    
-    switch (self.moviePlayerViewController.moviePlayer.playbackState)
-    {
-        case MPMoviePlaybackStatePlaying:
+- (void)playbackStartedNotification{
+    [self.moviePlayerViewController.player removeTimeObserver:self.playerObserver];
+    self.playerObserver = nil;
             for (NSURL *url in self.ad.mediaImpressionURLs) {
                 [TDAdUtils trackUrlAsync:url];
             }
             
             [self.activityIndicator stopAnimating];
             [self.activityIndicator removeFromSuperview];
-            break;
-            
-        case MPMoviePlaybackStatePaused:
-            break;
-            
-        case MPMoviePlaybackStateInterrupted:
-            break;
-            
-        case MPMoviePlaybackStateStopped:
-            break;
-            
-        default:
-            break;
-    }
-    
 }
-
+            
 - (void)registerMoviePlayerNotifications {
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(loadStateDidChangeNotification:)
-                                                 name:MPMoviePlayerLoadStateDidChangeNotification
-                                               object:nil];
+            
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(playBackDidFinishNotification:)
-                                                 name:MPMoviePlayerPlaybackDidFinishNotification
-                                               object:nil];
+                                            name:AVPlayerItemDidPlayToEndTimeNotification
+                                               object:self.moviePlayerViewController.player.currentItem];
+            
     
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(playbackStateDidChangeNotification:)
-                                                 name:MPMoviePlayerPlaybackStateDidChangeNotification
-                                               object:nil];
+    
+    CMTime interval = CMTimeMakeWithSeconds(0.5, NSEC_PER_SEC);
+
+    // Add time observer
+     __weak typeof(self) weakSelf = self;
+       self.playerObserver =  [self.moviePlayerViewController.player addPeriodicTimeObserverForInterval:interval
+                                                  queue:NULL
+                                             usingBlock:^(CMTime time) {
+           [weakSelf playbackStartedNotification];
+        }];
 }
 
 #pragma mark - AVPlayerItem notifications

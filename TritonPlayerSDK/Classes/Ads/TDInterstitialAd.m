@@ -15,6 +15,9 @@
 #import "TDInterstitialAdViewController.h"
 #import "TDAdLoader.h"
 
+#import "TDAnalyticsTracker.h"
+#import "AVKit/AVkit.h"
+
 #define kCloseButtonWidth 30
 #define kCloseButtonHeight 30
 #define kCloseButtonXPosition 10
@@ -22,7 +25,7 @@
 
 @interface TDInterstitialAd () <UIGestureRecognizerDelegate>
 
-@property (nonatomic, strong) MPMoviePlayerViewController *moviePlayerViewController;
+@property (nonatomic, strong) AVPlayerViewController *moviePlayerViewController;
 @property (nonatomic, strong) UIViewController *rootViewController;
 @property (nonatomic, strong) TDAd *ad;
 @property (nonatomic, strong) TDInterstitialAdViewController *interstitialViewController;

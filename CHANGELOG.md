@@ -1,4 +1,6 @@
 # Changelog
+#### TritonPlayerSDK-iOS-2.6.2 - 2019-11-20
+- Replace MPMoviePlayerViewController with AVPlayerViewController
 
 #### TritonPlayerSDK-iOS-2.6.0 - 2019-04-17
 - First release of the open source Triton Mobile SDK for iOS
