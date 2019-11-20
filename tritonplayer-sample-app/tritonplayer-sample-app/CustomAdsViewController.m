@@ -11,6 +11,7 @@
 #import <MediaPlayer/MediaPlayer.h>
 #import <TritonPlayerSDK/TritonPlayerSDK.h>
 #import <AVFoundation/AVFoundation.h>
+#import <AVkit/AVKit.h>
 
 
 @interface CustomAdsViewController ()<UIGestureRecognizerDelegate>
@@ -21,13 +22,14 @@
 @property (weak, nonatomic) IBOutlet UIButton *loadVideoButton;
 @property (weak, nonatomic) IBOutlet UIButton *playButton;
 
-@property (strong, nonatomic) MPMoviePlayerViewController *moviePlayerViewController;
+@property (strong, nonatomic) AVPlayerViewController *moviePlayerViewController;
 @property (strong, nonatomic) AVPlayer *audioPlayer;
 
 @property (strong, nonatomic) TDAdLoader *adLoader;
 @property (strong, nonatomic) TDAdRequestURLBuilder *requestBuilder;
 @property (strong, nonatomic) TDAd *ad;
 @property (strong, nonatomic) TDBannerView *bannerView;
+@property (strong) id playerObserver;
 
 @end
 
@@ -103,21 +105,31 @@
 - (void)playVideoAd {
     [self showActivityIndicatorWithStatusMessage:@"Playing video ad."];
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(playbackStateDidChangeNotification:)
-                                                 name:MPMoviePlayerPlaybackStateDidChangeNotification
-                                               object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(playBackDidFinishNotification:)
-                                                 name:MPMoviePlayerPlaybackDidFinishNotification
-                                               object:nil];
+                                                selector:@selector(playBackDidFinishNotification:)
+                                               name:AVPlayerItemDidPlayToEndTimeNotification
+                                                  object:self.moviePlayerViewController.player.currentItem];
     
-    self.moviePlayerViewController = [[MPMoviePlayerViewController alloc] initWithContentURL:self.ad.mediaURL];
+    self.ad.mediaURL = [NSURL URLWithString:@"https://content.jwplatform.com/videos/AEhg3fFb-bPwArWA4.mp4"];
+    AVPlayer *player = [AVPlayer playerWithURL:self.ad.mediaURL];
+    self.moviePlayerViewController = [AVPlayerViewController new];
+    self.moviePlayerViewController.player = player;
+    
     self.moviePlayerViewController.view.translatesAutoresizingMaskIntoConstraints = NO;
-    self.moviePlayerViewController.moviePlayer.controlStyle = MPMovieControlStyleNone;
+    self.moviePlayerViewController.showsPlaybackControls = TRUE;
     
     UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(videoScreenTapped)];
     recognizer.delegate = self;
     [self.moviePlayerViewController.moviePlayer.view addGestureRecognizer:recognizer];
+    
+    CMTime interval = CMTimeMakeWithSeconds(0.5, NSEC_PER_SEC);
+
+__weak typeof(self) weakSelf = self;
+           self.playerObserver =  [self.moviePlayerViewController.player addPeriodicTimeObserverForInterval:interval
+                                                      queue:NULL
+                                                 usingBlock:^(CMTime time) {
+               [weakSelf playbackStartedNotification];
+            }];
+       
     
     [self addChildViewController:self.moviePlayerViewController];
     [self.view addSubview:self.moviePlayerViewController.view];
@@ -155,6 +167,13 @@
     
     [self.moviePlayerViewController didMoveToParentViewController:self];
 
+}
+
+- (void)playbackStartedNotification{
+    [self.moviePlayerViewController.player removeTimeObserver:self.playerObserver];
+    self.playerObserver = nil;
+    [self hideActivityIndicatorWithStatusMessage:@"Video ad is playing"];
+    [self.ad trackMediaImpressions];
 }
 
 - (void)playAudioAd {
@@ -200,7 +219,7 @@
     [self.audioPlayer pause];
     
     if (self.moviePlayerViewController) {
-        [self.moviePlayerViewController.moviePlayer stop];
+        [self.moviePlayerViewController.player pause];
         [self.moviePlayerViewController.view removeFromSuperview];
         [self.moviePlayerViewController removeFromParentViewController];
         self.moviePlayerViewController = nil;
@@ -211,7 +230,7 @@
     [self.ad trackVideoClick];
     
     if (self.ad.videoClickThroughURL) {
-        [self.moviePlayerViewController.moviePlayer stop];
+        [self.moviePlayerViewController.player pause];
         [[UIApplication sharedApplication] openURL:self.ad.videoClickThroughURL];
     }
 }
@@ -240,51 +259,12 @@
 
 #pragma mark - MPMoviePlayerViewController delegate methods
 
-- (void)playbackStateDidChangeNotification:(NSNotification *) notification {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:MPMoviePlayerPlaybackStateDidChangeNotification object:nil];
-    
-    switch (self.moviePlayerViewController.moviePlayer.playbackState)
-    {
-        case MPMoviePlaybackStatePlaying:
-            [self hideActivityIndicatorWithStatusMessage:@"Video ad is playing"];
-            [self.ad trackMediaImpressions];
-            break;
-            
-        case MPMoviePlaybackStatePaused:
-            break;
-            
-        case MPMoviePlaybackStateInterrupted:
-            break;
-            
-        case MPMoviePlaybackStateStopped:
-            break;
-            
-        default:
-            break;
-    }
-    
-}
 
 - (void)playBackDidFinishNotification:(NSNotification *) notification {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:MPMoviePlayerPlaybackDidFinishNotification object:nil];
-    
-    int reason = [notification.userInfo[MPMoviePlayerPlaybackDidFinishReasonUserInfoKey] intValue];
-    
-    switch (reason) {
-        case MPMovieFinishReasonPlaybackEnded: {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:AVPlayerItemDidPlayToEndTimeNotification object:nil];
             [self.moviePlayerViewController.view removeFromSuperview];
             [self.moviePlayerViewController removeFromParentViewController];
-            self.statusMessageLabel.text = @"Video ad finished.";
-            break;
-        }
-        case MPMovieFinishReasonUserExited:
-            break;
-            
-        case MPMovieFinishReasonPlaybackError:
-            break;
-            
-        default:
-            break;
+            self.statusMessageLabel.text = @"Video ad finished.";         
     }
 }
 

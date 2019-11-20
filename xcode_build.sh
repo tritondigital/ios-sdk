@@ -10,10 +10,11 @@ if [ -z "$SDK_VERSION" ]; then
 fi
 
 echo "info: Building sdk version $SDK_VERSION"
-xcodebuild -scheme TritonPlayerSDKStatic-Universal SYMROOT="Framework" -configuration Release
+#xcodebuild -scheme TritonPlayerSDKStatic-Universal OTHER_CFLAGS="-fembed-bitcode" SYMROOT="Framework" -configuration Release -UseModernBuildSystem=NO
+xcodebuild -scheme TritonPlayerSDKStatic-Universal SYMROOT="Framework" -configuration Release -UseModernBuildSystem=YES
 
 echo "info: Generating doc"
-xcodebuild -scheme Documentation SYMROOT="Framework" -configuration Release
+xcodebuild -scheme Documentation SYMROOT="Framework" -configuration Release -UseModernBuildSystem=YES
 
 echo "info: Generating SDK package"
 echo "info: Copy Framework"
