@@ -16,7 +16,6 @@
 #import "MetadataConfiguration.h"
 #import "TritonPlayerConstants.h"
 #import "Logs.h"
-#import "TDAnalyticsTracker.h"
 #import "TDSBMPlayer.h"
 
 #define kMaxBackoffRetryTimeInSeconds 60.0f
@@ -79,9 +78,7 @@ NSString *const SettingsStationPlayerForceDisableHLSkey = @"StationPlayerForceDi
         self.streamPlayer.delegate = self;
         
         self.state = kTDPlayerStateStopped;
-        
-        [[TDAnalyticsTracker sharedTracker] initialize];
-        
+       
     }
     return self;
 }
@@ -201,19 +198,9 @@ NSString *const SettingsStationPlayerForceDisableHLSkey = @"StationPlayerForceDi
 
 -(void) handleProvisioningResponse:(BOOL) provOK {
 		
-		TDAnalyticsTracker* tracker = [TDAnalyticsTracker sharedTracker];
-		[tracker startTimer];
-		
-				// Provisioning is ok, take a look at the status code
+// Provisioning is ok, take a look at the status code
 				if (provOK)
 				{
-						
-						NSTimeInterval connectionTime = 0;
-						if(self.provisioning.statusCode != kProvisioningStatusCodeOk)
-						{
-								connectionTime  = [tracker stopTimer];
-						}
-						
 						switch (self.provisioning.statusCode) {
 								case kProvisioningStatusCodeOk:
 										[self startPlayingStream];
@@ -240,29 +227,23 @@ NSString *const SettingsStationPlayerForceDisableHLSkey = @"StationPlayerForceDi
 												
 										} else {
 												[self failWithError:TDPlayerMountGeoblockedError andDescription:NSLocalizedString(@"The mount is geo-blocked.", nil)];
-												
-												[tracker trackStreamingConnectionGeoblockedWithMount:self.mount withBroadcaster:self.broadcaster withLoadTime:connectionTime];
+
 										}
 										break;
 										
 								case kProvisioningStatusCodeNotFound:
 										[self failWithError:TDPlayerMountNotFoundError andDescription:NSLocalizedString(@"The mount doesn't exist.", nil)];
-										[tracker trackStreamingConnectionUnavailableWithMount:self.mount withBroadcaster:self.broadcaster withLoadTime:connectionTime];
-										break;
 										
 								case kProvisioningStatusCodeNotImplemented:
 										[self failWithError:TDPlayerMountNotImplemntedError andDescription:NSLocalizedString(@"The requested version doesn’t exist.", nil)];
-										[tracker trackStreamingConnectionFailedWithMount:self.mount withBroadcaster:self.broadcaster withLoadTime:connectionTime];
 										break;
 										
 								case kProvisioningStatusCodeBadRequest:
-										[self failWithError:TDPlayerMountBadRequestError andDescription:NSLocalizedString(@"Bad request. A required parameter is missing or an invalid parameter was sent.", nil)];
-										[tracker trackStreamingConnectionFailedWithMount:self.mount withBroadcaster:self.broadcaster withLoadTime:connectionTime];
+										[self failWithError:TDPlayerMountBadRequestError andDescription:NSLocalizedString(@"Bad request. A required parameter is missing or an invalid parameter was sent.", nil)];//
 										break;
 										
 								default:
 										[self failWithError:TDPlayerHostNotFoundError andDescription:NSLocalizedString(@"Connection Error. Could not find the host.", nil)];
-										[tracker trackStreamingConnectionFailedWithMount:self.mount withBroadcaster:self.broadcaster withLoadTime:connectionTime];
 										break;
 						}
 						
@@ -404,20 +385,7 @@ NSString *const SettingsStationPlayerForceDisableHLSkey = @"StationPlayerForceDi
         default:
             break;
     }
-    
-    
-    TDAnalyticsTracker* tracker = [TDAnalyticsTracker sharedTracker];
-     NSTimeInterval connectionTime=[tracker stopTimer];
-    
-    if(newState == kTDPlayerStateConnecting)
-    {
-        [tracker trackStreamingConnectionSuccessWithMount:self.mount withBroadcaster:self.broadcaster withLoadTime:connectionTime];
-    }
-    else if(newState == kTDPlayerStateError)
-    {
-        [tracker trackStreamingConnectionErrorWithMount:self.mount withBroadcaster:self.broadcaster withLoadTime:connectionTime];
-    }
-   
+
 }
 
 -(void)mediaPlayer:(id<TDMediaPlayback>)player didReceiveInfo:(TDPlayerInfo)info andExtra:(NSDictionary *)extra {

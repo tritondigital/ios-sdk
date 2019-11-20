@@ -13,8 +13,6 @@
 #import "TDAdLoader.h"
 #import "TDCompanionBanner.h"
 
-#import "TDAnalyticsTracker.h"
-
 @interface TDBannerView() <UIWebViewDelegate>
 
 @property (nonatomic, assign) NSInteger width;
@@ -62,11 +60,7 @@
         self.adWebView.backgroundColor = [UIColor clearColor];
         
         [self addSubview:self.adWebView];
-        self.backgroundColor = [UIColor clearColor];
-        
-        
-         //Init Google Analytics Tracker
-        [[TDAnalyticsTracker sharedTracker] initialize];
+        self.backgroundColor = [UIColor clearColor];        
     }
     return self;
 }

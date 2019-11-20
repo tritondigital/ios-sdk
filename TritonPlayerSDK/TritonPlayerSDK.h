@@ -29,5 +29,3 @@ FOUNDATION_EXPORT const unsigned char TritonPlayerSDKVersionString[];
 #import <TritonPlayerSDK/TDSBMPlayer>
 #import <TritonPlayerSDK/TDCuePointHistory.h>
 #import <TritonPlayerSDK/TDAuthUtils.h>
-
-#import <TritonPlayerSDK/TDAnalyticsTracker.h>

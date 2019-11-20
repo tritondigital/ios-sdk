@@ -11,8 +11,6 @@
 #import "TDAdRequestURLBuilder.h"
 #import "TDAdUtils.h"
 
-#import "TDAnalyticsTracker.h"
-
 NSString *const TDErrorDomain = @"com.tritondigital.TritonMobileSDK";
 
 @implementation TDAdLoader
@@ -51,10 +49,6 @@ NSString *const TDErrorDomain = @"com.tritondigital.TritonMobileSDK";
     } else {
         completionHandler(nil, [TDAdUtils errorWithCode:TDErrorCodeInvalidAdURL andDescription:@"The ad request URL is invalid."]);
     }
-    
-    
-    //Init Google Analytics Tracker
-    [[TDAnalyticsTracker sharedTracker] initialize];
 }
 
 -(void)loadAdWithBuilder:(TDAdRequestURLBuilder *)builder
