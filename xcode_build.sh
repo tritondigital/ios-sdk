@@ -11,10 +11,10 @@ fi
 
 echo "info: Building sdk version $SDK_VERSION"
 #xcodebuild -scheme TritonPlayerSDKStatic-Universal OTHER_CFLAGS="-fembed-bitcode" SYMROOT="Framework" -configuration Release -UseModernBuildSystem=NO
-xcodebuild -scheme TritonPlayerSDKStatic-Universal SYMROOT="Framework" -configuration Release -UseModernBuildSystem=YES
+xcodebuild -scheme TritonPlayerSDKStatic-Universal SYMROOT="Framework" -configuration Release -UseModernBuildSystem=NO SUPPORTS_MACCATALYST=NO
 
 echo "info: Generating doc"
-xcodebuild -scheme Documentation SYMROOT="Framework" -configuration Release -UseModernBuildSystem=YES
+xcodebuild -scheme Documentation SYMROOT="Framework" -configuration Release -UseModernBuildSystem=YES SUPPORTS_MACCATALYST=NO
 
 echo "info: Generating SDK package"
 echo "info: Copy Framework"
