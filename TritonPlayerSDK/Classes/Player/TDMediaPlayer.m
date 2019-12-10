@@ -85,8 +85,11 @@ NSString *const SettingsMediaPlayerStreamURLKey = @"MediaPlayerStreamURL";
 
 -(void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    [self.mediaPlayerItem removeObserver:self forKeyPath:@"status"];
-    [self.mediaPlayerItem removeObserver:self forKeyPath:@"playbackBufferEmpty"];
+    if(observersAdded)
+    {
+        [self.mediaPlayerItem removeObserver:self forKeyPath:@"status"];
+        [self.mediaPlayerItem removeObserver:self forKeyPath:@"playbackBufferEmpty"];
+    }    
 }
 
 -(void)updateSettings:(NSDictionary *)settings {
