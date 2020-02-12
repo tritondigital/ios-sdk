@@ -396,8 +396,8 @@ NSString *const InfoAlternateMountNameKey               = @"alternateMount";
 		{
 			self.playDebouncingTimer = [NSTimer timerWithTimeInterval:self.debouncing target:self selector:@selector(internalPlay) userInfo:nil repeats:NO];
 			
-			[[NSRunLoop currentRunLoop] addTimer:self.playDebouncingTimer forMode:NSDefaultRunLoopMode];
-			[[NSRunLoop currentRunLoop] run];
+			[[NSRunLoop mainRunLoop] addTimer:self.playDebouncingTimer forMode:NSDefaultRunLoopMode];
+			[[NSRunLoop mainRunLoop] run];
 		}
 	}];
 }
