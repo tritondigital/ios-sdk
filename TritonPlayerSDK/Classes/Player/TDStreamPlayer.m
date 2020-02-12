@@ -310,13 +310,13 @@ NSString *const SettingsStreamPlayerSBMURLKey = @"StreamPlayerSBMURL";
         case kTDPlayerStateCompleted:
             [self updateStateMachineForAction:kTDPlayerActionJumpToNextState];
 
-            while([self.oldPlayers count] > 1){
+           while([self.oldPlayers count] > 1) {
                 if ([self.oldPlayers[0] isKindOfClass:[TDFLVPlayer class]])
                 {
                     [(TDFLVPlayer*)self.oldPlayers[0] willBeDeleted];
-                    [self.oldPlayers[0] stop];
-                    [self.oldPlayers removeObjectAtIndex:0];
                 }
+                [self.oldPlayers[0] stop];
+                [self.oldPlayers removeObjectAtIndex:0];
             }
            
             break;
