@@ -32,6 +32,8 @@ NSString *const SettingsStationPlayerForceDisableHLSkey = @"StationPlayerForceDi
 
 @property (strong, nonatomic) Provisioning *provisioning;
 @property (strong, nonatomic) TDStreamPlayer *streamPlayer;
+@property (strong, nonatomic) TritonPlayer *tritonPlayer;
+
 
 @property (copy, nonatomic) NSString *mount;
 @property (copy, nonatomic) NSString *userAgent;
@@ -113,13 +115,14 @@ NSString *const SettingsStationPlayerForceDisableHLSkey = @"StationPlayerForceDi
 -(void)stop {
         [self updateStateMachineForAction:kTDPlayerActionStop];
         [self.streamPlayer stop];
+    if(self.tritonPlayer != nil) {
+       [self.tritonPlayer stop];
+    }
+    
 }
 
 -(void)pause {
-    if ([self canChangeStateWithAction:kTDPlayerActionPause]) {
-        [self updateStateMachineForAction:kTDPlayerActionStop];
-        [self.streamPlayer stop];
-    }
+    [self stop];
 }
 
 -(void)seekToTimeInterval:(NSTimeInterval)interval {
@@ -146,11 +149,11 @@ NSString *const SettingsStationPlayerForceDisableHLSkey = @"StationPlayerForceDi
 #pragma mark - AudioPlayer
 
 -(void)mute {
-    [self.streamPlayer mute];
+    [self stop];
 }
 
 -(void)unmute {
-    [self.streamPlayer unmute];
+    [self play];
 }
 
 -(void)setVolume:(float)volume {
@@ -209,6 +212,11 @@ NSString *const SettingsStationPlayerForceDisableHLSkey = @"StationPlayerForceDi
 								case kProvisioningStatusCodeGeoblocked:
 										// KVO will not be called, since TritonPlayer is not started, so change state manually
 										
+                                if(self.provisioning.alternateMediaUrl != nil) {
+                                    [self startPlayingMediaUrl];
+                                    break;
+                                }
+                                        
 										if (self.provisioning.alternateMount != nil) {
 												
 												
@@ -256,6 +264,25 @@ NSString *const SettingsStationPlayerForceDisableHLSkey = @"StationPlayerForceDi
 		
 }
 
+-(void)startPlayingMediaUrl
+{
+    self.tritonPlayer = [[TritonPlayer alloc] initWithDelegate:self andSettings:nil];
+    [self.tritonPlayer updateSettings:@{SettingsContentURLKey : self.provisioning.alternateMediaUrl}];
+    [self.tritonPlayer play];
+}
+
+-(void)player:(TritonPlayer *)player didChangeState:(TDPlayerState)state {
+    
+    if(state == kTDPlayerStateError)
+    {
+        [self failWithError:TDPlayerHostNotFoundError andDescription:NSLocalizedString(@"Connection Error. Could not find the host.", nil)];
+    }
+    else
+    {
+        [self updateStateMachineForAction:kTDPlayerActionJumpToNextState];
+    }
+    
+}
 
 -(void)startPlayingStream {
 		

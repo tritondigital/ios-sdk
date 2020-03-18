@@ -12,14 +12,16 @@
 #import "TDAdUtils.h"
 #import "TDAdLoader.h"
 #import "TDCompanionBanner.h"
+#import <WebKit/WebKit.h>
+#import "TDAnalyticsTracker.h"
 
-@interface TDBannerView() <UIWebViewDelegate>
+@interface TDBannerView() <WKNavigationDelegate>
 
 @property (nonatomic, assign) NSInteger width;
 @property (nonatomic, assign) NSInteger height;
 @property (nonatomic, assign) NSInteger fallbackWidth;
 @property (nonatomic, assign) NSInteger fallbackHeight;
-@property (nonatomic, strong) UIWebView *adWebView;
+@property (nonatomic, strong) WKWebView *adWebView;
 
 @end
 
@@ -52,9 +54,9 @@
 
         self.autoresizesSubviews = YES;
         
-        self.adWebView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, width, height)];
+        self.adWebView = [[WKWebView alloc] initWithFrame:CGRectMake(0, 0, width, height)];
         self.adWebView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
-        self.adWebView.delegate = self;
+        self.adWebView.navigationDelegate = self;
         self.adWebView.opaque = NO;
         self.adWebView.scrollView.scrollEnabled = NO;
         self.adWebView.backgroundColor = [UIColor clearColor];
@@ -162,18 +164,18 @@
 }
 
 -(void)clear {
-    [self.adWebView stringByEvaluatingJavaScriptFromString:@"document.body.innerHTML = \"\";"];
+    [self.adWebView evaluateJavaScript:@"document.body.innerHTML = \"\";" completionHandler:nil];
 }
 
 -(CGSize)intrinsicContentSize {
     return self.frame.size;
 }
 
-#pragma mark UIWebViewDelegate
+#pragma mark WKWebViewDelegate
 
-- (void)webViewDidFinishLoad:(UIWebView *)webView {
+- (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {
     NSString *bodyStyleHorizontal = @"document.getElementsByTagName('body')[0].style.textAlign = 'center';";
-    [webView stringByEvaluatingJavaScriptFromString:bodyStyleHorizontal];
+    [webView evaluateJavaScript:bodyStyleHorizontal completionHandler:nil];
     
     if ([self.delegate respondsToSelector:@selector(bannerViewDidPresentAd:)]) {
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -182,7 +184,7 @@
     }
 }
 
--(void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
+- (void)webView:(WKWebView *)webView didFailNavigation:(WKNavigation *)navigation withError:(NSError *)error {
     
     if ([self.delegate respondsToSelector:@selector(bannerView:didFailToPresentAdWithError:)]) {
         NSError *tdError = [TDAdUtils errorWithCode:TDErrorCodeInvalidAdURL
@@ -195,18 +197,19 @@
     }
 }
 
--(BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
-    NSURL *loadURL = [request URL];
+- (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler
+{
+    NSURL *loadURL = [NSURL URLWithString:[navigationAction.request.URL query]];
     
-    if ( ( [[loadURL scheme] isEqualToString: @"http"] || [[loadURL scheme] isEqualToString: @"https"] ) && (navigationType == UIWebViewNavigationTypeLinkClicked))
+    if ( ( [[loadURL scheme] isEqualToString: @"http"] || [[loadURL scheme] isEqualToString: @"https"] ) && (navigationAction.navigationType == UIWebViewNavigationTypeLinkClicked))
     {
         if ([self.delegate respondsToSelector:@selector(bannerViewWillLeaveApplication:)]) {
             [self.delegate bannerViewWillLeaveApplication:self];
         }
-        [[UIApplication sharedApplication] openURL:request.URL];
-        return FALSE;
+        [[UIApplication sharedApplication] openURL:loadURL];
+        decisionHandler(WKNavigationActionPolicyCancel);
     }
-    return YES;
+    decisionHandler(WKNavigationActionPolicyAllow);
 }
 
 #pragma mark Error handling

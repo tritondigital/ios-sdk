@@ -50,6 +50,8 @@
 @property (nonatomic, strong) MetadataConfiguration *sidebandMetadataInfo;
 
 @property (nonatomic, strong) NSString *alternateMount;
+@property (nonatomic, strong) NSString *alternateMediaUrl;
+
 
 @property (weak) NSString					*referrerURL;
 

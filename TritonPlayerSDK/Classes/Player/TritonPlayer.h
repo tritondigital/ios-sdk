@@ -84,7 +84,11 @@ typedef NS_ENUM(NSInteger, TDPlayerError) {
     TDPlayerMountNotImplemntedError = 3003,
     
     /// The host doesn't exist
-    TDPlayerHostNotFoundError = 3004
+    TDPlayerHostNotFoundError = 3004,
+    
+    /// The device is muted
+    TDPlayerDeviceMuted = 3005    
+    
 };
 
 /// States representing Triton Player playback life-cycle

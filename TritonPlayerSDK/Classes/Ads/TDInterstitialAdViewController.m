@@ -81,22 +81,6 @@ typedef NS_ENUM(NSInteger, TDMediaType) {
 
 -(void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.view.backgroundColor = [UIColor blackColor];
-    
-    self.activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-    [self.activityIndicator setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [self.view addSubview:self.activityIndicator];
-    [self addCenterConstraintForItem:self.activityIndicator];
-    [self.activityIndicator startAnimating];
-    
-    self.closeButton = [[TDCloseButton alloc] initWithFrame:CGRectMake(kCloseButtonXPosition, kCloseButtonYPosition, kCloseButtonWidth, kCloseButtonHeight)];
-    [self.closeButton addTarget:self action:@selector(closeButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:self.closeButton];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillResignActive:) name:UIApplicationWillResignActiveNotification object:nil];
-    
-    self.userClickedVideo = NO;
 }
 
 - (void)showAd {
@@ -135,8 +119,6 @@ typedef NS_ENUM(NSInteger, TDMediaType) {
 
 - (void)closeButtonPressed:(id) sender {
     if (self.mediaType == kTDMediaTypeVideo) {
-
-        if (self.moviePlayerViewController.player.rate == 0.0 && self.moviePlayerViewController.player.error == nil) {
             if (self.presentingViewController) {
                 if ([self.delegate respondsToSelector:@selector(interstitialWillDismiss:)]) {
                     [self.delegate interstitialWillDismiss:(TDInterstitialAd *)self.presentingViewController];
@@ -148,11 +130,6 @@ typedef NS_ENUM(NSInteger, TDMediaType) {
                     }
                 }];
             }
-            
-        } else {
-            [self.moviePlayerViewController.player pause];
-        
-        }
     } else {
         [self.audioPlayer pause];
         
@@ -169,19 +146,41 @@ typedef NS_ENUM(NSInteger, TDMediaType) {
 }
 
 - (void)playVideoAd:(TDAd *) ad {
+    self.view.backgroundColor = [UIColor blackColor];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillResignActive:) name:UIApplicationWillResignActiveNotification object:nil];
+
+    self.userClickedVideo = NO;
     
     // Create and load MPMoviePlayer
-    AVPlayer *player = [AVPlayer playerWithURL:self.ad.mediaURL];
-    self.moviePlayerViewController = [AVPlayerViewController new];
+
+    AVPlayerItem *playerItem = [AVPlayerItem playerItemWithURL:ad.mediaURL];
+    playerItem.canUseNetworkResourcesForLiveStreamingWhilePaused = YES;
+    AVPlayer *player = [AVPlayer playerWithPlayerItem:playerItem];
+
+    player.allowsExternalPlayback = YES;
+    player.automaticallyWaitsToMinimizeStalling = NO;
+
+    self.moviePlayerViewController = [[AVPlayerViewController alloc] init];
     self.moviePlayerViewController.player = player;
-    [self.moviePlayerViewController.view setTranslatesAutoresizingMaskIntoConstraints:YES];
+    [self.moviePlayerViewController.view setTranslatesAutoresizingMaskIntoConstraints:NO];
+    self.moviePlayerViewController.showsPlaybackControls = NO;
+
+    self.activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    [self.activityIndicator setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self.activityIndicator startAnimating];
+    self.activityIndicator.center = self.moviePlayerViewController.view.center;
+    //[self.moviePlayerViewController.view addSubview:self.activityIndicator];
+
+    TDCloseButton *button = [[TDCloseButton alloc] initWithFrame:CGRectMake(kCloseButtonXPosition, kCloseButtonYPosition, kCloseButtonWidth, kCloseButtonHeight)];
+    [button addTarget:self action:@selector(closeButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+
      [self registerMoviePlayerNotifications];
     [self presentViewController:self.moviePlayerViewController animated:YES completion:^{
-      [self.moviePlayerViewController.player play];
+        [self.moviePlayerViewController.contentOverlayView addSubview:self.activityIndicator];
+        [self.moviePlayerViewController.contentOverlayView addSubview:button];
+        [player playImmediatelyAtRate:1.0];
     }];
-    
-    self.moviePlayerViewController.showsPlaybackControls = FALSE;
-    //[self.moviePlayerViewController.moviePlayer prepareToPlay];
 
     UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(screenTapped)];
     recognizer.delegate = self;

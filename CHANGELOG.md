@@ -1,4 +1,13 @@
 # Changelog
+#### TritonPlayerSDK-iOS-2.6.3 - 2020-03-18
+- Handle url alternate content when station is geo-blocked.
+- Fix a deadlock when player is not a TDFLVPlayer.
+- Fix Google ads error, by running on the mainRunloop.
+- Fix close button that does not display on pre-roll ad.
+- Stop when volume is muted.
+- Replace UIWebView with WKWebView.
+- Raise TDPlayerDeviceMuted error when stream is played and the phone is muted.
+
 #### TritonPlayerSDK-iOS-2.6.2 - 2019-11-20
 - Replace MPMoviePlayerViewController with AVPlayerViewController
 

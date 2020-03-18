@@ -17,7 +17,7 @@
 
 
 
-NSString *const TritonSDKVersion                        = @"2.6.2"; //TritonSDKVersion
+NSString *const TritonSDKVersion                        = @"2.6.3"; //TritonSDKVersion
 
 CGFloat   const  kDefaultPlayerDebouncing               = 0.2f; //Default debouncing for the Play action, in seconds
 
@@ -383,6 +383,12 @@ NSString *const InfoAlternateMountNameKey               = @"alternateMount";
     
 	[self.playerOperationQueue addOperationWithBlock: ^{
     
+        float vol = [[AVAudioSession sharedInstance] outputVolume];
+        if(vol == 0.0) {
+           [self failWithError:TDPlayerDeviceMuted andDescription:NSLocalizedString(@"Unmute audio to play", nil)];
+            return;
+        }
+        
 		if(self.playDebouncingTimer != nil)
 		{
 			[self.playDebouncingTimer invalidate];
@@ -432,6 +438,7 @@ NSString *const InfoAlternateMountNameKey               = @"alternateMount";
 
 
 -(void)pause {
+    if ([self.mediaPlayer isKindOfClass:[TDStreamPlayer class]]) {
     [self.playerOperationQueue cancelAllOperations];
     [self.playerOperationQueue addOperationWithBlock: ^{
         @synchronized(self)
@@ -442,6 +449,9 @@ NSString *const InfoAlternateMountNameKey               = @"alternateMount";
             [self updateStateMachineForAction:kTDPlayerActionPause];
         }
     }];
+    } else {
+        [self stop];
+    }
     
 }
 
@@ -658,7 +668,11 @@ NSString *const InfoAlternateMountNameKey               = @"alternateMount";
 
 - (void)mute
 {
+    if ([self.mediaPlayer isKindOfClass:[TDStreamPlayer class]]) {
     [self.mediaPlayer mute];
+    } else {
+        [self stop];
+    }
 }
 
 //=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
@@ -667,7 +681,11 @@ NSString *const InfoAlternateMountNameKey               = @"alternateMount";
 
 - (void)unmute
 {
+    if ([self.mediaPlayer isKindOfClass:[TDStreamPlayer class]]) {
     [self.mediaPlayer unmute];
+    } else {
+        [self play];
+    }
 }
 
 //=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
@@ -715,9 +733,9 @@ NSString *const InfoAlternateMountNameKey               = @"alternateMount";
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(audioSessionRouteChangedNotification:) name:AVAudioSessionRouteChangeNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(audioSessionInterruptionNotification:) name:AVAudioSessionInterruptionNotification object:nil];
-
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(audioSessionMediaServicesLostNotification:) name:AVAudioSessionMediaServicesWereLostNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(audioSessionMediaServicesResetNotification:) name:AVAudioSessionMediaServicesWereResetNotification object:nil];
+   [audioSession addObserver:self forKeyPath:@"outputVolume" options:NSKeyValueObservingOptionNew context:nil];
     
     [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
 }
@@ -768,6 +786,15 @@ NSString *const InfoAlternateMountNameKey               = @"alternateMount";
 
 - (void) audioSessionMediaServicesResetNotification:(NSNotification *) notification {
     NSLog(@"Media service reset");
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    if ([keyPath isEqualToString:@"outputVolume"]) {
+    float vol = [[AVAudioSession sharedInstance] outputVolume];
+        if(vol == 0.0) {
+            [self pause];
+        }
+    }
 }
 
 #pragma mark - Interruption handling

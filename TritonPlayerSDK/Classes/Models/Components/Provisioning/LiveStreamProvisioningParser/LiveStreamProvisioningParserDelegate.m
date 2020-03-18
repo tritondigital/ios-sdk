@@ -35,6 +35,8 @@
 @property (nonatomic, strong) NSMutableString *mountBitrate;
 
 @property (nonatomic, strong) NSMutableString *alternateMount;
+@property (nonatomic, strong) NSString *alternateMediaUrl;
+
 
 // xml data and url connection error
 @property (nonatomic, strong)NSData			*xmlData;
@@ -114,7 +116,7 @@
 		{
             self.currentServerNode = [[Server alloc] init];
         }
-		else if ([elementName isEqualToString:@"mount"] || [elementName isEqualToString:@"format"] || [elementName isEqualToString:@"bitrate"] || [elementName isEqualToString:@"status-code"])
+        else if ([elementName isEqualToString:@"mount"] || [elementName isEqualToString:@"format"] || [elementName isEqualToString:@"bitrate"] || [elementName isEqualToString:@"status-code"] || [elementName isEqualToString:@"url"] )
 		{
             self.currentPropertyNode = [NSMutableString string];
         }
@@ -137,6 +139,10 @@
         else if ([elementName isEqualToString:@"alternate-content"])
         {
             self.alternateMount = [NSMutableString string];
+        }
+        else if ([elementName isEqualToString:@"url"])
+        {
+            self.alternateMediaUrl = [NSMutableString string];
         }
     }
 }
@@ -199,6 +205,10 @@
             }
             
         }
+        else if ([elementName isEqualToString:@"url"])
+        {
+                self.alternateMediaUrl = self.currentPropertyNode;
+        }
 		else if ([elementName isEqualToString:@"format"])
 		{
 			self.mountFormat = self.currentPropertyNode;
@@ -209,9 +219,12 @@
 		}
         else if ([elementName isEqualToString:@"alternate-content"])
         {
+            if(self.alternateMediaUrl == nil) {
             self.receiverProvisioning.alternateMount = self.alternateMount;
             self.alternateMount = nil;
+            }
         }
+        
         else if ([elementName isEqualToString:@"transport"]) {
             
             self.currentTransport = self.currentPropertyNode ;
@@ -253,6 +266,7 @@
 	self.receiverProvisioning.mountFormat = self.hlsEnabled ? @"HLS" : self.mountFormat;
 	self.receiverProvisioning.mountBitrate = self.mountBitrate;
     self.receiverProvisioning.sidebandMetadataInfo = self.sidebandMetadata;
+    self.receiverProvisioning.alternateMediaUrl = self.alternateMediaUrl;
 		
 	self.xmlData = nil; // set it to nil to prevent being freed one more time by the pool
 }

@@ -1642,6 +1642,7 @@
 			buildSettings = {
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = NO;
 			};
 			name = Debug;
 		};
@@ -1650,6 +1651,7 @@
 			buildSettings = {
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = NO;
 			};
 			name = Release;
 		};
@@ -1837,6 +1839,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.tritondigital.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SUPPORTS_MACCATALYST = NO;
 			};
 			name = Debug;
 		};
@@ -1861,6 +1864,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.tritondigital.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SUPPORTS_MACCATALYST = NO;
 			};
 			name = Release;
 		};
@@ -1883,6 +1887,7 @@
 				PUBLIC_HEADERS_FOLDER_PATH = TritonPlayerSDK;
 				SKIP_INSTALL = YES;
 				STRIP_STYLE = "non-global";
+				SUPPORTS_MACCATALYST = NO;
 				VALID_ARCHS = "arm64 armv7 armv7s i386 x86_64";
 			};
 			name = Debug;
@@ -1902,6 +1907,7 @@
 				PUBLIC_HEADERS_FOLDER_PATH = TritonPlayerSDK;
 				SKIP_INSTALL = YES;
 				STRIP_STYLE = "non-global";
+				SUPPORTS_MACCATALYST = NO;
 				VALID_ARCHS = "arm64 armv7 armv7s i386 x86_64";
 			};
 			name = Release;

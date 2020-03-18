@@ -115,11 +115,11 @@
     self.moviePlayerViewController.player = player;
     
     self.moviePlayerViewController.view.translatesAutoresizingMaskIntoConstraints = NO;
-    self.moviePlayerViewController.showsPlaybackControls = TRUE;
+    self.moviePlayerViewController.showsPlaybackControls = FALSE;
     
     UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(videoScreenTapped)];
     recognizer.delegate = self;
-    [self.moviePlayerViewController.moviePlayer.view addGestureRecognizer:recognizer];
+    [self.moviePlayerViewController.view addGestureRecognizer:recognizer];
     
     CMTime interval = CMTimeMakeWithSeconds(0.5, NSEC_PER_SEC);
 
@@ -166,6 +166,7 @@ __weak typeof(self) weakSelf = self;
                                                          multiplier:1.0 constant:0.0]];
     
     [self.moviePlayerViewController didMoveToParentViewController:self];
+    [self.moviePlayerViewController.player play];
 
 }
 
