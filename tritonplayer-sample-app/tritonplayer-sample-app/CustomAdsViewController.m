@@ -266,7 +266,6 @@ __weak typeof(self) weakSelf = self;
             [self.moviePlayerViewController.view removeFromSuperview];
             [self.moviePlayerViewController removeFromParentViewController];
             self.statusMessageLabel.text = @"Video ad finished.";         
-    }
 }
 
 #pragma mark - AVPlayerItem notifications
