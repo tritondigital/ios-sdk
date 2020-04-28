@@ -59,7 +59,7 @@ typedef NS_ENUM(NSInteger, CreativeType) {
         if (url) {
             if ([url.scheme isEqual:@"https"]) {
             // if url, donwload it and send to parser
-                [self downloadDataFromURL:[NSURL URLWithString:string] withCompletionHandler:^(NSData *data, NSError *error) {
+                [self downloadDataFromURL:url withCompletionHandler:^(NSData *data, NSError *error) {
                 
                     if (error) {
                         completionBlock(nil, error);
@@ -83,7 +83,7 @@ typedef NS_ENUM(NSInteger, CreativeType) {
 }
 
 -(void)startParserWithData:(NSData*) data {
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+    dispatch_async(dispatch_get_main_queue(), ^{
         
         NSData *kdata;
         NSString *news = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
@@ -192,6 +192,9 @@ typedef NS_ENUM(NSInteger, CreativeType) {
             self.currentBanner.contentHTML = [self.stringBuffer copy];
         }
     } else if ([elementName isEqualToString:@"MediaFile"] && self.parsedAd.mediaURL == nil) {
+        if ([self.stringBuffer rangeOfString:@"https"].location == NSNotFound) {
+            [self.stringBuffer stringByReplacingOccurrencesOfString:@"http" withString:@"https"];
+       }
         self.parsedAd.mediaURL = [NSURL URLWithString:self.stringBuffer];
     
     } else if ([elementName isEqualToString:@"ClickThrough"]) {

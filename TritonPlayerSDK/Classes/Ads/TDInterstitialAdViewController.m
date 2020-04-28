@@ -58,11 +58,9 @@ typedef NS_ENUM(NSInteger, TDMediaType) {
         self.delegate = delegate;
         
         if ([ad.mediaMIMEType hasPrefix:@"video"]) {
-            self.mediaType = kTDMediaTypeVideo;
-            
+            self.mediaType = kTDMediaTypeVideo;           
         } else if ([self.ad.mediaMIMEType hasPrefix:@"audio"]) {
-            self.mediaType = kTDMediaTypeAudio;
-            
+            self.mediaType = kTDMediaTypeAudio;          
         } else {
             self.mediaType = kTDMediaTypeUnknown;
         }
@@ -84,15 +82,11 @@ typedef NS_ENUM(NSInteger, TDMediaType) {
 }
 
 - (void)showAd {
-    
     if (self.mediaType == kTDMediaTypeVideo) {
         [self playVideoAd:self.ad];
-
     } else if (self.mediaType == kTDMediaTypeAudio) {
         [self playAudioAd:self.ad];
-
-    } else {
-    }
+    } 
 }
 
 - (void)screenTapped {
@@ -194,8 +188,6 @@ typedef NS_ENUM(NSInteger, TDMediaType) {
     UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(screenTapped)];
     recognizer.delegate = self;
     
-    [self.view addGestureRecognizer:recognizer];
-    [self.view addSubview:button];
     
     self.audioPlayer = [[AVPlayer alloc] initWithURL:ad.mediaURL];
     
@@ -203,16 +195,16 @@ typedef NS_ENUM(NSInteger, TDMediaType) {
     [self.audioPlayer addObserver:self forKeyPath:@"rate" options:0 context:nil];
     [self.audioPlayer play];
     
-    TDCompanionBanner *companionBanner = [ad bestCompanionBannerForWidth:CGRectGetWidth(self.view.frame) andHeight:CGRectGetHeight(self.view.frame)];
-    if (companionBanner) {
-        self.banner = [[TDBannerView alloc] initWithWidth:companionBanner.width andHeight:companionBanner.height];
+    self.banner = [[TDBannerView alloc] initWithWidth:CGRectGetWidth(self.view.frame) andHeight:CGRectGetHeight(self.view.frame)];
         self.banner.translatesAutoresizingMaskIntoConstraints = NO;
 
         self.banner.delegate = self;
         [self.view addSubview:self.banner];
         [self addCenterConstraintForItem:self.banner];
         [self.banner presentAd:ad];
-    }
+    [self.view addGestureRecognizer:recognizer];
+    [self.view addSubview:button];
+    
 }
 
 - (void)addCenterConstraintForItem:(UIView *)item {
@@ -230,7 +222,6 @@ typedef NS_ENUM(NSInteger, TDMediaType) {
                                                           attribute:NSLayoutAttributeCenterY
                                                          multiplier:1.0
                                                            constant:0.0]];
-
 }
 
 #pragma mark - MPMoviePlayerController notifications
@@ -245,8 +236,8 @@ typedef NS_ENUM(NSInteger, TDMediaType) {
                     [self.delegate interstitialDidDismiss:(TDInterstitialAd *)self.presentingViewController];
                 }
             }];
+}
          
-    }
 - (void)playbackStartedNotification{
     [self.moviePlayerViewController.player removeTimeObserver:self.playerObserver];
     self.playerObserver = nil;
@@ -258,14 +249,11 @@ typedef NS_ENUM(NSInteger, TDMediaType) {
             [self.activityIndicator removeFromSuperview];
 }
             
-- (void)registerMoviePlayerNotifications {
-            
+- (void)registerMoviePlayerNotifications {          
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(playBackDidFinishNotification:)
                                             name:AVPlayerItemDidPlayToEndTimeNotification
-                                               object:self.moviePlayerViewController.player.currentItem];
-            
-    
+                                               object:self.moviePlayerViewController.player.currentItem];             
     
     CMTime interval = CMTimeMakeWithSeconds(0.5, NSEC_PER_SEC);
 

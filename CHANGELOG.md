@@ -7,6 +7,7 @@
 - Stop when volume is muted.
 - Replace UIWebView with WKWebView.
 - Raise TDPlayerDeviceMuted error when stream is played and the phone is muted.
+- Try all posibilities to get the correct banner.
 
 #### TritonPlayerSDK-iOS-2.6.2 - 2019-11-20
 - Replace MPMoviePlayerViewController with AVPlayerViewController

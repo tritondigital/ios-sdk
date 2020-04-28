@@ -100,10 +100,8 @@
     }
     
     // Check if there's an ad available, otherwise clear the banner
-    if (ad) {
-        
-        if (ad.companionBanners) {
-            
+    if (ad) {       
+        if (ad.companionBanners) {          
             // Look for an available banner
             TDCompanionBanner *banner = [self bannerFromArray:ad.companionBanners withWidth:self.width andHeight:self.height];
             
@@ -112,6 +110,11 @@
                 banner = [self bannerFromArray:ad.companionBanners withWidth:self.fallbackWidth andHeight:self.fallbackHeight];
             }
             
+            // Look for the best available banner
+            if (!banner) {
+                banner =  [ad bestCompanionBannerForWidth:self.width andHeight:self.height];
+            }
+
             if (banner) {
 								if ( banner.contentURL ){
 										
@@ -120,35 +123,32 @@
 										} else {
 												[self failWithError:[TDAdUtils errorWithCode:TDErrorCodeInvalidAdURL andDescription:@"Only https is supported"]];
 										}
-								
-								}else if ( banner.contentHTML )
-                {
+                } else if (banner.contentHTML) {
                     NSString *fullHTML;
                     NSRange rangeValue = [banner.contentHTML rangeOfString:@"<html>" options:NSCaseInsensitiveSearch];
                     
                     // If we find the <html> tag in the HTMLResource CDATA we do not wrap the HTMLResource, allowing for both full HTML page as well as Snippet
                     if (rangeValue.location == NSNotFound )
-                        fullHTML = [NSString stringWithFormat:@"<html><head><style type=\"text/css\">html, body {width:100%; height: 100%; margin: 0px; padding: 0px;}</style></head><body>%@</body><html>",banner.contentHTML ];
-                    else
-                        fullHTML = [banner.contentHTML copy];
+                        fullHTML = [NSString stringWithFormat:@"<html><head><meta name=\"viewport\" content=\"width=device-width,height=device-height, initial-scale=1.0, shrink-to-fit=no\"><style type=\"text/css\">html, body {width:100%%; height: 100\%%; margin: 0px; padding: 0px;z-index:-1}</style></head><body>%@</body><html>", banner.contentHTML ];
+                    else fullHTML = [banner.contentHTML copy];
+
+                    if ([fullHTML rangeOfString:@"https"].location == NSNotFound) {
+                        [fullHTML stringByReplacingOccurrencesOfString:@"http" withString:@"https"];
+                    }
                     
                     [self.adWebView loadHTMLString:fullHTML baseURL:nil];
                     NSString *bodyStyle = @"document.getElementsByTagName('body')[0].style.textAlign = 'center';";
-                    [self.adWebView  performSelectorOnMainThread:@selector(stringByEvaluatingJavaScriptFromString:)  withObject:bodyStyle waitUntilDone:NO];
-                }
-                
+                    [self.adWebView evaluateJavaScript:bodyStyle completionHandler:nil];
+                }            
             } else {
                 [self failWithError:[TDAdUtils errorWithCode:TDErrorCodeNoInventory andDescription:@"No ad to display"]];
-            }
-        
+            }      
         } else {
             [self failWithError:[TDAdUtils errorWithCode:TDErrorCodeNoInventory andDescription:@"No ad to display"]];
-        }
-        
+        }       
     } else {
         [self clear];
-    }
-    
+    }   
 }
 
 -(TDCompanionBanner*)bannerFromArray:(NSArray*) array withWidth:(NSInteger)width andHeight:(NSInteger) height {
@@ -185,7 +185,6 @@
 }
 
 - (void)webView:(WKWebView *)webView didFailNavigation:(WKNavigation *)navigation withError:(NSError *)error {
-    
     if ([self.delegate respondsToSelector:@selector(bannerView:didFailToPresentAdWithError:)]) {
         NSError *tdError = [TDAdUtils errorWithCode:TDErrorCodeInvalidAdURL
                                     andDescription:@"TDBanner could not load the ad requested."
@@ -201,11 +200,11 @@
 {
     NSURL *loadURL = [NSURL URLWithString:[navigationAction.request.URL query]];
     
-    if ( ( [[loadURL scheme] isEqualToString: @"http"] || [[loadURL scheme] isEqualToString: @"https"] ) && (navigationAction.navigationType == UIWebViewNavigationTypeLinkClicked))
-    {
+    if ( ([[loadURL scheme] isEqualToString:@"http"] || [[loadURL scheme] isEqualToString:@"https"]) && (navigationAction.navigationType == UIWebViewNavigationTypeLinkClicked)) {
         if ([self.delegate respondsToSelector:@selector(bannerViewWillLeaveApplication:)]) {
             [self.delegate bannerViewWillLeaveApplication:self];
         }
+
         [[UIApplication sharedApplication] openURL:loadURL];
         decisionHandler(WKNavigationActionPolicyCancel);
     }

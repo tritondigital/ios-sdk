@@ -130,6 +130,14 @@ NSString *const SettingsStreamPlayerSBMURLKey = @"StreamPlayerSBMURL";
     [self.oldPlayers addObject:self.player];
 }
 
+- (void)dealloc
+{
+    if ([self.player isKindOfClass:[TDFLVPlayer class]])
+    {
+     [(TDFLVPlayer*)self.player willBeDeleted];
+    }
+}
+
 -(void)play {
     self.lastStreamingUrl = nil;
     
