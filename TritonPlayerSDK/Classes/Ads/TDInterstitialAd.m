@@ -15,7 +15,6 @@
 #import "TDInterstitialAdViewController.h"
 #import "TDAdLoader.h"
 
-#import "TDAnalyticsTracker.h"
 #import "AVKit/AVkit.h"
 
 

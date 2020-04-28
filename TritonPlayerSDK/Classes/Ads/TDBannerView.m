@@ -13,7 +13,6 @@
 #import "TDAdLoader.h"
 #import "TDCompanionBanner.h"
 #import <WebKit/WebKit.h>
-#import "TDAnalyticsTracker.h"
 
 @interface TDBannerView() <WKNavigationDelegate>
 
