@@ -53,6 +53,8 @@
 /// The list of urls that must be called to track the user clicking in a video ad
 @property (nonatomic, strong) NSArray   *clickTrackingURLs;
 
+@property (nonatomic, strong) NSURL     *vastAdTagUri;
+
 /// @name Helper methods
 
 /**

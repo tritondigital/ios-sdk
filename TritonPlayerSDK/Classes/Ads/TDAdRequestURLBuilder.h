@@ -156,6 +156,18 @@ typedef NS_ENUM(NSInteger, TDAssetType) {
  Possible values are kTDGenderFemale and kTDGenderMale
  */
 @property (nonatomic, assign) TDGender gender;
+/**
+ Application package name e.g  com.tritondigital.tritonradio
+ */
+@property (nonatomic, assign) NSString *bundleId;
+/**
+ App Store identifier
+ */
+@property (nonatomic, assign) NSString *storeId;
+/**
+ App store url
+ */
+@property (nonatomic, assign) NSString *storeUrl;
 
 /// @name Banner capabilities
 

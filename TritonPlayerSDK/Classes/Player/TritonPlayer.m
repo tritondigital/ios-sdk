@@ -17,7 +17,7 @@
 
 
 
-NSString *const TritonSDKVersion                        = @"2.6.3"; //TritonSDKVersion
+NSString *const TritonSDKVersion                        = @"2.6.4"; //TritonSDKVersion
 
 CGFloat   const  kDefaultPlayerDebouncing               = 0.2f; //Default debouncing for the Play action, in seconds
 
@@ -133,6 +133,8 @@ NSString *const InfoAlternateMountNameKey               = @"alternateMount";
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [[AVAudioSession sharedInstance] removeObserver:self forKeyPath:@"outputVolume"];
+
 }
 
 //=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=

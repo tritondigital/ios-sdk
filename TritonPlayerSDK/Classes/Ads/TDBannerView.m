@@ -131,11 +131,7 @@
                         fullHTML = [NSString stringWithFormat:@"<html><head><meta name=\"viewport\" content=\"width=device-width,height=device-height, initial-scale=1.0, shrink-to-fit=no\"><style type=\"text/css\">html, body {width:100%%; height: 100\%%; margin: 0px; padding: 0px;z-index:-1}</style></head><body>%@</body><html>", banner.contentHTML ];
                     else fullHTML = [banner.contentHTML copy];
 
-                    if ([fullHTML rangeOfString:@"https"].location == NSNotFound) {
-                        [fullHTML stringByReplacingOccurrencesOfString:@"http" withString:@"https"];
-                    }
-                    
-                    [self.adWebView loadHTMLString:fullHTML baseURL:nil];
+                    [self.adWebView loadHTMLString: [fullHTML stringByReplacingOccurrencesOfString:@"http://" withString:@"https://"] baseURL:nil];
                     NSString *bodyStyle = @"document.getElementsByTagName('body')[0].style.textAlign = 'center';";
                     [self.adWebView evaluateJavaScript:bodyStyle completionHandler:nil];
                 }            

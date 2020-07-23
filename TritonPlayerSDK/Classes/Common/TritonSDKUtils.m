@@ -38,6 +38,7 @@
         }
         else{
             // If no error occurs, check the HTTP status code.
+            if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
             NSInteger HTTPStatusCode = [(NSHTTPURLResponse *)response statusCode];
             NSError *networkError = nil;
             
@@ -50,6 +51,10 @@
             [[NSOperationQueue mainQueue] addOperationWithBlock:^{
                 completionHandler(data, networkError);
             }];
+            } else{
+                 [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                       completionHandler(data, nil);
+                   }];            }
         }
     }];
     

@@ -31,6 +31,10 @@ NSString *const kTargetingDateOfBirth = @"dob";
 NSString *const kTargetingYearOfBirth = @"yob";
 NSString *const kTargetingGender = @"gender";
 
+NSString *const kTargetingBundleId = @"bundle-id";
+NSString *const kTargetingStoreId = @"store-id";
+NSString *const kTargettngStoreUrl = @"store-url";
+
 NSString *const kTargetingCustomSegmendId = @"csegid";
 
 NSString *const kConstraintAssetType = @"at";
@@ -246,6 +250,38 @@ NSString *const kCapabilityBanners = @"banners";
 -(TDGender)gender {
     NSString *val = [self.requestParameters objectForKey:kTargetingGender];
     return val ? ([val isEqualToString:@"m"] ? kTDGenderMale : kTDGenderFemale) : kTDGenderNotDefined;
+}
+
+#pragma mark - Application targeting
+
+-(void)setBundleId:(NSString *)bundleId {
+    if (bundleId) {
+        self.requestParameters[kTargetingBundleId] = bundleId;
+    }
+}
+
+-(NSString *)bundleId {
+    return self.requestParameters[kTargetingBundleId];
+}
+
+-(void)setStoreId:(NSString *)storeId {
+    if (storeId) {
+        self.requestParameters[kTargetingStoreId] = storeId;
+    }
+}
+
+-(NSString *)storeId {
+    return self.requestParameters[kTargetingStoreId];
+}
+
+-(void)setStoreUrl:(NSString *)storeUrl {
+    if (storeUrl) {
+        self.requestParameters[kTargettngStoreUrl] = storeUrl;
+    }
+}
+
+-(NSString *)storeUrl {
+    return self.requestParameters[kTargettngStoreUrl];
 }
 
 #pragma mark - Banner capabilities

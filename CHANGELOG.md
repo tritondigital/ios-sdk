@@ -1,4 +1,12 @@
 # Changelog
+#### TritonPlayerSDK-iOS-2.6.4 - 2020-07-23
+- Fixed video impression tracking.
+- VAST Wrapper support added.
+- Cleanup unused observers.
+- Added bundleId, storeId, and storeUrl on-demand parameters.
+- Fixed TDPlayer memory leak when switching between stations.
+- Fixed wrong selector called on WKWebView.
+
 #### TritonPlayerSDK-iOS-2.6.3 - 2020-03-18
 - Handle url alternate content when station is geo-blocked.
 - Fix a deadlock when player is not a TDFLVPlayer.

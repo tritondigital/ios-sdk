@@ -21,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *loadAudioButton;
 @property (weak, nonatomic) IBOutlet UIButton *loadVideoButton;
 @property (weak, nonatomic) IBOutlet UIButton *playButton;
+@property (weak, nonatomic) IBOutlet UIButton *showVastBanner;
 
 @property (strong, nonatomic) AVPlayerViewController *moviePlayerViewController;
 @property (strong, nonatomic) AVPlayer *audioPlayer;
@@ -176,6 +177,47 @@ __weak typeof(self) weakSelf = self;
     [self hideActivityIndicatorWithStatusMessage:@"Video ad is playing"];
     [self.ad trackMediaImpressions];
 }
+
+- (IBAction)playVastBanner:(id)sender {
+    [self showActivityIndicatorWithStatusMessage:@"Loading an ad from the VAST"];
+    
+    self.requestBuilder.assetType = kTDAssetTypeAudio;
+    [self.adLoader loadAdWithStringRequest:kVastXmlFile completionHandler:^(TDAd *loadedAd, NSError *error) {
+         if (error) {
+                   [self hideActivityIndicatorWithStatusMessage:error.localizedDescription];
+               
+               } else {
+                   [self hideActivityIndicatorWithStatusMessage:@"Loading an ad from the VAST"];
+                   
+                   self.ad = loadedAd;
+                   [self.bannerView removeFromSuperview];
+                   // Create a banner with a size that fits in the space between the downmost component (the play button) and the rest of the screen.
+                   // You can create how many banners you want with the size you want and just present the ad with each of them.
+                   TDCompanionBanner *banner = [self.ad bestCompanionBannerForWidth:CGRectGetWidth(self.view.frame) andHeight:CGRectGetHeight(self.view.frame) - CGRectGetMaxY(self.playButton.frame)];
+                   self.bannerView = [[TDBannerView alloc] initWithWidth:banner.width andHeight:banner.height];
+                   self.bannerView.translatesAutoresizingMaskIntoConstraints = NO;
+                   [self.view addSubview:self.bannerView];
+                   
+                   [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.bannerView
+                                                                         attribute:NSLayoutAttributeTop
+                                                                         relatedBy:NSLayoutRelationEqual
+                                                                            toItem:self.playButton
+                                                                         attribute:NSLayoutAttributeBottom
+                                                                        multiplier:1.0 constant:8.0]];
+                   
+                   [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.bannerView
+                                                                         attribute:NSLayoutAttributeCenterX
+                                                                         relatedBy:NSLayoutRelationEqual
+                                                                            toItem:self.view
+                                                                         attribute:NSLayoutAttributeCenterX
+                                                                        multiplier:1.0 constant:0.0]];
+                   
+                   [self.bannerView presentAd:self.ad];
+               }
+    }];
+    
+}
+
 
 - (void)playAudioAd {
     [self showActivityIndicatorWithStatusMessage:@"Playing audio ad."];

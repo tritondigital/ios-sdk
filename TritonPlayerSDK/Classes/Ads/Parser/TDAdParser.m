@@ -57,7 +57,7 @@ typedef NS_ENUM(NSInteger, CreativeType) {
 
         NSURL *url = [NSURL URLWithString:string];
         if (url) {
-            if ([url.scheme isEqual:@"https"]) {
+            if ([url.scheme isEqual:@"https"] || [url.scheme isEqual:@"file"]) {
             // if url, donwload it and send to parser
                 [self downloadDataFromURL:url withCompletionHandler:^(NSData *data, NSError *error) {
                 
@@ -99,6 +99,7 @@ typedef NS_ENUM(NSInteger, CreativeType) {
         
         if ([parser parse]) {
             self.callbackBlock(self.parsedAd, nil);
+            
         }
         else
         {
@@ -213,6 +214,9 @@ typedef NS_ENUM(NSInteger, CreativeType) {
         self.parsedAd.companionBanners = self.companionBanners;
         self.companionBanners = nil;
     }
+    else if ([elementName isEqualToString:@"VASTAdTagURI"]) {
+        self.parsedAd.vastAdTagUri = [NSURL URLWithString:self.stringBuffer];
+    }
     
     [self.stringBuffer setString:@""];
 }
@@ -224,7 +228,9 @@ typedef NS_ENUM(NSInteger, CreativeType) {
         [self.currentElement isEqualToString:@"MediaFile"] ||
         [self.currentElement isEqualToString:@"ClickThrough"] ||
         [self.currentElement isEqualToString:@"Impression"] ||
-        [self.currentElement isEqualToString:@"ClickTracking"]) {
+        [self.currentElement isEqualToString:@"ClickTracking"] ||
+        [self.currentElement isEqualToString:@"VASTAdTagURI"]) {
+
         
         NSString *cdataString = [[NSString alloc] initWithData:CDATABlock encoding:NSUTF8StringEncoding];
         [self.stringBuffer appendString:[cdataString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]];
@@ -238,7 +244,8 @@ typedef NS_ENUM(NSInteger, CreativeType) {
         [self.currentElement isEqualToString:@"MediaFile"] ||
         [self.currentElement isEqualToString:@"ClickThrough"] ||
         [self.currentElement isEqualToString:@"Impression"] ||
-        [self.currentElement isEqualToString:@"ClickTracking"]) {
+        [self.currentElement isEqualToString:@"ClickTracking"] ||
+        [self.currentElement isEqualToString:@"VASTAdTagURI"]) {
         
         [self.stringBuffer appendString:[string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]];
     }
