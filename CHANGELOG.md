@@ -1,4 +1,7 @@
 # Changelog
+#### TritonPlayerSDK-iOS-2.6.5 - 2020-09-11
+- Remove analytics tracker reference that broke the build.
+
 #### TritonPlayerSDK-iOS-2.6.4 - 2020-07-23
 - Fixed video impression tracking.
 - VAST Wrapper support added.
