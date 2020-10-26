@@ -1,4 +1,8 @@
 # Changelog
+#### TritonPlayerSDK-iOS-2.6.6 - 2020-10-26
+- URLEncode VAST Impression url
+- Start the stream with the volume button from a muted state
+
 #### TritonPlayerSDK-iOS-2.6.5 - 2020-09-11
 - Remove analytics tracker reference that broke the build.
 

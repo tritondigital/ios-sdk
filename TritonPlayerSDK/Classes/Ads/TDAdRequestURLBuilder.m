@@ -358,7 +358,7 @@ NSString *const kCapabilityBanners = @"banners";
         }
         
         // Add tdsdk to query
-        [query addObject:[NSString stringWithFormat:@"tdsdk=iOS-%@",TritonSDKVersion]];
+        [query addObject:[NSString stringWithFormat:@"tdsdk=iOS-%@-opensource",TritonSDKVersion]];
         
         // Add listener id in the query parameter
         [query addObject:[NSString stringWithFormat:@"lsid=%@", [TritonPlayerUtils getListenerId]]];

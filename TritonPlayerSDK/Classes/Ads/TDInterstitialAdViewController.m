@@ -118,6 +118,10 @@ typedef NS_ENUM(NSInteger, TDMediaType) {
                     [self.delegate interstitialWillDismiss:(TDInterstitialAd *)self.presentingViewController];
                 }
                 
+            if ([self.delegate respondsToSelector:@selector(interstitialPlaybackFinished:)]) {
+                   [self.delegate interstitialPlaybackFinished:(TDInterstitialAd *)self.presentingViewController];
+            }
+
                 [self.presentingViewController dismissViewControllerAnimated:YES completion:^{
                     if ([self.delegate respondsToSelector:@selector(interstitialDidDismiss:)]) {
                         [self.delegate interstitialDidDismiss:(TDInterstitialAd *)self.presentingViewController];
@@ -228,9 +232,15 @@ typedef NS_ENUM(NSInteger, TDMediaType) {
 
 - (void)playBackDidFinishNotification:(NSNotification *) notification {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:AVPlayerItemDidPlayToEndTimeNotification object:nil];
+    
+	    if ([self.delegate respondsToSelector:@selector(interstitialPlaybackFinished:)]) {
+		   [self.delegate interstitialPlaybackFinished:(TDInterstitialAd *)self.presentingViewController];
+	    }
+    
             if ([self.delegate respondsToSelector:@selector(interstitialWillDismiss:)]) {
                 [self.delegate interstitialWillDismiss:(TDInterstitialAd *)self.presentingViewController];
             }
+    
             [self.presentingViewController dismissViewControllerAnimated:YES completion:^{
                 if ([self.delegate respondsToSelector:@selector(interstitialDidDismiss:)]) {
                     [self.delegate interstitialDidDismiss:(TDInterstitialAd *)self.presentingViewController];
@@ -270,9 +280,14 @@ typedef NS_ENUM(NSInteger, TDMediaType) {
 - (void)audioPlayerDidFinish:(NSNotification *) notfication {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:AVPlayerItemDidPlayToEndTimeNotification object:nil];
     
+    if ([self.delegate respondsToSelector:@selector(interstitialPlaybackFinished:)]) {
+           [self.delegate interstitialPlaybackFinished:(TDInterstitialAd *)self.presentingViewController];
+    }
+    
     if ([self.delegate respondsToSelector:@selector(interstitialWillDismiss:)]) {
         [self.delegate interstitialWillDismiss:(TDInterstitialAd *)self.presentingViewController];
     }
+    
     [self.presentingViewController dismissViewControllerAnimated:YES completion:^{
         if ([self.delegate respondsToSelector:@selector(interstitialDidDismiss:)]) {
             [self.delegate interstitialDidDismiss:(TDInterstitialAd *)self.presentingViewController];

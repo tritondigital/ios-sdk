@@ -17,7 +17,7 @@
 
 
 
-NSString *const TritonSDKVersion                        = @"2.6.5"; //TritonSDKVersion
+NSString *const TritonSDKVersion                        = @"2.6.6"; //TritonSDKVersion
 
 CGFloat   const  kDefaultPlayerDebouncing               = 0.2f; //Default debouncing for the Play action, in seconds
 
@@ -100,6 +100,7 @@ NSString *const InfoAlternateMountNameKey               = @"alternateMount";
 @property (nonatomic, assign) NSTimeInterval debouncing;
 
 @property (nonatomic, assign) TDPlayerState state;
+@property (nonatomic, assign) BOOL volumeStopped;
 
 @property BOOL isExecuting;
 @property BOOL stopStreamThread;
@@ -383,6 +384,7 @@ NSString *const InfoAlternateMountNameKey               = @"alternateMount";
         [self stop];
     }
     
+    [self setVolumeStopped:NO];
 	[self.playerOperationQueue addOperationWithBlock: ^{
     
         float vol = [[AVAudioSession sharedInstance] outputVolume];
@@ -650,7 +652,7 @@ NSString *const InfoAlternateMountNameKey               = @"alternateMount";
     // We send the callsign if the station name was not set
     NSString *stationName = self.stationName ? self.stationName : self.mount;
     
-    NSString *userAgentString = [NSString stringWithFormat:@"%@/%@ iOS/%@ %@ %@/%@ TdSdk/iOS-%@",
+    NSString *userAgentString = [NSString stringWithFormat:@"%@/%@ iOS/%@ %@ %@/%@ TdSdk/iOS-%@-opensource",
                                  self.appName,
                                  [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"],
                                  [[UIDevice currentDevice] systemVersion],
@@ -795,6 +797,12 @@ NSString *const InfoAlternateMountNameKey               = @"alternateMount";
     float vol = [[AVAudioSession sharedInstance] outputVolume];
         if(vol == 0.0) {
             [self pause];
+            if([self state] == kTDPlayerStatePlaying){
+                [self setVolumeStopped:YES];
+            }
+            
+        } else if(vol > 0.0 && [self state] == kTDPlayerStateStopped && [self volumeStopped] == YES){
+            [self play];
         }
     }
 }

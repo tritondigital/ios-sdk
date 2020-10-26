@@ -202,7 +202,7 @@ typedef NS_ENUM(NSInteger, CreativeType) {
         self.parsedAd.videoClickThroughURL = [NSURL URLWithString:self.stringBuffer];
         
     } else if ([elementName isEqualToString:@"Impression"]) {
-        [self.mediaImpressionUrls addObject:[NSURL URLWithString:self.stringBuffer]];
+        [self.mediaImpressionUrls addObject:[NSURL URLWithString:[self.stringBuffer stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]]]];
     
     } else if ([elementName isEqualToString:@"ClickTracking"]) {
         [self.clickTrackingUrls addObject:[NSURL URLWithString:self.stringBuffer]];
