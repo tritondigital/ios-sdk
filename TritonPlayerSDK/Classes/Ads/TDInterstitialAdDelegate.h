@@ -53,6 +53,14 @@
 - (void)interstitialDidDismiss:(TDInterstitialAd *)ad;
 
 /**
+ * Called when inserstital playback has finished.
+ *
+ * @param ad The TDinterstitialAd object that finished playing
+ */
+
+- (void)interstitialPlaybackFinished:(TDInterstitialAd *)ad;
+
+/**
  * Called just before the application will go to the background or terminate because the user clicked on an ad that will launch another application (such as the App Store).
  *
  * @param ad The TDInterstitialAd object that will leave the application
