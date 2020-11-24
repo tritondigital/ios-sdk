@@ -9,6 +9,7 @@
 #import "TritonPlayer.h"
 #import "TritonPlayerUtils.h"
 #import <AdSupport/AdSupport.h>
+#import <AppTrackingTransparency/AppTrackingTransparency.h>
 
 #define kPName @"TritonMobileSDK_IOS"
 
@@ -19,13 +20,11 @@
 +(NSString *)getListenerId {
     NSString *listenerId = nil;
     
-    if ([[ASIdentifierManager sharedManager] isAdvertisingTrackingEnabled]) {
-        listenerId = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
+    listenerId = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
         
+    if (![listenerId  isEqual: @"00000000-0000-0000-0000-000000000000"]) {
         return [NSString stringWithFormat:@"idfa:%@",listenerId];
-    }
-    else
-    {
+    } else {
         listenerId = [[NSUserDefaults standardUserDefaults] objectForKey:@"uuid"];
         if (![listenerId length])
         {
