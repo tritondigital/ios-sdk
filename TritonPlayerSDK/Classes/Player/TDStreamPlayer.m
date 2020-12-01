@@ -182,6 +182,11 @@ NSString *const SettingsStreamPlayerSBMURLKey = @"StreamPlayerSBMURL";
                 queryParameters = [queryParameters stringByAppendingString:@"banners=none"];
             }
 						
+            
+            BOOL removePercentEncoding = FALSE;
+            if ([self.streamURL containsString:@"/;"]) {
+                removePercentEncoding = TRUE;
+            }
 						//concat all query params
             NSURLComponents *url = [[NSURLComponents alloc]  initWithString:self.streamURL];
 						NSArray *tdQueryParams = [queryParameters componentsSeparatedByString:@"&"];
@@ -194,7 +199,8 @@ NSString *const SettingsStreamPlayerSBMURLKey = @"StreamPlayerSBMURL";
 						}
 						
 						[url setQueryItems:queryItems];
-						NSMutableString *connectingToURL = [NSMutableString stringWithFormat:@"%@", [url string]];
+						NSMutableString *connectingToURL = [NSMutableString stringWithFormat:@"%@",
+                                                            ((removePercentEncoding) ? [[url string] stringByRemovingPercentEncoding] : [url string]) ];
             
             if (self.profile == kTDStreamProfileFLV) {
                 [self.player updateSettings:@{SettingsFLVPlayerUserAgentKey : self.userAgent,
