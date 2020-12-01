@@ -14,10 +14,11 @@
 #import "TDStreamPlayer.h"
 #import "TDStationPlayer.h"
 #import "TDMediaPlayer.h"
+#import <MediaPlayer/MediaPlayer.h>
 
 
 
-NSString *const TritonSDKVersion                        = @"2.6.6"; //TritonSDKVersion
+NSString *const TritonSDKVersion                        = @"2.6.7"; //TritonSDKVersion
 
 CGFloat   const  kDefaultPlayerDebouncing               = 0.2f; //Default debouncing for the Play action, in seconds
 
@@ -389,8 +390,24 @@ NSString *const InfoAlternateMountNameKey               = @"alternateMount";
     
         float vol = [[AVAudioSession sharedInstance] outputVolume];
         if(vol == 0.0) {
-           [self failWithError:TDPlayerDeviceMuted andDescription:NSLocalizedString(@"Unmute audio to play", nil)];
-            return;
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                // use weakSelf here
+            
+                MPVolumeView *volumeView = [[MPVolumeView alloc] init];
+                  UISlider *volumeViewSlider = nil;
+
+                  for (UIView *view in volumeView.subviews) {
+                    if ([view isKindOfClass:[UISlider class]]) {
+                      volumeViewSlider = (UISlider *)view;
+                      break;
+                    }
+                  }
+
+                  dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    volumeViewSlider.value = 0.3f;
+                  });
+            });
         }
         
 		if(self.playDebouncingTimer != nil)
