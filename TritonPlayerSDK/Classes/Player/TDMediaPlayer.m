@@ -431,17 +431,17 @@ BOOL observersAdded= NO;
     
     //TimeObserver in the AVPlayer were not working properly for some HLS streams, that why the following lines were commented. Insted we use a dispatch_after to sync the cue-points
    
-//    if (CMTimeCompare(targetTime, kCMTimeZero) > 0) {
-//        self.timeObserver = [self.mediaPlayer addBoundaryTimeObserverForTimes:@[[NSValue valueWithCMTime:targetTime]] queue:dispatch_get_main_queue() usingBlock:observerBlock];
-//
-//    } else {
-//        if ([weakSelf.delegate respondsToSelector:@selector(mediaPlayer:didReceiveCuepointEvent:)]) {
-//            [weakSelf.delegate performSelector:@selector(mediaPlayer:didReceiveCuepointEvent:) withObject:weakSelf withObject:cuePointEvent];
-//        }
-//    }
+    if (CMTimeCompare(targetTime, kCMTimeZero) > 0) {
+        self.timeObserver = [self.mediaPlayer addBoundaryTimeObserverForTimes:@[[NSValue valueWithCMTime:targetTime]] queue:dispatch_get_main_queue() usingBlock:observerBlock];
     
-    NSTimeInterval targetInterval = targetTime.value / targetTime.timescale;
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, targetInterval * NSEC_PER_MSEC), dispatch_get_main_queue(), observerBlock);
+    } else {
+        if ([weakSelf.delegate respondsToSelector:@selector(mediaPlayer:didReceiveCuepointEvent:)]) {
+            [weakSelf.delegate performSelector:@selector(mediaPlayer:didReceiveCuepointEvent:) withObject:weakSelf withObject:cuePointEvent];
+        }
+    }
+    
+//    NSTimeInterval targetInterval = targetTime.value / targetTime.timescale;
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, targetInterval * NSEC_PER_MSEC), dispatch_get_main_queue(), observerBlock);
     
     if(cuePointEvent.data != nil) PLAYER_LOG(@"didReceiveCuePointEvent with data: %@", cuePointEvent.data);
     PLAYER_LOG(@"didReceiveCuePointEvent with target time: %lld", targetTime.value / targetTime.timescale);
