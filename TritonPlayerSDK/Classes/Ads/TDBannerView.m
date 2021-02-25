@@ -193,7 +193,7 @@
 
 - (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler
 {
-    NSURL *loadURL = [NSURL URLWithString:[navigationAction.request.URL query]];
+    NSURL *loadURL = navigationAction.request.URL;
     
     if ( ([[loadURL scheme] isEqualToString:@"http"] || [[loadURL scheme] isEqualToString:@"https"]) && (navigationAction.navigationType == UIWebViewNavigationTypeLinkClicked)) {
         if ([self.delegate respondsToSelector:@selector(bannerViewWillLeaveApplication:)]) {
@@ -202,8 +202,9 @@
 
         [[UIApplication sharedApplication] openURL:loadURL];
         decisionHandler(WKNavigationActionPolicyCancel);
+    }else{
+        decisionHandler(WKNavigationActionPolicyAllow);
     }
-    decisionHandler(WKNavigationActionPolicyAllow);
 }
 
 #pragma mark Error handling

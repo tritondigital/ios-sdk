@@ -1,4 +1,8 @@
 # Changelog
+#### TritonPlayerSDK-iOS-2.6.7 - 2021-02-26
+- Sync the SBM cuepoints to the stream.
+- Open syncbanner link when the syncbanner is clicked.
+
 #### TritonPlayerSDK-iOS-2.6.6 - 2020-10-26
 - URLEncode VAST Impression url
 - Start the stream with the volume button from a muted state
