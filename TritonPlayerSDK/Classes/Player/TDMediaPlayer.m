@@ -204,6 +204,18 @@ NSString *const SettingsMediaPlayerStreamURLKey = @"MediaPlayerStreamURL";
             self.mediaPlayer = nil;
             
             [self updateStateMachineForAction:kTDPlayerActionStop];
+
+            @try
+            {
+                if (self.timeObserver) {
+                    [self.mediaPlayer removeTimeObserver:self.timeObserver];
+                    self.timeObserver = nil;
+                }
+            }
+            @catch(id exception)
+            {
+                //we do nothing; not the correct observer that was added
+            }
         }
 }
 
@@ -411,19 +423,7 @@ BOOL observersAdded= NO;
     __weak TDMediaPlayer *weakSelf = self;
     void (^observerBlock)() = ^{
         if ([weakSelf.delegate respondsToSelector:@selector(mediaPlayer:didReceiveCuepointEvent:)]) {
-            [weakSelf.delegate performSelector:@selector(mediaPlayer:didReceiveCuepointEvent:) withObject:weakSelf withObject:cuePointEvent];
-        }
-        @try
-        {
-            if(weakSelf.timeObserver != nil)
-            {
-                [weakSelf.mediaPlayer removeTimeObserver:weakSelf.timeObserver];
-                weakSelf.timeObserver = nil;
-            }
-        }
-        @catch(id exception)
-        {
-            //we do nothing; not the correct observer that was added
+            [weakSelf.delegate performSelector:@selector(mediaPlayer:didReceiveCuepointEvent:) withObject:weakSelf withObject:cuePointEvent];    
         }
     };
     
