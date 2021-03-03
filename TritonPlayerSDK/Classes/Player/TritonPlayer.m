@@ -18,7 +18,7 @@
 
 
 
-NSString *const TritonSDKVersion                        = @"2.6.7"; //TritonSDKVersion
+NSString *const TritonSDKVersion                        = @"2.6.8"; //TritonSDKVersion
 
 CGFloat   const  kDefaultPlayerDebouncing               = 0.2f; //Default debouncing for the Play action, in seconds
 
