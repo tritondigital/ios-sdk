@@ -14,7 +14,7 @@ echo "info: Building sdk version $SDK_VERSION"
 xcodebuild -scheme TritonPlayerSDKStatic-Universal SYMROOT="Framework" -configuration Release -UseModernBuildSystem=YES
 
 echo "info: Generating doc"
-xcodebuild -scheme Documentation SYMROOT="Framework" -configuration Release -UseModernBuildSystem=YES SUPPORTS_MACCATALYST=NO
+xcodebuild -scheme Documentation SYMROOT="Framework" -configuration Release -UseModernBuildSystem=YES
 
 echo "info: Generating SDK package"
 echo "info: Copy Framework"
@@ -24,7 +24,7 @@ echo "info: Copy Documentation"
 cp -R "Framework/Documentation" "tritonplayer-sample-app/Documentation"
 
 echo "info: Copy README"
-cp "README.txt" "tritonplayer-sample-app"
+cp "README.md" "tritonplayer-sample-app"
 
 echo "info: creating version file $VERSION_FILE"
 cat > "tritonplayer-sample-app/$VERSION_FILE" << EOF
