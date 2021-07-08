@@ -364,6 +364,12 @@ extern NSString *const InfoAlternateMountNameKey;
 - (void)setVolume:(float)volume;
 
 /**
+ * Set external playback on underlying AVPlayer
+ */
+
+- (void)setAllowsExternalPlayback:(BOOL)allow;
+
+/**
  *  Return the stream URL for Cast Devices
  *
  */

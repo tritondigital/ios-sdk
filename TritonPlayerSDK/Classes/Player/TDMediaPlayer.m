@@ -278,6 +278,10 @@ BOOL observersAdded= NO;
     self.mediaPlayer.volume = volume;
 }
 
+-(void)setAllowsExternalPlayback:(BOOL)allow {
+    self.mediaPlayer.allowsExternalPlayback = allow;
+}
+
 -(NSURL*)createURLWithSbmIdFromString:(NSString *)string {
     // Append the sbmid query parameter using NSURLComponents just to be sure that if there's another query parameter in the future, things will always work.
     // When iOS 8 will be the the target version, use queryItems instead of query property.

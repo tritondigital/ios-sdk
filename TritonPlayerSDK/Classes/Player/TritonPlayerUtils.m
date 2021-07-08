@@ -9,7 +9,6 @@
 #import "TritonPlayer.h"
 #import "TritonPlayerUtils.h"
 #import <AdSupport/AdSupport.h>
-#import <AppTrackingTransparency/AppTrackingTransparency.h>
 
 #define kPName @"TritonMobileSDK_IOS"
 

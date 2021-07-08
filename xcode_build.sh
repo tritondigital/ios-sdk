@@ -10,15 +10,15 @@ if [ -z "$SDK_VERSION" ]; then
 fi
 
 echo "info: Building sdk version $SDK_VERSION"
-#xcodebuild -scheme TritonPlayerSDKStatic-Universal OTHER_CFLAGS="-fembed-bitcode" SYMROOT="Framework" -configuration Release -UseModernBuildSystem=NO
-xcodebuild -scheme TritonPlayerSDKStatic-Universal SYMROOT="Framework" -configuration Release -UseModernBuildSystem=YES
+#xcodebuild -scheme TritonPlayerSDKUniversal OTHER_CFLAGS="-fembed-bitcode" BITCODE_GENERATION_MODE="bitcode" SYMROOT="Framework" -configuration Release -UseModernBuildSystem=NO
+xcodebuild -scheme TritonPlayerSDKUniversal SYMROOT="Framework" -configuration Release -UseModernBuildSystem=YES
 
 echo "info: Generating doc"
 xcodebuild -scheme Documentation SYMROOT="Framework" -configuration Release -UseModernBuildSystem=YES
 
 echo "info: Generating SDK package"
 echo "info: Copy Framework"
-cp -R "Framework/Release-iphoneos/TritonPlayerSDK.framework" "tritonplayer-sample-app"
+cp -R "Framework/TritonPlayerSDK.xcframework" "tritonplayer-sample-app"
 
 echo "info: Copy Documentation"
 cp -R "Framework/Documentation" "tritonplayer-sample-app/Documentation"
@@ -44,6 +44,5 @@ zip -r -X "$PACKAGE_NAME-$SDK_VERSION.zip" "$PACKAGE_NAME-$SDK_VERSION"
 echo "cleaning sample app"
 rm -f "tritonplayer-sample-app/README.txt"
 rm -f "tritonplayer-sample-app/version.properties"
-rm -rf "tritonplayer-sample-app/TritonPlayerSDK.framework"
-
+rm -rf "tritonplayer-sample-app/TritonPlayerSDK.xcframework"
 

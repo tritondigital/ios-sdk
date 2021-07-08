@@ -39,6 +39,7 @@
 
 -(AudioQueueRef)getAudioQueue;
 
+-(void)setAllowsExternalPlayback:(BOOL)allow;
 @required
 -(id)addPeriodicTimeObserverForInterval:(CMTime)interval queue:(dispatch_queue_t)queue usingBlock:(void (^)(CMTime time))block;
 -(void)removeTimeObserver:(id)observer;

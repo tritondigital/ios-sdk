@@ -18,7 +18,7 @@
 
 
 
-NSString *const TritonSDKVersion                        = @"2.6.8"; //TritonSDKVersion
+NSString *const TritonSDKVersion                        = @"2.6.9"; //TritonSDKVersion
 
 CGFloat   const  kDefaultPlayerDebouncing               = 0.2f; //Default debouncing for the Play action, in seconds
 
@@ -726,6 +726,9 @@ NSString *const InfoAlternateMountNameKey               = @"alternateMount";
     return [self.mediaPlayer currentPlaybackTime];
 }
 
+-(void)setAllowsExternalPlayback:(BOOL)allow {
+    [self.mediaPlayer setAllowsExternalPlayback:allow];
+}
 #pragma mark - Debugging
 
 - (void)onCreateSimulatedCuePoint {

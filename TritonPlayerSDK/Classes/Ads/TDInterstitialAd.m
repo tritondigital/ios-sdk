@@ -82,7 +82,7 @@
 }
 
 -(BOOL)loaded {
-    return self.ad != nil;
+    return self.ad != nil && self.ad.errorUrl == nil;
 }
 
 -(void)presentFromViewController:(UIViewController *)rootViewController {

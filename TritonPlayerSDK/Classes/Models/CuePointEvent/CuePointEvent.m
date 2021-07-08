@@ -142,6 +142,11 @@ NSString *const LegacyBuyURLKey     = @"legacy_buy_url";
         
         if (![_data objectForKey:CommonCueTitleKey]) {
             [self convertEventToSTWCue];
+        }else{
+            
+            [_data setValue:[self removeCarriageReturn:[_data objectForKey:TrackArtistNameKey]] forKey:TrackArtistNameKey];
+            
+            [_data setValue:[self removeCarriageReturn:[_data objectForKey:TrackAlbumNameKey]] forKey:TrackAlbumNameKey];
         }
     }
     
@@ -154,6 +159,10 @@ NSString *const LegacyBuyURLKey     = @"legacy_buy_url";
     if (self) {
         _type = [dictionary objectForKey:CommonCueTypeKey];
         _data = [dictionary objectForKey:CommonCueDataKey];
+        
+        [_data setValue:[self removeCarriageReturn:[_data objectForKey:TrackArtistNameKey]] forKey:TrackArtistNameKey];
+        
+        [_data setValue:[self removeCarriageReturn:[_data objectForKey:TrackAlbumNameKey]] forKey:TrackAlbumNameKey];
         
         _timestamp = [[dictionary objectForKey:CommonCueTimeStartKey] intValue];
     }
@@ -189,8 +198,11 @@ NSString *const LegacyBuyURLKey     = @"legacy_buy_url";
     if ([self.type isEqualToString:@"NowPlaying"]) {
         self.type = EventTypeTrack;
         
-        [stwCueData setObject:[self objectOrNil:[self.data objectForKey:@"Album"]] forKey:TrackAlbumNameKey];
-        [stwCueData setObject:[self objectOrNil:[self.data objectForKey:@"Artist"]] forKey:TrackArtistNameKey];
+        NSString *artist = [self removeCarriageReturn:[self.data objectForKey:@"Artist"]];
+        NSString *album =  [self removeCarriageReturn:[self.data objectForKey:@"Album"]];
+        
+        [stwCueData setObject:album forKey:TrackAlbumNameKey];
+        [stwCueData setObject:artist forKey:TrackArtistNameKey];
         [stwCueData setObject:[self objectOrNil:[self.data objectForKey:@"IMGURL"]] forKey:TrackCoverURLKey];
         [stwCueData setObject:[self objectOrNil:[self.data objectForKey:@"Label"]] forKey:TrackAlbumPublisherKey];
         [stwCueData setObject:[self objectOrNil:[self.data objectForKey:@"Title"]] forKey:CommonCueTitleKey];
@@ -271,6 +283,15 @@ NSString *const LegacyBuyURLKey     = @"legacy_buy_url";
 - (void)hasBeenExecuted
 {
 	[self.cuePointEventController cuePointEventHasBeenExecuted:self];
+}
+
+- (NSString *)removeCarriageReturn:(NSString *)data
+{
+    if ( data != nil){
+        data = [data stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet] ];
+    }
+    
+    return data;
 }
 
 @end

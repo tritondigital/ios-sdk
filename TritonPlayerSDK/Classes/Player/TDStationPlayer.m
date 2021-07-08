@@ -146,6 +146,13 @@ NSString *const SettingsStationPlayerForceDisableHLSkey = @"StationPlayerForceDi
     }
 }
 
+-(void)setAllowsExternalPlayback:(BOOL)allow {
+    
+    if ([self.streamPlayer respondsToSelector:@selector(setAllowsExternalPlayback:)]) {
+        [self.streamPlayer setAllowsExternalPlayback:allow];
+    }
+}
+
 #pragma mark - AudioPlayer
 
 -(void)mute {

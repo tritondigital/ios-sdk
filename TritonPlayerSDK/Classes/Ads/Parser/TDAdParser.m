@@ -128,6 +128,8 @@ typedef NS_ENUM(NSInteger, CreativeType) {
     if ([elementName isEqualToString:@"Ad"]) {
         self.parsedAd = [[TDAd alloc] init];
     
+    } else if ([elementName isEqualToString:@"Error"]) {
+        self.parsedAd = [[TDAd alloc] init];
     } else if ([elementName isEqualToString:@"CompanionAds"]) {
         self.companionBanners = [NSMutableArray array];
         
@@ -216,6 +218,11 @@ typedef NS_ENUM(NSInteger, CreativeType) {
     }
     else if ([elementName isEqualToString:@"VASTAdTagURI"]) {
         self.parsedAd.vastAdTagUri = [NSURL URLWithString:self.stringBuffer];
+    } else if ([elementName isEqualToString:@"Error"]){
+        [self.stringBuffer replaceOccurrencesOfString:@"[TD_DURATION]" withString:@"0" options:NSCaseInsensitiveSearch range:NSMakeRange(0, [self.stringBuffer length])];
+        [self.stringBuffer replaceOccurrencesOfString:@"[ERRORCODE]" withString:@"202" options:NSCaseInsensitiveSearch range:NSMakeRange(0, [self.stringBuffer length])];
+        
+        self.parsedAd.errorUrl = [NSURL URLWithString:self.stringBuffer];
     }
     
     [self.stringBuffer setString:@""];
@@ -229,7 +236,8 @@ typedef NS_ENUM(NSInteger, CreativeType) {
         [self.currentElement isEqualToString:@"ClickThrough"] ||
         [self.currentElement isEqualToString:@"Impression"] ||
         [self.currentElement isEqualToString:@"ClickTracking"] ||
-        [self.currentElement isEqualToString:@"VASTAdTagURI"]) {
+        [self.currentElement isEqualToString:@"VASTAdTagURI"] ||
+        [self.currentElement isEqualToString:@"Error"]) {
 
         
         NSString *cdataString = [[NSString alloc] initWithData:CDATABlock encoding:NSUTF8StringEncoding];

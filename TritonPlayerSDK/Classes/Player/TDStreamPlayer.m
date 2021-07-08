@@ -255,6 +255,13 @@ NSString *const SettingsStreamPlayerSBMURLKey = @"StreamPlayerSBMURL";
     }
 }
 
+- (void)allowsExternalPlayback:(BOOL)allow {
+    
+    if ([self.player respondsToSelector:@selector(setAllowsExternalPlayback:)]) {
+        [self.player setAllowsExternalPlayback:allow];
+    }
+}
+
 -(void)cancelBackgoundTasks {
     if (self.profile == kTDStreamProfileFLV) {
         [(TDFLVPlayer*)self.player cancelBackgoundTasks];

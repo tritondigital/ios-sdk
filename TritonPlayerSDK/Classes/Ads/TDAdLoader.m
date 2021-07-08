@@ -11,6 +11,7 @@
 #import "TDAdRequestURLBuilder.h"
 #import "TDAdUtils.h"
 #import "TDAd.h"
+#import "TritonSDKUtils.h"
 
 NSString *const TDErrorDomain = @"com.tritondigital.TritonMobileSDK";
 NSInteger noRequest = 0;
@@ -46,6 +47,11 @@ NSMutableArray *mediaImpressionUrls = nil;
                 return;
             }
             
+            if(ad.errorUrl){
+                completionHandler(nil, [TDAdUtils errorWithCode:TDErrorCodeNoInventory andDescription:@"No ad to display"]);
+                [TritonSDKUtils getRequestFromURL:ad.errorUrl];
+                return;
+            }
              if(mediaImpressionUrls == nil) {
                  mediaImpressionUrls = [[NSMutableArray alloc] init];
              }
