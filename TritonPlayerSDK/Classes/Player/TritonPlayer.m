@@ -124,6 +124,9 @@ NSString *const InfoAlternateMountNameKey               = @"alternateMount";
 @property (nonatomic, strong) NSTimer *playDebouncingTimer;
 @property (nonatomic, strong) NSOperationQueue *playerOperationQueue;
 
+//Using a property to store the external playback setting because the mediaPlayer instance will be nil when play method is called.
+@property (nonatomic, assign) BOOL shouldAllowExternalPlayback;
+
 @end
 
 @implementation TritonPlayer
@@ -333,6 +336,8 @@ NSString *const InfoAlternateMountNameKey               = @"alternateMount";
         }
 
         [self.mediaPlayer play];
+        //Set the allowsExternalPlayback flag for the current media player if it's supported.
+        [self.mediaPlayer setAllowsExternalPlayback: self.shouldAllowExternalPlayback];
         
         [[NSRunLoop currentRunLoop] addPort:[NSMachPort port] forMode:NSDefaultRunLoopMode];
         while (_active) {
