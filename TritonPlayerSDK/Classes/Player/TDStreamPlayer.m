@@ -255,7 +255,7 @@ NSString *const SettingsStreamPlayerSBMURLKey = @"StreamPlayerSBMURL";
     }
 }
 
-- (void)allowsExternalPlayback:(BOOL)allow {
+- (void)setAllowsExternalPlayback:(BOOL)allow {
     
     if ([self.player respondsToSelector:@selector(setAllowsExternalPlayback:)]) {
         [self.player setAllowsExternalPlayback:allow];
