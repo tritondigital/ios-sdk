@@ -47,7 +47,7 @@ NSMutableArray *mediaImpressionUrls = nil;
                 return;
             }
             
-            if(ad.errorUrl){
+            if(ad.errorUrl && !ad.mediaURL && !ad.vastAdTagUri){
                 completionHandler(nil, [TDAdUtils errorWithCode:TDErrorCodeNoInventory andDescription:@"No ad to display"]);
                 [TritonSDKUtils getRequestFromURL:ad.errorUrl];
                 return;

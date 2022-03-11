@@ -54,8 +54,29 @@
         [weakSelf.tritonPlayer stop];
     };
     
+    // Do the same for the rewind button
+    self.playerViewController.rewindFiredBlock = ^(UIButton *button) {
+        NSLog(@"Current Time %f", weakSelf.tritonPlayer.currentPlaybackTime );
+        [weakSelf.tritonPlayer seekToTimeInterval:weakSelf.tritonPlayer.currentPlaybackTime - 10.0];
+    };
+    
+    // Do the same for the forward button
+    self.playerViewController.forwardFiredBlock = ^(UIButton *button) {
+        NSLog(@"Current Time %f", weakSelf.tritonPlayer.currentPlaybackTime );
+        [weakSelf.tritonPlayer seekToTimeInterval:weakSelf.tritonPlayer.currentPlaybackTime + 10.0];
+    };
+    
+    // Do the same for the live button
+    self.playerViewController.liveFiredBlock = ^(UIButton *button) {
+        NSLog(@"Current Time %f", weakSelf.tritonPlayer.currentPlaybackTime );
+        //[weakSelf.tritonPlayer seekToTime:weakSelf.tritonPlayer.latestPlaybackTime];
+        
+        [weakSelf.tritonPlayer seekToTime:weakSelf.tritonPlayer.latestPlaybackTime completionHandler:^(BOOL finished) {
+            NSLog(@"Seek Done");
+        }];
+    };
     // The initial mount
-    self.playerViewController.mountName = @"MOBILEFM_AACV2";
+    self.playerViewController.mountName = @"TRITONRADIOMUSICAAC_RW";
 }
 
 -(void)viewDidDisappear:(BOOL)animated {
@@ -72,7 +93,8 @@
                                SettingsMountKey : self.playerViewController.mountName,
                                SettingsEnableLocationTrackingKey : @(YES),
                                SettingsStreamParamsExtraKey : @{@"banners": @"300x50,320x50"},
-                               SettingsTtagKey : @[@"mobile:ios", @"triton:sample"]
+                               SettingsTtagKey : @[@"mobile:ios", @"triton:sample"],
+                               //SettingsTimeshiftEnabledKey: @(YES)
                                // @"ExtraForceDisableHLS" : @(NO)
                                //SettingsLowDelayKey: @"60"
                                };
@@ -107,6 +129,10 @@
     NSLog(@"Received CuePoint");
     
     [self.playerViewController loadCuePoint:cuePointEvent];
+}
+
+- (void)player:(TritonPlayer *)player didReceiveAnalyticsEvent:(AVPlayerItemAccessLogEvent *)analyticsEvent {
+    NSLog(@"Received Analytics Event -- Indicated bitrate is %f", [analyticsEvent indicatedBitrate]);
 }
 
 -(void)player:(TritonPlayer *)player didChangeState:(TDPlayerState)state {

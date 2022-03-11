@@ -17,6 +17,7 @@
 #import "TritonPlayerConstants.h"
 #import "Logs.h"
 
+#import <AVFoundation/AVFoundation.h>
 NSString *const SettingsStreamPlayerProfileKey = @"StreamPlayerProfile";
 NSString *const SettingsStreamPlayerUserAgentKey = @"StreamPlayerUserAgent";
 NSString *const SettingsStreamPlayerStreamURLKey = @"StreamPlayerStreamURL";
@@ -48,6 +49,11 @@ NSString *const SettingsStreamPlayerSBMURLKey = @"StreamPlayerSBMURL";
 
 // The stream token
 @property (copy, nonatomic) NSString *token;
+@property (assign, nonatomic) BOOL authRegisteredUser;
+
+@property (copy, nonatomic) NSString *authUserId;
+@property (copy, nonatomic) NSString *authKeyId;
+@property (copy, nonatomic) NSString *authSecretKey;
 
 @property (assign, nonatomic) TDPlayerState state;
 
@@ -57,11 +63,13 @@ NSString *const SettingsStreamPlayerSBMURLKey = @"StreamPlayerSBMURL";
 
 @property (strong, nonatomic) NSMutableArray<id<TDMediaPlayback>>* oldPlayers;
 
+@property (assign, nonatomic) BOOL timeshiftEnabled;
 @end
 
 @implementation TDStreamPlayer
 
 @synthesize currentPlaybackTime;
+@synthesize latestPlaybackTime;
 @synthesize playbackDuration;
 @synthesize delegate;
 @synthesize error;
@@ -92,6 +100,11 @@ NSString *const SettingsStreamPlayerSBMURLKey = @"StreamPlayerSBMURL";
       self.tTags = settings[SettingsTtagKey];
       self.lowDelay = [settings[SettingsLowDelayKey] intValue];
       self.token = settings[StreamParamExtraAuthorizationTokenKey];
+        self.authUserId = settings[StreamParamExtraAuthorizationUserId];
+        self.authRegisteredUser = settings[StreamParamExtraAuthorizationRegisteredUser];
+        self.authKeyId = settings[StreamParamExtraAuthorizationKeyId];
+        self.authSecretKey = settings[StreamParamExtraAuthorizationSecretKey];
+        self.timeshiftEnabled = settings[SettingsTimeshiftEnabledKey];
 
     
       // Set the correct profile. If profile is kTDStreamProfileOther, try to obtain the type by looking at the url suffix.
@@ -172,6 +185,7 @@ NSString *const SettingsStreamPlayerSBMURLKey = @"StreamPlayerSBMURL";
     if ([self canChangeStateWithAction:kTDPlayerActionPlay]) {
         
         if (self.state != kTDPlayerStatePaused) {
+            self.token = [TritonPlayerUtils generateJWTToken:self.extraQueryParameters andAuthKeyId:self.authKeyId andAuthUserId:self.authUserId andAuthRegisteredUser:self.authRegisteredUser andToken:self.token andAuthSercterKey:self.authSecretKey];
             NSString *queryParameters = [TritonPlayerUtils targetingQueryParametersWithLocation:[TDLocationManager sharedManager].targetingLocation andExtraParameters:self.extraQueryParameters withTtags:self.tTags andToken:self.token];
             
             if ([queryParameters rangeOfString:@"banners"].location == NSNotFound) {
@@ -212,6 +226,9 @@ NSString *const SettingsStreamPlayerSBMURLKey = @"StreamPlayerSBMURL";
                 [self.player updateSettings:@{SettingsMediaPlayerUserAgentKey : self.userAgent,
                                               SettingsMediaPlayerStreamURLKey : connectingToURL,
                                               SettingsMediaPlayerSBMURLKey : self.sbmURL}];
+            } else if (self.profile == KTDStreamProfileHLSTimeshift){
+                [self.player updateSettings:@{SettingsMediaPlayerUserAgentKey : self.userAgent,
+                                              SettingsMediaPlayerStreamURLKey : connectingToURL}];
             } else {
                 [self.player updateSettings:@{SettingsMediaPlayerStreamURLKey : connectingToURL}];
             }
@@ -297,6 +314,9 @@ NSString *const SettingsStreamPlayerSBMURLKey = @"StreamPlayerSBMURL";
     return [self.player currentPlaybackTime];
 }
 
+-(CMTime)latestPlaybackTime{
+    return [self.player latestPlaybackTime];
+}
 -(NSTimeInterval)playbackDuration {
     return [self.player playbackDuration];
 }
@@ -314,6 +334,12 @@ NSString *const SettingsStreamPlayerSBMURLKey = @"StreamPlayerSBMURL";
 -(void)mediaPlayer:(id<TDMediaPlayback>)player didReceiveCuepointEvent:(CuePointEvent *)cuePointEvent {
     if ([self.delegate respondsToSelector:@selector(mediaPlayer:didReceiveCuepointEvent:)]) {
         [self.delegate mediaPlayer:self didReceiveCuepointEvent:cuePointEvent];
+    }
+}
+
+-(void)mediaPlayer:(id<TDMediaPlayback>)player didReceiveAnalyticsEvent:(AVPlayerItemAccessLogEvent *)analyticsEvent {
+    if ([self.delegate respondsToSelector:@selector(mediaPlayer:didReceiveAnalyticsEvent:)]) {
+        [self.delegate mediaPlayer:self didReceiveAnalyticsEvent:analyticsEvent];
     }
 }
 
@@ -349,6 +375,19 @@ NSString *const SettingsStreamPlayerSBMURLKey = @"StreamPlayerSBMURL";
             
         default:
             break;
+    }
+    
+    
+    if(self.profile == KTDStreamProfileOther)
+    {
+        if(newState == kTDPlayerStatePlaying)
+        {
+            [[TDAnalyticsTracker sharedTracker] trackOnDemandSuccess];
+        }
+        else if(newState == kTDPlayerStateError)
+        {
+            [[TDAnalyticsTracker sharedTracker] trackOnDemandError];
+        }
     }    
 }
 

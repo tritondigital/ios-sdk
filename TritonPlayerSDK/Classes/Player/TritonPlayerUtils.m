@@ -42,7 +42,7 @@
     
     NSMutableString *queryParametersString = [NSMutableString stringWithCapacity:512];
     //Add Listener id
-    [queryParametersString appendFormat:@"uuid=%@&", [TritonPlayerUtils getListenerId]];
+    [queryParametersString appendFormat:@"lsid=%@&", [TritonPlayerUtils getListenerId]];
     
     
     // Append tdsdk
@@ -77,4 +77,14 @@
     return [queryParametersString stringByReplacingCharactersInRange:NSMakeRange(queryParametersString.length-1, 1) withString:@""];
 }
 
++ (NSString *)generateJWTToken:(NSDictionary *) targetingParams andAuthKeyId:(NSString *) authKeyId andAuthUserId:(NSString*) authUserId andAuthRegisteredUser:(BOOL) authRegisteredUser andToken:(NSString*) token andAuthSercterKey:(NSString*) authSecretKey {
+    
+    if((authKeyId != nil && authKeyId.length > 0) || (authSecretKey != nil && authSecretKey.length > 0) )
+    {
+        token = [TDAuthUtils createJWTTokenWithSecretKey:authSecretKey
+                                                    andSecretKeyId:authKeyId andRegisteredUser:authRegisteredUser andUserId:authUserId andTargetingParameters:targetingParams];
+    }
+    
+    return token;
+}
 @end

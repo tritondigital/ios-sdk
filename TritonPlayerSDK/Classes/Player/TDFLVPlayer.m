@@ -52,6 +52,7 @@ static UInt32 bufferTime = kLowDelaySecondsStart+1;
 @implementation TDFLVPlayer
 
 @synthesize currentPlaybackTime;
+@synthesize latestPlaybackTime;
 @synthesize playbackDuration;
 @synthesize delegate;
 @synthesize error = _error;

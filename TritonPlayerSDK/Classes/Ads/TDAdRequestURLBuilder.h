@@ -16,7 +16,10 @@ typedef NS_ENUM(NSInteger, TDGender) {
     kTDGenderFemale,
     
     /// Gender is male
-    kTDGenderMale
+    kTDGenderMale,
+    
+    /// Gender is other
+    kTDGenderOther
 };
 
 /// The type of on-demand ad
@@ -82,7 +85,7 @@ typedef NS_ENUM(NSInteger, TDAssetType) {
 /// @name Required parameters
 
 /**
- * Either the Station ID or station name must be specified when calling the On-Demand Ad Request Service. While both IDs and names are supported, it is strongly recommended that clients use station names.
+ * Either the Station ID or station name must be specified when calling the On-Demand Ad Request Service. While both IDs and names are supported, it is strongly recommended that clients use the station ID.
  * 
  * If both ID and name are provided, the name is used (there is no validation check that the ID matches the name). Triton Digital assigns station IDs and names when setting up a station.
  */

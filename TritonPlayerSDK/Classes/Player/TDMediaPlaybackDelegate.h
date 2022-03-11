@@ -17,6 +17,7 @@
 
 -(void)mediaPlayer:(id<TDMediaPlayback>)player didChangeState:(TDPlayerState)newState;
 -(void)mediaPlayer:(id<TDMediaPlayback>)player didReceiveCuepointEvent:(CuePointEvent *)cuePointEvent;
+-(void)mediaPlayer:(id<TDMediaPlayback>)player didReceiveAnalyticsEvent:(AVPlayerItemAccessLogEvent *)event;
 @optional
 
 -(void)mediaPlayer:(id<TDMediaPlayback>)player didReceiveInfo:(TDPlayerInfo)info andExtra:(NSDictionary *)extra;

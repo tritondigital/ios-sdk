@@ -41,9 +41,14 @@ NSString *const SettingsStationPlayerForceDisableHLSkey = @"StationPlayerForceDi
 @property (copy, nonatomic) NSDictionary *extraQueryParameters;
 @property (copy, nonatomic) NSArray *tTags;
 @property (copy, nonatomic) NSString *playerServicesRegion;
+@property (assign, nonatomic) BOOL timeshiftEnabled;
 
 // The stream token
 @property (copy, nonatomic) NSString *token;
+@property (assign, nonatomic) BOOL authRegisteredUser;
+@property (copy, nonatomic) NSString *authUserId;
+@property (copy, nonatomic) NSString *authKeyId;
+@property (copy, nonatomic) NSString *authSecretKey;
 
 @property (strong, nonatomic) NSMutableDictionary *settings;
 
@@ -63,6 +68,7 @@ NSString *const SettingsStationPlayerForceDisableHLSkey = @"StationPlayerForceDi
 @implementation TDStationPlayer
 
 @synthesize currentPlaybackTime;
+@synthesize latestPlaybackTime;
 @synthesize playbackDuration;
 @synthesize delegate;
 @synthesize error = _error;
@@ -96,7 +102,12 @@ NSString *const SettingsStationPlayerForceDisableHLSkey = @"StationPlayerForceDi
        self.lowDelay = [settings[SettingsLowDelayKey] intValue];
        self.forceDisableHLS = [settings[SettingsStationPlayerForceDisableHLSkey] boolValue];
        self.token           = settings[StreamParamExtraAuthorizationTokenKey];
+        self.authSecretKey   = settings[StreamParamExtraAuthorizationSecretKey];
+        self.authKeyId       = settings[StreamParamExtraAuthorizationKeyId];
+        self.authRegisteredUser = [settings[StreamParamExtraAuthorizationRegisteredUser] boolValue];
+        self.authUserId = settings[StreamParamExtraAuthorizationUserId];
        self.playerServicesRegion = settings[SettingsPlayerServicesRegion];
+        self.timeshiftEnabled = [settings[SettingsTimeshiftEnabledKey] boolValue];
     }
 }
 
@@ -171,6 +182,9 @@ NSString *const SettingsStationPlayerForceDisableHLSkey = @"StationPlayerForceDi
     return [self.streamPlayer currentPlaybackTime];
 }
 
+-(CMTime)latestPlaybackTime{
+    return [self.streamPlayer latestPlaybackTime];
+}
 -(NSTimeInterval)playbackDuration {
     return [self.streamPlayer playbackDuration];
 }
@@ -303,7 +317,16 @@ NSString *const SettingsStationPlayerForceDisableHLSkey = @"StationPlayerForceDi
     
     self.settings = [NSMutableDictionary dictionaryWithCapacity:9];
     
-    if ([self.provisioning.mountFormat isEqualToString:kMountFormatFLV]) {
+    if ( self.timeshiftEnabled ){
+        self.settings[SettingsStreamPlayerProfileKey] = @(KTDStreamProfileHLSTimeshift);
+        connectingToURL = [NSMutableString stringWithFormat:@"%@/%@.m3u8", @"https://playerservices.streamtheworld.com/api/cloud-redirect", self.provisioning.mountName];
+        self.settings[SettingsStreamPlayerStreamURLKey] = connectingToURL;
+        self.settings[SettingsStreamPlayerUserAgentKey] = self.userAgent;
+        self.settings[SettingsStreamParamsExtraKey] = self.extraQueryParameters;
+        self.settings[SettingsTtagKey] = self.tTags;
+        self.settings[SettingsTimeshiftEnabledKey] = @(self.timeshiftEnabled);
+        
+    }else if ([self.provisioning.mountFormat isEqualToString:kMountFormatFLV]) {
         
         self.settings[SettingsStreamPlayerProfileKey] = @(kTDStreamProfileFLV);
         self.settings[SettingsStreamPlayerUserAgentKey] = self.userAgent;
@@ -311,6 +334,10 @@ NSString *const SettingsStationPlayerForceDisableHLSkey = @"StationPlayerForceDi
         self.settings[SettingsStreamParamsExtraKey] = self.extraQueryParameters;
         self.settings[SettingsTtagKey] = self.tTags;
         self.settings[StreamParamExtraAuthorizationTokenKey] = self.token;
+        self.settings[StreamParamExtraAuthorizationSecretKey] = self.authSecretKey;
+        self.settings[StreamParamExtraAuthorizationUserId] = self.authUserId;
+        self.settings[StreamParamExtraAuthorizationKeyId] = self.authKeyId;
+        self.settings[StreamParamExtraAuthorizationRegisteredUser] = @(self.authRegisteredUser);
         self.settings[SettingsLowDelayKey] = [NSNumber numberWithInt:self.lowDelay];
         self.settings[SettingsBitrateKey] = self.provisioning.mountBitrate;
         
@@ -332,6 +359,10 @@ NSString *const SettingsStationPlayerForceDisableHLSkey = @"StationPlayerForceDi
         self.settings[SettingsStreamParamsExtraKey] = self.extraQueryParameters;
         self.settings[SettingsTtagKey] = self.tTags;
         self.settings[StreamParamExtraAuthorizationTokenKey] = self.token;
+        self.settings[StreamParamExtraAuthorizationSecretKey] = self.authSecretKey;
+        self.settings[StreamParamExtraAuthorizationUserId] = self.authUserId;
+        self.settings[StreamParamExtraAuthorizationKeyId] = self.authKeyId;
+        self.settings[StreamParamExtraAuthorizationRegisteredUser] = @(self.authRegisteredUser);
         
     }
 
@@ -394,6 +425,11 @@ NSString *const SettingsStationPlayerForceDisableHLSkey = @"StationPlayerForceDi
     }
 }
 
+-(void)mediaPlayer:(id<TDMediaPlayback>)player didReceiveAnalyticsEvent:(AVPlayerItemAccessLogEvent *)analyticsEvent {
+    if ([self.delegate respondsToSelector:@selector(mediaPlayer:didReceiveAnalyticsEvent:)]) {
+        [self.delegate mediaPlayer:self didReceiveAnalyticsEvent:analyticsEvent];
+    }
+}
 
 -(void)mediaPlayer:(id<TDMediaPlayback>)player didChangeState:(TDPlayerState)newState {
     switch (newState) {

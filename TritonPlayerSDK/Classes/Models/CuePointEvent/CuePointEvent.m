@@ -184,6 +184,11 @@ NSString *const LegacyBuyURLKey     = @"legacy_buy_url";
         
         if (![_data objectForKey:CommonCueTitleKey]) {
             [self convertEventToSTWCue];
+        } else{
+            
+            [_data setValue:[self removeCarriageReturn:[_data objectForKey:TrackArtistNameKey]] forKey:TrackArtistNameKey];
+            
+            [_data setValue:[self removeCarriageReturn:[_data objectForKey:TrackAlbumNameKey]] forKey:TrackAlbumNameKey];
         }
     }
     

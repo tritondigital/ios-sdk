@@ -20,7 +20,8 @@ extern NSString *const SettingsStreamPlayerSBMURLKey;
 typedef NS_ENUM(NSInteger, TDStreamProfile) {
     kTDStreamProfileFLV,
     KTDStreamProfileHLS,
-    KTDStreamProfileOther
+    KTDStreamProfileOther,
+    KTDStreamProfileHLSTimeshift
 };
 
 @interface TDStreamPlayer : NSObject<TDMediaPlayback>

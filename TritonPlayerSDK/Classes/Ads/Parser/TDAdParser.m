@@ -194,6 +194,14 @@ typedef NS_ENUM(NSInteger, CreativeType) {
         if (self.currentCreativeType == kCreativeTypeCompanion) {
             self.currentBanner.contentHTML = [self.stringBuffer copy];
         }
+    } else if ([elementName isEqualToString:@"StaticResource"]) {
+        // If the StaticResource is from a companion banner set the url
+        if (self.currentCreativeType == kCreativeTypeCompanion) {
+            if ([self.stringBuffer rangeOfString:@"https"].location == NSNotFound) {
+                [self.stringBuffer stringByReplacingOccurrencesOfString:@"http" withString:@"https"];
+            }
+            self.currentBanner.contentURL = [NSURL URLWithString:self.stringBuffer];
+        }
     } else if ([elementName isEqualToString:@"MediaFile"] && self.parsedAd.mediaURL == nil) {
         if ([self.stringBuffer rangeOfString:@"https"].location == NSNotFound) {
             [self.stringBuffer stringByReplacingOccurrencesOfString:@"http" withString:@"https"];
@@ -232,6 +240,7 @@ typedef NS_ENUM(NSInteger, CreativeType) {
     
     if ([self.currentElement isEqualToString:@"IFrameResource"] ||
         [self.currentElement isEqualToString:@"HTMLResource"] ||
+        [self.currentElement isEqualToString:@"StaticResource"] ||
         [self.currentElement isEqualToString:@"MediaFile"] ||
         [self.currentElement isEqualToString:@"ClickThrough"] ||
         [self.currentElement isEqualToString:@"Impression"] ||
@@ -249,6 +258,7 @@ typedef NS_ENUM(NSInteger, CreativeType) {
     
     if ([self.currentElement isEqualToString:@"IFrameResource"] ||
         [self.currentElement isEqualToString:@"HTMLResource"] ||
+        [self.currentElement isEqualToString:@"StaticResource"] ||
         [self.currentElement isEqualToString:@"MediaFile"] ||
         [self.currentElement isEqualToString:@"ClickThrough"] ||
         [self.currentElement isEqualToString:@"Impression"] ||

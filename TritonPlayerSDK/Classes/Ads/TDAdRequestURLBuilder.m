@@ -239,17 +239,32 @@ NSString *const kCapabilityBanners = @"banners";
 }
 
 -(void)setGender:(TDGender)gender {
-    if (gender == kTDGenderFemale) {
-        [self.requestParameters setObject:@"f" forKey:kTargetingGender];
-    
-    } else if (gender == kTDGenderMale) {
+    switch (gender) {
+        case kTDGenderOther:
+            [self.requestParameters setObject:@"o" forKey:kTargetingGender];
+            break;
+        case kTDGenderMale:
         [self.requestParameters setObject:@"m" forKey:kTargetingGender];
+            break;
+        case kTDGenderFemale:
+            [self.requestParameters setObject:@"f" forKey:kTargetingGender];
+            break;
+        default:
+            break;
     }
 }
 
 -(TDGender)gender {
     NSString *val = [self.requestParameters objectForKey:kTargetingGender];
-    return val ? ([val isEqualToString:@"m"] ? kTDGenderMale : kTDGenderFemale) : kTDGenderNotDefined;
+    if([val isEqualToString:@"m"]) {
+        return kTDGenderMale;
+    } else if ([val isEqualToString:@"f"]) {
+        return kTDGenderFemale;
+    } else if ([val isEqualToString:@"o"]) {
+        return kTDGenderOther;
+    } else {
+        return kTDGenderNotDefined;
+    }
 }
 
 #pragma mark - Application targeting

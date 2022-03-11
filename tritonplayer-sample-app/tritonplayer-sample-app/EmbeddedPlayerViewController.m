@@ -11,6 +11,7 @@
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (weak, nonatomic) IBOutlet UIButton *btnPlay;
 @property (weak, nonatomic) IBOutlet UIButton *btnStop;
+@property (weak, nonatomic) IBOutlet UIButton *btnRewind;
 
 @property (weak, nonatomic) IBOutlet UILabel *labelCuePointType;
 
@@ -152,6 +153,26 @@ int bannerX;
     }
 }
 
+- (IBAction)rewindButtonPressed:(id)sender {
+    // Call container handling block
+    if (self.rewindFiredBlock) {
+        self.rewindFiredBlock(sender);
+    }
+}
+
+- (IBAction)forwardButtonPressed:(id)sender {
+    // Call container handling block
+    if (self.forwardFiredBlock) {
+        self.forwardFiredBlock(sender);
+    }
+}
+
+- (IBAction)liveButtonPressed:(id)sender {
+    // Call container handling block
+    if (self.liveFiredBlock) {
+        self.liveFiredBlock(sender);
+    }
+}
 #pragma mark - Receiving and processing stream metadata
 
 -(void)loadCuePoint:(CuePointEvent *)cuePoint {
@@ -209,6 +230,7 @@ int bannerX;
             self.labelPlayerState.text = @"Connecting to station...";
             self.btnPlay.enabled = NO;
             self.btnStop.enabled = NO;
+            self.btnRewind.enabled = NO;
             self.activityIndicator.hidden = NO;
             [self.activityIndicator startAnimating];
             break;
@@ -217,6 +239,7 @@ int bannerX;
             self.labelPlayerState.text = @"Playing";
             self.btnStop.enabled = YES;
             self.btnPlay.enabled = NO;
+            self.btnRewind.enabled = YES;
             [self.activityIndicator stopAnimating];
             self.activityIndicator.hidden = YES;
 						_endTimer =  [NSDate date];
