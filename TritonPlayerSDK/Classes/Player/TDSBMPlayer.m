@@ -102,6 +102,10 @@ NSString *const SettingsSBMURLKey = @"SBMURL";
     return CACurrentMediaTime() - self.startTime;
 }
 
+-(CMTime)latestPlaybackTime {
+    return CMTimeMake(1,10);
+}
+
 -(void)setSynchronizationOffset:(NSTimeInterval)synchronizationOffset {
     _synchronizationOffset = synchronizationOffset;
     PLAYER_LOG(@"Sync offset is %f", synchronizationOffset);

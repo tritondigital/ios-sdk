@@ -9,6 +9,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import <AudioToolbox/AudioQueue.h>
 #import <CoreMedia/CMTime.h>
+#import <AVFoundation/AVFoundation.h>
 
 // SDK Version
 extern NSString *const TritonSDKVersion;
@@ -38,7 +39,7 @@ extern NSString *const StreamParamExtraCountryKey; // ISO 3166-1 alpha-2 two-let
 extern NSString *const StreamParamExtraAgeKey; // Integer value: 1 to 125
 extern NSString *const StreamParamExtraDateOfBirthKey; // String formatted as YYYY-MM-DD
 extern NSString *const StreamParamExtraYearOfBirthKey; // Integer value: 1900 to 2005
-extern NSString *const StreamParamExtraGenderKey; // “m” or “f” (case-sensitive)
+extern NSString *const StreamParamExtraGenderKey; // “m” or “f” or ”o” (case-sensitive)
 
 extern NSString *const SettingsDebouncingKey; // Play debouncing in seconds:  float value e.g: 0.2
 
@@ -50,6 +51,12 @@ extern NSString *const StreamParamExtraBannersKey; // See Streaming guide 5.3.1 
 
 /// Token authorization
 extern NSString *const StreamParamExtraAuthorizationTokenKey; // An string with a JST token.
+extern NSString * const StreamParamExtraAuthorizationUserId;
+extern NSString * const StreamParamExtraAuthorizationRegisteredUser;
+extern NSString * const StreamParamExtraAuthorizationKeyId;
+extern NSString * const StreamParamExtraAuthorizationSecretKey;
+
+extern NSString *const SettingsTimeshiftEnabledKey;
 
 
 
@@ -172,6 +179,7 @@ extern NSString *const InfoAlternateMountNameKey;
  */
 
 - (void)player:(TritonPlayer *) player didReceiveCuePointEvent:(CuePointEvent *)cuePointEvent;
+- (void)player:(TritonPlayer *) player didReceiveAnalyticsEvent:(AVPlayerItemAccessLogEvent *)analyticsEvent;
 
 /// @name Handling interruptions
 
@@ -222,6 +230,10 @@ extern NSString *const InfoAlternateMountNameKey;
  */
 
 @property (readonly) NSTimeInterval currentPlaybackTime;
+/**
+ * Returns the laters CMTime in a seekable range.
+ */
+@property (readonly) CMTime latestPlaybackTime;
 
 /**
  * Tells whether the player is streaming audio.

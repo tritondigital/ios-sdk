@@ -27,6 +27,9 @@ typedef NS_ENUM(NSInteger, EmbeddedTransportMethod) {
 
 @property (copy, nonatomic) ControlFiredBlock playFiredBlock;
 @property (copy, nonatomic) ControlFiredBlock stopFiredBlock;
+@property (copy, nonatomic) ControlFiredBlock rewindFiredBlock;
+@property (copy, nonatomic) ControlFiredBlock forwardFiredBlock;
+@property (copy, nonatomic) ControlFiredBlock liveFiredBlock;
 
 @property (assign, nonatomic) EmbeddedPlayerState playerState;
 

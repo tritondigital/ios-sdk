@@ -14,6 +14,7 @@
 
 @property (readonly, assign) NSTimeInterval currentPlaybackTime;
 @property (readonly, assign) NSTimeInterval playbackDuration;
+@property (readonly, assign) CMTime latestPlaybackTime;
 
 -(void)play;
 

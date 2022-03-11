@@ -6,6 +6,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreMedia/CMTime.h>
 
 /// An NSURL representing the side-band metadata 
 extern NSString *const SettingsSBMURLKey;
@@ -87,6 +88,7 @@ extern NSString *const SettingsSBMURLKey;
  * Cue points delivered by the TDSBMPlayer are synchronized with the side-band metadata current playback time by default. 
  * Depending on the time it takes to instantiate the application's media player and the companion TDSBMPlayer, there can be a time offset between both.
  */
+@property (assign, readonly) CMTime latestPlaybackTime;
 
 @property (assign, nonatomic) NSTimeInterval synchronizationOffset;
 

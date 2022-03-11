@@ -48,6 +48,7 @@ NSString *const SettingsMediaPlayerStreamURLKey = @"MediaPlayerStreamURL";
 @implementation TDMediaPlayer
 
 @synthesize currentPlaybackTime;
+@synthesize latestPlaybackTime;
 @synthesize playbackDuration;
 @synthesize delegate;
 @synthesize error = _error;
@@ -138,6 +139,15 @@ NSString *const SettingsMediaPlayerStreamURLKey = @"MediaPlayerStreamURL";
     return CMTimeGetSeconds(self.mediaPlayer.currentItem.duration);
 }
 
+-(CMTime)latestPlaybackTime {
+    NSValue *value = self.mediaPlayer.currentItem.seekableTimeRanges.lastObject;
+    if (value) {
+        CMTimeRange seekableRange = [value CMTimeRangeValue];
+        return CMTimeRangeGetEnd(seekableRange);
+    }else{
+        return CMTimeMake(1,10);
+    }
+}
 #pragma mark - Reproduction flow
 
 -(void)play {
@@ -465,17 +475,23 @@ BOOL observersAdded= NO;
 
 - (void)playerItemAccessLogEntryAddedNotification:(NSNotification *)notification {
     PLAYER_LOG(@"playerItemAccessLogEntryAddedNotification");
+    __weak TDMediaPlayer *weakSelf = self;
     AVPlayerItem *thisItem = self.mediaPlayer.currentItem;
     
     for (AVPlayerItemAccessLogEvent *event  in [[thisItem accessLog] events]) {
         PLAYER_LOG(@"indicated bitrate is %f", [event indicatedBitrate]);
         PLAYER_LOG(@"observerd bitrate is %f", [event observedBitrate]);
+        PLAYER_LOG(@"switch bitrate is %f", [event switchBitrate]);
         PLAYER_LOG(@"server address is %@", [event serverAddress]);
         PLAYER_LOG(@"playbackSessionID is %@", [event playbackSessionID]);
 
         if ([[event URI] length])
         {
             PLAYER_LOG(@"AVPlayer URI is %@", [event URI]);
+        }
+        
+        if ([weakSelf.delegate respondsToSelector:@selector(mediaPlayer:didReceiveAnalyticsEvent:)]) {
+            [weakSelf.delegate performSelector:@selector(mediaPlayer:didReceiveAnalyticsEvent:) withObject:weakSelf withObject:event];
         }
     }
 }

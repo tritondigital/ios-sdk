@@ -13,4 +13,5 @@
 
 + (NSString *) getListenerId;
 + (NSString *)targetingQueryParametersWithLocation:(CLLocation *) location andExtraParameters:(NSDictionary *) extraParameters withTtags:(NSArray*) tTags andToken:(NSString*) token;
++(NSString *)generateJWTToken:(NSDictionary *) targetingParams andAuthKeyId:(NSString *) authKeyId andAuthUserId:(NSString*) authUserId andAuthRegisteredUser:(BOOL) authRegisteredUser andToken:(NSString*) token andAuthSercterKey:(NSString*) authSecretKey;
 @end

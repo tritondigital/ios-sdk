@@ -18,7 +18,7 @@
 
 
 
-NSString *const TritonSDKVersion                        = @"2.6.9"; //TritonSDKVersion
+NSString *const TritonSDKVersion                        = @"2.7.1"; //TritonSDKVersion
 
 CGFloat   const  kDefaultPlayerDebouncing               = 0.2f; //Default debouncing for the Play action, in seconds
 
@@ -41,6 +41,7 @@ NSString *const SettingsDebouncingKey                   = @"DebouncingKey";
 NSString *const SettingsExtraForceDisableHLSKey         = @"ExtraForceDisableHLS";
 NSString *const SettingsBitrateKey                      = @"MountBitrate";
 NSString *const SettingsDistributionParameterKey        = @"DistributionParameter";
+NSString *const SettingsTimeshiftEnabledKey             = @"TimeshiftEnabled";
 
 /// Extra parameters for location targeting
 
@@ -58,6 +59,10 @@ NSString *const StreamParamExtraCustomSegmentIdKey      = @"csegid";
 NSString *const StreamParamExtraBannersKey              = @"banners";
 
 NSString *const StreamParamExtraAuthorizationTokenKey   = @"tdtok";
+NSString * const StreamParamExtraAuthorizationUserId         = @"auth_user_id";
+NSString * const StreamParamExtraAuthorizationRegisteredUser = @"auth_registered_user";
+NSString * const StreamParamExtraAuthorizationKeyId          = @"auth_key_id";
+NSString * const StreamParamExtraAuthorizationSecretKey      = @"auth_secret_key";
 
 NSString *const TritonPlayerDomain                      = @"com.tritondigital.error";
 
@@ -88,6 +93,10 @@ NSString *const InfoAlternateMountNameKey               = @"alternateMount";
 @property (nonatomic, copy) NSDictionary* extraQueryParameters;
 @property (nonatomic, copy) NSArray* tTags;
 @property (nonatomic, strong) NSString *token;
+@property (nonatomic, assign) BOOL authRegisteredUser;
+@property (nonatomic, strong) NSString *authUserId;
+@property (nonatomic, strong) NSString *authKeyId;
+@property (nonatomic, strong) NSString *authSecretKey;
 
 // These parameters are used for content protection but it's been a while since they are not used. Eventually they may be removed.
 @property (nonatomic, strong) NSString *referrerURL;
@@ -97,6 +106,7 @@ NSString *const InfoAlternateMountNameKey               = @"alternateMount";
 @property (nonatomic, assign) SInt32 bitrate;
 
 @property (nonatomic, assign) BOOL forceDisableHLS;
+@property (nonatomic, assign) BOOL timeshiftEnabled;
 
 @property (nonatomic, assign) NSTimeInterval debouncing;
 
@@ -203,6 +213,7 @@ NSString *const InfoAlternateMountNameKey               = @"alternateMount";
         self.secId = settings[SettingsSecIdKey];
         self.enableLocationTacking = [settings[SettingsEnableLocationTrackingKey] boolValue];
         self.forceDisableHLS = [settings[SettingsExtraForceDisableHLSKey] boolValue];
+        self.timeshiftEnabled = [settings[SettingsTimeshiftEnabledKey] boolValue];
         
         self.lowDelay = [settings[SettingsLowDelayKey] intValue];
         
@@ -224,6 +235,17 @@ NSString *const InfoAlternateMountNameKey               = @"alternateMount";
         self.token = settings[StreamParamExtraAuthorizationTokenKey];
         if(self.token == nil)
             self.token= @"";
+        self.authUserId = settings[StreamParamExtraAuthorizationUserId];
+        if(self.authUserId == nil)
+            self.authUserId= @"";
+    
+        self.authSecretKey = settings[StreamParamExtraAuthorizationSecretKey];
+        if(self.authSecretKey == nil)
+            self.authSecretKey= @"";
+        
+        self.authKeyId = settings[StreamParamExtraAuthorizationKeyId];
+        if(self.authKeyId == nil)
+            self.authKeyId = @"";
         
         CGFloat deb = [settings[SettingsDebouncingKey] floatValue];
         if(deb <= 0)  deb = kDefaultPlayerDebouncing;
@@ -296,9 +318,14 @@ NSString *const InfoAlternateMountNameKey               = @"alternateMount";
                                                SettingsStationPlayerBroadcasterKey : self.broadcaster,
                                                SettingsStreamParamsExtraKey : self.extraQueryParameters,
                                                SettingsStationPlayerForceDisableHLSkey : @(self.forceDisableHLS),
+                                               SettingsTimeshiftEnabledKey : @(self.timeshiftEnabled),
                                                SettingsTtagKey : self.tTags,
                                                SettingsPlayerServicesRegion: self.playerServicesRegion,
                                                StreamParamExtraAuthorizationTokenKey: self.token,
+                                               StreamParamExtraAuthorizationKeyId : self.authKeyId,
+                                               StreamParamExtraAuthorizationUserId: self.authUserId,
+                                               StreamParamExtraAuthorizationSecretKey: self.authSecretKey,
+                                               StreamParamExtraAuthorizationRegisteredUser: @(self.authRegisteredUser),
                                                SettingsLowDelayKey : [NSNumber numberWithInt:self.lowDelay]
                                                }];
         
@@ -331,6 +358,11 @@ NSString *const InfoAlternateMountNameKey               = @"alternateMount";
                                                SettingsStreamPlayerStreamURLKey : self.contentUrl,
                                                SettingsTtagKey : self.tTags,
                                                StreamParamExtraAuthorizationTokenKey: self.token,
+                                               SettingsTimeshiftEnabledKey : @(self.timeshiftEnabled),
+                                               StreamParamExtraAuthorizationKeyId : self.authKeyId,
+                                               StreamParamExtraAuthorizationUserId: self.authUserId,
+                                               StreamParamExtraAuthorizationSecretKey: self.authSecretKey,
+                                               StreamParamExtraAuthorizationRegisteredUser: @(self.authRegisteredUser),
                                                SettingsLowDelayKey : [NSNumber numberWithInt:self.lowDelay]
                                                }];
         }
@@ -598,6 +630,11 @@ NSString *const InfoAlternateMountNameKey               = @"alternateMount";
     [cuePointEvent hasBeenExecuted];
 }
 
+-(void)mediaPlayer:(id<TDMediaPlayback>)player didReceiveAnalyticsEvent:(AVPlayerItemAccessLogEvent *)analyticsEvent {
+    if ([self.delegate respondsToSelector:@selector(player:didReceiveAnalyticsEvent:)]) {
+        [self.delegate performSelector:@selector(player:didReceiveAnalyticsEvent:) withObject:self withObject:analyticsEvent];
+    }
+}
 -(void)mediaPlayer:(id<TDMediaPlayback>)player didReceiveMetaData:(NSDictionary *)metaData {
 		if ([self.delegate respondsToSelector:@selector(player:didReceiveMetaData:)]) {
 				dispatch_async(dispatch_get_main_queue(), ^{
@@ -731,6 +768,9 @@ NSString *const InfoAlternateMountNameKey               = @"alternateMount";
     return [self.mediaPlayer currentPlaybackTime];
 }
 
+-(CMTime)latestPlaybackTime {
+    return [self.mediaPlayer latestPlaybackTime];
+}
 -(void)setAllowsExternalPlayback:(BOOL)allow {
     [self.mediaPlayer setAllowsExternalPlayback:allow];
 }

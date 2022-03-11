@@ -365,6 +365,9 @@ int loadStationsCount;
 		return self.tritonPlayer.currentPlaybackTime;
 }
 
+-(CMTime)latestPlaybackTime {
+        return self.tritonPlayer.latestPlaybackTime;
+}
 
 #pragma mark TritonPlayerDelegate methods
 
