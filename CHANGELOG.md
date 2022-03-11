@@ -1,4 +1,13 @@
 # Changelog
+#### TritonPlayerSDK-iOS-2.7.1 - 2022-03-11
+- Raise a "didReceiveAnalyticsEvent" to expose the AVPlayerItemAccessLogEvent.
+- Re-generate secure token on stream reconnect.
+- Parse the companion banner StaticResource element in the VAST response.
+- Timeshift implementation (Alpha).
+- Support for "other" gender added.
+- Change the uuid parameter in the stream connection to lsid because uuid has been deprecated.
+- Fix VAST Wrapper ads not displaying.
+
 #### TritonPlayerSDK-iOS-2.6.7 - 2021-02-26
 - Sync the SBM cuepoints to the stream.
 - Open syncbanner link when the syncbanner is clicked.
