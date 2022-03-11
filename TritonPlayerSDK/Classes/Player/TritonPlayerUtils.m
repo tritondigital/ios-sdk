@@ -9,6 +9,7 @@
 #import "TritonPlayer.h"
 #import "TritonPlayerUtils.h"
 #import <AdSupport/AdSupport.h>
+#import "TDAuthUtils.h"
 
 #define kPName @"TritonMobileSDK_IOS"
 
