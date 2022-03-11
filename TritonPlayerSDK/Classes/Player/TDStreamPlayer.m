@@ -377,18 +377,6 @@ NSString *const SettingsStreamPlayerSBMURLKey = @"StreamPlayerSBMURL";
             break;
     }
     
-    
-    if(self.profile == KTDStreamProfileOther)
-    {
-        if(newState == kTDPlayerStatePlaying)
-        {
-            [[TDAnalyticsTracker sharedTracker] trackOnDemandSuccess];
-        }
-        else if(newState == kTDPlayerStateError)
-        {
-            [[TDAnalyticsTracker sharedTracker] trackOnDemandError];
-        }
-    }    
 }
 
 -(void)mediaPlayer:(id<TDMediaPlayback>)player didReceiveInfo:(TDPlayerInfo)info andExtra:(NSDictionary *)extra {
