@@ -383,7 +383,7 @@ BOOL observersAdded= NO;
             BOOL isFromNetwork = ([self.streamURL containsString:@"http://"] || [self.streamURL containsString:@"https://"]);
             
             BOOL isNotFailed   = self.mediaPlayerItem.status != AVPlayerItemStatusFailed;
-            BOOL isReadyToPlay = self.mediaPlayerItem.status == AVPlayerItemStatusReadyToPlay;
+            BOOL isReadyToPlay = self.mediaPlayerItem.status == AVPlayerItemStatusReadyToPlay || self.mediaPlayerItem.status == AVPlayerItemStatusUnknown;
             if((!isFromNetwork && isNotFailed) || (isReadyToPlay && isFromNetwork))
             {
                 // Move state machine to play state
