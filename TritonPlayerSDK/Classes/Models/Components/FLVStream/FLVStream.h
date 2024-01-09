@@ -45,6 +45,8 @@
 @property (nonatomic, strong) AudioPlayerController		*audioPlayerController;
 @property (nonatomic, strong) NSString					*streamURL;
 @property (nonatomic, strong) NSString					*userAgent;
+@property (nonatomic, strong) NSDictionary              *dmpSegments;
+@property (nonatomic, strong) NSString                  *dmpSegmentsJson;
 
 @property (nonatomic, assign) UIBackgroundTaskIdentifier  backgroundTaskIdentifier;
 

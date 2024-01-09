@@ -21,9 +21,19 @@ NSMutableArray *mediaImpressionUrls = nil;
 
 -(void)loadAdWithStringRequest:(NSString *)request
       completionHandler:(void (^)(TDAd *, NSError *))completionHandler {
+    [self loadAdWithStringRequest:request andDmpSegments:nil completionHandler:completionHandler];
+}
+
+-(void)loadAdWithStringRequest:(NSString *)request andDmpSegments:(NSDictionary *)dmpSegments
+      completionHandler:(void (^)(TDAd *, NSError *))completionHandler {
     
     if (request) {
         TDAdParser *parser = [[TDAdParser alloc] init];
+        if(dmpSegments){
+            NSError *error;
+            NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dmpSegments options:0 error:&error];
+            parser.dmpSegmentsJson = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+        }
         [parser parseFromRequestString:request completionBlock:^(TDAd *ad, NSError *error) {
             
             if (error) {
@@ -47,7 +57,7 @@ NSMutableArray *mediaImpressionUrls = nil;
                 return;
             }
             
-            if(ad.errorUrl && !ad.mediaURL && !ad.vastAdTagUri){
+            if(ad.errorUrl && !ad.mediaURL && !ad.vastAdTagUri && !ad.companionBanners){
                 completionHandler(nil, [TDAdUtils errorWithCode:TDErrorCodeNoInventory andDescription:@"No ad to display"]);
                 [TritonSDKUtils getRequestFromURL:ad.errorUrl];
                 return;
@@ -79,7 +89,11 @@ NSMutableArray *mediaImpressionUrls = nil;
 
 -(void)loadAdWithBuilder:(TDAdRequestURLBuilder *)builder
        completionHandler:(void (^)(TDAd *, NSError *))completionHandler {
+    if(builder.dmpSegments && builder.dmpSegments.count > 0){
+        [self loadAdWithStringRequest:[builder generateAdRequestURL] andDmpSegments:builder.dmpSegments completionHandler:completionHandler];
+    }else{
     [self loadAdWithStringRequest:[builder generateAdRequestURL] completionHandler:completionHandler];
+    }
 }
 
 -(BOOL)isVastWrapper:(TDAd *)ad

@@ -94,6 +94,8 @@
                                SettingsEnableLocationTrackingKey : @(YES),
                                SettingsStreamParamsExtraKey : @{@"banners": @"300x50,320x50"},
                                SettingsTtagKey : @[@"mobile:ios", @"triton:sample"],
+                               StreamParamExtraListenerIdType: @"idfa",
+                               StreamParamExtraListenerIdValue: @"triton-app-id",
                                //SettingsTimeshiftEnabledKey: @(YES)
                                // @"ExtraForceDisableHLS" : @(NO)
                                //SettingsLowDelayKey: @"60"

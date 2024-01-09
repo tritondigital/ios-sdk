@@ -35,7 +35,7 @@ typedef void(^CallbackBlock)(NSArray* historyList, NSError *error);
            completionBlock:(void (^)(NSArray* historyList, NSError *error)) completionBlock {
     self.callbackBlock = completionBlock;
     
-    [TritonSDKUtils downloadDataFromURL:url withCompletionHandler:^(NSData *data, NSError *error) {
+    [TritonSDKUtils downloadDataFromURL:url withHeaders:nil withCompletionHandler:^(NSData *data, NSError *error) {
         if (error) {
             completionBlock(nil, error);
             return;

@@ -142,6 +142,12 @@
 			NSMutableURLRequest *lURLRequest = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString: streamURL] cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:(double)self.lowDelay];
             [lURLRequest setValue:self.userAgent  forHTTPHeaderField:@"User-Agent"];
 
+            if(self.dmpSegments != [NSNull null]){
+                NSError *error;
+                NSData *jsonData = [NSJSONSerialization dataWithJSONObject:self.dmpSegments options:0 error:&error];
+                self.dmpSegmentsJson = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+                [lURLRequest addValue:self.dmpSegmentsJson forHTTPHeaderField:@"X-DMP-Segment-IDs"];
+            }
 			streamConnection = [[NSURLConnection alloc] initWithRequest:lURLRequest delegate:self];
 			if (!streamConnection)
 			{

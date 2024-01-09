@@ -18,7 +18,7 @@
 
 
 
-NSString *const TritonSDKVersion                        = @"2.7.1"; //TritonSDKVersion
+NSString *const TritonSDKVersion                        = @"2.7.5"; //TritonSDKVersion
 
 CGFloat   const  kDefaultPlayerDebouncing               = 0.2f; //Default debouncing for the Play action, in seconds
 
@@ -42,6 +42,7 @@ NSString *const SettingsExtraForceDisableHLSKey         = @"ExtraForceDisableHLS
 NSString *const SettingsBitrateKey                      = @"MountBitrate";
 NSString *const SettingsDistributionParameterKey        = @"DistributionParameter";
 NSString *const SettingsTimeshiftEnabledKey             = @"TimeshiftEnabled";
+NSString *const SettingsDmpHeadersKey                   = @"DmpHeaders";
 
 /// Extra parameters for location targeting
 
@@ -71,6 +72,8 @@ NSString *const InfoAlternateMountNameKey               = @"alternateMount";
 
 
 
+NSString *const StreamParamExtraListenerIdValue         = @"StreamParamExtraListenerIdValue";
+NSString *const StreamParamExtraListenerIdType          = @"StreamParamExtraListenerIdType";
 
 @interface TritonPlayer() <CLLocationManagerDelegate, TDMediaPlaybackDelegate>
 
@@ -91,6 +94,7 @@ NSString *const InfoAlternateMountNameKey               = @"alternateMount";
 // Targeting
 @property (nonatomic, assign) BOOL enableLocationTacking;
 @property (nonatomic, copy) NSDictionary* extraQueryParameters;
+@property (nonatomic, copy) NSDictionary* dmpSegments;
 @property (nonatomic, copy) NSArray* tTags;
 @property (nonatomic, strong) NSString *token;
 @property (nonatomic, assign) BOOL authRegisteredUser;
@@ -137,6 +141,8 @@ NSString *const InfoAlternateMountNameKey               = @"alternateMount";
 //Using a property to store the external playback setting because the mediaPlayer instance will be nil when play method is called.
 @property (nonatomic, assign) BOOL shouldAllowExternalPlayback;
 
+@property (nonatomic, strong) NSString *listenerIdType;
+@property (nonatomic, strong) NSString *listenerIdValue;
 @end
 
 @implementation TritonPlayer
@@ -226,6 +232,8 @@ NSString *const InfoAlternateMountNameKey               = @"alternateMount";
         
         self.extraQueryParameters = settings[SettingsStreamParamsExtraKey];
         
+        self.dmpSegments = settings[SettingsDmpHeadersKey];
+
         self.tTags = settings[SettingsTtagKey];
         
         self.playerServicesRegion = settings[SettingsPlayerServicesRegion];
@@ -254,6 +262,14 @@ NSString *const InfoAlternateMountNameKey               = @"alternateMount";
         if ([self.mount isEqualToString:@""]) {
             self.mount = nil;
         }
+
+        self.listenerIdType = settings[StreamParamExtraListenerIdType];
+        if(self.listenerIdType == nil)
+            self.listenerIdType= @"";
+        
+        self.listenerIdValue = settings[StreamParamExtraListenerIdValue];
+        if(self.listenerIdValue == nil)
+            self.listenerIdValue= @"";
     }
 }
 
@@ -326,7 +342,10 @@ NSString *const InfoAlternateMountNameKey               = @"alternateMount";
                                                StreamParamExtraAuthorizationUserId: self.authUserId,
                                                StreamParamExtraAuthorizationSecretKey: self.authSecretKey,
                                                StreamParamExtraAuthorizationRegisteredUser: @(self.authRegisteredUser),
-                                               SettingsLowDelayKey : [NSNumber numberWithInt:self.lowDelay]
+                                               SettingsLowDelayKey : [NSNumber numberWithInt:self.lowDelay],
+                                               SettingsDmpHeadersKey: (self.dmpSegments ?: [NSNull null]),
+                                               StreamParamExtraListenerIdType: (self.listenerIdType ?: @""),
+                                               StreamParamExtraListenerIdValue: self.listenerIdValue
                                                }];
         
         } else {
@@ -363,7 +382,8 @@ NSString *const InfoAlternateMountNameKey               = @"alternateMount";
                                                StreamParamExtraAuthorizationUserId: self.authUserId,
                                                StreamParamExtraAuthorizationSecretKey: self.authSecretKey,
                                                StreamParamExtraAuthorizationRegisteredUser: @(self.authRegisteredUser),
-                                               SettingsLowDelayKey : [NSNumber numberWithInt:self.lowDelay]
+                                               SettingsLowDelayKey : [NSNumber numberWithInt:self.lowDelay],
+                                               SettingsDmpHeadersKey: (self.dmpSegments ?: [NSNull null])
                                                }];
         }
 

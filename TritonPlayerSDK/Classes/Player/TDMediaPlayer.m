@@ -43,6 +43,9 @@ NSString *const SettingsMediaPlayerStreamURLKey = @"MediaPlayerStreamURL";
 
 @property (nonatomic, assign) TDPlayerState state;
 
+@property (nonatomic, copy) NSDictionary* dmpSegments;
+@property (nonatomic, strong) NSString *dmpSegmentsJson;
+
 @end
 
 @implementation TDMediaPlayer
@@ -105,6 +108,13 @@ NSString *const SettingsMediaPlayerStreamURLKey = @"MediaPlayerStreamURL";
     {
        self.streamURL = settings[SettingsMediaPlayerStreamURLKey];
        self.sidebandMetadataURL = settings[SettingsMediaPlayerSBMURLKey];
+        self.dmpSegments = settings[SettingsDmpHeadersKey];
+        
+        if(self.dmpSegments != [NSNull null] ){
+            NSError *error;
+            NSData *jsonData = [NSJSONSerialization dataWithJSONObject:self.dmpSegments options:0 error:&error];
+            self.dmpSegmentsJson = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+        }
 
         if ([self.sidebandMetadataURL isEqualToString:@""]) {
           self.sidebandMetadataURL = nil;
@@ -191,7 +201,17 @@ NSString *const SettingsMediaPlayerStreamURLKey = @"MediaPlayerStreamURL";
                 streamURL = [NSURL URLWithString:self.streamURL];
             }
             
-            self.mediaPlayerItem = [[AVPlayerItem alloc] initWithURL:streamURL];
+            NSMutableDictionary * headers = [NSMutableDictionary dictionary];
+            AVURLAsset * asset = nil;
+          
+            if(self.dmpSegmentsJson){
+                [headers setObject:self.dmpSegmentsJson forKey:@"X-DMP-Segment-IDs"];
+                asset = [AVURLAsset URLAssetWithURL:streamURL options:@{@"AVURLAssetHTTPHeaderFieldsKey" : headers}];
+            } else{
+                asset = [AVURLAsset URLAssetWithURL:streamURL options: nil];
+            }
+            
+            self.mediaPlayerItem = [AVPlayerItem playerItemWithAsset:asset];
             [self addMediaPlayerItemObservers];
             
             self.mediaPlayer = [[AVPlayer alloc] initWithPlayerItem:self.mediaPlayerItem];
@@ -370,7 +390,6 @@ BOOL observersAdded= NO;
     {
         NSTimeInterval timeInterval = [self availableDuration];// Calculation of buffer progress
         
-        //PLAYER_LOG(@"Buffering ... timeInterval:%f",timeInterval);
         if ([self.delegate respondsToSelector:@selector(mediaPlayer:didReceiveInfo:andExtra:)]) {
             [self.delegate mediaPlayer:self didReceiveInfo:kTDPlayerInfoBuffering andExtra:nil];
         }
