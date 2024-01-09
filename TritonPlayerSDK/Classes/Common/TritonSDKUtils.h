@@ -10,7 +10,7 @@
 
 @interface TritonSDKUtils : NSObject
 
-+(void)downloadDataFromURL:(NSURL *)url withCompletionHandler:(void (^)(NSData *data, NSError *error))completionHandler;
++(void)downloadDataFromURL:(NSURL *)url withHeaders:(NSDictionary *)headers withCompletionHandler:(void (^)(NSData *data, NSError *error))completionHandler;
 
 +(NSString *)getRequestFromURL:(NSURL *)url;
 @end

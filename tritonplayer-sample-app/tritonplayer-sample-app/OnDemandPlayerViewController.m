@@ -39,7 +39,7 @@
 //    }
 //    else
     //self.urlLabel.text = @"https://ia802508.us.archive.org/5/items/testmp3testfile/mpthreetest.mp3";
-    self.urlLabel.text = @"https://pc-cdn.espnradio.com/audio/303/2117/7041/2437468/espnucf_2015-02-17-131808-8006-0-751-15.64k.mp3";
+    self.urlLabel.text = @"https://traffic.omny.fm/d/clips/803f1544-419a-4fea-962b-acdb0133575d/42e946b0-22b1-4abc-be4a-ad8800ff0e87/b822bcc2-62d4-4747-895a-adf900853119/audio.mp3?in_playlist=a2723fb4-b499-4776-967b-ad8800ff2a4f";
     self.tritonPlayer = [[TritonPlayer alloc] initWithDelegate:self andSettings:nil];
     
     self.statusLabel.text = @"Stopped";

@@ -37,6 +37,7 @@ typedef NS_ENUM(NSInteger, CreativeType) {
 
 
 @property (nonatomic, strong) NSString *adFormat;
+@property (nonatomic, assign) NSNumber *adDuration;
 @end
 
 @implementation TDAdParser
@@ -59,7 +60,13 @@ typedef NS_ENUM(NSInteger, CreativeType) {
         if (url) {
             if ([url.scheme isEqual:@"https"] || [url.scheme isEqual:@"file"]) {
             // if url, donwload it and send to parser
-                [self downloadDataFromURL:url withCompletionHandler:^(NSData *data, NSError *error) {
+                NSMutableDictionary * headers = [NSMutableDictionary dictionary];
+                
+                if(self.dmpSegmentsJson){
+                    [headers setObject:self.dmpSegmentsJson forKey:@"X-DMP-Segment-IDs"];
+                }
+                
+                [self downloadDataFromURL:url withHeaders:headers withCompletionHandler:^(NSData *data, NSError *error) {
                 
                     if (error) {
                         completionBlock(nil, error);
@@ -110,9 +117,9 @@ typedef NS_ENUM(NSInteger, CreativeType) {
 }
 
 
--(void)downloadDataFromURL:(NSURL *)url withCompletionHandler:(void (^)(NSData *data, NSError *error))completionHandler{
+-(void)downloadDataFromURL:(NSURL *)url withHeaders:(NSDictionary *)headers withCompletionHandler:(void (^)(NSData *data, NSError *error))completionHandler{
 		
-		[TritonSDKUtils downloadDataFromURL:url withCompletionHandler:completionHandler ];
+    [TritonSDKUtils downloadDataFromURL:url withHeaders:headers withCompletionHandler:completionHandler ];
 		
 }
 
@@ -208,6 +215,8 @@ typedef NS_ENUM(NSInteger, CreativeType) {
        }
         self.parsedAd.mediaURL = [NSURL URLWithString:self.stringBuffer];
     
+    } else if ([elementName isEqualToString:@"Duration"]) {
+        self.parsedAd.adDuration = [self secondsForTimeString:self.stringBuffer];
     } else if ([elementName isEqualToString:@"ClickThrough"]) {
         self.parsedAd.videoClickThroughURL = [NSURL URLWithString:self.stringBuffer];
         
@@ -246,6 +255,7 @@ typedef NS_ENUM(NSInteger, CreativeType) {
         [self.currentElement isEqualToString:@"Impression"] ||
         [self.currentElement isEqualToString:@"ClickTracking"] ||
         [self.currentElement isEqualToString:@"VASTAdTagURI"] ||
+        [self.currentElement isEqualToString:@"Duration"] ||
         [self.currentElement isEqualToString:@"Error"]) {
 
         
@@ -263,6 +273,7 @@ typedef NS_ENUM(NSInteger, CreativeType) {
         [self.currentElement isEqualToString:@"ClickThrough"] ||
         [self.currentElement isEqualToString:@"Impression"] ||
         [self.currentElement isEqualToString:@"ClickTracking"] ||
+        [self.currentElement isEqualToString:@"Duration"] ||
         [self.currentElement isEqualToString:@"VASTAdTagURI"]) {
         
         [self.stringBuffer appendString:[string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]];
@@ -286,6 +297,22 @@ typedef NS_ENUM(NSInteger, CreativeType) {
     }
 }
 
+- (NSNumber *)secondsForTimeString:(NSString *)string {
+    @try {
+        if([string length ] > 0){
+            NSArray *components = [string componentsSeparatedByString:@":"];
 
+            NSInteger hours   = [[components objectAtIndex:0] integerValue];
+            NSInteger minutes = [[components objectAtIndex:1] integerValue];
+            NSInteger seconds = [[components objectAtIndex:2] integerValue];
+
+            return [NSNumber numberWithInteger:(hours * 60 * 60) + (minutes * 60) + seconds];
+        } else {
+            return [NSNumber numberWithInteger:0];
+        }
+    } @catch (NSException *exception) {
+        return [NSNumber numberWithInteger:0];
+    }
+}
 
 @end

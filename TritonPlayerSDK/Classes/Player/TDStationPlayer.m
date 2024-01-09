@@ -42,6 +42,7 @@ NSString *const SettingsStationPlayerForceDisableHLSkey = @"StationPlayerForceDi
 @property (copy, nonatomic) NSArray *tTags;
 @property (copy, nonatomic) NSString *playerServicesRegion;
 @property (assign, nonatomic) BOOL timeshiftEnabled;
+@property (copy, nonatomic) NSDictionary *dmpSegments;
 
 // The stream token
 @property (copy, nonatomic) NSString *token;
@@ -63,6 +64,9 @@ NSString *const SettingsStationPlayerForceDisableHLSkey = @"StationPlayerForceDi
 @property (assign, nonatomic) BOOL forceDisableHLS;
 
 @property (assign, nonatomic) TDPlayerState state;
+@property (copy, nonatomic) NSString *listenerIdType;
+@property (copy, nonatomic) NSString *listenerIdValue;
+
 @end
 
 @implementation TDStationPlayer
@@ -108,6 +112,9 @@ NSString *const SettingsStationPlayerForceDisableHLSkey = @"StationPlayerForceDi
         self.authUserId = settings[StreamParamExtraAuthorizationUserId];
        self.playerServicesRegion = settings[SettingsPlayerServicesRegion];
         self.timeshiftEnabled = [settings[SettingsTimeshiftEnabledKey] boolValue];
+        self.dmpSegments = settings[SettingsDmpHeadersKey];
+        self.listenerIdType = settings[StreamParamExtraListenerIdType];
+        self.listenerIdValue = settings[StreamParamExtraListenerIdValue];
     }
 }
 
@@ -316,6 +323,9 @@ NSString *const SettingsStationPlayerForceDisableHLSkey = @"StationPlayerForceDi
     NSMutableString *connectingToURL = [NSMutableString stringWithFormat:@"%@/%@", self.provisioning.currentServer.url, self.provisioning.mountName];
     
     self.settings = [NSMutableDictionary dictionaryWithCapacity:9];
+    self.settings[SettingsDmpHeadersKey] = self.dmpSegments;
+    self.settings[StreamParamExtraListenerIdType] = self.listenerIdType;
+    self.settings[StreamParamExtraListenerIdValue] = self.listenerIdValue;
     
     if ( self.timeshiftEnabled ){
         self.settings[SettingsStreamPlayerProfileKey] = @(KTDStreamProfileHLSTimeshift);

@@ -28,6 +28,7 @@ extern NSString *const SettingsLowDelayKey;  //-1 (AUTO), 0 (DISABLED), 2 … 60
 extern NSString *const SettingsPlayerServicesRegion;  // To use a specific PlayerServices depending on the region, e.g: EU,AP
 extern NSString *const SettingsBitrateKey; //Set the bitrate for low delay
 extern NSString *const SettingsDistributionParameterKey; //Set the distributor targeting value
+extern NSString *const SettingsDmpHeadersKey; //DMP Headers
 /// Extra parameters for location targeting
 
 extern NSString *const StreamParamExtraLatitudeKey; // Floating-point value: -90.0 to 90.0
@@ -59,6 +60,9 @@ extern NSString * const StreamParamExtraAuthorizationSecretKey;
 extern NSString *const SettingsTimeshiftEnabledKey;
 
 
+/// Multi listener id
+extern NSString *const StreamParamExtraListenerIdValue;
+extern NSString *const StreamParamExtraListenerIdType;
 
 /// Represents the types of on-demand content supported by the player
 typedef NS_ENUM(NSInteger, PlayerContentType) {

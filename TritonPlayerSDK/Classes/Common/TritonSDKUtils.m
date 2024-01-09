@@ -15,7 +15,7 @@
 
 #pragma mark - Data downloading
 
-+(void)downloadDataFromURL:(NSURL *)url withCompletionHandler:(void (^)(NSData *data, NSError *error))completionHandler {
++(void)downloadDataFromURL:(NSURL *)url withHeaders:(NSDictionary *)headers withCompletionHandler:(void (^)(NSData *data, NSError *error))completionHandler {
     
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     configuration.timeoutIntervalForRequest = kXMLDownloadRequestTimeout;
@@ -24,6 +24,9 @@
     // Enable this for testing. Otherwise it won't download the VAST/DAAST file again
     configuration.HTTPCookieStorage = nil;
     configuration.URLCache = nil;
+    if( headers ){
+        configuration.HTTPAdditionalHeaders = headers;
+    }
     
     NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration];
     

@@ -45,6 +45,8 @@ static UInt32 bufferTime = kLowDelaySecondsStart+1;
 @property (assign, nonatomic) SInt32 lowDelay;
 @property (assign, nonatomic) SInt32 bitrate;
 
+@property (nonatomic, copy) NSDictionary* dmpSegments;
+
 @property (assign, nonatomic) TDPlayerState state;
 
 @end
@@ -93,6 +95,7 @@ static UInt32 bufferTime = kLowDelaySecondsStart+1;
         self.secReferrerURL = settings[SettingsFLVPlayerReferrerURLKey];
         self.lowDelay = [settings[SettingsLowDelayKey] intValue];
         self.bitrate = [settings[SettingsBitrateKey] intValue];
+        self.dmpSegments = settings[SettingsDmpHeadersKey];
     }
 }
 
@@ -117,6 +120,7 @@ static UInt32 bufferTime = kLowDelaySecondsStart+1;
 -(void)play {
     if ([self canChangeStateWithAction:kTDPlayerActionPlay]) {
         [self updateStateMachineForAction:kTDPlayerActionPlay];
+        [self.flvStream setDmpSegments:self.dmpSegments];
         [self.flvStream setUserAgent:self.userAgent];
         if ( self.lowDelay > 0 || self.lowDelay == -1 )
         {
@@ -164,7 +168,12 @@ static UInt32 bufferTime = kLowDelaySecondsStart+1;
 -(void)sendTagToDispatcher:(FLVTag *)inTag {
     if(self.flvDispather && inTag)
     {
+        @try{
      [self.flvDispather dispatchNewTag:inTag];
+        }@catch (NSException * e)
+        {
+            FLOG(@"Exception : %@ : %@", [e name], [e reason]);
+        }
     }
 }
 

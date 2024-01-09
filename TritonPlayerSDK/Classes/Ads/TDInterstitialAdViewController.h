@@ -17,6 +17,8 @@
 
 @property (nonatomic, weak) id<TDInterstitialDelegate> delegate;
 
+@property (nonatomic, assign) BOOL enableCountdownDisplay;
+
 - (instancetype)initWithAd:(TDAd *) ad andDelegate:(id<TDInterstitialDelegate>) delegate;
 
 - (void)showAd;

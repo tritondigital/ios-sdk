@@ -15,11 +15,12 @@
 typedef void(^CallbackBlock)(TDAd *ad, NSError *error);
 
 @property (nonatomic, copy) CallbackBlock callbackBlock;
+@property (nonatomic, copy) NSString *dmpSegmentsJson;
 
 -(instancetype)init;
 
 -(void)parseFromRequestString:(NSString*)string completionBlock:(void (^)(TDAd* ad, NSError *error)) completionBlock;
 -(void)startParserWithData:(NSData*) data;
--(void)downloadDataFromURL:(NSURL *)url withCompletionHandler:(void (^)(NSData *data, NSError *error))completionHandler;
+-(void)downloadDataFromURL:(NSURL *)url withHeaders:(NSDictionary *)headers withCompletionHandler:(void (^)(NSData *data, NSError *error))completionHandler;
 
 @end

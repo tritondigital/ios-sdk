@@ -2,7 +2,7 @@
 // File:	   FLVStreamPlayerLibConstants.h
 //
 
-#define kLibVersion	@"2.2"
+#define kLibVersion	@"2.7.5"
 
 #define kMIME_TYPE_FLV					@"flv" // 
 

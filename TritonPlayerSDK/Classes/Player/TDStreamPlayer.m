@@ -64,6 +64,11 @@ NSString *const SettingsStreamPlayerSBMURLKey = @"StreamPlayerSBMURL";
 @property (strong, nonatomic) NSMutableArray<id<TDMediaPlayback>>* oldPlayers;
 
 @property (assign, nonatomic) BOOL timeshiftEnabled;
+@property (copy, nonatomic) NSDictionary *dmpSegments;
+
+@property (copy, nonatomic) NSString *listenerIdType;
+@property (copy, nonatomic) NSString *listenerIdValue;
+
 @end
 
 @implementation TDStreamPlayer
@@ -105,6 +110,9 @@ NSString *const SettingsStreamPlayerSBMURLKey = @"StreamPlayerSBMURL";
         self.authKeyId = settings[StreamParamExtraAuthorizationKeyId];
         self.authSecretKey = settings[StreamParamExtraAuthorizationSecretKey];
         self.timeshiftEnabled = settings[SettingsTimeshiftEnabledKey];
+        self.dmpSegments = settings[SettingsDmpHeadersKey];
+        self.listenerIdType = settings[StreamParamExtraListenerIdType];
+        self.listenerIdValue = settings[StreamParamExtraListenerIdValue];
 
     
       // Set the correct profile. If profile is kTDStreamProfileOther, try to obtain the type by looking at the url suffix.
@@ -186,7 +194,7 @@ NSString *const SettingsStreamPlayerSBMURLKey = @"StreamPlayerSBMURL";
         
         if (self.state != kTDPlayerStatePaused) {
             self.token = [TritonPlayerUtils generateJWTToken:self.extraQueryParameters andAuthKeyId:self.authKeyId andAuthUserId:self.authUserId andAuthRegisteredUser:self.authRegisteredUser andToken:self.token andAuthSercterKey:self.authSecretKey];
-            NSString *queryParameters = [TritonPlayerUtils targetingQueryParametersWithLocation:[TDLocationManager sharedManager].targetingLocation andExtraParameters:self.extraQueryParameters withTtags:self.tTags andToken:self.token];
+            NSString *queryParameters = [TritonPlayerUtils targetingQueryParametersWithLocation:[TDLocationManager sharedManager].targetingLocation andExtraParameters:self.extraQueryParameters andListenerIdType:self.listenerIdType andListenerIdValue:self.listenerIdValue withTtags:self.tTags andToken:self.token];
             
             if ([queryParameters rangeOfString:@"banners"].location == NSNotFound) {
                 if (queryParameters.length != 0) {
@@ -219,18 +227,25 @@ NSString *const SettingsStreamPlayerSBMURLKey = @"StreamPlayerSBMURL";
             if (self.profile == kTDStreamProfileFLV) {
                 [self.player updateSettings:@{SettingsFLVPlayerUserAgentKey : self.userAgent,
                                               SettingsFLVPlayerStreamURLKey : connectingToURL,
-                                              SettingsLowDelayKey : [NSNumber numberWithInt:self.lowDelay]
+                                              SettingsLowDelayKey : [NSNumber numberWithInt:self.lowDelay],
+                                              SettingsDmpHeadersKey: self.dmpSegments
                                               }];
                 
             } else if (self.profile == KTDStreamProfileHLS){
                 [self.player updateSettings:@{SettingsMediaPlayerUserAgentKey : self.userAgent,
                                               SettingsMediaPlayerStreamURLKey : connectingToURL,
-                                              SettingsMediaPlayerSBMURLKey : self.sbmURL}];
+                                              SettingsMediaPlayerSBMURLKey : self.sbmURL,
+                                              SettingsDmpHeadersKey: self.dmpSegments
+                                            }];
             } else if (self.profile == KTDStreamProfileHLSTimeshift){
                 [self.player updateSettings:@{SettingsMediaPlayerUserAgentKey : self.userAgent,
-                                              SettingsMediaPlayerStreamURLKey : connectingToURL}];
+                                              SettingsMediaPlayerStreamURLKey : connectingToURL,
+                                              SettingsDmpHeadersKey: self.dmpSegments
+                                            }];
             } else {
-                [self.player updateSettings:@{SettingsMediaPlayerStreamURLKey : connectingToURL}];
+                [self.player updateSettings:@{SettingsMediaPlayerStreamURLKey : connectingToURL,
+                                              SettingsDmpHeadersKey: self.dmpSegments
+                                            }];
             }
             
             self.lastStreamingUrl = connectingToURL;

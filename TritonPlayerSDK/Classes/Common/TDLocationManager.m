@@ -31,7 +31,6 @@
     self = [super init];
     if (self) {
         _locationManager = [[CLLocationManager alloc] init];
-       // _locationManager.delegate = self;
         _locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
         _locationManager.distanceFilter = 1;
         _initializationDone = NO;
@@ -83,8 +82,7 @@
     return (([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorized) ||
             ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedWhenInUse) ||
             ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedAlways) ||
-            ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusNotDetermined))
-    && [CLLocationManager locationServicesEnabled];
+            ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusNotDetermined));
 }
 
 #pragma mark - CLLocationManager delegates

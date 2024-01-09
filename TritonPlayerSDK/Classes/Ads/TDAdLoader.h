@@ -54,6 +54,8 @@ typedef NS_ENUM(NSInteger, TDAdErrorCode) {
 - (void)loadAdWithStringRequest:(NSString*)request
        completionHandler:(void (^) (TDAd *loadedAd, NSError *error))completionHandler;
 
+- (void)loadAdWithStringRequest:(NSString*)request andDmpSegments:(NSDictionary *) dmpSegments
+       completionHandler:(void (^) (TDAd *loadedAd, NSError *error))completionHandler;
 /**
  * Loads an ad asynchronously directly from a TDAdRequestURLBuilder.
  *

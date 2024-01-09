@@ -17,10 +17,10 @@
 #import <AVFoundation/AVFoundation.h>
 #import  "AVKit/AVkit.h"
 
-#define kCloseButtonWidth 30
-#define kCloseButtonHeight 30
-#define kCloseButtonXPosition 10
-#define kCloseButtonYPosition 20
+#define kCloseButtonWidth     25
+#define kCloseButtonHeight    25
+#define kCloseButtonXPosition 5
+#define kCloseButtonYPosition 5
 
 typedef NS_ENUM(NSInteger, TDMediaType) {
     kTDMediaTypeUnknown,
@@ -45,6 +45,10 @@ typedef NS_ENUM(NSInteger, TDMediaType) {
 @property (nonatomic, strong) TDBannerView *banner;
 
 @property (nonatomic, assign) BOOL userClickedVideo;
+
+@property (nonatomic, assign) NSTimer *adCountdownTimer;
+@property (nonatomic, strong) UITextField *adCountdownDisplay;
+
 
 @end
 
@@ -177,6 +181,18 @@ typedef NS_ENUM(NSInteger, TDMediaType) {
     [self presentViewController:self.moviePlayerViewController animated:YES completion:^{
         [self.moviePlayerViewController.contentOverlayView addSubview:self.activityIndicator];
         [self.moviePlayerViewController.contentOverlayView addSubview:button];
+
+        if(self.enableCountdownDisplay){
+            CGRect countdownDisplayRect = CGRectMake(5.0,
+                                         (self.moviePlayerViewController.contentOverlayView.frame.size.height - 30.0),
+                                         30.0,
+                                          30.0);
+            self.adCountdownDisplay = [[UITextField alloc] initWithFrame:countdownDisplayRect];
+            self.adCountdownDisplay.text = self.ad.adDuration.stringValue;
+            
+            [self.moviePlayerViewController.contentOverlayView addSubview:self.adCountdownDisplay];
+        }
+
         [player playImmediatelyAtRate:1.0];
     }];
 
@@ -231,6 +247,11 @@ typedef NS_ENUM(NSInteger, TDMediaType) {
 #pragma mark - MPMoviePlayerController notifications
 
 - (void)playBackDidFinishNotification:(NSNotification *) notification {
+    if(self.adCountdownTimer != nil){
+        [self.adCountdownTimer invalidate];
+        self.adCountdownTimer = nil;
+    }
+
     [[NSNotificationCenter defaultCenter] removeObserver:self name:AVPlayerItemDidPlayToEndTimeNotification object:nil];
     
 	    if ([self.delegate respondsToSelector:@selector(interstitialPlaybackFinished:)]) {
@@ -257,6 +278,9 @@ typedef NS_ENUM(NSInteger, TDMediaType) {
             
             [self.activityIndicator stopAnimating];
             [self.activityIndicator removeFromSuperview];
+	    if(self.enableCountdownDisplay){
+		self.adCountdownTimer=[NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(addCountdownTimerFired) userInfo:nil repeats:YES];
+	    }
 }
             
 - (void)registerMoviePlayerNotifications {          
@@ -274,6 +298,22 @@ typedef NS_ENUM(NSInteger, TDMediaType) {
                                              usingBlock:^(CMTime time) {
            [weakSelf playbackStartedNotification];
         }];
+}
+
+-(void)addCountdownTimerFired
+{
+    if(self.ad.adDuration.intValue >=  0)
+    {
+        self.ad.adDuration = [NSNumber numberWithInt:(self.ad.adDuration.intValue - 1)];
+        self.adCountdownDisplay.text = self.ad.adDuration.stringValue;
+    }
+    else
+    {
+        if(self.adCountdownTimer != nil){
+            [self.adCountdownTimer invalidate];
+            self.adCountdownTimer = nil;
+        }
+    }
 }
 
 #pragma mark - AVPlayerItem notifications

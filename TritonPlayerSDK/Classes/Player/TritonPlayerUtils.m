@@ -37,13 +37,19 @@
     }
 }
 
-+ (NSString *)targetingQueryParametersWithLocation:(CLLocation *) location andExtraParameters:(NSDictionary *) extraParameters withTtags:(NSArray*) tTags andToken:(NSString*) token {
++ (NSString *)targetingQueryParametersWithLocation:(CLLocation *) location andExtraParameters:(NSDictionary *) extraParameters andListenerIdType:(NSString*) listenerIdType andListenerIdValue:(NSString*) listenerIdValue withTtags:(NSArray*) tTags andToken:(NSString*) token {
     // get all params and create a string to be passed in GET
     // ?param1=value1&param2=value2...
     
     NSMutableString *queryParametersString = [NSMutableString stringWithCapacity:512];
     //Add Listener id
+    if(listenerIdType != nil && [listenerIdType length] > 0 && listenerIdValue != nil && [listenerIdValue length] > 0){
+        [queryParametersString appendFormat:@"lsid=%@:%@&", listenerIdType, listenerIdValue];
+        NSArray *trackingParams  = [[TritonPlayerUtils getListenerId] componentsSeparatedByString:@":"];
+        [queryParametersString appendFormat:@"%@=%@&", trackingParams[0], trackingParams[1]];
+    }else{
     [queryParametersString appendFormat:@"lsid=%@&", [TritonPlayerUtils getListenerId]];
+    }
     
     
     // Append tdsdk

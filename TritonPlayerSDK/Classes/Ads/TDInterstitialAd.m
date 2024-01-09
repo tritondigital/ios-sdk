@@ -82,7 +82,7 @@
 }
 
 -(BOOL)loaded {
-    return self.ad != nil && self.ad.errorUrl == nil;
+    return self.ad != nil && (self.ad.mediaURL || self.ad.vastAdTagUri);
 }
 
 -(void)presentFromViewController:(UIViewController *)rootViewController {
@@ -101,6 +101,7 @@
             [self.delegate interstitialWillPresent:self];
         }
         
+        self.interstitialViewController.enableCountdownDisplay = self.enableCountdownDisplay;
         [self.interstitialViewController showAd];
     }];
 }
