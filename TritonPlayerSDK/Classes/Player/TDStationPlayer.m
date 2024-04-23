@@ -311,14 +311,7 @@ NSString *const SettingsStationPlayerForceDisableHLSkey = @"StationPlayerForceDi
 		
 // Provisioning is ok, take a look at the status code
 				if (provOK)
-				{
-        
-        NSTimeInterval connectionTime = 0;
-        if(self.provisioning.statusCode != kProvisioningStatusCodeOk)
-        {
-            connectionTime  = [tracker stopTimer];
-        }
-        
+				{        
 						switch (self.provisioning.statusCode) {
 								case kProvisioningStatusCodeOk:
                 [self startPlayingStream:self.isCloudStreaming];
