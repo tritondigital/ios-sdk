@@ -1,0 +1,6 @@
+framework module TritonPlayerSDK {
+  umbrella header "TritonPlayerSDK.h"
+
+  export *
+  module * { export * }
+}
