@@ -177,6 +177,7 @@ typedef NS_ENUM(NSInteger, TDMediaType) {
     TDCloseButton *button = [[TDCloseButton alloc] initWithFrame:CGRectMake(kCloseButtonXPosition, kCloseButtonYPosition, kCloseButtonWidth, kCloseButtonHeight)];
     [button addTarget:self action:@selector(closeButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
 
+    
      [self registerMoviePlayerNotifications];
     [self presentViewController:self.moviePlayerViewController animated:YES completion:^{
         [self.moviePlayerViewController.contentOverlayView addSubview:self.activityIndicator];
@@ -281,6 +282,7 @@ typedef NS_ENUM(NSInteger, TDMediaType) {
 	    if(self.enableCountdownDisplay){
 		self.adCountdownTimer=[NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(addCountdownTimerFired) userInfo:nil repeats:YES];
 	    }
+    
 }
             
 - (void)registerMoviePlayerNotifications {          

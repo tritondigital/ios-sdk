@@ -17,6 +17,7 @@
 #import "TritonPlayerConstants.h"
 #import "Logs.h"
 #import "TDSBMPlayer.h"
+#import <AVFoundation/AVFoundation.h>
 
 #define kMaxBackoffRetryTimeInSeconds 60.0f
 
@@ -64,8 +65,12 @@ NSString *const SettingsStationPlayerForceDisableHLSkey = @"StationPlayerForceDi
 @property (assign, nonatomic) BOOL forceDisableHLS;
 
 @property (assign, nonatomic) TDPlayerState state;
+
 @property (copy, nonatomic) NSString *listenerIdType;
 @property (copy, nonatomic) NSString *listenerIdValue;
+
+@property (assign, nonatomic) BOOL isCloudStreaming;
+@property (assign, nonatomic) NSString *cloudProgramId;
 
 @end
 
@@ -78,6 +83,7 @@ NSString *const SettingsStationPlayerForceDisableHLSkey = @"StationPlayerForceDi
 @synthesize error = _error;
 
 -(instancetype)init {
+    self.isCloudStreaming = NO;
     return [self initWithSettings:nil];
 }
 
@@ -118,13 +124,13 @@ NSString *const SettingsStationPlayerForceDisableHLSkey = @"StationPlayerForceDi
     }
 }
 
--(void)play {
+-(void)play:(BOOL)cloudStreaming {
     if ([self canChangeStateWithAction:kTDPlayerActionPlay]) {
 				//reset backoff
 				self.backoffRetry = 0.0f;
 				
         [self updateStateMachineForAction:kTDPlayerActionPlay];
-        [self startProvisioning];
+        [self startProvisioning:cloudStreaming];
     }
     
     PLAYER_LOG(@"StationPlayer: Mount to Play : %@", self.mount);
@@ -143,10 +149,83 @@ NSString *const SettingsStationPlayerForceDisableHLSkey = @"StationPlayerForceDi
     [self stop];
 }
 
+-(void)playCloudProgram:(NSString *)programId{
+    NSLog(@"Playing the cloud program %@", programId);
+    self.cloudProgramId = programId;
+    self.isCloudStreaming = YES;
+    [self stop];
+    [self updateStateMachineForAction:kTDPlayerActionPlay];
+    [self startProvisioning:YES];
+    
+}
+
+-(void)getCloudStreamInfo {
+    if(![self.settings[SettingsStreamPlayerTimeshiftStreamURLKey] isEqualToString:@""] && self.settings[SettingsStreamPlayerTimeshiftStreamURLKey] != nil){
+
+        NSURL *tmpUrl = [NSURL URLWithString:self.settings[SettingsStreamPlayerTimeshiftStreamURLKey]];
+           NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://%@/%@/CLOUD/stream-info", tmpUrl.host, self.mount]];
+           NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];
+           NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
+           NSURLSession *session = [NSURLSession sessionWithConfiguration:config];
+
+           NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:urlRequest completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+               NSDictionary *jsonDict;
+
+               if (error) {
+                   NSLog(@"Error: %@", error.localizedDescription);
+                   return;
+               }
+
+               if (data) {
+                   NSError *jsonError;
+                   id jsonObject = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
+
+                   if (jsonError) {
+                       NSLog(@"JSON Error: %@", jsonError.localizedDescription);
+                       return;
+                   }
+
+                   if ([jsonObject isKindOfClass:[NSDictionary class]]) {
+                        jsonDict = (NSDictionary *)jsonObject;
+                   } else {
+                       NSLog(@"Unexpected JSON format");
+                   }
+               }
+               
+               if([self.delegate respondsToSelector:@selector(mediaPlayer:didReceiveCloudStreamInfoEvent:)]){
+                   [self.delegate mediaPlayer:self didReceiveCloudStreamInfoEvent:jsonDict];
+               }
+               
+           }];
+
+           // Start the data task
+           [dataTask resume];
+    }
+}
+-(void)seekToLive{
+    if (self.isCloudStreaming) {
+        NSLog(@"Seek Done");
+        [self stop];
+	self.isCloudStreaming = NO;
+        [self play:NO];
+    }
+}
+
 -(void)seekToTimeInterval:(NSTimeInterval)interval {
+    //If already in timeshift mode, then rewind, otherwise switch to timeshift and then rewind
+    if(self.isCloudStreaming){
     if ([self.streamPlayer respondsToSelector:@selector(seekToTimeInterval:)]) {
         [self.streamPlayer seekToTimeInterval:interval];
     }
+    }else{
+        [self switchToCloudStreaming];
+    }
+}
+
+-(void)switchToCloudStreaming{
+    self.isCloudStreaming = YES;
+    [self stop];
+    [self play:YES];
 }
 
 -(void)seekToTime:(CMTime)time completionHandler:(void (^)(BOOL))completionHandler {
@@ -192,6 +271,7 @@ NSString *const SettingsStationPlayerForceDisableHLSkey = @"StationPlayerForceDi
 -(CMTime)latestPlaybackTime{
     return [self.streamPlayer latestPlaybackTime];
 }
+
 -(NSTimeInterval)playbackDuration {
     return [self.streamPlayer playbackDuration];
 }
@@ -209,7 +289,7 @@ NSString *const SettingsStationPlayerForceDisableHLSkey = @"StationPlayerForceDi
 
 
 
--(void)startProvisioning {
+-(void)startProvisioning:(BOOL) cloudStreaming {
     
     // Repeat the provisioning in case it's geoblocked and there's an alternate mount
 		
@@ -220,7 +300,7 @@ NSString *const SettingsStationPlayerForceDisableHLSkey = @"StationPlayerForceDi
 		_provisioning.userAgent = self.userAgent;
         _provisioning.playerServicesRegion = self.playerServicesRegion;
 	 
-		[self.provisioning getProvisioning:^(BOOL provOK){
+    [self.provisioning getProvisioning:cloudStreaming completionHandler:^(BOOL provOK){
 				[self handleProvisioningResponse:provOK];
 		}];
 		
@@ -232,9 +312,16 @@ NSString *const SettingsStationPlayerForceDisableHLSkey = @"StationPlayerForceDi
 // Provisioning is ok, take a look at the status code
 				if (provOK)
 				{
+        
+        NSTimeInterval connectionTime = 0;
+        if(self.provisioning.statusCode != kProvisioningStatusCodeOk)
+        {
+            connectionTime  = [tracker stopTimer];
+        }
+        
 						switch (self.provisioning.statusCode) {
 								case kProvisioningStatusCodeOk:
-										[self startPlayingStream];
+                [self startPlayingStream:self.isCloudStreaming];
 										break;
 										
 								case kProvisioningStatusCodeGeoblocked:
@@ -259,7 +346,7 @@ NSString *const SettingsStationPlayerForceDisableHLSkey = @"StationPlayerForceDi
 														[self.delegate mediaPlayer:self didReceiveInfo:kTDPlayerInfoForwardedToAlternateMount andExtra:@{InfoAlternateMountNameKey : self.mount}];
 												}
 												
-												[self startProvisioning];
+                    [self startProvisioning:NO];
 												
 										} else {
 												[self failWithError:TDPlayerMountGeoblockedError andDescription:NSLocalizedString(@"The mount is geo-blocked.", nil)];
@@ -269,14 +356,15 @@ NSString *const SettingsStationPlayerForceDisableHLSkey = @"StationPlayerForceDi
 										
 								case kProvisioningStatusCodeNotFound:
 										[self failWithError:TDPlayerMountNotFoundError andDescription:NSLocalizedString(@"The mount doesn't exist.", nil)];
+                								break;
 										
 								case kProvisioningStatusCodeNotImplemented:
 										[self failWithError:TDPlayerMountNotImplemntedError andDescription:NSLocalizedString(@"The requested version doesn’t exist.", nil)];
 										break;
 										
 								case kProvisioningStatusCodeBadRequest:
-										[self failWithError:TDPlayerMountBadRequestError andDescription:NSLocalizedString(@"Bad request. A required parameter is missing or an invalid parameter was sent.", nil)];//
-										break;
+                [self failWithError:TDPlayerMountBadRequestError andDescription:NSLocalizedString(@"Bad request. A required parameter is missing or an invalid parameter was sent.", nil)];
+                break;
 										
 								default:
 										[self failWithError:TDPlayerHostNotFoundError andDescription:NSLocalizedString(@"Connection Error. Could not find the host.", nil)];
@@ -312,7 +400,7 @@ NSString *const SettingsStationPlayerForceDisableHLSkey = @"StationPlayerForceDi
     
 }
 
--(void)startPlayingStream {
+-(void)startPlayingStream:(BOOL) isCloudStreaming {
 		
 		if( self.streamPlayer == nil ){
 				return;
@@ -327,7 +415,27 @@ NSString *const SettingsStationPlayerForceDisableHLSkey = @"StationPlayerForceDi
     self.settings[StreamParamExtraListenerIdType] = self.listenerIdType;
     self.settings[StreamParamExtraListenerIdValue] = self.listenerIdValue;
     
-    if ( self.timeshiftEnabled ){
+    if( self.isCloudStreaming){
+        self.settings[SettingsStreamCloudStreaming] = @(self.isCloudStreaming);
+        self.settings[SettingsStreamPlayerProfileKey] = @(KTDStreamProfileHLS);
+        self.settings[SettingsStreamPlayerUserAgentKey] = self.userAgent;
+        if(self.cloudProgramId){
+            self.settings[SettingsStreamPlayerStreamURLKey] = [NSMutableString stringWithFormat:@"%@/CLOUD/HLS/program/%@/playlist.m3u8", connectingToURL, self.cloudProgramId];
+            self.cloudProgramId = nil;
+        }else{
+        self.settings[SettingsStreamPlayerStreamURLKey] = [NSMutableString stringWithFormat:@"%@%@", connectingToURL, self.provisioning.cloudStreamingSuffix];
+        }
+        
+        self.settings[SettingsStreamPlayerTimeshiftStreamURLKey] = [NSMutableString stringWithFormat:@"%@%@", connectingToURL, self.provisioning.cloudStreamingSuffix];
+        self.settings[SettingsStreamParamsExtraKey] = self.extraQueryParameters;
+        self.settings[SettingsTtagKey] = self.tTags;
+        self.settings[StreamParamExtraAuthorizationTokenKey] = self.token;
+        self.settings[StreamParamExtraAuthorizationSecretKey] = self.authSecretKey;
+        self.settings[StreamParamExtraAuthorizationUserId] = self.authUserId;
+        self.settings[StreamParamExtraAuthorizationKeyId] = self.authKeyId;
+        self.settings[StreamParamExtraAuthorizationRegisteredUser] = @(self.authRegisteredUser);
+        
+    }else if ( self.timeshiftEnabled ){
         self.settings[SettingsStreamPlayerProfileKey] = @(KTDStreamProfileHLSTimeshift);
         connectingToURL = [NSMutableString stringWithFormat:@"%@/%@.m3u8", @"https://playerservices.streamtheworld.com/api/cloud-redirect", self.provisioning.mountName];
         self.settings[SettingsStreamPlayerStreamURLKey] = connectingToURL;
@@ -366,6 +474,11 @@ NSString *const SettingsStationPlayerForceDisableHLSkey = @"StationPlayerForceDi
         self.settings[SettingsStreamPlayerProfileKey] = @(KTDStreamProfileHLS);
         self.settings[SettingsStreamPlayerUserAgentKey] = self.userAgent;
         self.settings[SettingsStreamPlayerStreamURLKey] = connectingToURL;
+        if(self.provisioning.cloudStreamingSuffix){
+            self.settings[SettingsStreamPlayerTimeshiftStreamURLKey] = [NSMutableString stringWithFormat:@"%@%@", connectingToURL, self.provisioning.cloudStreamingSuffix];
+        }else{
+            self.settings[SettingsStreamPlayerTimeshiftStreamURLKey] = @"";
+        }
         self.settings[SettingsStreamParamsExtraKey] = self.extraQueryParameters;
         self.settings[SettingsTtagKey] = self.tTags;
         self.settings[StreamParamExtraAuthorizationTokenKey] = self.token;
@@ -391,7 +504,7 @@ NSString *const SettingsStationPlayerForceDisableHLSkey = @"StationPlayerForceDi
 		[self updateStateMachineForAction:kTDPlayerActionReconnect];
 		
     if ([self.provisioning getNextAvailableServer] == TRUE) {
-        [self startPlayingStream];
+        [self startPlayingStream:self.isCloudStreaming];
     } else {
 				
 				//backoff 
@@ -401,7 +514,7 @@ NSString *const SettingsStationPlayerForceDisableHLSkey = @"StationPlayerForceDi
 						float delay = ((float)rand() / RAND_MAX) * 4 +1;
 						self.backoffRetry += delay;
 
-						[self performSelector:@selector(startProvisioning) withObject:nil afterDelay:delay];
+            [self performSelector:@selector(startProvisioning:) withObject:@(self.isCloudStreaming) afterDelay:delay];
 						
 				}else{
 						// Unable to find a server to connect. it's probably because we tried all servers without success
@@ -428,6 +541,11 @@ NSString *const SettingsStationPlayerForceDisableHLSkey = @"StationPlayerForceDi
 }
 
 #pragma mark - TDMediaPlaybackDelegate methods
+-(void)mediaPlayer:(id<TDMediaPlayback>)player didReceiveCloudStreamInfoEvent:(NSDictionary *)cloudStreamInfoEvent {
+    if ([self.delegate respondsToSelector:@selector(mediaPlayer:didReceiveCloudStreamInfoEvent:)]) {
+        [self.delegate mediaPlayer:self didReceiveCloudStreamInfoEvent:cloudStreamInfoEvent];
+    }
+}
 
 -(void)mediaPlayer:(id<TDMediaPlayback>)player didReceiveCuepointEvent:(CuePointEvent *)cuePointEvent {
     if ([self.delegate respondsToSelector:@selector(mediaPlayer:didReceiveCuepointEvent:)]) {
@@ -440,6 +558,7 @@ NSString *const SettingsStationPlayerForceDisableHLSkey = @"StationPlayerForceDi
         [self.delegate mediaPlayer:self didReceiveAnalyticsEvent:analyticsEvent];
     }
 }
+
 
 -(void)mediaPlayer:(id<TDMediaPlayback>)player didChangeState:(TDPlayerState)newState {
     switch (newState) {

@@ -30,10 +30,13 @@ typedef NS_ENUM(NSInteger, EmbeddedTransportMethod) {
 @property (copy, nonatomic) ControlFiredBlock rewindFiredBlock;
 @property (copy, nonatomic) ControlFiredBlock forwardFiredBlock;
 @property (copy, nonatomic) ControlFiredBlock liveFiredBlock;
+@property (copy, nonatomic) ControlFiredBlock getCloudStreamInfoFiredBlock;
+@property (copy, nonatomic) ControlFiredBlock timeshiftProgramFiredBlock;
 
 @property (assign, nonatomic) EmbeddedPlayerState playerState;
 
 @property (assign, nonatomic) EmbeddedTransportMethod transport;
+@property (weak, nonatomic) IBOutlet UIButton *btnTimeshiftProgram;
 
 // Displayed when the player is kEmbeddedStateError state
 @property (copy, nonatomic) NSError *error;

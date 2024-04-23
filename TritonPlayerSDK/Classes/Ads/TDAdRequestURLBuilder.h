@@ -253,6 +253,7 @@ typedef NS_ENUM(NSInteger, TDAssetType) {
  A dictionary containing the DMP Segments that will be added
  */
 @property (nonatomic, strong) NSDictionary *dmpSegments;
+
 /// @name Generating the Ad request URL
 
 /**

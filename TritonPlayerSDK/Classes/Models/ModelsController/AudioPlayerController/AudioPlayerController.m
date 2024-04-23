@@ -178,4 +178,50 @@
     }
 }
 
+
+
+//=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+// observeValueForKeyPath
+//=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+/*
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+	FLOG(@"KVO recu");
+	
+	if ( [keyPath isEqual:@"isExecuting"] && audioPlayer == object ) 
+	{
+		BOOL audioPlayerisExecuting = [[object valueForKeyPath:keyPath] boolValue];
+		
+		FLOG(@"isExecuting : %d",audioPlayerisExecuting);
+		
+		if (audioPlayerisExecuting == NO)
+		{
+			FLOG(@"self.isExecuting = NO");
+			
+			self.isExecuting = FALSE;
+			
+			@try 
+			{
+				[audioPlayer removeObserver:self forKeyPath:@"isExecuting"];
+			
+				[audioPlayer release];
+				audioPlayer = nil;
+			}
+			@catch (NSException * e) 
+			{
+				
+			}
+		}
+		else
+		{
+			FLOG(@"self.isExecuting = YES");
+			
+			self.isExecuting = YES;
+		}
+		
+		self.operationInProgress = FALSE;
+    }
+}
+*/
+
 @end

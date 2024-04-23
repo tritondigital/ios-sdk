@@ -28,5 +28,6 @@ extern NSString *const SettingsMediaPlayerStreamURLKey;
 -(void)mute;
 -(void)unmute;
 -(void)setVolume:(float)volume;
+-(void)changePlaybackRate:(float)rate;
 
 @end

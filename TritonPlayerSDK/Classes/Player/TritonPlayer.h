@@ -28,6 +28,7 @@ extern NSString *const SettingsLowDelayKey;  //-1 (AUTO), 0 (DISABLED), 2 … 60
 extern NSString *const SettingsPlayerServicesRegion;  // To use a specific PlayerServices depending on the region, e.g: EU,AP
 extern NSString *const SettingsBitrateKey; //Set the bitrate for low delay
 extern NSString *const SettingsDistributionParameterKey; //Set the distributor targeting value
+extern NSString *const SettingsTimeshiftDistributionParameterKey; //Set the distributor targeting value when in timeshift mode.
 extern NSString *const SettingsDmpHeadersKey; //DMP Headers
 /// Extra parameters for location targeting
 
@@ -56,6 +57,8 @@ extern NSString * const StreamParamExtraAuthorizationUserId;
 extern NSString * const StreamParamExtraAuthorizationRegisteredUser;
 extern NSString * const StreamParamExtraAuthorizationKeyId;
 extern NSString * const StreamParamExtraAuthorizationSecretKey;
+extern NSString * const StreamParamExtraDist;
+extern NSString * const StreamParamExtraDistTimeshift;
 
 extern NSString *const SettingsTimeshiftEnabledKey;
 
@@ -63,6 +66,7 @@ extern NSString *const SettingsTimeshiftEnabledKey;
 /// Multi listener id
 extern NSString *const StreamParamExtraListenerIdValue;
 extern NSString *const StreamParamExtraListenerIdType;
+extern NSString *const SettingsStreamCloudStreaming;
 
 /// Represents the types of on-demand content supported by the player
 typedef NS_ENUM(NSInteger, PlayerContentType) {
@@ -184,6 +188,8 @@ extern NSString *const InfoAlternateMountNameKey;
 
 - (void)player:(TritonPlayer *) player didReceiveCuePointEvent:(CuePointEvent *)cuePointEvent;
 - (void)player:(TritonPlayer *) player didReceiveAnalyticsEvent:(AVPlayerItemAccessLogEvent *)analyticsEvent;
+- (void)player:(TritonPlayer *) player didReceiveCloudStreamInfoEvent:(NSDictionary *)cloudStreamInfoEvent;
+
 
 /// @name Handling interruptions
 
@@ -234,6 +240,7 @@ extern NSString *const InfoAlternateMountNameKey;
  */
 
 @property (readonly) NSTimeInterval currentPlaybackTime;
+
 /**
  * Returns the laters CMTime in a seekable range.
  */
@@ -340,6 +347,11 @@ extern NSString *const InfoAlternateMountNameKey;
 
 - (void)pause;
 
+- (void)seekToLive;
+
+- (void)getCloudStreamInfo;
+
+- (void)playCloudProgram:(NSString *) programId;
 /**
  * Moves the cursor to the specified time interval. Only works if the media is seekable.
  *
@@ -354,6 +366,8 @@ extern NSString *const InfoAlternateMountNameKey;
  * @param time A CMTime representing the time elapsed since the start of the audio
  * @param completionHandler The block to be executed when the seek operation has been completed or interrupted.
  */
+
+- (void)changePlaybackRate:(float)rate;
 
 - (void)seekToTime:(CMTime)time completionHandler:(void (^)(BOOL finished))completionHandler;
 

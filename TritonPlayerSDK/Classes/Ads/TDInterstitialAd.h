@@ -43,6 +43,7 @@
  */
 
 @property (nonatomic, assign) BOOL enableCountdownDisplay;
+
 /**
  * Prepare an interstitial ad for playing. It will be prefetched if needed.
  * 
