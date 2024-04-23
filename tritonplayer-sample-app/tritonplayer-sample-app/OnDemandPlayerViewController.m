@@ -17,7 +17,9 @@
 @property (weak, nonatomic) IBOutlet UISlider *seekBar;
 @property (weak, nonatomic) IBOutlet UILabel *statusLabel;
 @property (weak, nonatomic) IBOutlet UIButton *playButton;
+@property (weak, nonatomic) IBOutlet UIButton *playbackRateButton;
 @property (weak, nonatomic) IBOutlet UITextView *metaData;
+@property (nonatomic, assign) float rate;
 
 @property (strong, nonatomic) TritonPlayer *tritonPlayer;
 
@@ -27,9 +29,11 @@
 
 @implementation OnDemandPlayerViewController
 
+@synthesize rate;
+
 -(void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.rate = 1.0;
     self.navigationItem.leftBarButtonItem = self.splitViewController.displayModeButtonItem;
     self.navigationItem.leftItemsSupplementBackButton = YES;
  //   NSURL *aURL = [[NSBundle mainBundle] URLForResource: @"Kalimba" withExtension:@"mp3"];
@@ -88,6 +92,7 @@
 
 - (IBAction)stopPressed:(id)sender {
     [self.tritonPlayer stop];
+    [self.playbackRateButton setTitle:@"Playback Speed: (1.0X)" forState:UIControlStateNormal];
 		self.metaData.text= @"";
 }
 
@@ -198,5 +203,40 @@
 
 -(void)updateMedaDataView:(NSString*)metaData {
 		self.metaData.text= metaData;
+}
+
+-(IBAction)showDropdownMenu:(id)sender {
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:[NSString stringWithFormat:@"Playback Speed"] message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    UIAlertAction *option1Action = [UIAlertAction actionWithTitle:@"0.5X" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        self.rate = 0.5;
+        [self.playbackRateButton setTitle:@"Playback Speed: (0.5X)" forState:UIControlStateNormal];
+        [self.tritonPlayer changePlaybackRate:self.rate];
+    }];
+    [alertController addAction:option1Action];
+    
+    UIAlertAction *option2Action = [UIAlertAction actionWithTitle:@"1.0X" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        self.rate = 1.0;
+        [self.playbackRateButton setTitle:@"Playback Speed: (1.0X)" forState:UIControlStateNormal];
+        [self.tritonPlayer changePlaybackRate:self.rate];
+    }];
+    [alertController addAction:option2Action];
+    
+    UIAlertAction *option3Action = [UIAlertAction actionWithTitle:@"1.5X" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        self.rate = 1.5;
+        [self.playbackRateButton setTitle:@"Playback Speed: (1.5X)" forState:UIControlStateNormal];
+        [self.tritonPlayer changePlaybackRate:self.rate];
+    }];
+    [alertController addAction:option3Action];
+    
+    UIAlertAction *option4Action = [UIAlertAction actionWithTitle:@"2.0X" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        self.rate = 2.0;
+        [self.playbackRateButton setTitle:@"Playback Speed: (2.0X)" forState:UIControlStateNormal];
+        [self.tritonPlayer changePlaybackRate:self.rate];
+    }];
+    [alertController addAction:option4Action];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 @end

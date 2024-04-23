@@ -21,6 +21,9 @@
 /// The content URL of the banner
 @property (nonatomic, strong) NSURL     *contentURL;
 
+/// The redirect URL of the banner
+@property (nonatomic, strong) NSURL     *companionclickthroughURL;
+
 /// The HTML content of the banner
 @property (nonatomic, strong) NSString  *contentHTML;
 

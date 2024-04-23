@@ -115,26 +115,27 @@
             }
 
             if (banner) {
-								if ( banner.contentURL ){
-										
-										if( [banner.contentURL.scheme isEqualToString:@"https"] ){
-												[self.adWebView loadRequest:[NSURLRequest requestWithURL:banner.contentURL]];
-										} else {
-												[self failWithError:[TDAdUtils errorWithCode:TDErrorCodeInvalidAdURL andDescription:@"Only https is supported"]];
-										}
+                if (banner.contentURL) {
+                    if ([banner.contentURL.scheme isEqualToString:@"https"]) {
+                        NSString *htmlContent = [NSString stringWithFormat:@"<html><head><meta name=\"viewport\" content=\"width=device-width,height=device-height, initial-scale=1.0, shrink-to-fit=no\"><style type=\"text/css\">html, body {width:100%%; height: 100\%%; margin: 0px; padding: 0px;z-index:-1}</style></head><body><a href=\"%@\">\
+                                                <img src=\"%@\" alt=\"Clickable Image\" </a></body><html>", banner.companionclickthroughURL, banner.contentURL ];
+                        [self.adWebView loadHTMLString:htmlContent baseURL:nil];
+                    } else {
+                        [self failWithError:[TDAdUtils errorWithCode:TDErrorCodeInvalidAdURL andDescription:@"Only https is supported"]];
+                    }
                 } else if (banner.contentHTML) {
                     NSString *fullHTML;
                     NSRange rangeValue = [banner.contentHTML rangeOfString:@"<html>" options:NSCaseInsensitiveSearch];
-                    
+
                     // If we find the <html> tag in the HTMLResource CDATA we do not wrap the HTMLResource, allowing for both full HTML page as well as Snippet
-                    if (rangeValue.location == NSNotFound )
+                    if (rangeValue.location == NSNotFound)
                         fullHTML = [NSString stringWithFormat:@"<html><head><meta name=\"viewport\" content=\"width=device-width,height=device-height, initial-scale=1.0, shrink-to-fit=no\"><style type=\"text/css\">html, body {width:100%%; height: 100\%%; margin: 0px; padding: 0px;z-index:-1}</style></head><body>%@</body><html>", banner.contentHTML ];
                     else fullHTML = [banner.contentHTML copy];
 
                     [self.adWebView loadHTMLString: [fullHTML stringByReplacingOccurrencesOfString:@"http://" withString:@"https://"] baseURL:nil];
                     NSString *bodyStyle = @"document.getElementsByTagName('body')[0].style.textAlign = 'center';";
                     [self.adWebView evaluateJavaScript:bodyStyle completionHandler:nil];
-                }            
+                }
             } else {
                 [self failWithError:[TDAdUtils errorWithCode:TDErrorCodeNoInventory andDescription:@"No ad to display"]];
             }      

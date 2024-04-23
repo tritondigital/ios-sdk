@@ -17,6 +17,7 @@
 @property (readonly, assign) CMTime latestPlaybackTime;
 
 -(void)play;
+-(void)play:(BOOL)cloudStreaming;
 
 -(void)stop;
 
@@ -35,12 +36,19 @@
 
 -(void)setVolume:(float)volume;
 
+-(void)changePlaybackRate:(float)rate;
+
+-(void)getCloudStreamInfo;
+-(void)playCloudProgram:(NSString *) programId;
+
+-(void)seekToLive;
 -(void)seekToTimeInterval:(NSTimeInterval) interval;
 -(void)seekToTime:(CMTime)time completionHandler:(void (^)(BOOL finished))completionHandler;
 
 -(AudioQueueRef)getAudioQueue;
 
 -(void)setAllowsExternalPlayback:(BOOL)allow;
+
 @required
 -(id)addPeriodicTimeObserverForInterval:(CMTime)interval queue:(dispatch_queue_t)queue usingBlock:(void (^)(CMTime time))block;
 -(void)removeTimeObserver:(id)observer;

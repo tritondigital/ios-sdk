@@ -46,6 +46,9 @@ NSString *const SettingsMediaPlayerStreamURLKey = @"MediaPlayerStreamURL";
 @property (nonatomic, copy) NSDictionary* dmpSegments;
 @property (nonatomic, strong) NSString *dmpSegmentsJson;
 
+@property (nonatomic, assign) float rate;
+
+
 @end
 
 @implementation TDMediaPlayer
@@ -55,6 +58,8 @@ NSString *const SettingsMediaPlayerStreamURLKey = @"MediaPlayerStreamURL";
 @synthesize playbackDuration;
 @synthesize delegate;
 @synthesize error = _error;
+@synthesize rate;
+
 
 -(instancetype)init {
     return [self initWithSettings:nil];
@@ -64,6 +69,7 @@ NSString *const SettingsMediaPlayerStreamURLKey = @"MediaPlayerStreamURL";
     self = [super init];
     
     if (self) {
+        self.rate = 1.0;
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playerItemAccessLogEntryAddedNotification:)
                                                      name:AVPlayerItemNewAccessLogEntryNotification
                                                    object:_mediaPlayerItem];
@@ -101,11 +107,13 @@ NSString *const SettingsMediaPlayerStreamURLKey = @"MediaPlayerStreamURL";
             PLAYER_LOG(@"Observers already removed");
         }
     }    
+    
 }
 
 -(void)updateSettings:(NSDictionary *)settings {
     if (settings)
     {
+        
        self.streamURL = settings[SettingsMediaPlayerStreamURLKey];
        self.sidebandMetadataURL = settings[SettingsMediaPlayerSBMURLKey];
         self.dmpSegments = settings[SettingsDmpHeadersKey];
@@ -158,66 +166,71 @@ NSString *const SettingsMediaPlayerStreamURLKey = @"MediaPlayerStreamURL";
         return CMTimeMake(1,10);
     }
 }
+
 #pragma mark - Reproduction flow
 
 -(void)play {
     
-    if ([self canChangeStateWithAction:kTDPlayerActionPlay]) {
-        
-        TDPlayerState lastState = self.state;
-        
-        [self updateStateMachineForAction:kTDPlayerActionPlay];
-        
-        if (lastState == kTDPlayerStatePaused) {
-            [self addMediaPlayerItemObservers];
-            [self.mediaPlayer play];
+    if (self.mediaPlayer == NULL){
+        if ([self canChangeStateWithAction:kTDPlayerActionPlay]) {
             
-            // Advance state machine to playing
-            if(self.mediaPlayerItem.status == AVPlayerItemStatusReadyToPlay)
-              [self updateStateMachineForAction:kTDPlayerActionJumpToNextState];
+            TDPlayerState lastState = self.state;
             
-        } else {
+            [self updateStateMachineForAction:kTDPlayerActionPlay];
             
-            if (self.sidebandMetadataURL) {
-                // Create and prepare SBM Player but only start it when the stream starts playing.
+            if (lastState == kTDPlayerStatePaused) {
+                [self addMediaPlayerItemObservers];
+                [self.mediaPlayer play];
                 
-                self.sidebandMetadataSessionId = [TDSBMPlayer generateSBMSessionId];
-                
-                NSURL *sbmUrl = [self createURLWithSbmIdFromString:self.sidebandMetadataURL];
-                self.sbmPlayer = [[TDSBMPlayer alloc] initWithSettings:@{SettingsSBMURLKey : sbmUrl}];
-                
-                // We will synchronize the cue points manually.
-                self.sbmPlayer.autoSynchronizeCuePoints = NO;
-                
-                self.sbmPlayer.delegate = self;
-            }
-            
-            NSURL *streamURL = nil;
-            
-            if (self.sidebandMetadataSessionId) {
-                streamURL = [self createURLWithSbmIdFromString:self.streamURL];
+                // Advance state machine to playing
+                if(self.mediaPlayerItem.status == AVPlayerItemStatusReadyToPlay)
+                    [self updateStateMachineForAction:kTDPlayerActionJumpToNextState];
                 
             } else {
-                streamURL = [NSURL URLWithString:self.streamURL];
+                
+                if (self.sidebandMetadataURL) {
+                    // Create and prepare SBM Player but only start it when the stream starts playing.
+                    
+                    self.sidebandMetadataSessionId = [TDSBMPlayer generateSBMSessionId];
+                    
+                    NSURL *sbmUrl = [self createURLWithSbmIdFromString:self.sidebandMetadataURL];
+                    self.sbmPlayer = [[TDSBMPlayer alloc] initWithSettings:@{SettingsSBMURLKey : sbmUrl}];
+                    
+                    // We will synchronize the cue points manually.
+                    self.sbmPlayer.autoSynchronizeCuePoints = NO;
+                    
+                    self.sbmPlayer.delegate = self;
+                }
+                
+                NSURL *streamURL = nil;
+                
+                if (self.sidebandMetadataSessionId) {
+                    streamURL = [self createURLWithSbmIdFromString:self.streamURL];
+                    
+                } else {
+                    streamURL = [NSURL URLWithString:self.streamURL];
+                }
+                
+                NSMutableDictionary * headers = [NSMutableDictionary dictionary];
+                AVURLAsset * asset = nil;
+                
+                if(self.dmpSegmentsJson){
+                    [headers setObject:self.dmpSegmentsJson forKey:@"X-DMP-Segment-IDs"];
+                    asset = [AVURLAsset URLAssetWithURL:streamURL options:@{@"AVURLAssetHTTPHeaderFieldsKey" : headers}];
+                } else{
+                    asset = [AVURLAsset URLAssetWithURL:streamURL options: nil];
+                }
+                
+                self.mediaPlayerItem = [AVPlayerItem playerItemWithAsset:asset];
+                [self.mediaPlayerItem setAudioTimePitchAlgorithm:AVAudioTimePitchAlgorithmTimeDomain];
+                [self addMediaPlayerItemObservers];
+                
+                
+                self.mediaPlayer = [[AVPlayer alloc] initWithPlayerItem:self.mediaPlayerItem];
             }
-            
-            NSMutableDictionary * headers = [NSMutableDictionary dictionary];
-            AVURLAsset * asset = nil;
-          
-            if(self.dmpSegmentsJson){
-                [headers setObject:self.dmpSegmentsJson forKey:@"X-DMP-Segment-IDs"];
-                asset = [AVURLAsset URLAssetWithURL:streamURL options:@{@"AVURLAssetHTTPHeaderFieldsKey" : headers}];
-            } else{
-                asset = [AVURLAsset URLAssetWithURL:streamURL options: nil];
-            }
-            
-            self.mediaPlayerItem = [AVPlayerItem playerItemWithAsset:asset];
-            [self addMediaPlayerItemObservers];
-            
-            self.mediaPlayer = [[AVPlayer alloc] initWithPlayerItem:self.mediaPlayerItem];
         }
-        
-        
+    }else{
+        self.mediaPlayer.rate = self.rate;
     }
 }
 
@@ -250,6 +263,7 @@ NSString *const SettingsMediaPlayerStreamURLKey = @"MediaPlayerStreamURL";
 }
 
 -(void)pause {
+    self.rate = self.mediaPlayer.rate;
     [self.mediaPlayer pause];
     [self removeMediaPlayerItemObservers];
     [self updateStateMachineForAction:kTDPlayerActionPause];
@@ -336,6 +350,14 @@ BOOL observersAdded= NO;
     self.queryParameters = queryParameters;
 }
 
+- (void)changePlaybackRate:(float)rate {
+    if (self.mediaPlayer) {
+        self.mediaPlayer.rate = rate;
+    } else {
+        NSLog(@"AVPlayer is not initialized");
+    }
+}
+
 #pragma mark - Timed observations
 
 - (id)addPeriodicTimeObserverForInterval:(CMTime)interval
@@ -376,7 +398,7 @@ BOOL observersAdded= NO;
                 
             case AVPlayerItemStatusFailed:
                 PLAYER_LOG(@"AVPlayerItemStatusFailed");
-                
+                self.error = self.mediaPlayer.currentItem.error;
                 self.error = self.mediaPlayer.error;
                 [self updateStateMachineForAction:kTDPlayerActionError];
                 break;
@@ -390,6 +412,7 @@ BOOL observersAdded= NO;
     {
         NSTimeInterval timeInterval = [self availableDuration];// Calculation of buffer progress
         
+        PLAYER_LOG(@"Buffering ... timeInterval:%f",timeInterval);
         if ([self.delegate respondsToSelector:@selector(mediaPlayer:didReceiveInfo:andExtra:)]) {
             [self.delegate mediaPlayer:self didReceiveInfo:kTDPlayerInfoBuffering andExtra:nil];
         }

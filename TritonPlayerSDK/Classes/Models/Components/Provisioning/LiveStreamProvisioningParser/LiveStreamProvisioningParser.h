@@ -26,6 +26,14 @@
 							 referrerURL:(NSString *)inReferrerURL
 						 withUserAgent:(NSString *)userAgent
                          withPlayerServicesRegion:(NSString*)psRegion
+                        withCloudStreaming:(BOOL)cloudStreaming
+                 completionHandler:(void(^)(BOOL))completionHandler;
+
+- (void)getProvisioningFor:(Provisioning *)theReceiverObject
+							withCallSign:(NSString *)inCallSign
+							 referrerURL:(NSString *)inReferrerURL
+						 withUserAgent:(NSString *)userAgent
+                         withPlayerServicesRegion:(NSString*)psRegion
 				 completionHandler:(void(^)(BOOL))completionHandler;
 
 - (void)getProvisioningXMLDataForCallsign:(NSString *)inCallSign

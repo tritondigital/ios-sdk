@@ -13,6 +13,7 @@
 extern NSString *const SettingsStreamPlayerProfileKey;
 extern NSString *const SettingsStreamPlayerUserAgentKey;
 extern NSString *const SettingsStreamPlayerStreamURLKey;
+extern NSString *const SettingsStreamPlayerTimeshiftStreamURLKey;
 extern NSString *const SettingsStreamPlayerSBMURLKey;
 
 @class TDPlayerSettings;
@@ -33,4 +34,5 @@ typedef NS_ENUM(NSInteger, TDStreamProfile) {
 -(void)cancelBackgoundTasks;
 
 -(NSString*) getStreamingUrl;
+
 @end

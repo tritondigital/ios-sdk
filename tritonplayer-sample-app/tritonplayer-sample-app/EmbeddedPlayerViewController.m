@@ -67,6 +67,7 @@ int bannerX;
     
     
     self.textMountName.delegate = self;
+    self.btnTimeshiftProgram.hidden = YES;
 }
 
 -(void)viewDidAppear:(BOOL)animated {
@@ -173,6 +174,20 @@ int bannerX;
         self.liveFiredBlock(sender);
     }
 }
+
+- (IBAction)getCloudProgramsButtonPressed:(id)sender {
+    // Call container handling block
+    if (self.getCloudStreamInfoFiredBlock) {
+        self.getCloudStreamInfoFiredBlock(sender);
+    }
+}
+
+- (IBAction)timeshiftProgramButtonPressed:(id)sender {
+    // Call container handling block
+    if (self.timeshiftProgramFiredBlock) {
+        self.timeshiftProgramFiredBlock(sender);
+    }
+}
 #pragma mark - Receiving and processing stream metadata
 
 -(void)loadCuePoint:(CuePointEvent *)cuePoint {
@@ -231,6 +246,7 @@ int bannerX;
             self.btnPlay.enabled = NO;
             self.btnStop.enabled = NO;
             self.btnRewind.enabled = NO;
+            self.btnTimeshiftProgram.hidden = YES;
             self.activityIndicator.hidden = NO;
             [self.activityIndicator startAnimating];
             break;

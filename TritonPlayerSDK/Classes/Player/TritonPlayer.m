@@ -18,7 +18,7 @@
 
 
 
-NSString *const TritonSDKVersion                        = @"2.7.5"; //TritonSDKVersion
+NSString *const TritonSDKVersion                        = @"2.7.6"; //TritonSDKVersion
 
 CGFloat   const  kDefaultPlayerDebouncing               = 0.2f; //Default debouncing for the Play action, in seconds
 
@@ -40,7 +40,6 @@ NSString *const SettingsSecIdKey                        = @"SecId";
 NSString *const SettingsDebouncingKey                   = @"DebouncingKey";
 NSString *const SettingsExtraForceDisableHLSKey         = @"ExtraForceDisableHLS";
 NSString *const SettingsBitrateKey                      = @"MountBitrate";
-NSString *const SettingsDistributionParameterKey        = @"DistributionParameter";
 NSString *const SettingsTimeshiftEnabledKey             = @"TimeshiftEnabled";
 NSString *const SettingsDmpHeadersKey                   = @"DmpHeaders";
 
@@ -65,15 +64,17 @@ NSString * const StreamParamExtraAuthorizationRegisteredUser = @"auth_registered
 NSString * const StreamParamExtraAuthorizationKeyId          = @"auth_key_id";
 NSString * const StreamParamExtraAuthorizationSecretKey      = @"auth_secret_key";
 
+NSString *const StreamParamExtraDist                     = @"dist";
+NSString *const StreamParamExtraDistTimeshift            = @"dist-timeshift";
+
 NSString *const TritonPlayerDomain                      = @"com.tritondigital.error";
 
 NSString *const InfoBufferingPercentageKey              = @"percentage";
 NSString *const InfoAlternateMountNameKey               = @"alternateMount";
 
-
-
 NSString *const StreamParamExtraListenerIdValue         = @"StreamParamExtraListenerIdValue";
 NSString *const StreamParamExtraListenerIdType          = @"StreamParamExtraListenerIdType";
+NSString *const SettingsStreamCloudStreaming            = @"SettingsStreamCloudStreaming";
 
 @interface TritonPlayer() <CLLocationManagerDelegate, TDMediaPlaybackDelegate>
 
@@ -117,6 +118,7 @@ NSString *const StreamParamExtraListenerIdType          = @"StreamParamExtraList
 @property (nonatomic, assign) TDPlayerState state;
 @property (nonatomic, assign) BOOL volumeStopped;
 
+@property BOOL isCloudStreaming;
 @property BOOL isExecuting;
 @property BOOL stopStreamThread;
 @property BOOL streamFinishedNotificationAlreadySent; // indicate that a notification when a stream has been closed (failed or not)
@@ -143,6 +145,7 @@ NSString *const StreamParamExtraListenerIdType          = @"StreamParamExtraList
 
 @property (nonatomic, strong) NSString *listenerIdType;
 @property (nonatomic, strong) NSString *listenerIdValue;
+
 @end
 
 @implementation TritonPlayer
@@ -221,6 +224,7 @@ NSString *const StreamParamExtraListenerIdType          = @"StreamParamExtraList
         self.forceDisableHLS = [settings[SettingsExtraForceDisableHLSKey] boolValue];
         self.timeshiftEnabled = [settings[SettingsTimeshiftEnabledKey] boolValue];
         
+        
         self.lowDelay = [settings[SettingsLowDelayKey] intValue];
         
         if (self.enableLocationTacking) {
@@ -243,6 +247,7 @@ NSString *const StreamParamExtraListenerIdType          = @"StreamParamExtraList
         self.token = settings[StreamParamExtraAuthorizationTokenKey];
         if(self.token == nil)
             self.token= @"";
+        
         self.authUserId = settings[StreamParamExtraAuthorizationUserId];
         if(self.authUserId == nil)
             self.authUserId= @"";
@@ -270,6 +275,11 @@ NSString *const StreamParamExtraListenerIdType          = @"StreamParamExtraList
         self.listenerIdValue = settings[StreamParamExtraListenerIdValue];
         if(self.listenerIdValue == nil)
             self.listenerIdValue= @"";
+        
+        self.isCloudStreaming = settings[SettingsStreamCloudStreaming];
+        if(self.isCloudStreaming == nil)
+            self.isCloudStreaming= NO;
+        
     }
 }
 
@@ -321,7 +331,6 @@ NSString *const StreamParamExtraListenerIdType          = @"StreamParamExtraList
     [NSThread currentThread].name = TritonPlayerThreadName;
     
     @autoreleasepool {
-        
         if (self.mount) {
             
             if (![self.mediaPlayer isKindOfClass:[TDStationPlayer class]]) {
@@ -387,7 +396,12 @@ NSString *const StreamParamExtraListenerIdType          = @"StreamParamExtraList
                                                }];
         }
 
-        [self.mediaPlayer play];
+        if ([self.mediaPlayer isKindOfClass:[TDStationPlayer class]]) {
+            [self.mediaPlayer play:self.isCloudStreaming];
+        }else{
+            [self.mediaPlayer play];
+        }
+       
         //Set the allowsExternalPlayback flag for the current media player if it's supported.
         [self.mediaPlayer setAllowsExternalPlayback: self.shouldAllowExternalPlayback];
         
@@ -533,6 +547,32 @@ NSString *const StreamParamExtraListenerIdType          = @"StreamParamExtraList
     
 }
 
+- (void)changePlaybackRate:(float)rate {
+    if (self.mediaPlayer) {
+        [self.mediaPlayer changePlaybackRate:rate];
+    } else {
+        NSLog(@"AVPlayer is not initialized");
+    }
+}
+
+-(void)seekToLive {
+    if ([self.mediaPlayer respondsToSelector:@selector(seekToLive)]) {
+        [self.mediaPlayer seekToLive];
+    }
+}
+   
+-(void)getCloudStreamInfo {
+    if ([self.mediaPlayer respondsToSelector:@selector(getCloudStreamInfo)]) {
+        [self.mediaPlayer getCloudStreamInfo];
+    }
+}
+    
+-(void)playCloudProgram:(NSString *) programId {
+    if ([self.mediaPlayer respondsToSelector:@selector(playCloudProgram:)]) {
+        [self.mediaPlayer playCloudProgram:programId];
+    }
+}
+
 -(void)seekToTimeInterval:(NSTimeInterval)interval {
     if ([self.mediaPlayer respondsToSelector:@selector(seekToTimeInterval:)]) {
         [self.mediaPlayer seekToTimeInterval:interval];
@@ -643,6 +683,12 @@ NSString *const StreamParamExtraListenerIdType          = @"StreamParamExtraList
 
 #pragma mark - TDMediaPlaybackDelegate methods
 
+-(void)mediaPlayer:(id<TDMediaPlayback>)player didReceiveCloudStreamInfoEvent:(NSDictionary *)cloudStreamInfoEvent {
+    if ([self.delegate respondsToSelector:@selector(player:didReceiveCloudStreamInfoEvent:)]) {
+        [self.delegate performSelector:@selector(player:didReceiveCloudStreamInfoEvent:) withObject:self withObject:cloudStreamInfoEvent];
+    }
+}
+
 -(void)mediaPlayer:(id<TDMediaPlayback>)player didReceiveCuepointEvent:(CuePointEvent *)cuePointEvent {
     if ([self.delegate respondsToSelector:@selector(player:didReceiveCuePointEvent:)]) {
         [self.delegate performSelector:@selector(player:didReceiveCuePointEvent:) withObject:self withObject:cuePointEvent];
@@ -655,6 +701,7 @@ NSString *const StreamParamExtraListenerIdType          = @"StreamParamExtraList
         [self.delegate performSelector:@selector(player:didReceiveAnalyticsEvent:) withObject:self withObject:analyticsEvent];
     }
 }
+
 -(void)mediaPlayer:(id<TDMediaPlayback>)player didReceiveMetaData:(NSDictionary *)metaData {
 		if ([self.delegate respondsToSelector:@selector(player:didReceiveMetaData:)]) {
 				dispatch_async(dispatch_get_main_queue(), ^{
@@ -791,9 +838,11 @@ NSString *const StreamParamExtraListenerIdType          = @"StreamParamExtraList
 -(CMTime)latestPlaybackTime {
     return [self.mediaPlayer latestPlaybackTime];
 }
+
 -(void)setAllowsExternalPlayback:(BOOL)allow {
     [self.mediaPlayer setAllowsExternalPlayback:allow];
 }
+
 #pragma mark - Debugging
 
 - (void)onCreateSimulatedCuePoint {
@@ -935,6 +984,7 @@ NSString *const StreamParamExtraListenerIdType          = @"StreamParamExtraList
 #pragma mark - Error handling
 
 - (void)failWithError:(TDPlayerError) errorCode andDescription:(NSString*) description {
+    // KVO will not be called, since FLVStream is not started, so change state manually
     self.isExecuting = FALSE;
     
     NSDictionary *userInfo = @{NSLocalizedDescriptionKey : description};

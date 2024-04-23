@@ -18,10 +18,14 @@
 #import "Logs.h"
 
 #import <AVFoundation/AVFoundation.h>
+
+
 NSString *const SettingsStreamPlayerProfileKey = @"StreamPlayerProfile";
 NSString *const SettingsStreamPlayerUserAgentKey = @"StreamPlayerUserAgent";
 NSString *const SettingsStreamPlayerStreamURLKey = @"StreamPlayerStreamURL";
+NSString *const SettingsStreamPlayerTimeshiftStreamURLKey = @"StreamPlayerTimeshiftStreamURL";
 NSString *const SettingsStreamPlayerSBMURLKey = @"StreamPlayerSBMURL";
+
 
 @interface TDStreamPlayer()<TDMediaPlaybackDelegate>
 
@@ -64,10 +68,13 @@ NSString *const SettingsStreamPlayerSBMURLKey = @"StreamPlayerSBMURL";
 @property (strong, nonatomic) NSMutableArray<id<TDMediaPlayback>>* oldPlayers;
 
 @property (assign, nonatomic) BOOL timeshiftEnabled;
+
 @property (copy, nonatomic) NSDictionary *dmpSegments;
 
 @property (copy, nonatomic) NSString *listenerIdType;
 @property (copy, nonatomic) NSString *listenerIdValue;
+
+@property (assign, nonatomic) BOOL isCloudStreaming;
 
 @end
 
@@ -113,6 +120,7 @@ NSString *const SettingsStreamPlayerSBMURLKey = @"StreamPlayerSBMURL";
         self.dmpSegments = settings[SettingsDmpHeadersKey];
         self.listenerIdType = settings[StreamParamExtraListenerIdType];
         self.listenerIdValue = settings[StreamParamExtraListenerIdValue];
+        self.isCloudStreaming = settings[SettingsStreamCloudStreaming];
 
     
       // Set the correct profile. If profile is kTDStreamProfileOther, try to obtain the type by looking at the url suffix.
@@ -193,8 +201,10 @@ NSString *const SettingsStreamPlayerSBMURLKey = @"StreamPlayerSBMURL";
     if ([self canChangeStateWithAction:kTDPlayerActionPlay]) {
         
         if (self.state != kTDPlayerStatePaused) {
+            
             self.token = [TritonPlayerUtils generateJWTToken:self.extraQueryParameters andAuthKeyId:self.authKeyId andAuthUserId:self.authUserId andAuthRegisteredUser:self.authRegisteredUser andToken:self.token andAuthSercterKey:self.authSecretKey];
-            NSString *queryParameters = [TritonPlayerUtils targetingQueryParametersWithLocation:[TDLocationManager sharedManager].targetingLocation andExtraParameters:self.extraQueryParameters andListenerIdType:self.listenerIdType andListenerIdValue:self.listenerIdValue withTtags:self.tTags andToken:self.token];
+            
+            NSString *queryParameters = [TritonPlayerUtils targetingQueryParametersWithLocation:[TDLocationManager sharedManager].targetingLocation andExtraParameters:self.extraQueryParameters andListenerIdType:self.listenerIdType andListenerIdValue:self.listenerIdValue withTtags:self.tTags andToken:self.token andIsCloudStreaming:self.isCloudStreaming];
             
             if ([queryParameters rangeOfString:@"banners"].location == NSNotFound) {
                 if (queryParameters.length != 0) {
@@ -234,8 +244,9 @@ NSString *const SettingsStreamPlayerSBMURLKey = @"StreamPlayerSBMURL";
             } else if (self.profile == KTDStreamProfileHLS){
                 [self.player updateSettings:@{SettingsMediaPlayerUserAgentKey : self.userAgent,
                                               SettingsMediaPlayerStreamURLKey : connectingToURL,
-                                              SettingsMediaPlayerSBMURLKey : self.sbmURL,
-                                              SettingsDmpHeadersKey: self.dmpSegments
+                                              SettingsMediaPlayerSBMURLKey : self.sbmURL ?: @"",
+                                              SettingsDmpHeadersKey: self.dmpSegments,
+                                              SettingsStreamCloudStreaming: @(self.isCloudStreaming)
                                             }];
             } else if (self.profile == KTDStreamProfileHLSTimeshift){
                 [self.player updateSettings:@{SettingsMediaPlayerUserAgentKey : self.userAgent,
@@ -273,6 +284,14 @@ NSString *const SettingsStreamPlayerSBMURLKey = @"StreamPlayerSBMURL";
             
             [self updateStateMachineForAction:kTDPlayerActionStop];
         }
+}
+
+-(void)changePlaybackRate:(float)rate {
+    if (self.player) {
+        [self.player changePlaybackRate:rate];
+    } else {
+        NSLog(@"AVPlayer is not initialized");
+    }
 }
 
 -(void)seekToTimeInterval:(NSTimeInterval)interval {
@@ -332,6 +351,7 @@ NSString *const SettingsStreamPlayerSBMURLKey = @"StreamPlayerSBMURL";
 -(CMTime)latestPlaybackTime{
     return [self.player latestPlaybackTime];
 }
+
 -(NSTimeInterval)playbackDuration {
     return [self.player playbackDuration];
 }
