@@ -75,6 +75,10 @@
 //=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
 - (void)getProvisioning:(void(^)(BOOL))completionHandler {
+    [self getProvisioning:NO completionHandler:completionHandler];
+}
+
+- (void)getProvisioning:(BOOL) cloudStreaming completionHandler:(void(^)(BOOL))completionHandler {
 
 		allServerScanned = FALSE;
 		usedServerIndex = 0;
@@ -84,7 +88,7 @@
 		self.provisioningParser = [[LiveStreamProvisioningParser alloc] init];
 
 		// Try to obtain the provisioning. If there's a connection problem, try again until retry count expires
-			[self.provisioningParser getProvisioningFor:self withCallSign:callSign referrerURL:self.referrerURL withUserAgent: self.userAgent withPlayerServicesRegion:self.playerServicesRegion completionHandler:^(BOOL success) {
+    [self.provisioningParser getProvisioningFor:self withCallSign:callSign referrerURL:self.referrerURL withUserAgent: self.userAgent withPlayerServicesRegion:self.playerServicesRegion withCloudStreaming:cloudStreaming completionHandler:^(BOOL success) {
 					BOOL provFetchWithSuccess;
 					
 					if ( self.provisioningParser.provisioningError != kProvisioningParserNoError ){

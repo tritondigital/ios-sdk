@@ -12,6 +12,6 @@
 @interface TritonPlayerUtils : NSObject
 
 + (NSString *) getListenerId;
-+ (NSString *)targetingQueryParametersWithLocation:(CLLocation *) location andExtraParameters:(NSDictionary *) extraParameters andListenerIdType:(NSString*) listenerIdType andListenerIdValue:(NSString*) listenerIdValue withTtags:(NSArray*) tTags andToken:(NSString*) token;
++ (NSString *)targetingQueryParametersWithLocation:(CLLocation *) location andExtraParameters:(NSDictionary *) extraParameters andListenerIdType:(NSString*) listenerIdType andListenerIdValue:(NSString*) listenerIdValue withTtags:(NSArray*) tTags andToken:(NSString*) token andIsCloudStreaming:(BOOL) isCloudStreaming;
 +(NSString *)generateJWTToken:(NSDictionary *) targetingParams andAuthKeyId:(NSString *) authKeyId andAuthUserId:(NSString*) authUserId andAuthRegisteredUser:(BOOL) authRegisteredUser andToken:(NSString*) token andAuthSercterKey:(NSString*) authSecretKey;
 @end

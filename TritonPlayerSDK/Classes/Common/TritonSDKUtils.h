@@ -13,4 +13,5 @@
 +(void)downloadDataFromURL:(NSURL *)url withHeaders:(NSDictionary *)headers withCompletionHandler:(void (^)(NSData *data, NSError *error))completionHandler;
 
 +(NSString *)getRequestFromURL:(NSURL *)url;
+
 @end

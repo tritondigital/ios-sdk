@@ -80,7 +80,7 @@
     
     self.requestBuilder.assetType = kTDAssetTypeVideo;
     
-    [self.adLoader loadAdWithBuilder:self.requestBuilder completionHandler:^(TDAd *loadedAd, NSError *error) {
+    [self.adLoader loadAdWithStringRequest:@"https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/single_ad_samples&ciu_szs=300x250&impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ct%3Dlinearvpaid2js&correlator=" completionHandler:^(TDAd *loadedAd, NSError *error) {
         if (error) {
             [self hideActivityIndicatorWithStatusMessage:error.localizedDescription];
             
@@ -105,6 +105,7 @@
 
 - (void)playVideoAd {
     [self showActivityIndicatorWithStatusMessage:@"Playing video ad."];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self
                                                 selector:@selector(playBackDidFinishNotification:)
                                                name:AVPlayerItemDidPlayToEndTimeNotification
@@ -115,6 +116,7 @@
     self.moviePlayerViewController = [AVPlayerViewController new];
     self.moviePlayerViewController.player = player;
     
+
     self.moviePlayerViewController.view.translatesAutoresizingMaskIntoConstraints = NO;
     self.moviePlayerViewController.showsPlaybackControls = FALSE;
     
@@ -123,7 +125,6 @@
     [self.moviePlayerViewController.view addGestureRecognizer:recognizer];
     
     CMTime interval = CMTimeMakeWithSeconds(0.5, NSEC_PER_SEC);
-
 __weak typeof(self) weakSelf = self;
            self.playerObserver =  [self.moviePlayerViewController.player addPeriodicTimeObserverForInterval:interval
                                                       queue:NULL

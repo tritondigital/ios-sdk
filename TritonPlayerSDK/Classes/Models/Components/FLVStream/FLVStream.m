@@ -171,6 +171,7 @@
 
 - (void)stop
 {
+    
 	@synchronized(self)
 	{
         if (operationInProgress == FALSE)
@@ -182,6 +183,7 @@
             FLOG(@"operationInProgress");
         }
 	}
+    
 }
 
 
@@ -248,12 +250,17 @@
 		}
 
 		if (flvDecoder && inData)
-		{
+    {
 
-			// we pass received data to the decoder
-			[flvDecoder decodeStreamData:inData];
-            inData= nil;
-		}
+	@try{
+        // we pass received data to the decoder
+        [flvDecoder decodeStreamData:inData];
+        inData= nil;
+	}@catch (NSException * e)
+        {
+            FLOG(@"Exception : %@ : %@", [e name], [e reason]);
+        }
+    }
 	
 }
 

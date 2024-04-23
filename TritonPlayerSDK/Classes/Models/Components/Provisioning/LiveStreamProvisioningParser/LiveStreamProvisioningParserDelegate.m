@@ -44,7 +44,9 @@
 @property (nonatomic, strong) MetadataConfiguration *sidebandMetadata;
 
 @property (nonatomic, assign) BOOL hlsEnabled;
+
 @property (nonatomic, strong) NSString *hlsMountSuffix;
+@property (nonatomic, strong) NSString *cloudStreamingMountSuffix;
 
 @property (nonatomic, strong) NSString *currentTransport;
 
@@ -130,7 +132,14 @@
         else if ([elementName isEqualToString:@"transport"])
         {
             NSString* suffix  =[attributeDict objectForKey:@"mountSuffix"];
-            if(suffix != nil && ([[suffix lowercaseString] rangeOfString:@"/hls/"].location!=NSNotFound))
+            NSString* timeshift  =[attributeDict objectForKey:@"timeshift"];
+            
+            if(suffix != nil && timeshift != nil && [[timeshift lowercaseString] isEqualToString:@"true"]){
+                self.cloudStreamingMountSuffix = suffix;
+                self.currentPropertyNode = [NSMutableString string];
+            }
+            
+            if(suffix != nil && timeshift == nil && ([[suffix lowercaseString] rangeOfString:@"/hls/"].location!=NSNotFound))
             {
               self.hlsMountSuffix = suffix;
               self.currentPropertyNode = [NSMutableString string];
@@ -267,6 +276,7 @@
 	self.receiverProvisioning.mountBitrate = self.mountBitrate;
     self.receiverProvisioning.sidebandMetadataInfo = self.sidebandMetadata;
     self.receiverProvisioning.alternateMediaUrl = self.alternateMediaUrl;
+    self.receiverProvisioning.cloudStreamingSuffix = self.cloudStreamingMountSuffix;
 		
 	self.xmlData = nil; // set it to nil to prevent being freed one more time by the pool
 }

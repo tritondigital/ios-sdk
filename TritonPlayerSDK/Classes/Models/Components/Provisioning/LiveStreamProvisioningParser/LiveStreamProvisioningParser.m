@@ -107,12 +107,21 @@
 //=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 // getProvisioning
 //=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+- (void)getProvisioningFor:(Provisioning *)theReceiverObject
+                            withCallSign:(NSString *)inCallSign
+                             referrerURL:(NSString *)inReferrerURL
+                         withUserAgent:(NSString *)userAgent
+                         withPlayerServicesRegion:(NSString*)psRegion
+         completionHandler:(void(^)(BOOL))completionHandler {
 
+    [self getProvisioningFor: theReceiverObject withCallSign:inCallSign referrerURL:inReferrerURL withUserAgent:userAgent withPlayerServicesRegion:psRegion withCloudStreaming:NO completionHandler:completionHandler];
+}
 - (void)getProvisioningFor:(Provisioning *)theReceiverObject
 							withCallSign:(NSString *)inCallSign
 							 referrerURL:(NSString *)inReferrerURL
 						 withUserAgent:(NSString *)userAgent
                          withPlayerServicesRegion:(NSString*)psRegion
+                        withCloudStreaming:(BOOL)cloudStreaming
 				 completionHandler:(void(^)(BOOL))completionHandler {
 		
    

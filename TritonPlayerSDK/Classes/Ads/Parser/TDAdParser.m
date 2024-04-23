@@ -35,9 +35,9 @@ typedef NS_ENUM(NSInteger, CreativeType) {
 @property (nonatomic, strong) NSMutableArray *companionBanners;
 @property (nonatomic, strong) TDCompanionBanner *currentBanner;
 
-
 @property (nonatomic, strong) NSString *adFormat;
 @property (nonatomic, assign) NSNumber *adDuration;
+
 @end
 
 @implementation TDAdParser
@@ -57,8 +57,7 @@ typedef NS_ENUM(NSInteger, CreativeType) {
         self.callbackBlock = completionBlock;
 
         NSURL *url = [NSURL URLWithString:string];
-        if (url) {
-            if ([url.scheme isEqual:@"https"] || [url.scheme isEqual:@"file"]) {
+        if (url && ([url.scheme isEqual:@"https"] || [url.scheme isEqual:@"file"]) ) {
             // if url, donwload it and send to parser
                 NSMutableDictionary * headers = [NSMutableDictionary dictionary];
                 
@@ -75,10 +74,6 @@ typedef NS_ENUM(NSInteger, CreativeType) {
                 
                     [self startParserWithData:data];
                 }];
-            } else {
-                self.callbackBlock(nil, [NSError errorWithDomain:NSURLErrorDomain code:NSURLErrorBadURL userInfo:@{ NSLocalizedDescriptionKey : NSLocalizedString(@"The url is invalid or is not secured.", nil) }]);
-                return;
-            }
         } else {
             // If inline, create data and send to parser
             NSData *data = [string dataUsingEncoding:NSUTF8StringEncoding];
@@ -134,7 +129,6 @@ typedef NS_ENUM(NSInteger, CreativeType) {
     
     if ([elementName isEqualToString:@"Ad"]) {
         self.parsedAd = [[TDAd alloc] init];
-    
     } else if ([elementName isEqualToString:@"Error"]) {
         self.parsedAd = [[TDAd alloc] init];
     } else if ([elementName isEqualToString:@"CompanionAds"]) {
@@ -149,7 +143,6 @@ typedef NS_ENUM(NSInteger, CreativeType) {
         
     } else if ([elementName isEqualToString:@"Linear"]) {
         self.currentCreativeType = kCreativeTypeLinear;
-    
     } else if ([elementName isEqualToString:@"MediaFile"] && self.parsedAd.mediaURL == nil) {
         NSString *type = attributeDict[@"type"];
         
@@ -209,6 +202,9 @@ typedef NS_ENUM(NSInteger, CreativeType) {
             }
             self.currentBanner.contentURL = [NSURL URLWithString:self.stringBuffer];
         }
+    } else if ([elementName isEqualToString:@"CompanionClickThrough"]) {
+        self.currentBanner.companionclickthroughURL = [NSURL URLWithString:self.stringBuffer]; 
+        
     } else if ([elementName isEqualToString:@"MediaFile"] && self.parsedAd.mediaURL == nil) {
         if ([self.stringBuffer rangeOfString:@"https"].location == NSNotFound) {
             [self.stringBuffer stringByReplacingOccurrencesOfString:@"http" withString:@"https"];
@@ -217,6 +213,7 @@ typedef NS_ENUM(NSInteger, CreativeType) {
     
     } else if ([elementName isEqualToString:@"Duration"]) {
         self.parsedAd.adDuration = [self secondsForTimeString:self.stringBuffer];
+
     } else if ([elementName isEqualToString:@"ClickThrough"]) {
         self.parsedAd.videoClickThroughURL = [NSURL URLWithString:self.stringBuffer];
         
@@ -235,6 +232,7 @@ typedef NS_ENUM(NSInteger, CreativeType) {
     }
     else if ([elementName isEqualToString:@"VASTAdTagURI"]) {
         self.parsedAd.vastAdTagUri = [NSURL URLWithString:self.stringBuffer];
+        
     } else if ([elementName isEqualToString:@"Error"]){
         [self.stringBuffer replaceOccurrencesOfString:@"[TD_DURATION]" withString:@"0" options:NSCaseInsensitiveSearch range:NSMakeRange(0, [self.stringBuffer length])];
         [self.stringBuffer replaceOccurrencesOfString:@"[ERRORCODE]" withString:@"202" options:NSCaseInsensitiveSearch range:NSMakeRange(0, [self.stringBuffer length])];
@@ -250,6 +248,7 @@ typedef NS_ENUM(NSInteger, CreativeType) {
     if ([self.currentElement isEqualToString:@"IFrameResource"] ||
         [self.currentElement isEqualToString:@"HTMLResource"] ||
         [self.currentElement isEqualToString:@"StaticResource"] ||
+        [self.currentElement isEqualToString:@"CompanionClickThrough"] ||
         [self.currentElement isEqualToString:@"MediaFile"] ||
         [self.currentElement isEqualToString:@"ClickThrough"] ||
         [self.currentElement isEqualToString:@"Impression"] ||
@@ -269,6 +268,7 @@ typedef NS_ENUM(NSInteger, CreativeType) {
     if ([self.currentElement isEqualToString:@"IFrameResource"] ||
         [self.currentElement isEqualToString:@"HTMLResource"] ||
         [self.currentElement isEqualToString:@"StaticResource"] ||
+        [self.currentElement isEqualToString:@"CompanionClickThrough"] ||
         [self.currentElement isEqualToString:@"MediaFile"] ||
         [self.currentElement isEqualToString:@"ClickThrough"] ||
         [self.currentElement isEqualToString:@"Impression"] ||

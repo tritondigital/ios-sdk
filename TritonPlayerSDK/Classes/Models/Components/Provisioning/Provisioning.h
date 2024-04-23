@@ -52,6 +52,7 @@
 @property (nonatomic, strong) NSString *alternateMount;
 @property (nonatomic, strong) NSString *alternateMediaUrl;
 
+@property (nonatomic, strong) NSString *cloudStreamingSuffix;
 
 @property (weak) NSString					*referrerURL;
 
@@ -64,6 +65,7 @@
 - (instancetype)initWithCallsign:(NSString *)theCallSign;
 - (instancetype)initWithCallsign:(NSString *)theCallSign referrerURL:(NSString *)inReferrerURL;
 - (void)getProvisioning:(void(^)(BOOL))completionHandler;
+- (void)getProvisioning:(BOOL) cloudStreaming completionHandler:(void(^)(BOOL))completionHandler;
 - (BOOL)getNextAvailableServer;
 - (void)rewindServerList;
 - (BOOL)hasReachedEndOfServerList;

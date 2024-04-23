@@ -29,11 +29,13 @@ NSMutableArray *mediaImpressionUrls = nil;
     
     if (request) {
         TDAdParser *parser = [[TDAdParser alloc] init];
+        
         if(dmpSegments){
             NSError *error;
             NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dmpSegments options:0 error:&error];
             parser.dmpSegmentsJson = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
         }
+        
         [parser parseFromRequestString:request completionBlock:^(TDAd *ad, NSError *error) {
             
             if (error) {
@@ -62,6 +64,7 @@ NSMutableArray *mediaImpressionUrls = nil;
                 [TritonSDKUtils getRequestFromURL:ad.errorUrl];
                 return;
             }
+            
              if(mediaImpressionUrls == nil) {
                  mediaImpressionUrls = [[NSMutableArray alloc] init];
              }
@@ -94,6 +97,7 @@ NSMutableArray *mediaImpressionUrls = nil;
     }else{
     [self loadAdWithStringRequest:[builder generateAdRequestURL] completionHandler:completionHandler];
     }
+    
 }
 
 -(BOOL)isVastWrapper:(TDAd *)ad

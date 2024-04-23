@@ -2,9 +2,9 @@
 // File:	   FLVStreamPlayerLibConstants.h
 //
 
-#define kLibVersion	@"2.7.5"
+#define kLibVersion	@"2.7.7"
 
-#define kMIME_TYPE_FLV					@"flv" // 
+#define kMIME_TYPE_FLV					@"flv" // maybe application/flv, video-x/flv, ...
 
 // notification streamController => mainView
 #define kNotFLVMount					@"NotFLVMount"

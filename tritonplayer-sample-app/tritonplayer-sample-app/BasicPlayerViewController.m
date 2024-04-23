@@ -23,6 +23,7 @@
 // A reusable view controller that implements a player interface with hooks for play, stop and loading ad banners
 @property (strong, nonatomic) EmbeddedPlayerViewController *playerViewController;
 
+@property (strong, nonatomic) NSString *cloudProgramId;
 @end
 
 @implementation BasicPlayerViewController
@@ -70,11 +71,19 @@
     self.playerViewController.liveFiredBlock = ^(UIButton *button) {
         NSLog(@"Current Time %f", weakSelf.tritonPlayer.currentPlaybackTime );
         //[weakSelf.tritonPlayer seekToTime:weakSelf.tritonPlayer.latestPlaybackTime];
-        
-        [weakSelf.tritonPlayer seekToTime:weakSelf.tritonPlayer.latestPlaybackTime completionHandler:^(BOOL finished) {
-            NSLog(@"Seek Done");
-        }];
     };
+    
+    // Do the same for the program button
+    self.playerViewController.getCloudStreamInfoFiredBlock = ^(UIButton *button) {
+        [weakSelf updateSettings];
+        [weakSelf.tritonPlayer getCloudStreamInfo];
+    };
+    
+    // Do the same for the timeshiftProgram button
+    self.playerViewController.timeshiftProgramFiredBlock = ^(UIButton *button) {
+        [weakSelf.tritonPlayer playCloudProgram:weakSelf.cloudProgramId];
+    };
+    
     // The initial mount
     self.playerViewController.mountName = @"TRITONRADIOMUSICAAC_RW";
 }
@@ -92,7 +101,11 @@
                                SettingsBroadcasterKey : @"Triton Digital",
                                SettingsMountKey : self.playerViewController.mountName,
                                SettingsEnableLocationTrackingKey : @(YES),
-                               SettingsStreamParamsExtraKey : @{@"banners": @"300x50,320x50"},
+                               SettingsStreamParamsExtraKey : @{@"banners": @"300x50,320x50",
+                                                                StreamParamExtraDist:@"the-dist",
+                                                                StreamParamExtraDistTimeshift:@"timeshift-dist"
+                                                                
+                               },
                                SettingsTtagKey : @[@"mobile:ios", @"triton:sample"],
                                StreamParamExtraListenerIdType: @"idfa",
                                StreamParamExtraListenerIdValue: @"triton-app-id",
@@ -135,6 +148,27 @@
 
 - (void)player:(TritonPlayer *)player didReceiveAnalyticsEvent:(AVPlayerItemAccessLogEvent *)analyticsEvent {
     NSLog(@"Received Analytics Event -- Indicated bitrate is %f", [analyticsEvent indicatedBitrate]);
+}
+
+- (void)player:(TritonPlayer *)player didReceiveCloudStreamInfoEvent:(NSDictionary *)cloudStreamInfoEvent {
+    NSObject *programs = [cloudStreamInfoEvent valueForKey:@"programs"];
+    if([programs isKindOfClass:[NSDictionary class]]){
+        NSObject *properties = [(NSDictionary *)programs valueForKey:@"properties"];
+        NSString *title = [(NSDictionary *)properties valueForKey:@"program_title"];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.playerViewController.btnTimeshiftProgram.enabled = YES;
+            self.playerViewController.btnTimeshiftProgram.hidden = NO;
+            [self.playerViewController.btnTimeshiftProgram setTitle:title forState:UIControlStateNormal];
+            self.cloudProgramId = [(NSDictionary *)programs valueForKey:@"program_episode_id"];
+         });
+       
+    } else {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.playerViewController.btnTimeshiftProgram.enabled = NO;
+            self.playerViewController.btnTimeshiftProgram.hidden = NO;
+            [self.playerViewController.btnTimeshiftProgram setTitle:@"No Programs" forState:UIControlStateNormal];
+         });
+    }
 }
 
 -(void)player:(TritonPlayer *)player didChangeState:(TDPlayerState)state {

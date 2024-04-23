@@ -56,7 +56,9 @@
 @property (nonatomic, strong) NSURL     *vastAdTagUri;
 
 @property (nonatomic, strong) NSURL     *errorUrl;
+
 @property (nonatomic, strong) NSNumber     *adDuration;
+
 /// @name Helper methods
 
 /**

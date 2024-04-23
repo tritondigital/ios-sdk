@@ -37,7 +37,7 @@
     }
 }
 
-+ (NSString *)targetingQueryParametersWithLocation:(CLLocation *) location andExtraParameters:(NSDictionary *) extraParameters andListenerIdType:(NSString*) listenerIdType andListenerIdValue:(NSString*) listenerIdValue withTtags:(NSArray*) tTags andToken:(NSString*) token {
++ (NSString *)targetingQueryParametersWithLocation:(CLLocation *) location andExtraParameters:(NSDictionary *) extraParameters andListenerIdType:(NSString*) listenerIdType andListenerIdValue:(NSString*) listenerIdValue withTtags:(NSArray*) tTags andToken:(NSString*) token andIsCloudStreaming:(BOOL) isCloudStreaming {
     // get all params and create a string to be passed in GET
     // ?param1=value1&param2=value2...
     
@@ -50,6 +50,7 @@
     }else{
     [queryParametersString appendFormat:@"lsid=%@&", [TritonPlayerUtils getListenerId]];
     }
+    
     
     
     // Append tdsdk
@@ -75,9 +76,22 @@
        [queryParametersString appendFormat:@"tdtok=%@&", token];
     }
     
+    //Fix the dist param
+    NSMutableDictionary *mutableExtraParams = [extraParameters mutableCopy];
+    if(isCloudStreaming){
+        [mutableExtraParams removeObjectForKey:StreamParamExtraDist];
+        NSString *timeshiftDist = [mutableExtraParams objectForKey:StreamParamExtraDistTimeshift];
+        if(timeshiftDist != nil){
+            [mutableExtraParams removeObjectForKey:StreamParamExtraDistTimeshift];
+            [mutableExtraParams setObject:timeshiftDist forKey:StreamParamExtraDist];
+        }
+    } else {
+        [mutableExtraParams removeObjectForKey:StreamParamExtraDistTimeshift];
+    }
+    
     // others parameters passed as Extra Parameters
-    for (NSString *key in [extraParameters allKeys]) {
-        [queryParametersString appendFormat:@"%@=%@&", key, [extraParameters objectForKey:key]];
+   for (NSString *key in [mutableExtraParams allKeys]) {
+       [queryParametersString appendFormat:@"%@=%@&", key, [mutableExtraParams objectForKey:key]];
     }
     
     // remove last &

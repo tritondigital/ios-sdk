@@ -1,4 +1,25 @@
 # Changelog
+#### TritonPlayerSDK-iOS-2.7.7 - 2024-04-23
+- Make Companion Banner Clickable
+
+#### TritonPlayerSDK-iOS-2.7.6 - 2024-01-09
+- Implement Timeshift
+- Change podcast speed
+
+#### TritonPlayerSDK-iOS-2.7.5 - 2024-01-09
+- Location manager update
+
+#### TritonPlayerSDK-iOS-2.7.4 - 2023-12-07
+- Multi-Listener ID
+
+#### TritonPlayerSDK-iOS-2.7.3 - 2023-09-06
+- Fix Companion ads not displaying
+
+#### TritonPlayerSDK-iOS-2.7.2 - 2022-08-16
+- Add DMP Segment headers
+- Expose ad duration
+- Implement add countdown display on interstitial ads
+
 #### TritonPlayerSDK-iOS-2.7.1 - 2022-03-11
 - Raise a "didReceiveAnalyticsEvent" to expose the AVPlayerItemAccessLogEvent.
 - Re-generate secure token on stream reconnect.
