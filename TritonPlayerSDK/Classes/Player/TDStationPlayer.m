@@ -595,6 +595,12 @@ NSString *const SettingsStationPlayerForceDisableHLSkey = @"StationPlayerForceDi
     }
 }
 
+- (void)mediaPlayer:(id<TDMediaPlayback>)player didPlayBuffer:(AudioBufferList *)buffer {
+    if ([self.delegate respondsToSelector:@selector(mediaPlayer:didPlayBuffer:)]) {
+        [self.delegate mediaPlayer:self didPlayBuffer:buffer];
+    }
+}
+
 #pragma mark - State machine
 
 -(BOOL)canChangeStateWithAction:(TDPlayerAction) action {

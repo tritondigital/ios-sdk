@@ -23,4 +23,5 @@
 
 -(void)mediaPlayer:(id<TDMediaPlayback>)player didReceiveInfo:(TDPlayerInfo)info andExtra:(NSDictionary *)extra;
 -(void)mediaPlayer:(id<TDMediaPlayback>)player didReceiveMetaData:(NSDictionary *)metaData;
+-(void)mediaPlayer:(id<TDMediaPlayback>)player didPlayBuffer:(AudioBufferList *)buffer;
 @end

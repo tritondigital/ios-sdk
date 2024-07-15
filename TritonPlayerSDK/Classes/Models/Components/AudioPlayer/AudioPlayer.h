@@ -93,8 +93,12 @@
 	AudioPlayerController			*isExecutingDelegate;
     
     NSString    *lastMessage;
-  
-	
+
+    // AUDIO QUEUE TAP
+    UInt32 outMaxFrames;
+    AudioStreamBasicDescription outProcessingFormat;
+    AudioQueueProcessingTapRef outAQTap;
+
 @public
 	
 	pthread_mutex_t mutex;			// a mutex to protect the inuse flags

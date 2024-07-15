@@ -762,6 +762,12 @@ NSString *const SettingsStreamCloudStreaming            = @"SettingsStreamCloudS
     }
 }
 
+- (void)mediaPlayer:(id<TDMediaPlayback>)player didPlayBuffer:(AudioBufferList *)buffer {
+    if ([self.delegate respondsToSelector:@selector(player:didPlayAudioBuffer:)]) {
+        [self.delegate player:self didPlayAudioBuffer: buffer];
+    }
+}
+
 #pragma mark - User Agent
 
 - (NSString*)createUserAgentString

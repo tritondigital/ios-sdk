@@ -10,6 +10,7 @@
 #import <AudioToolbox/AudioQueue.h>
 #import <CoreMedia/CMTime.h>
 #import <AVFoundation/AVFoundation.h>
+#import <AudioToolbox/AudioToolbox.h>
 
 // SDK Version
 extern NSString *const TritonSDKVersion;
@@ -189,6 +190,7 @@ extern NSString *const InfoAlternateMountNameKey;
 - (void)player:(TritonPlayer *) player didReceiveCuePointEvent:(CuePointEvent *)cuePointEvent;
 - (void)player:(TritonPlayer *) player didReceiveAnalyticsEvent:(AVPlayerItemAccessLogEvent *)analyticsEvent;
 - (void)player:(TritonPlayer *) player didReceiveCloudStreamInfoEvent:(NSDictionary *)cloudStreamInfoEvent;
+- (void)player:(TritonPlayer *) player didPlayAudioBuffer:(AudioBufferList *)buffer;
 
 
 /// @name Handling interruptions

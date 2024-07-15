@@ -36,6 +36,7 @@
 - (void)audioPlayerPlaying:(NSNotification *)notification;
 - (void)audioPlayerStopped:(NSNotification *)notification;
 - (void)audioPlayerBufferTimeout:(NSNumber*)bufferTime;
+- (void)audioPlayerDidPlayBuffer:(AudioBufferList *)buffer;
 
 - (OSStatus)enqueueBuffer;
 - (int)findQueueBuffer:(AudioQueueBufferRef)inBuffer;
@@ -85,6 +86,25 @@ static void audioQueueIsRunningCallback(void *inUserData, AudioQueueRef inAQ, Au
 	}
 }
 
+static void audioQueueTapCallback(
+                                  void *inClientData,
+                                  AudioQueueProcessingTapRef inAQTap,
+                                  UInt32 inNumberFrames,
+                                  AudioTimeStamp *ioTimeStamp,
+                                  AudioQueueProcessingTapFlags *ioFlags,
+                                  UInt32 *outNumberFrames,
+                                  AudioBufferList *ioData
+                                  ) 
+{
+    OSStatus status = AudioQueueProcessingTapGetSourceAudio(inAQTap, inNumberFrames, ioTimeStamp, ioFlags, outNumberFrames, ioData);
+    if (status != noErr) {
+        NSLog(@"Error getting source audio: %d", status);
+        return;
+    }
+    AudioPlayer *player = (__bridge AudioPlayer*)inClientData;
+    [player audioPlayerDidPlayBuffer: ioData];
+}
+
 
 static UInt32 bufferTimeMultiplier=1;
 
@@ -110,7 +130,6 @@ static UInt32 bufferTimeMultiplier=1;
 @synthesize bufferIn;
 @synthesize bufferFree;
 @synthesize lastMessage;
-
 
 #pragma mark - Init / alloc / dealloc
 
@@ -350,7 +369,7 @@ cleanup:
 		failed = true;
 		return;
 	}
-	
+
 	// listen to the "isRunning" property
 	err = AudioQueueAddPropertyListener(audioQueue, kAudioQueueProperty_IsRunning, audioQueueIsRunningCallback, (__bridge void *)(self));
 	if (err)
@@ -419,6 +438,24 @@ cleanup:
 		
 		free(cookieData); 
 	}
+
+    err = AudioQueueProcessingTapNew(
+                                     audioQueue,
+                                     audioQueueTapCallback,
+                                     (__bridge void *)(self),
+                                     kAudioQueueProcessingTap_PostEffects,
+                                     &outMaxFrames,
+                                     &outProcessingFormat,
+                                     &outAQTap
+                                     );
+
+    if (err)
+    {
+        failed = true;
+        NSLog(@"got error for tap: %d", err);
+        raise(1);
+        return;
+    }
 }
 
 
@@ -568,7 +605,7 @@ cleanup:
 	{
 		err = AudioQueueEnqueueBuffer(audioQueue, fillBuf, 0, NULL);
 	}
-		
+
 	if (!err && !started && (bufferIn >= playTime || lowDelay == 0 ))
 	{
 		err = AudioQueuePrime(audioQueue, 1, NULL);
@@ -801,6 +838,11 @@ cleanup:
     }
 }
 
+- (void)audioPlayerDidPlayBuffer:(AudioBufferList *)buffer {
+    if ([delegate respondsToSelector:@selector(audioPlayerDidPlayBuffer:)]) {
+        [delegate audioPlayerDidPlayBuffer:buffer];
+    }
+}
 
 #pragma mark - Volume manipulation
 
