@@ -650,9 +650,10 @@ NSString *const SettingsStreamCloudStreaming            = @"SettingsStreamCloudS
     TDPlayerState nextState = [self nextStateForAction:action];
     
     // If state changed, send the delegate a callback message
+    if (self.state != nextState) {
         self.state = nextState;
         
-    PLAYER_LOG(@"Changed state to: %@", [TritonPlayer toStringState:self.state]);
+        PLAYER_LOG(@"Changed state to: %@", [TritonPlayer toStringState:self.state]);
         
         // Clear error
         if (self.state != kTDPlayerStateError) {
@@ -664,6 +665,7 @@ NSString *const SettingsStreamCloudStreaming            = @"SettingsStreamCloudS
                 [self.delegate player:self didChangeState:self.state];
             });
         }
+    }
 }
 
 +(NSString*) toStringState:(TDPlayerState)state
