@@ -73,7 +73,7 @@ static UInt32 bufferTime = kLowDelaySecondsStart+1;
         self.flvStream = [[FLVStream alloc] initWithDelegate:self andAudioPlayerController:self.audioPlayerController secID:self.secId secReferrerURL:self.secReferrerURL lowDelay:self.lowDelay];
     
         self.flvDispather = [[FLVDispatcher alloc] initWithCuePointEventController:self.cuePointEventController andAudioPlayerController:self.audioPlayerController];
-				[self.flvDispather setTDFLVMetaDataDelegate:self];
+        [self.flvDispather setTDFLVMetaDataDelegate:self];
 				
         self.flvDecoder = [[FLVDecoder alloc] initWithStreamController:self];
         self.flvStream.flvDecoder = self.flvDecoder;
@@ -246,6 +246,12 @@ static UInt32 bufferTime = kLowDelaySecondsStart+1;
     NSError *error = [NSError errorWithDomain:TritonPlayerDomain code:TDPlayerHostNotFoundError userInfo:nil];
     self.error = error;
     [self updateStateMachineForAction:kTDPlayerActionError];
+}
+
+-(void)audioPlayerDidPlayBuffer:(AudioBufferList *)buffer {
+    if ([self.delegate respondsToSelector:@selector(mediaPlayer:didPlayBuffer:)]) {
+        [self.delegate mediaPlayer:self didPlayBuffer:buffer];
+    }
 }
 
 #pragma mark - CuePointEventController delegate
